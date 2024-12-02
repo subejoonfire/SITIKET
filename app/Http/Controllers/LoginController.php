@@ -23,6 +23,9 @@ class LoginController extends Controller
             'password.required' => 'Password tidak boleh kosong.',
         ]);
         if (Auth::attempt(['name' => $request->username, 'password' => $request->password])) {
+            if (Auth::user()->iddepartment == NULL) {
+                return redirect()->route('admin.dashboard');
+            }
             return redirect()->route('department.dashboard');
         }
         return back()->withErrors([
