@@ -71,7 +71,7 @@ class DRoutesController extends Controller
     public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
-
+        //
         return redirect('/login');
     }
 }
