@@ -6,9 +6,9 @@ use App\Http\Controllers\Department\DRoutesController;
 use App\Http\Controllers\Admin\ARoutesController;
 
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\RoutesController;
 
-Route::get('/', [LandingPageController::class, 'landing']);
+Route::get('/', [RoutesController::class, 'landing']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
