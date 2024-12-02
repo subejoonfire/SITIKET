@@ -47,4 +47,22 @@ class DRoutesController extends Controller
         ];
         return view('pages.department.ticket.done', $data);
     }
+
+    public function tiket()
+    {
+        $data = [
+            'title' => 'SI-TIKET | TIKET'
+        ];
+        return view('pages.department.ticket.ticket', $data);
+    }
+
+    public function profile()
+    {
+
+        $data = [
+            'title' => 'SI-TIKET | PROFILE',
+        ];
+
+        return view('pages.department.profile', $data);
+    }
 }
