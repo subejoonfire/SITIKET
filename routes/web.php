@@ -14,13 +14,16 @@ Route::get('/', [RoutesController::class, 'landing']);
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-Route::group(['prefix' => 'department', 'as' => 'department.', 'middleware' => 'auth'], function () {
-    Route::get('dashboard', [DRoutesController::class, 'dashboard'])->name('dashboard');
-    Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
-    Route::get('profile', [DRoutesController::class, 'profile'])->name('profile');
-    Route::get('tiket', [DRoutesController::class, 'tiket'])->name('tiket_utama');
-    Route::get('setuju', [DRoutesController::class, 'index'])->name('tiket_setuju');
-    Route::get('proses', [DRoutesController::class, 'proses'])->name('tiket_proses');
-    Route::get('tolak', [DRoutesController::class, 'tolak'])->name('tiket_tolak');
-    Route::get('selesai', [DRoutesController::class, 'selesai'])->name('tiket_selesai');
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
+        Route::get('dashboard', [DRoutesController::class, 'dashboard'])->name('dashboard');
+        Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
+        Route::get('profile', [DRoutesController::class, 'profile'])->name('profile');
+        Route::get('tiket', [DRoutesController::class, 'tiket'])->name('tiket_utama');
+        Route::get('setuju', [DRoutesController::class, 'index'])->name('tiket_setuju');
+        Route::get('proses', [DRoutesController::class, 'proses'])->name('tiket_proses');
+        Route::get('tolak', [DRoutesController::class, 'tolak'])->name('tiket_tolak');
+        Route::get('selesai', [DRoutesController::class, 'selesai'])->name('tiket_selesai');
+    });
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {});
 });
