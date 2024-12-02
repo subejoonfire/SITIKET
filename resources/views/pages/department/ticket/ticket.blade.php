@@ -75,36 +75,30 @@
                                         <tr>
                                             <th>ID Tiket</th>
                                             <th>Nama Pelapor</th>
-                                            <th>Judul Masalah</th>
-                                            <th>Kategori</th>
-                                            <th>Status</th>
-                                            <th>Prioritas</th>
-                                            <th>Tanggal Dilaporkan</th>
-                                            <th>Tenggat Waktu</th>
                                             <th>Departemen</th>
+                                            <th>Nomor HP</th>
+                                            <th>Masalah</th>
+                                            <th>Status</th>
                                             <th style="width: 10%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($collection as $item)
                                         <tr>
-                                            <td>TKT001</td>
-                                            <td>John Doe</td>
-                                            <td>Login gagal</td>
-                                            <td>Bug</td>
-                                            <td>Diproses</td>
-                                            <td>Tinggi</td>
-                                            <td>2024-12-01 08:30</td>
-                                            <td>2024-12-02 17:00</td>
-                                            <td>IT</td>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->username }}</td>
+                                            <td>SAP</td>
+                                            <td>{{ $item->phonenumber }}</td>
+                                            <td>{{ $item->trouble }}</td>
+                                            <td>{{ $item->status }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                         <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    </a>
+                                                    <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
-                                                    </button>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>
