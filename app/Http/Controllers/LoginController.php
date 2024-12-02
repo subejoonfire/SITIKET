@@ -25,7 +25,6 @@ class LoginController extends Controller
         if (Auth::attempt(['name' => $request->username, 'password' => $request->password])) {
             return redirect()->route('department.dashboard');
         }
-
         return back()->withErrors([
             'login' => 'Username atau password salah.',
         ]);
