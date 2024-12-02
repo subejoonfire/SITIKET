@@ -6,11 +6,8 @@
         <div class="page-inner">
             <div class="page-header">
                 <h4 class="page-title">Tiket</h4>
-               
             </div>
             <div class="row">
-               
-
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -30,7 +27,7 @@
                                         <div class="modal-header no-bd">
                                             <h5 class="modal-title">
                                                 <span class="fw-mediumbold">
-                                                New</span> 
+                                                    New</span>
                                                 <span class="fw-light">
                                                     Row
                                                 </span>
@@ -73,7 +70,7 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover" >
+                                <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>ID Tiket</th>
@@ -88,8 +85,8 @@
                                             <th style="width: 10%">Aksi</th>
                                         </tr>
                                     </thead>
-                                    
                                     <tbody>
+                                        @foreach ($collection as $item)
                                         <tr>
                                             <td>TKT001</td>
                                             <td>John Doe</td>
@@ -110,30 +107,8 @@
                                                     </button>
                                                 </div>
                                             </td>
-                                           
                                         </tr>
-                                       
-                                        <td>TKT002</td>
-                                        <td>Jane Smith</td>
-                                        <td>Aplikasi tidak terbuka</td>
-                                        <td>UI Issue</td>
-                                        <td>Terbuka</td>
-                                        <td>Sedang</td>
-                                        <td>2024-12-01 09:00</td>
-                                        <td>2024-12-05 15:00</td>
-                                        <td>Customer Support</td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                          
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -143,7 +118,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 
 @endsection
