@@ -7,11 +7,8 @@
         <div class="page-inner">
             <div class="page-header">
                 <h4 class="page-title">User</h4>
-               
             </div>
             <div class="row">
-               
-
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -27,50 +24,34 @@
                             <!-- Modal -->
 
                             <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover" >
+                                <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>id_user</th>
+                                            <th>ID User</th>
                                             <th>Username</th>
                                             <th>Email</th>
-                                            <th>Foto</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
-                                    
                                     <tbody>
-                                       
-                                        <td>1</td>
-                                        <td>john_doe</td>
-                                        <td>john.doe@example.com</td>
-                                        <td><img src="https://via.placeholder.com/50" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @foreach ($user as $item)
                                         <tr>
-                                            <td>2</td>
-                                            <td>mark_twain</td>
-                                            <td>mark.twain@example.com</td>
-                                            <td><img src="https://via.placeholder.com/50" alt="Mark's Photo" class="img-fluid rounded-circle"></td>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->email }}</td>
+                                            {{-- <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td> --}}
                                             <td>
                                                 <div class="form-button-action">
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                         <i class="fa fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    </a>
+                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
-                                                    </button>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -80,7 +61,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 
 @endsection
