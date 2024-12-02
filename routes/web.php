@@ -25,5 +25,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('tolak', [DRoutesController::class, 'tolak'])->name('tiket_tolak');
         Route::get('selesai', [DRoutesController::class, 'selesai'])->name('tiket_selesai');
     });
-    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {});
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+      
+    });
+
 });
+
+    Route::get('/dashboard', [ARoutesController::class, 'index'])->name('dashboard');
+    Route::get('/user', [ARoutesController::class, 'user'])->name('dashboard');
+    Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');

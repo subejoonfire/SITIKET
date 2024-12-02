@@ -7,13 +7,13 @@
            
             <ul class="nav">
                 <li class="nav-item {{ request()->routeIs('dashboard_admin') ? 'active' : '' }}">
-                    <a href="{{ url('admin/dashboard') }}">
+                    <a href="{{ url('dashboard') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('user') ? 'active' : '' }}">
-                        <a href="{{ url('admin/user') }}">
+                        <a href="{{ url('user') }}">
                         <i class="fas fa-user-alt"></i>
                         <p>User</p>
                     </a>
