@@ -11,6 +11,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DASHBOARD',
+            'userCount' => User::count(),
         ];
         return view('pages.admin.dashboard', $data);
     }

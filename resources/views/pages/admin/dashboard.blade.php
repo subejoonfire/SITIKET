@@ -7,12 +7,8 @@
         <div class="page-inner">
             <div class="page-header">
                 <h4 class="page-title">Dashboard</h4>
-
             </div>
             <div class="row">
-               
-              
-                
                 <div class="col-sm-6 col-md-3">
                     <div class="card card-stats card-round">
                         <div class="card-body">
@@ -25,7 +21,7 @@
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">User</p>
-                                        <h4 class="card-title">2</h4>
+                                        <h4 class="card-title">{{ $userCount }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -33,10 +29,6 @@
                     </div>
                 </div>
             </div>
-          
-
-
-
         </div>
     </div>
 
