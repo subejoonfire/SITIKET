@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Department\DRoutesController;
-use App\Http\Controllers\Admin\ARoutesController;
-use Illuminate\Session\Middleware\AuthenticateSession;
+use App\Http\Middleware\authmiddleware;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoutesController;
-use App\Http\Middleware\authmiddleware;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ARoutesController;
+use App\Http\Controllers\Department\DRoutesController;
+use Illuminate\Session\Middleware\AuthenticateSession;
 
 Route::get('/', [RoutesController::class, 'landing']);
 
@@ -29,6 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/user', [ARoutesController::class, 'user'])->name('dashboard');
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
         Route::get('/add', [ARoutesController::class, 'adduser'])->name('add');
+        Route::group(['prefix' => 'user', 'as' => 'user'], function () {
+            Route::post('store', [AdminController::class, 'store'])->name('store');
+            Route::get('delete/{id}', [AdminController::class, 'delete'])->name('delete');
+            Route::post('update', [AdminController::class, 'update'])->name('update');
+        });
     });
 });
 Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
