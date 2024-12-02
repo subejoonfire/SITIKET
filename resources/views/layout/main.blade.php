@@ -83,7 +83,7 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ url('department/profile') }}">My Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Logout</a>
+                                    <a class="dropdown-item" href="{{ url('department/logout') }}">Logout</a>
                                 </li>
                             </ul>
                         </li>

@@ -4,20 +4,23 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Department\DRoutesController;
 use App\Http\Controllers\Admin\ARoutesController;
-
+use Illuminate\Session\Middleware\AuthenticateSession;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoutesController;
+use App\Http\Middleware\authmiddleware;
 
 Route::get('/', [RoutesController::class, 'landing']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-
-Route::get('department/dashboard', [DRoutesController::class, 'dashboard'])->name('department/dashboard');
-Route::get('department/profile', [DRoutesController::class, 'profile'])->name('department/profile');
-Route::get('/setuju', [DRoutesController::class, 'index'])->name('tiket_setuju');
-Route::get('/proses', [DRoutesController::class, 'proses'])->name('tiket_proses');
-Route::get('/tolak', [DRoutesController::class, 'tolak'])->name('tiket_tolak');
-Route::get('/selesai', [DRoutesController::class, 'selesai'])->name('tiket_selesai');
-Route::get('/tiket', [DRoutesController::class, 'tiket'])->name('tiket_utama');
+Route::group(['prefix' => 'department', 'as' => 'department.', 'middleware' => 'auth'], function () {
+    Route::get('dashboard', [DRoutesController::class, 'dashboard'])->name('dashboard');
+    Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
+    Route::get('profile', [DRoutesController::class, 'profile'])->name('profile');
+    Route::get('tiket', [DRoutesController::class, 'tiket'])->name('tiket_utama');
+    Route::get('setuju', [DRoutesController::class, 'index'])->name('tiket_setuju');
+    Route::get('proses', [DRoutesController::class, 'proses'])->name('tiket_proses');
+    Route::get('tolak', [DRoutesController::class, 'tolak'])->name('tiket_tolak');
+    Route::get('selesai', [DRoutesController::class, 'selesai'])->name('tiket_selesai');
+});
