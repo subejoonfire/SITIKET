@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Department;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class DRoutesController extends Controller
 {
@@ -64,5 +67,10 @@ class DRoutesController extends Controller
         ];
 
         return view('pages.department.profile', $data);
+    }
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+        return redirect('/login');
     }
 }

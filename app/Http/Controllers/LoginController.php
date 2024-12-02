@@ -22,11 +22,8 @@ class LoginController extends Controller
             'username.required' => 'Username tidak boleh kosong.',
             'password.required' => 'Password tidak boleh kosong.',
         ]);
-
-        $credentials = $request->only('username', 'password');
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('department/dashboard')->with('success', 'Login berhasil!');
+        if (Auth::attempt(['name' => $request->username, 'password' => $request->password])) {
+            return redirect()->route('department.dashboard');
         }
         return back()->withErrors([
             'login' => 'Username atau password salah.',
