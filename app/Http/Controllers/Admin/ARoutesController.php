@@ -19,7 +19,7 @@ class ARoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | USER'
         ];
-        return view('pages.admin.user.user', $data);
+        return view('pages.admin.user', $data);
     }
 
     public function profile()
