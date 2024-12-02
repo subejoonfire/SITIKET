@@ -13,4 +13,22 @@ class ARoutesController extends Controller
         ];
         return view('pages.admin.dashboard', $data);
     }
+    
+    public function user()
+    {
+        $data = [
+            'title' => 'SI-TIKET | USER'
+        ];
+        return view('pages.admin.user.user', $data);
+    }
+
+    public function profile()
+    {
+
+        $data = [
+            'title' => 'SI-TIKET | PROFILE',
+        ];
+
+        return view('pages.admin.profile', $data);
+    }
 }

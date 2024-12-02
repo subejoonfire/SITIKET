@@ -26,3 +26,11 @@ Route::get('/tolak', [DRoutesController::class, 'tolak'])->name('tiket_tolak');
 Route::get('/selesai', [DRoutesController::class, 'selesai'])->name('tiket_selesai');
 
 Route::get('/tiket', [DRoutesController::class, 'tiket'])->name('tiket_utama');
+
+//DIBAWAH INI UNTUK PORTAL ADMIN
+
+Route::get('admin/dashboard', [ARoutesController::class, 'index'])->name('dashboard_admin');
+
+Route::get('admin/user', [ARoutesController::class, 'user'])->name('user');
+
+Route::get('admin/profile', [ARoutesController::class, 'profile'])->name('admin_profile');
