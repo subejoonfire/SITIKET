@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('iddepartment');
             $table->string('username');
             $table->string('phonenumber');
+            $table->string('status')->default('PENDING');
             $table->text('trouble');
             $table->timestamps();
             //
