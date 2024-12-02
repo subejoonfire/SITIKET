@@ -8,6 +8,8 @@
         color: red;
     }
 </style>
+<div class="main-panel">
+<div class="content">
 <div class="page-inner">
     <div class="page-header">
         <div class="col-md-12">
@@ -41,7 +43,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Level</label>
                             <select class="form-control" id="exampleFormControlSelect1" name="role">
-                                <option selected disabled hidden>Pilih Role</option>
+                                <option selected disabled hidden>Pilih Level</option>
                                 <option>admin</option>
                                 <option>Departement</option>
                             </select>
@@ -63,5 +65,6 @@
         </div>
     </div>
 </div>
-
+</div>
+</div>
 @endsection
