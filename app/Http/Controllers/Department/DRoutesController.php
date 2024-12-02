@@ -68,9 +68,4 @@ class DRoutesController extends Controller
 
         return view('pages.department.profile', $data);
     }
-    public function logout(Request $request): RedirectResponse
-    {
-        Auth::logout();
-        return redirect('/login');
-    }
 }
