@@ -36,13 +36,13 @@ class ARoutesController extends Controller
         return view('pages.admin.profile', $data);
     }
 
-    public function tambah_user()
+    public function adduser()
     {
         $data = [
             'title' => 'SI-TIKET | Tambah_User',
             'user' => User::all(),
             // 'user' => User::whereNotNull('iddepartment')->get(),
         ];
-        return view('pages.admin.tambahuser', $data);
+        return view('pages.admin.adduser', $data);
     }
 }
