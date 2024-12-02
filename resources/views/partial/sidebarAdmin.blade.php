@@ -21,7 +21,7 @@
                     <div class="collapse {{ request()->routeIs('tiket_*') ? 'show' : '' }}" id="base">
                         <ul class="nav nav-collapse">
                             <li class="{{ request()->routeIs('tiket_setuju') ? 'active' : '' }}">
-                                <a href="{{ url('setujui') }}">
+                                <a href="{{ url('setuju') }}">
                                     <span class="sub-item">Disetujui</span>
                                 </a>
                             </li>

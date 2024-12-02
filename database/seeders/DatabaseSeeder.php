@@ -17,12 +17,13 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        DB::table('user')->insert([
+        DB::table('users')->insert([
             [
-                'username' => 'admin',
-                'email' => 'admin@gmail.com',
-                'password' => Hash::make('Jhonlin@123'),
-                'level' => 'admin',
+                'name' => 'admin',
+                'email' => 'admin@example.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('Jhonlin@123'), // Ganti dengan password yang sesuai
+                'remember_token' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
