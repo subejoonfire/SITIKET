@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/dashboard', [ARoutesController::class, 'index'])->name('dashboard');
         Route::get('/user', [ARoutesController::class, 'user'])->name('dashboard');
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
+        Route::get('/tambah', [ARoutesController::class, 'tambah_user'])->name('tambah');
     });
 });
 Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');

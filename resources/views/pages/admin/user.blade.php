@@ -14,10 +14,10 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">User</h4>
-                                <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+                                <a href="{{ route('admin.tambah') }}" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
-                                    Tambah User
-                                </button>
+                                    Tambah
+                                </a>
                             </div>
                         </div>
                         <div class="card-body">
