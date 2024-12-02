@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Department;
 
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,15 @@ class DRoutesController extends Controller
 
         return view('pages.department.dashboard', $data);
     }
+    public function tiket()
+    {
+        $data = [
+            'title' => 'SI-TIKET | TIKET',
+            'collection' => Ticket::all(),
+        ];
+        return view('pages.department.ticket.ticket', $data);
+    }
+
     public function index()
     {
         $data = [
@@ -51,14 +61,6 @@ class DRoutesController extends Controller
         return view('pages.department.ticket.done', $data);
     }
 
-    public function tiket()
-    {
-        $data = [
-            'title' => 'SI-TIKET | TIKET'
-        ];
-        return view('pages.department.ticket.ticket', $data);
-    }
-
     public function profile()
     {
 
@@ -67,10 +69,5 @@ class DRoutesController extends Controller
         ];
 
         return view('pages.department.profile', $data);
-    }
-    public function logout(Request $request): RedirectResponse
-    {
-        Auth::logout();
-        return redirect('/login');
     }
 }
