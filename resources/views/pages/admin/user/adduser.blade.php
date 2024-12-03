@@ -13,7 +13,7 @@
         <div class="page-inner">
             <div class="page-header">
                 <div class="col-md-12">
-                    <form method="POST" action="{{ url('admin/user/store') }}">
+                    <form method="POST" action="{{ url('admin/user/action/store') }}">
                         @csrf
                         <div class="card">
                             <div class="card-header">
@@ -22,7 +22,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Nama</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama" value="{{ old('name') }}">
+                                    <input required type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama" value="{{ old('name') }}">
                                     @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -43,10 +43,10 @@
                                     <label for="level">Level</label>
                                     <select class="form-control" id="level" name="level">
                                         <option selected disabled hidden>Pilih Level</option>
-                                        <option value="1" {{ old('level') == '1' ? 'selected' : '' }}>Admin</option>
-                                        <option value="2" {{ old('level') == '2' ? 'selected' : '' }}>Helpdesk</option>
-                                        <option value="3" {{ old('level') == '3' ? 'selected' : '' }}>Department</option>
-                                        <option value="5" {{ old('level') == '4' ? 'selected' : '' }}>User</option>
+                                        <option value="1" {{ old('level') == 1 ? 'selected' : '' }}>Admin</option>
+                                        <option value="2" {{ old('level') == 2 ? 'selected' : '' }}>Helpdesk</option>
+                                        <option value="3" {{ old('level') == 3 ? 'selected' : '' }}>Department</option>
+                                        <option value="4" {{ old('level') == 4 ? 'selected' : '' }}>User</option>
                                     </select>
                                     @error('level')
                                     <small class="text-danger">{{ $message }}</small>
