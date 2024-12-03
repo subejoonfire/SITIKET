@@ -31,17 +31,27 @@
                                     <label for="iddepartment">Departemen</label>
                                     <select class="form-control" id="iddepartment" name="iddepartment">
                                         <option selected disabled hidden>Pilih Departemen</option>
-                                        <option value="1" {{ old('iddepartment') == '1' ? 'selected' : '' }}>Hardware</option>
-                                        <option value="2" {{ old('iddepartment') == '2' ? 'selected' : '' }}>Jaringan</option>
-                                        <option value="3" {{ old('iddepartment') == '3' ? 'selected' : '' }}>SAP</option>
-                                        <option value="4" {{ old('iddepartment') == '4' ? 'selected' : '' }}>Logistik</option>
-                                        <option value="5" {{ old('iddepartment') == '5' ? 'selected' : '' }}>IT</option>
+                                        @foreach ($collection as $department)
+                                        <option value="{{ $department->id }}" {{ old('iddepartment') == '1' ? 'selected' : '' }}>{{ $department->departmentname }}</option>
+                                        @endforeach
                                     </select>
                                     @error('iddepartment')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
+                                <div class="form-group">
+                                    <label for="level">Level</label>
+                                    <select class="form-control" id="level" name="level">
+                                        <option selected disabled hidden>Pilih Level</option>
+                                        <option value="1" {{ old('level') == '1' ? 'selected' : '' }}>Admin</option>
+                                        <option value="2" {{ old('level') == '2' ? 'selected' : '' }}>Helpdesk</option>
+                                        <option value="3" {{ old('level') == '3' ? 'selected' : '' }}>Department</option>
+                                        <option value="5" {{ old('level') == '4' ? 'selected' : '' }}>User</option>
+                                    </select>
+                                    @error('level')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email" value="{{ old('email') }}">
@@ -49,7 +59,6 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password">

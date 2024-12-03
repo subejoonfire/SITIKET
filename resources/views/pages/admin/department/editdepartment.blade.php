@@ -6,6 +6,7 @@
     .text-danger {
         color: red;
     }
+
 </style>
 
 <div class="main-panel">
@@ -14,7 +15,6 @@
             <div class="page-header">
                 <h4 class="page-title">Edit Department</h4>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     @if (session('success'))
@@ -42,7 +42,6 @@
                         </ul>
                     </div>
                     @endif
-
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
@@ -50,26 +49,22 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- Form Edit Category -->
-                            <form method="POST" action="#">
+                            <form method="POST" action="{{ url('admin/department/action/update/'. $id) }}">
                                 @csrf
                                 <!-- @method('PUT')  -->
-                               
-                        
                                 <div class="form-group">
                                     <label for="category_name">Department Name</label>
-                                    <input type="text" name="name" class="form-control" id="category_name" placeholder="Enter Category Name" value="{{ old('name', 'Dummy Category Name') }}">
+                                    <input type="text" name="name" class="form-control" id="category_name" placeholder="Enter Category Name" value="{{ $name }}">
                                     @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
-                        
+
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Save</button>
-                                    <!-- Hanya untuk dummy, kita ganti action cancel menjadi link kosong -->
-                                    <a href="#" class="btn btn-danger">Cancel</a>
+                                    <a href="{{ url('admin/department') }}" class="btn btn-danger">Cancel</a>
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
 
                 </div>

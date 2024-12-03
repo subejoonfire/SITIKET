@@ -28,8 +28,7 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-sm-6 col-md-3">
+                {{-- <div class="col-sm-6 col-md-3">
                     <div class="card card-stats card-round">
                         <div class="card-body">
                             <div class="row align-items-center">
@@ -42,14 +41,12 @@
                                     <div class="numbers">
                                         <p class="card-category">Category</p>
                                         <h4 class="card-title">2</h4>
-                                        {{-- <h4 class="card-title">{{ $userCount }}</h4> --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                </div> --}}
                 <div class="col-sm-6 col-md-3">
                     <div class="card card-stats card-round">
                         <div class="card-body">
@@ -62,8 +59,7 @@
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">Department</p>
-                                        <h4 class="card-title">3</h4>
-                                        {{-- <h4 class="card-title">{{ $userCount }}</h4> --}}
+                                        <h4 class="card-title">{{ $departmentCount }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +68,7 @@
                 </div>
             </div>
 
-           
+
         </div>
     </div>
 

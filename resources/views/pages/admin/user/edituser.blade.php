@@ -6,6 +6,7 @@
     .text-danger {
         color: red;
     }
+
 </style>
 
 <div class="main-panel">
@@ -50,7 +51,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('admin.user.update', $user->id) }}">
+                            <form method="POST" action="{{ url('admin/user/update', $user->id) }}">
                                 @csrf
                                 @method('PUT')
 
@@ -89,7 +90,7 @@
 
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
-                                    <a href="{{ route('admin.user') }}" class="btn btn-danger">Batal</a>
+                                    <a href="{{ url('admin/user') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </form>
                         </div>
