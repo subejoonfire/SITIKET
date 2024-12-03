@@ -20,18 +20,9 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'admin',
-                'iddepartment' => NULL,
+                'level' => 'admin',
+                // 'iddepartment' => NULL,
                 'email' => 'admin@example.com',
-                'email_verified_at' => now(),
-                'password' => Hash::make('Jhonlin@123'),
-                'remember_token' => null,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'name' => 'sap-department',
-                'iddepartment' => 1,
-                'email' => 'sap-department@example.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('Jhonlin@123'),
                 'remember_token' => null,
