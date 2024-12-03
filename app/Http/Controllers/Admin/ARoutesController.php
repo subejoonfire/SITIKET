@@ -17,32 +17,6 @@ class ARoutesController extends Controller
         return view('pages.admin.dashboard', $data);
     }
 
-    public function user()
-    {
-        $data = [
-            'title' => 'SI-TIKET | USER',
-            'user' => User::all(),
-            // 'user' => User::whereNotNull('iddepartment')->get(),
-        ];
-        return view('pages.admin.user', $data);
-    }
-
-    public function edit_user($id)
-    {
-        $user = User::find($id);
-        if (!$user) {
-            return redirect()->route('admin.user')->with('error', 'User tidak ditemukan.');
-        }
-    
-        $data = [
-            'title' => 'SI-TIKET | USER',
-            'user' => $user,
-        ];
-    
-        return view('pages.admin.edituser', $data);
-    }
-    
-
     public function profile()
     {
 
@@ -53,6 +27,31 @@ class ARoutesController extends Controller
         return view('pages.admin.profile', $data);
     }
 
+    public function user()
+    {
+        $data = [
+            'title' => 'SI-TIKET | USER',
+            'user' => User::all(),
+            // 'user' => User::whereNotNull('iddepartment')->get(),
+        ];
+        return view('pages.admin.user.user', $data);
+    }
+
+    public function edit_user($id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('admin.user')->with('error', 'User tidak ditemukan.');
+        }
+
+        $data = [
+            'title' => 'SI-TIKET | USER',
+            'user' => $user,
+        ];
+
+        return view('pages.admin.user.edituser', $data);
+    }
+
     public function adduser()
     {
         $data = [
@@ -60,7 +59,7 @@ class ARoutesController extends Controller
             'user' => User::all(),
             // 'user' => User::whereNotNull('iddepartment')->get(),
         ];
-        return view('pages.admin.adduser', $data);
+        return view('pages.admin.user.adduser', $data);
     }
 
     public function category()
@@ -69,7 +68,7 @@ class ARoutesController extends Controller
             'title' => 'SI-TIKET | CATEGORY',
             'userCount' => User::count(),
         ];
-        return view('pages.admin.category', $data);
+        return view('pages.admin.category.category', $data);
     }
 
     public function addcategory()
@@ -78,7 +77,7 @@ class ARoutesController extends Controller
             'title' => 'SI-TIKET | ADD_CATEGORY',
             'userCount' => User::count(),
         ];
-        return view('pages.admin.addcategory', $data);
+        return view('pages.admin.category.addcategory', $data);
     }
 
     public function editcategory()
@@ -87,7 +86,6 @@ class ARoutesController extends Controller
             'title' => 'SI-TIKET | ADD_CATEGORY',
             'userCount' => User::count(),
         ];
-        return view('pages.admin.editcategory', $data);
+        return view('pages.admin.category.editcategory', $data);
     }
-    
 }
