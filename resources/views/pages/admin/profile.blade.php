@@ -36,7 +36,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group form-group-default">
                                         <label>Password Lama</label>
-                                        <input type="text" class="form-control" value="Masukan Password Lama" name="address" placeholder="Address">
+                                        <input type="text" class="form-control" placeholder="Masukan Password Lama" name="address" >
                                     </div>
                                 </div>
                             </div>
