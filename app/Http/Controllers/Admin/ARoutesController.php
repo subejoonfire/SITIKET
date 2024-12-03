@@ -88,4 +88,31 @@ class ARoutesController extends Controller
         ];
         return view('pages.admin.category.editcategory', $data);
     }
+
+    public function depart()
+    {
+        $data = [
+            'title' => 'SI-TIKET | DEPARTMENT',
+            'userCount' => User::count(),
+        ];
+        return view('pages.admin.department.department', $data);
+    }
+
+    public function add_depart()
+    {
+        $data = [
+            'title' => 'SI-TIKET | ADD_DEPARTMENT',
+            'userCount' => User::count(),
+        ];
+        return view('pages.admin.department.add_depart', $data);
+    }
+
+    public function editdepart()
+    {
+        $data = [
+            'title' => 'SI-TIKET | EDIT_DEPARTMENT',
+            'userCount' => User::count(),
+        ];
+        return view('pages.admin.department.editdepartment', $data);
+    }
 }

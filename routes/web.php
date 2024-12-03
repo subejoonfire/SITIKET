@@ -31,9 +31,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
         Route::get('/add', [ARoutesController::class, 'adduser'])->name('add');
         Route::get('/edit/{id}', [ARoutesController::class, 'edit_user'])->name('edit_user');
+
         Route::get('/category', [ARoutesController::class, 'category'])->name('category');
         Route::get('/addcategory', [ARoutesController::class, 'addcategory'])->name('addcategory');
         Route::get('/editcategory', [ARoutesController::class, 'editcategory'])->name('editcategory');
+
+        Route::get('/depart', [ARoutesController::class, 'depart'])->name('depart');
+        Route::get('/add_depart', [ARoutesController::class, 'add_depart'])->name('add_depart');
+        Route::get('/editdepart', [ARoutesController::class, 'editdepart'])->name('editdepart');
         
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
             Route::post('store', [AdminController::class, 'store'])->name('store');

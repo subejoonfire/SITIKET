@@ -24,6 +24,12 @@
                         <i class="fas fa-box"></i>
                         <p>Category</p>
                     </a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('department') ? 'active' : '' }}">
+                    <a href="{{ url('admin/depart') }}">
+                        <i class="fas fa-building"></i>
+                        <p>Department</p>
+                    </a>
 
                 </li>
             </ul>
