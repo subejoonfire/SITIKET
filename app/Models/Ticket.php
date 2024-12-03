@@ -10,23 +10,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Ticket extends Model
 {
     use HasFactory;
-    protected $table = 'ticket';
-    protected $primaryKey = 'idticket';
-    protected $fillable = ['idcategory', 'iddepartment', 'username', 'phonenumber', 'trouble'];
+    protected $fillable = ['iddepartment', 'status', 'trouble'];
 
-    /**
-     * Relasi ke model Category.
-     */
-    public function category()
+    public function users()
     {
-        return $this->belongsTo(Category::class, 'idcategory', 'idcategory');
+        return $this->belongsToMany(User::class, 'userticket', 'idticket', 'iduser')
+            ->withPivot('datetime');
     }
 
-    /**
-     * Relasi ke model Department.
-     */
     public function department()
     {
-        return $this->belongsTo(Department::class, 'iddepartment', 'iddepartment');
+        return $this->belongsTo(Department::class, 'iddepartment');
     }
 }
