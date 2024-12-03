@@ -82,7 +82,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Validation</h4>
+                                <h4 class="card-title">Incoming Validation</h4>
                                 {{-- <a href="{{ url('admin.add_depart') }}" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
