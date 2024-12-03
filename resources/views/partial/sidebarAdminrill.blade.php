@@ -19,6 +19,13 @@
                     </a>
 
                 </li>
+                <li class="nav-item {{ request()->routeIs('category') ? 'active' : '' }}">
+                    <a href="{{ url('admin/category') }}">
+                        <i class="fas fa-box"></i>
+                        <p>Category</p>
+                    </a>
+
+                </li>
             </ul>
 
         </div>

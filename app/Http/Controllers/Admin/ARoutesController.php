@@ -12,6 +12,7 @@ class ARoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | DASHBOARD',
             'userCount' => User::count(),
+            // 'categoryCount' => Category::count(),
         ];
         return view('pages.admin.dashboard', $data);
     }
@@ -25,6 +26,22 @@ class ARoutesController extends Controller
         ];
         return view('pages.admin.user', $data);
     }
+
+    public function edit_user($id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('admin.user')->with('error', 'User tidak ditemukan.');
+        }
+    
+        $data = [
+            'title' => 'SI-TIKET | USER',
+            'user' => $user,
+        ];
+    
+        return view('pages.admin.edituser', $data);
+    }
+    
 
     public function profile()
     {
@@ -45,4 +62,32 @@ class ARoutesController extends Controller
         ];
         return view('pages.admin.adduser', $data);
     }
+
+    public function category()
+    {
+        $data = [
+            'title' => 'SI-TIKET | CATEGORY',
+            'userCount' => User::count(),
+        ];
+        return view('pages.admin.category', $data);
+    }
+
+    public function addcategory()
+    {
+        $data = [
+            'title' => 'SI-TIKET | ADD_CATEGORY',
+            'userCount' => User::count(),
+        ];
+        return view('pages.admin.addcategory', $data);
+    }
+
+    public function editcategory()
+    {
+        $data = [
+            'title' => 'SI-TIKET | ADD_CATEGORY',
+            'userCount' => User::count(),
+        ];
+        return view('pages.admin.editcategory', $data);
+    }
+    
 }
