@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\User;
 
 class ARoutesController extends Controller
@@ -12,7 +13,7 @@ class ARoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | DASHBOARD',
             'userCount' => User::count(),
-            // 'categoryCount' => Category::count(),
+            'departmentCount' => Department::count(),
         ];
         return view('pages.admin.dashboard', $data);
     }
@@ -32,12 +33,20 @@ class ARoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | USER',
             'user' => User::all(),
-            // 'user' => User::whereNotNull('iddepartment')->get(),
         ];
         return view('pages.admin.user.user', $data);
     }
 
-    public function edit_user($id)
+    public function adduser()
+    {
+        $data = [
+            'title' => 'SI-TIKET | Tambah_User',
+            'collection' => Department::all(),
+        ];
+        return view('pages.admin.user.adduser', $data);
+    }
+
+    public function edituser($id)
     {
         $user = User::find($id);
         if (!$user) {
@@ -52,21 +61,10 @@ class ARoutesController extends Controller
         return view('pages.admin.user.edituser', $data);
     }
 
-    public function adduser()
-    {
-        $data = [
-            'title' => 'SI-TIKET | Tambah_User',
-            'user' => User::all(),
-            // 'user' => User::whereNotNull('iddepartment')->get(),
-        ];
-        return view('pages.admin.user.adduser', $data);
-    }
-
     public function category()
     {
         $data = [
             'title' => 'SI-TIKET | CATEGORY',
-            'userCount' => User::count(),
         ];
         return view('pages.admin.category.category', $data);
     }
@@ -75,7 +73,6 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | ADD_CATEGORY',
-            'userCount' => User::count(),
         ];
         return view('pages.admin.category.addcategory', $data);
     }
@@ -84,7 +81,6 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | ADD_CATEGORY',
-            'userCount' => User::count(),
         ];
         return view('pages.admin.category.editcategory', $data);
     }
@@ -93,25 +89,26 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DEPARTMENT',
-            'userCount' => User::count(),
+            'collection' => Department::all(),
         ];
         return view('pages.admin.department.department', $data);
     }
 
-    public function add_depart()
+    public function adddepart()
     {
         $data = [
             'title' => 'SI-TIKET | ADD_DEPARTMENT',
-            'userCount' => User::count(),
         ];
-        return view('pages.admin.department.add_depart', $data);
+        return view('pages.admin.department.adddepartment', $data);
     }
 
-    public function editdepart()
+    public function editdepart($id)
     {
+        $query = Department::findOrFail($id);
         $data = [
             'title' => 'SI-TIKET | EDIT_DEPARTMENT',
-            'userCount' => User::count(),
+            'name' => $query->departmentname,
+            'id' => $query->id,
         ];
         return view('pages.admin.department.editdepartment', $data);
     }

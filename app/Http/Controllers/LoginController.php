@@ -24,9 +24,9 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt(['name' => $request->username, 'password' => $request->password])) {
             if (Auth::user()->iddepartment == NULL) {
-                return redirect()->route('admin.dashboard');
+                return redirect()->to(url('admin'));
             }
-            return redirect()->route('department.dashboard');
+            return redirect()->to(url('department'));
         }
         return back()->withErrors([
             'login' => 'Username atau password salah.',
