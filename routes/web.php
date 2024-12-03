@@ -8,12 +8,15 @@ use App\Http\Controllers\RoutesController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ARoutesController;
 use App\Http\Controllers\Department\DRoutesController;
+use App\Http\Controllers\Helpdesk\HelpdeskController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 
 Route::get('/', [RoutesController::class, 'landing']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/register', [RegisterController::class, 'register'])->name('register');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
@@ -65,3 +68,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
+
+//HAK AKSES HELPDESK
+Route::get('/dashboard', [HelpdeskController::class, 'index'])->name('dashboard');
+Route::get('/profile', [HelpdeskController::class, 'profile'])->name('profile');
+Route::get('/validasi', [HelpdeskController::class, 'validasi'])->name('validasi');
+
