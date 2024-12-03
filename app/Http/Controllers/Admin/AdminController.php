@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Ticket;
+use App\Models\UserDepartment;
 
 class AdminController extends Controller
 {
@@ -16,17 +18,22 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'iddepartment' => 'required|integer',
+            'level' => 'required|integer|max:5',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
         ]);
-
-        $user = new User();
-        $user->name = $validated['name'];
-        $user->iddepartment = $validated['iddepartment'];
-        $user->email = $validated['email'];
-        $user->password = bcrypt($validated['password']);
-        $user->save();
+        $user = User::create([
+            'name' => $validated['name'],
+            'level' => $validated['level'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+        ]);
+        if ($request->iddepartment != NULL) {
+            UserDepartment::create([
+                'iddepartment' => $request->iddepartment,
+                'iduser' => $user->id,
+            ]);
+        }
         return redirect()->to(url('admin/user'))->with('success', 'User berhasil ditambahkan!');
     }
 
@@ -36,22 +43,19 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'User berhasil dihapus!');
     }
 
-    public function userUpdate(Request $request)
+    public function userUpdate(Request $request, $id)
     {
         $validated = $request->validate([
-            'id' => 'required|exists:users,id',
             'name' => 'required|string|max:255',
+            'level' => 'required|integer|max:5',
             'iddepartment' => 'required|integer',
             'email' => 'required|email|unique:users,email,' . $request->id,
-            'password' => 'nullable|min:8|confirmed',
         ]);
-        $user = User::findOrFail($validated['id']);
+        $user = User::findOrFail($id);
         $user->name = $validated['name'];
-        $user->iddepartment = $validated['iddepartment'];
+        $user->level = $validated['level'];
         $user->email = $validated['email'];
-        if (!empty($validated['password'])) {
-            $user->password = bcrypt($validated['password']);
-        }
+        $user->password = bcrypt($request->password);
         $user->save();
 
         return redirect()->back()->with('success', 'User berhasil diperbarui!');

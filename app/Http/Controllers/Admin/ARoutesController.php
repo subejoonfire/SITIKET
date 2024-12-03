@@ -52,9 +52,9 @@ class ARoutesController extends Controller
         if (!$user) {
             return redirect()->route('admin.user')->with('error', 'User tidak ditemukan.');
         }
-
         $data = [
             'title' => 'SI-TIKET | USER',
+            'collection' => Department::all(),
             'user' => $user,
         ];
 
