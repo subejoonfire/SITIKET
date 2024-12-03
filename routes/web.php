@@ -53,5 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
 
 //HAK AKSES HELPDESK
-Route::post('/helpdesk', [HelpdeskController::class, 'index'])->name('helpdesk');
+Route::get('/dashboard', [HelpdeskController::class, 'index'])->name('dashboard');
+Route::get('/profile', [HelpdeskController::class, 'profile'])->name('profile');
+Route::get('/validasi', [HelpdeskController::class, 'validasi'])->name('validasi');
 
