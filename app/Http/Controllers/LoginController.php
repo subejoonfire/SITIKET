@@ -23,10 +23,15 @@ class LoginController extends Controller
             'password.required' => 'Password tidak boleh kosong.',
         ]);
         if (Auth::attempt(['name' => $request->username, 'password' => $request->password])) {
-            if (Auth::user()->iddepartment == NULL) {
+            if (Auth::user()->level == 1) {
                 return redirect()->to(url('admin'));
+            } elseif (Auth::user()->level == 2) {
+                return redirect()->to(url('helpdesk'));
+            } elseif (Auth::user()->level == 3) {
+                return redirect()->to(url('department'));
+            } elseif (Auth::user()->level == 4) {
+                return redirect()->to(url('user'));
             }
-            return redirect()->to(url('department'));
         }
         return back()->withErrors([
             'login' => 'Username atau password salah.',
