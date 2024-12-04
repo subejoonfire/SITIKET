@@ -16,9 +16,9 @@
                 <a href="#beranda-section" class="nav-item nav-link">Home</a>
                 <a href="#about-section" class="nav-item nav-link">About</a>
                 <a href="#services-section" class="nav-item nav-link">Services</a>
-                <a href="#contact-section" class="nav-item nav-link">Contact</a>
+                {{-- <a href="#contact-section" class="nav-item nav-link">Contact</a> --}}
             </div>
-            <a href="#contact-section" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Submit A Bug Report</a>
+            <a href="{{ url('/login') }}" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Login</a>
         </div>        
     </nav>
     

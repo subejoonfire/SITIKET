@@ -20,7 +20,7 @@
                         <p class="mb-5 fs-5">We provide quick solutions to fix bugs and tech issues, ensuring your system gets back up and running smoothly without prolonged downtime.
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#contact-section">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{{ url('/login') }}">Submit A Bug Report</a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         <p class="mb-5 fs-5">Our team of experts is ready to provide seamless repairs for any technical issues, ensuring your business operations remain efficient and uninterrupted.
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#contact-section">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{{ url('/login') }}">Submit A Bug Report</a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         <h1 class="display-2 text-capitalize text-white mb-4">Smart Solutions</h1>
                         <p class="mb-5 fs-5">With our smart solutions approach, we not only resolve existing issues but also identify and prevent potential problems in the future, ensuring your systems remain optimized at all times.</p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#contact-section">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{{ url('/login') }}">Submit A Bug Report</a>
                         </div>
                     </div>
                 </div>
