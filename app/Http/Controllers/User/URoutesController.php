@@ -17,6 +17,7 @@ class URoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | Dashboard',
             'collection' => $ticket->tickets()->get(),
+            'count' => $ticket->tickets()->count(),
         ];
         return view('pages.user.dashboard', $data);
     }
