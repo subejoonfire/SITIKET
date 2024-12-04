@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [HRoutesController::class, 'index'])->name('/');
         Route::get('/profile', [HRoutesController::class, 'profile'])->name('profile');
         Route::get('/validation', [HRoutesController::class, 'validation'])->name('validation');
+        Route::get('/detail', [HRoutesController::class, 'detail'])->name('detail');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [HelpdeskController::class, 'helpdeskStore'])->name('store');
             Route::get('/delete/{id}', [HelpdeskController::class, 'helpdeskDelete'])->name('delete');
