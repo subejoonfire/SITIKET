@@ -29,9 +29,9 @@
                         </div>
                     </div>
                 </div>
-              
-            
-                
+
+
+
             </div>
 
             <div class="row">
@@ -81,62 +81,29 @@
                                             <th>No</th>
                                             <th>Department</th>
                                             <th>Status</th>
-                                        
-                                           
+                                            <th>Masalah</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td>T12</td>
-                                        <td>Jhonlin Group DSP</td>
-                                        <td>Menunggu Validasi</td>
-                                      
-                                        
-                                        
-                                        {{-- @foreach ($user as $item)
+                                        @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
+                                            <td>{{ $item->iddepartment }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>{{ $item->trouble }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <a href="{{ url('user/edit/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <a href="{{ url('user/action/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        @endforeach --}}
-                                    </tbody>
-
-                                    <tbody>
-                                        <td>T1</td>
-                                        <td>Jhonlin Group DSP</td>
-                                        <td>Diterima</td>
-                                       
-                                        
-                                        
-                                        {{-- @foreach ($user as $item)
-                                        <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
