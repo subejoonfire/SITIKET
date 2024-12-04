@@ -73,4 +73,3 @@ Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [HelpdeskController::class, 'index'])->name('dashboard');
 Route::get('/profile', [HelpdeskController::class, 'profile'])->name('profile');
 Route::get('/validasi', [HelpdeskController::class, 'validasi'])->name('validasi');
-

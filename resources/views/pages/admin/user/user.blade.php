@@ -71,7 +71,7 @@
                                                     <a href="{{ url('admin/user/edit', ['id' => $item->id]) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <a href="{{ url('admin/user/action/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </div>
