@@ -21,43 +21,62 @@ Route::get('/register', [RegisterController::class, 'register'])->name('register
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
-        Route::get('dashboard', [DRoutesController::class, 'dashboard'])->name('dashboard');
+        Route::get('/', [DRoutesController::class, 'dashboard'])->name('/');
         Route::get('profile', [DRoutesController::class, 'profile'])->name('profile');
-        Route::get('tiket', [DRoutesController::class, 'tiket'])->name('tiket_utama');
-        Route::get('setuju', [DRoutesController::class, 'index'])->name('tiket_setuju');
-        Route::get('proses', [DRoutesController::class, 'proses'])->name('tiket_proses');
-        Route::get('tolak', [DRoutesController::class, 'tolak'])->name('tiket_tolak');
-        Route::get('selesai', [DRoutesController::class, 'selesai'])->name('tiket_selesai');
+        Route::get('tiket', [DRoutesController::class, 'tiket'])->name('utama');
+        Route::get('setuju', [DRoutesController::class, 'index'])->name('setuju');
+        Route::get('proses', [DRoutesController::class, 'proses'])->name('proses');
+        Route::get('tolak', [DRoutesController::class, 'tolak'])->name('tolak');
+        Route::get('selesai', [DRoutesController::class, 'selesai'])->name('selesai');
     });
+
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('/dashboard', [ARoutesController::class, 'index'])->name('dashboard');
-        Route::get('/user', [ARoutesController::class, 'user'])->name('user');
+        Route::get('/', [ARoutesController::class, 'index'])->name('/');
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
-        Route::get('/add', [ARoutesController::class, 'adduser'])->name('add');
-        Route::get('/edit/{id}', [ARoutesController::class, 'edit_user'])->name('edit_user');
 
-        Route::get('/category', [ARoutesController::class, 'category'])->name('category');
-        Route::get('/addcategory', [ARoutesController::class, 'addcategory'])->name('addcategory');
-        Route::get('/editcategory', [ARoutesController::class, 'editcategory'])->name('editcategory');
-
-        Route::get('/depart', [ARoutesController::class, 'depart'])->name('depart');
-        Route::get('/add_depart', [ARoutesController::class, 'add_depart'])->name('add_depart');
-        Route::get('/editdepart', [ARoutesController::class, 'editdepart'])->name('editdepart');
-        
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-            Route::post('store', [AdminController::class, 'store'])->name('store');
-            Route::get('delete/{id}', [AdminController::class, 'delete'])->name('delete');
-            Route::post('update', [AdminController::class, 'update'])->name('update');
+            Route::get('/', [ARoutesController::class, 'user'])->name('/');
+            Route::get('add', [ARoutesController::class, 'adduser'])->name('add');
+            Route::get('/edit/{id}', [ARoutesController::class, 'edituser'])->name('edit_user');
+            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+                Route::post('/store', [AdminController::class, 'userStore'])->name('store');
+                Route::get('/delete/{id}', [AdminController::class, 'userDelete'])->name('delete');
+                Route::post('/update/{id}', [AdminController::class, 'userUpdate'])->name('update');
+            });
         });
-    });    
+
+        Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+            Route::get('/', [ARoutesController::class, 'category'])->name('');
+            Route::get('/add', [ARoutesController::class, 'addcategory'])->name('add');
+            Route::get('/edit/{id}', [ARoutesController::class, 'editcategory'])->name('edit');
+            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+                Route::post('/store', [AdminController::class, 'categoryStore'])->name('store');
+                Route::get('/delete/{id}', [AdminController::class, 'categoryDelete'])->name('delete');
+                Route::post('/update/{id}', [AdminController::class, 'categoryUpdate'])->name('update');
+            });
+        });
+
+        Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
+            Route::get('/', [ARoutesController::class, 'depart'])->name('/');
+            Route::get('/add', [ARoutesController::class, 'adddepart'])->name('add');
+            Route::get('/edit/{id}', [ARoutesController::class, 'editdepart'])->name('edit');
+            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+                Route::post('/store', [AdminController::class, 'departmentStore'])->name('store');
+                Route::get('/delete/{id}', [AdminController::class, 'departmentDelete'])->name('delete');
+                Route::post('/update/{id}', [AdminController::class, 'departmentUpdate'])->name('update');
+            });
+        });
+    });
 });
 Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
 
 //HAK AKSES HELPDESK
-Route::get('/dashboard', [HelpdeskController::class, 'index'])->name('dashboard');
-Route::get('/profile', [HelpdeskController::class, 'profile'])->name('profile');
-Route::get('/validasi', [HelpdeskController::class, 'validasi'])->name('validasi');
-
+Route::get('helpdesk/dashboard', [HelpdeskController::class, 'index'])->name('dashboard');
+Route::get('helpdesk/profile', [HelpdeskController::class, 'profile'])->name('profile');
+Route::get('helpdesk/detail', [HelpdeskController::class, 'detail'])->name('detail');
+Route::get('helpdesk/validasi', [HelpdeskController::class, 'validasi'])->name('validasi');
 
 //HAK AKSES USER 
-Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+Route::get('user/dashboard', [UserController::class, 'index'])->name('dashboard');
+Route::get('user/add', [UserController::class, 'add_request'])->name('request');
+Route::get('user/profile', [UserController::class, 'profile'])->name('profile');

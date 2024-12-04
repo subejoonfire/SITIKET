@@ -1,4 +1,3 @@
-
 @extends('layout.mainadmin')
 
 @section('content')
@@ -41,12 +40,12 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Department</h4>
-                                <a href="{{ route('admin.add_depart') }}" class="btn btn-primary btn-round ml-auto">
+                                <a href="{{ url('admin/department/add') }}" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
                                 </a>
                             </div>
-                        </div>
+                        </div>  
                         <div class="card-body">
                             <!-- Modal -->
 
@@ -56,41 +55,26 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Department</th>
-                                        
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td>T12</td>
-                                        <td>Jhonlin Group DSP</td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <a href="{{ url('admin/editdepart') }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="#" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        {{-- @foreach ($user as $item)
+                                        @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
+                                            <td>{{ $item->departmentname }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <a href="{{ url('admin/department/edit/' . $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <a href="#" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

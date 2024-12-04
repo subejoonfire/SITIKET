@@ -41,7 +41,7 @@
     </div>
     <!-- Spinner End -->
 
-    @include('partial.sidebarLanding')
+    @include('partial.sidebar.landing')
 
     @yield('content')
 

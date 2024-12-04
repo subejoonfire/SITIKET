@@ -109,18 +109,14 @@
                                         <td>Menunggu Validasi</td>
                                         <td>
                                             <div class="form-button-action">
-                                                <!-- Tombol Terima dengan ikon dan teks -->
-                                                <a href="#" data-toggle="modal" data-target="#acceptModal" class="btn btn-success btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Accept">
-                                                    <i class="fa fa-check me-3"></i> <!-- Spasi lebih antara ikon dan teks -->
-                                                    <span>Terima</span>
-                                                </a>
-                                                <!-- Tombol Tolak dengan ikon dan teks -->
-                                                <a href="#" data-toggle="modal" data-target="#rejectModal" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Reject">
-                                                    <i class="fa fa-times me-3"></i> <!-- Spasi lebih antara ikon dan teks -->
-                                                    <span>Tolak</span>
+                                                <!-- Link untuk mengubah status -->
+                                                <a href="{{ url('helpdesk/detail') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                    <i class="fa fa-eye me-3"></i> <!-- Ikon mata untuk tombol -->
+                                                    <span>Change Status</span>
                                                 </a>
                                             </div>
                                         </td>
+                                        
                                         
                                         {{-- @foreach ($user as $item)
                                         <tr>
@@ -148,16 +144,14 @@
                                         <td>Menunggu Validasi</td>
                                         <td>
                                             <div class="form-button-action">
-                                                <a href="#" data-toggle="modal" data-target="#acceptModal" class="btn btn-success btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Accept">
-                                                    <i class="fa fa-check me-3"></i> 
-                                                    <span>Terima</span>
-                                                </a>
-                                                <a href="#" data-toggle="modal" data-target="#rejectModal" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Reject">
-                                                    <i class="fa fa-times me-3"></i>
-                                                    <span>Tolak</span>
+                                                <!-- Link untuk mengubah status -->
+                                                <a href="{{ url('helpdesk/detail') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                    <i class="fa fa-eye me-3"></i> <!-- Ikon mata untuk tombol -->
+                                                    <span>Change Status</span>
                                                 </a>
                                             </div>
                                         </td>
+                                        
                                         
                                         {{-- @foreach ($user as $item)
                                         <tr>
@@ -184,44 +178,6 @@
                     </div>
                 </div>
             </div>
-<!-- Modal Terima -->
-<div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="acceptModalLabel">Konfirmasi Terima</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Apakah Anda yakin ingin menerima permintaan ini?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-success">Terima</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Tolak -->
-<div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="rejectModalLabel">Konfirmasi Tolak</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Apakah Anda yakin ingin menolak permintaan ini?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-danger">Tolak</button>
-            </div>
-        </div>
-    </div>
-</div>
-
         </div>
     </div>
 

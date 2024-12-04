@@ -18,7 +18,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'iddepartment',
+        'level',
         'email',
         'password',
     ];
@@ -44,5 +44,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function departments()
+    {
+        return $this->belongsToMany(Department::class, 'userdepartment', 'iduser', 'iddepartment')
+            ->withPivot('datetime');
+    }
+
+    public function tickets()
+    {
+        return $this->belongsToMany(Ticket::class, 'userticket', 'iduser', 'idticket')
+            ->withPivot('datetime');
     }
 }

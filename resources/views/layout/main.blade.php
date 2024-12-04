@@ -93,7 +93,7 @@
             <!-- End Navbar -->
         </div>
 
-        @include('partial.sidebarAdmin')
+        @include('partial.sidebar.department')
 
         @yield('content')
 

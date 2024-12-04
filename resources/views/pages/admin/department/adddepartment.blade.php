@@ -6,6 +6,7 @@
     .text-danger {
         color: red;
     }
+
 </style>
 
 <div class="main-panel">
@@ -13,8 +14,7 @@
         <div class="page-inner">
             <div class="page-header">
                 <div class="col-md-12">
-                    {{-- <form method="POST" action="{{ url('admin/category/store') }}"> --}}
-                        <form method="POST" >
+                    <form method="POST" action="{{ url('admin/department/action/store') }}">
                         @csrf
                         <div class="card">
                             <div class="card-header">
@@ -22,13 +22,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Department Name</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama Kategori" value="{{ old('name') }}">
+                                    <label for="name">Nama Departemen</label>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama Departemen" value="{{ old('name') }}">
                                     @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
                             </div>
                             <div class="card-action">
                                 <button type="submit" class="btn btn-success">Simpan</button>

@@ -1,4 +1,4 @@
-@extends('layout.mainadmin')
+@extends('layout.mainhelp')
 
 @section('content')
 
@@ -12,9 +12,8 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Edit Category</h4>
+                <h4 class="page-title">Detail User</h4>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     @if (session('success'))
@@ -42,34 +41,52 @@
                         </ul>
                     </div>
                     @endif
-
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Edit Category</h4>
+                                <h4 class="card-title">Change Status</h4>
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- Form Edit Category -->
-                            <form method="POST" action="#">
+                            <!-- Form -->
+                            <form method="POST" action="{{ url('helpdesk/detail') }}">
                                 @csrf
-                                <!-- @method('PUT')  -->
-                               
-                        
+                                <!-- Data Dummy -->
+                                @php
+                                    $name = 'Dummy Department'; // Data dummy untuk nama
+                                    $status = 'accept'; // Data dummy untuk status
+                                @endphp
+
                                 <div class="form-group">
-                                    <label for="category_name">Category Name</label>
-                                    <input type="text" name="name" class="form-control" id="category_name" placeholder="Enter Category Name" value="{{ old('name', 'Dummy Category Name') }}">
+                                    <label for="category_name">Departement</label>
+                                    <input type="text" name="name" class="form-control" id="category_name" placeholder="Enter Category Name" value="{{ $name }}">
                                     @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
-                        
+
+                                <div class="form-group">
+                                    <label for="category_name">Trouble</label>
+                                    <input type="text" name="name" class="form-control" id="category_name" placeholder="Enter Category Name" value="mASALAH SERIUS">
+                                    @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select name="status" class="form-control" id="status">
+                                        <option value="accept" {{ $status == 'accept' ? 'selected' : '' }}>ACCEPT</option>
+                                        <option value="reject" {{ $status == 'reject' ? 'selected' : '' }}>REJECT</option>
+                                    </select>
+                                    @error('status') 
+                                        <small class="text-danger">{{ $message }}</small> 
+                                    @enderror
+                                </div>
+
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Save</button>
-                                    <!-- Hanya untuk dummy, kita ganti action cancel menjadi link kosong -->
                                     <a href="#" class="btn btn-danger">Cancel</a>
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
 
                 </div>
