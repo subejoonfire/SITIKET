@@ -4,13 +4,13 @@
     <div class="sidebar-wrapper scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav">
-                <li class="nav-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('admin/dashboard') ? 'active' : '' }}">
                     <a href="{{ url('admin') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('admin.user') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('admin/user') ? 'active' : '' }}">
                     <a href="{{ url('admin/user') }}">
                         <i class="fas fa-user-alt"></i>
                         <p>User</p>

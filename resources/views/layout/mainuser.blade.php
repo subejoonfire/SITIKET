@@ -81,7 +81,7 @@
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ url('helpdesk/profile') }}">My Profile</a>
+                                    <a class="dropdown-item" href="{{ url('user/profile') }}">My Profile</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                                 </li>
@@ -93,7 +93,7 @@
             <!-- End Navbar -->
         </div>
 
-        @include('partial/sidebar/helpdesk')
+        @include('partial.sidebar.user')
 
         @yield('content')
 

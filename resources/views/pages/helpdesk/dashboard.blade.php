@@ -105,15 +105,10 @@
                                         <td>Menunggu Validasi</td>
                                         <td>
                                             <div class="form-button-action">
-                                                <!-- Tombol Terima dengan ikon dan teks -->
-                                                <a href="#" data-toggle="modal" data-target="#acceptModal" class="btn btn-success btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Accept">
-                                                    <i class="fa fa-check me-3"></i> <!-- Spasi lebih antara ikon dan teks -->
-                                                    <span>Terima</span>
-                                                </a>
-                                                <!-- Tombol Tolak dengan ikon dan teks -->
-                                                <a href="#" data-toggle="modal" data-target="#rejectModal" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Reject">
-                                                    <i class="fa fa-times me-3"></i> <!-- Spasi lebih antara ikon dan teks -->
-                                                    <span>Tolak</span>
+                                                <!-- Link untuk mengubah status -->
+                                                <a href="{{ url('helpdesk/detail') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                    <i class="fa fa-eye me-3"></i> <!-- Ikon mata untuk tombol -->
+                                                    <span>Change Status</span>
                                                 </a>
                                             </div>
                                         </td>
@@ -154,6 +149,7 @@
                                                 </a>
                                             </div>
                                         </td>
+
                                         {{-- @foreach ($user as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>

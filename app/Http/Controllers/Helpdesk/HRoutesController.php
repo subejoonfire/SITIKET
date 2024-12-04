@@ -17,6 +17,16 @@ class HRoutesController extends Controller
         return view('pages.helpdesk.dashboard', $data);
     }
 
+    public function detail()
+    {
+
+        $data = [
+            'title' => 'SI-TIKET | Dashboard'
+        ];
+
+        return view('pages.helpdesk.detail', $data);
+    }
+
     public function validasi()
     {
 
