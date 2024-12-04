@@ -7,7 +7,6 @@
         <div class="page-inner">
             <div class="page-header">
                 <h4 class="page-title">Dashboard</h4>
-
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-3">
@@ -48,10 +47,7 @@
                         </div>
                     </div>
                 </div>
-            
-                
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     @if (session('success'))
@@ -84,8 +80,8 @@
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Incoming Validation</h4>
                                 {{-- <a href="{{ url('admin.add_depart') }}" class="btn btn-primary btn-round ml-auto">
-                                    <i class="fa fa-plus"></i>
-                                    Tambah
+                                <i class="fa fa-plus"></i>
+                                Tambah
                                 </a> --}}
                             </div>
                         </div>
@@ -99,7 +95,7 @@
                                             <th>No</th>
                                             <th>Department</th>
                                             <th>Status</th>
-                                        
+
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -121,23 +117,23 @@
                                                 </a>
                                             </div>
                                         </td>
-                                        
+
                                         {{-- @foreach ($user as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
+                                        <td>
+                                            <div class="form-button-action">
+                                                <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </td>
                                         </tr>
                                         @endforeach --}}
                                     </tbody>
@@ -149,7 +145,7 @@
                                         <td>
                                             <div class="form-button-action">
                                                 <a href="#" data-toggle="modal" data-target="#acceptModal" class="btn btn-success btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Accept">
-                                                    <i class="fa fa-check me-3"></i> 
+                                                    <i class="fa fa-check me-3"></i>
                                                     <span>Terima</span>
                                                 </a>
                                                 <a href="#" data-toggle="modal" data-target="#rejectModal" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Reject">
@@ -158,23 +154,22 @@
                                                 </a>
                                             </div>
                                         </td>
-                                        
                                         {{-- @foreach ($user as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
+                                        <td>
+                                            <div class="form-button-action">
+                                                <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </td>
                                         </tr>
                                         @endforeach --}}
                                     </tbody>
@@ -184,43 +179,43 @@
                     </div>
                 </div>
             </div>
-<!-- Modal Terima -->
-<div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="acceptModalLabel">Konfirmasi Terima</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <!-- Modal Terima -->
+            <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="acceptModalLabel">Konfirmasi Terima</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Apakah Anda yakin ingin menerima permintaan ini?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-success">Terima</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>Apakah Anda yakin ingin menerima permintaan ini?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-success">Terima</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Modal Tolak -->
-<div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="rejectModalLabel">Konfirmasi Tolak</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <!-- Modal Tolak -->
+            <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="rejectModalLabel">Konfirmasi Tolak</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Apakah Anda yakin ingin menolak permintaan ini?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-danger">Tolak</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>Apakah Anda yakin ingin menolak permintaan ini?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-danger">Tolak</button>
-            </div>
-        </div>
-    </div>
-</div>
 
         </div>
     </div>
