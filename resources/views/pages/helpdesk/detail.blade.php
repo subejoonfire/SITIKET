@@ -59,17 +59,27 @@
 
                                 <div class="form-group">
                                     <label for="category_name">Departement</label>
-                                    <input type="text" name="name" class="form-control" id="category_name" placeholder="Enter Category Name" value="{{ $name }}">
-                                    @error('name') <small class="text-danger">{{ $message }}</small> @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="category_name">Masalah</label>
-                                    <textarea name="name" class="form-control" id="category_name" placeholder="Enter Trouble Description">mASALAH SERIUS</textarea>
+                                    <select name="name" class="form-control" id="category_name">
+                                        <option value="">Select Department</option>
+                                        <option value="IT" {{ $name == 'IT' ? 'selected' : '' }}>IT</option>
+                                        <option value="HR" {{ $name == 'HR' ? 'selected' : '' }}>HR</option>
+                                        <option value="Finance" {{ $name == 'Finance' ? 'selected' : '' }}>Finance</option>
+                                        <option value="Marketing" {{ $name == 'Marketing' ? 'selected' : '' }}>Marketing</option>
+                                    </select>
                                     @error('name') 
                                     <small class="text-danger">{{ $message }}</small> 
                                     @enderror
                                 </div>
+
+
+                                <div class="form-group">
+                                    <label for="category_name">Masalah</label>
+                                    <textarea name="name" class="form-control" id="category_name" placeholder="Enter Trouble Description" disabled>mASALAH SERIUS</textarea>
+                                    @error('name') 
+                                    <small class="text-danger">{{ $message }}</small> 
+                                    @enderror
+                                </div>
+                                
                                 
                               
 
