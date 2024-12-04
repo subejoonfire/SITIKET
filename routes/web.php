@@ -1,22 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\authmiddleware;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoutesController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\URoutesController;
 use App\Http\Controllers\Admin\ARoutesController;
 use App\Http\Controllers\Helpdesk\HRoutesController;
+use App\Http\Controllers\Helpdesk\HelpdeskController;
 use App\Http\Controllers\Department\DRoutesController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 
 Route::get('/', [RoutesController::class, 'landing']);
+Route::get('/login', [RoutesController::class, 'index'])->name('login');
+Route::get('/register', [RoutesController::class, 'register'])->name('register');
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/login', [Controller::class, 'login'])->name('login');
+Route::post('/register', [Controller::class, 'registerr'])->name('register');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
@@ -58,10 +61,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', [HRoutesController::class, 'profile'])->name('profile');
         Route::get('/validasi', [HRoutesController::class, 'validasi'])->name('validasi');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
-            Route::post('/store', [AdminController::class, 'helpdeskStore'])->name('store');
-            Route::get('/delete/{id}', [AdminController::class, 'helpdeskDelete'])->name('delete');
-            Route::post('/update/{id}', [AdminController::class, 'helpdeskUpdate'])->name('update');
+            Route::post('/store', [HelpdeskController::class, 'helpdeskStore'])->name('store');
+            Route::get('/delete/{id}', [HelpdeskController::class, 'helpdeskDelete'])->name('delete');
+            Route::post('/update/{id}', [HelpdeskController::class, 'helpdeskUpdate'])->name('update');
+        });
+    });
+    Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+        Route::get('/', [URoutesController::class, 'index'])->name('/');
+        Route::get('/profile', [URoutesController::class, 'profile'])->name('profile');
+        Route::get('/add', [URoutesController::class, 'add'])->name('validasi');
+        Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+            Route::post('/store', [UserController::class, 'userStore'])->name('store');
+            Route::get('/delete/{id}', [UserController::class, 'userDelete'])->name('delete');
+            Route::post('/update/{id}', [UserController::class, 'userUpdate'])->name('update');
         });
     });
 });
-Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
+Route::get('logout', [Controller::class, 'logout'])->name('logout');
