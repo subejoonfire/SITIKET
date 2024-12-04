@@ -5,11 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\authmiddleware;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RoutesController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ARoutesController;
+use App\Http\Controllers\Helpdesk\HRoutesController;
 use App\Http\Controllers\Department\DRoutesController;
-use App\Http\Controllers\Helpdesk\HelpdeskController;
-use App\Http\Controllers\RegisterController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 
 Route::get('/', [RoutesController::class, 'landing']);
@@ -65,8 +65,3 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
-
-//HAK AKSES HELPDESK
-Route::get('/dashboard', [HelpdeskController::class, 'index'])->name('dashboard');
-Route::get('/profile', [HelpdeskController::class, 'profile'])->name('profile');
-Route::get('/validasi', [HelpdeskController::class, 'validasi'])->name('validasi');
