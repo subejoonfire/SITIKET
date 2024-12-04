@@ -53,8 +53,8 @@
                                 @csrf
                                 <!-- Data Dummy -->
                                 @php
-                                    $name = 'Dummy Department'; // Data dummy untuk nama
-                                    $status = 'accept'; // Data dummy untuk status
+                                    $name = 'Jhonlin Bratama DSP'; 
+                                   
                                 @endphp
 
                                 <div class="form-group">
@@ -64,21 +64,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="category_name">Trouble</label>
-                                    <input type="text" name="name" class="form-control" id="category_name" placeholder="Enter Category Name" value="mASALAH SERIUS">
-                                    @error('name') <small class="text-danger">{{ $message }}</small> @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="status">Status</label>
-                                    <select name="status" class="form-control" id="status">
-                                        <option value="accept" {{ $status == 'accept' ? 'selected' : '' }}>ACCEPT</option>
-                                        <option value="reject" {{ $status == 'reject' ? 'selected' : '' }}>REJECT</option>
-                                    </select>
-                                    @error('status') 
-                                        <small class="text-danger">{{ $message }}</small> 
+                                    <label for="category_name">Masalah</label>
+                                    <textarea name="name" class="form-control" id="category_name" placeholder="Enter Trouble Description">mASALAH SERIUS</textarea>
+                                    @error('name') 
+                                    <small class="text-danger">{{ $message }}</small> 
                                     @enderror
                                 </div>
+                                
+                              
 
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Save</button>
