@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ARoutesController;
 use App\Http\Controllers\Department\DRoutesController;
 use App\Http\Controllers\Helpdesk\HelpdeskController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 
@@ -57,3 +58,6 @@ Route::get('/dashboard', [HelpdeskController::class, 'index'])->name('dashboard'
 Route::get('/profile', [HelpdeskController::class, 'profile'])->name('profile');
 Route::get('/validasi', [HelpdeskController::class, 'validasi'])->name('validasi');
 
+
+//HAK AKSES USER 
+Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
