@@ -8,7 +8,7 @@ use App\Http\Controllers\RoutesController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ARoutesController;
 use App\Http\Controllers\Department\DRoutesController;
-use App\Http\Controllers\Helpdesk\HelpdeskController;
+use App\Http\Controllers\Helpdesk\HRoutesController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Session\Middleware\AuthenticateSession;
 
@@ -28,7 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('tolak', [DRoutesController::class, 'tolak'])->name('tolak');
         Route::get('selesai', [DRoutesController::class, 'selesai'])->name('selesai');
     });
-
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', [ARoutesController::class, 'index'])->name('/');
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
@@ -43,18 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::post('/update/{id}', [AdminController::class, 'userUpdate'])->name('update');
             });
         });
-
-        Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
-            Route::get('/', [ARoutesController::class, 'category'])->name('');
-            Route::get('/add', [ARoutesController::class, 'addcategory'])->name('add');
-            Route::get('/edit/{id}', [ARoutesController::class, 'editcategory'])->name('edit');
-            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
-                Route::post('/store', [AdminController::class, 'categoryStore'])->name('store');
-                Route::get('/delete/{id}', [AdminController::class, 'categoryDelete'])->name('delete');
-                Route::post('/update/{id}', [AdminController::class, 'categoryUpdate'])->name('update');
-            });
-        });
-
         Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
             Route::get('/', [ARoutesController::class, 'depart'])->name('/');
             Route::get('/add', [ARoutesController::class, 'adddepart'])->name('add');
@@ -66,10 +53,15 @@ Route::group(['middleware' => 'auth'], function () {
             });
         });
     });
+    Route::group(['prefix' => 'helpdesk', 'as' => 'helpdesk.'], function () {
+        Route::get('/', [HRoutesController::class, 'index'])->name('/');
+        Route::get('/profile', [HRoutesController::class, 'profile'])->name('profile');
+        Route::get('/validasi', [HRoutesController::class, 'validasi'])->name('validasi');
+        Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+            Route::post('/store', [AdminController::class, 'helpdeskStore'])->name('store');
+            Route::get('/delete/{id}', [AdminController::class, 'helpdeskDelete'])->name('delete');
+            Route::post('/update/{id}', [AdminController::class, 'helpdeskUpdate'])->name('update');
+        });
+    });
 });
 Route::get('logout', [DRoutesController::class, 'logout'])->name('logout');
-
-//HAK AKSES HELPDESK
-Route::get('/dashboard', [HelpdeskController::class, 'index'])->name('dashboard');
-Route::get('/profile', [HelpdeskController::class, 'profile'])->name('profile');
-Route::get('/validasi', [HelpdeskController::class, 'validasi'])->name('validasi');
