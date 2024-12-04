@@ -18,4 +18,12 @@ class RoutesController extends Controller
 
         return view('pages.landing', $data);
     }
+    public function index()
+    {
+        return view('pages.login');
+    }
+    public function register()
+    {
+        return view('pages.register');
+    }
 }
