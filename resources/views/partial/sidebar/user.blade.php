@@ -5,12 +5,12 @@
         <div class="sidebar-content">
             <ul class="nav">
                 <li class="nav-item {{ request()->routeIs('user/dashboard') ? 'active' : '' }}">
-                    <a href="{{ url('user/dashboard') }}">
+                    <a href="{{ url('user') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-              
+
             </ul>
         </div>
     </div>
