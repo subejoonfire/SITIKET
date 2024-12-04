@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Ticket;
+use App\Models\Department;
+use App\Models\UserTicket;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class URoutesController extends Controller
 {
     public function index()
     {
-
+        $ticket = new Ticket();
         $data = [
-            'title' => 'SI-TIKET | Dashboard'
+            'title' => 'SI-TIKET | Dashboard',
+            'collection' => $ticket->tickets()->get(),
         ];
-
         return view('pages.user.dashboard', $data);
     }
 
@@ -21,7 +25,8 @@ class URoutesController extends Controller
     {
 
         $data = [
-            'title' => 'SI-TIKET | ADD'
+            'title' => 'SI-TIKET | ADD',
+            'collection' => Department::all(),
         ];
 
         return view('pages.user.addrequest', $data);
