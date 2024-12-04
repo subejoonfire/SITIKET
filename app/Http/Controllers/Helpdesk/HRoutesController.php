@@ -27,7 +27,7 @@ class HRoutesController extends Controller
         return view('pages.helpdesk.detail', $data);
     }
 
-    public function validasi()
+    public function validation()
     {
 
         $data = [

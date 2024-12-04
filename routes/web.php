@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'helpdesk', 'as' => 'helpdesk.'], function () {
         Route::get('/', [HRoutesController::class, 'index'])->name('/');
         Route::get('/profile', [HRoutesController::class, 'profile'])->name('profile');
-        Route::get('/validasi', [HRoutesController::class, 'validasi'])->name('validasi');
+        Route::get('/validation', [HRoutesController::class, 'validation'])->name('validation');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [HelpdeskController::class, 'helpdeskStore'])->name('store');
             Route::get('/delete/{id}', [HelpdeskController::class, 'helpdeskDelete'])->name('delete');
@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('/', [URoutesController::class, 'index'])->name('/');
         Route::get('/profile', [URoutesController::class, 'profile'])->name('profile');
-        Route::get('/add', [URoutesController::class, 'add'])->name('validasi');
+        Route::get('/add', [URoutesController::class, 'add'])->name('add');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [UserController::class, 'userStore'])->name('store');
             Route::get('/delete/{id}', [UserController::class, 'userDelete'])->name('delete');
