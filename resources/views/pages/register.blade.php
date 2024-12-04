@@ -32,7 +32,7 @@
                             <div class="text-center mb-5">
                                 <h3><strong>Register</strong></h3>
                             </div>
-                            <form action="#" method="post">
+                            <form action="{{ url('register') }}" method="post">
                                 @if ($errors->any())
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <strong>Terjadi Kesalahan!</strong>
@@ -47,31 +47,26 @@
                                 </div>
                                 @endif
                                 @csrf
-                                <!-- Username -->
                                 <div class="form-group first">
                                     <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" placeholder="Masukkan username" id="username" required>
+                                    <input type="text" name="name" class="form-control" placeholder="Masukkan username" id="username" required>
                                 </div>
-                                <!-- Email -->
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" class="form-control" placeholder="Masukkan email" id="email" required>
                                 </div>
-                                <!-- Password -->
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" placeholder="Masukkan password" id="password" required>
                                 </div>
-                                <!-- konfirmasi Password -->
                                 <div class="form-group last mb-3">
                                     <label for="password_confirmation">Konfirmasi Password</label>
                                     <input type="password" name="password_confirmation" class="form-control" placeholder="Masukkan ulang password" id="password_confirmation" required>
                                 </div>
-
                                 <div class="d-sm-flex mb-5 align-items-center">
                                     <span class="ml-auto">
                                         <a href="{{ url('login') }}" class="forgot-pass">Sudah punya akun? Login</a>
-                                    </span>                                    
+                                    </span>
                                 </div>
                                 <input type="submit" value="Register" class="btn btn-block btn-primary">
                             </form>

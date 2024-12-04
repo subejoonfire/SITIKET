@@ -4,36 +4,51 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Ticket;
+use App\Models\UserTicket;
 
 class UserController extends Controller
 {
-    public function index()
+    public function userStore(Request $request)
     {
-
-        $data = [
-            'title' => 'SI-TIKET | Dashboard'
-        ];
-
-        return view('pages.user.dashboard', $data);
+        $request->validate([
+            'iddepartment' => 'required|exists:departments,id',
+            'trouble' => 'required|string|max:255',
+        ]);
+        $ticket = Ticket::create([
+            'iddepartment' => $request->input('iddepartment'),
+            'trouble' => $request->input('trouble'),
+            'status' => 'PENDING',
+        ]);
+        UserTicket::create([
+            'iduser' => auth()->user()->id,
+            'idticket' => $ticket->id,
+        ]);
+        return redirect()->to('user')->with('success', 'Request berhasil dikirim! ID Tiket: ' . $ticket->id);
     }
 
-    public function add_request()
+    public function userDelete($id)
     {
+        $ticket = Ticket::findOrFail($id);
+        $ticket->delete();
 
-        $data = [
-            'title' => 'SI-TIKET | ADD_REQUEST'
-        ];
-
-        return view('pages.user.addrequest', $data);
+        return redirect()->to('user')->with('success', 'Ticket berhasil dihapus!');
     }
 
-    public function profile()
+    public function userUpdate(Request $request, $id)
     {
+        $request->validate([
+            'iddepartment' => 'required|exists:departments,id',
+            'trouble' => 'required|string|max:255',
+        ]);
 
-        $data = [
-            'title' => 'SI-TIKET | Profile'
-        ];
+        $ticket = Ticket::findOrFail($id);
+        $ticket->update([
+            'iddepartment' => $request->input('iddepartment'),
+            'trouble' => $request->input('trouble'),
+            'status' => $request->input('status', $ticket->status),
+        ]);
 
-        return view('pages.user.profile', $data);
+        return redirect()->to('user')->with('success', 'Ticket berhasil diperbarui!');
     }
 }

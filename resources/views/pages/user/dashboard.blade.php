@@ -7,7 +7,6 @@
         <div class="page-inner">
             <div class="page-header">
                 <h4 class="page-title">Dashboard</h4>
-
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-3">
@@ -22,18 +21,14 @@
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">Add Request</p>
-                                        <h4 class="card-title">2</h4>
+                                        <h4 class="card-title">{{ $count }}</h4>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-              
-            
-                
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     @if (session('success'))
@@ -72,71 +67,41 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- Modal -->
-
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>ID Tiket</th>
                                             <th>Department</th>
                                             <th>Status</th>
-                                        
-                                           
+                                            <th>Masalah</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td>T12</td>
-                                        <td>Jhonlin Group DSP</td>
-                                        <td>Menunggu Validasi</td>
-                                      
-                                        
-                                        
-                                        {{-- @foreach ($user as $item)
+                                        @php
+                                        $i=1;
+                                        @endphp
+                                        @foreach ($collection as $item)
                                         <tr>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
+                                            <td>{{ $item->iddepartment }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>{{ $item->trouble }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    {{-- <a href="{{ url('user/edit/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <i class="fa fa-edit"></i>
+                                                    </a> --}}
+                                                    <a href="{{ url('user/action/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        @endforeach --}}
-                                    </tbody>
-
-                                    <tbody>
-                                        <td>T1</td>
-                                        <td>Jhonlin Group DSP</td>
-                                        <td>Diterima</td>
-                                       
-                                        
-                                        
-                                        {{-- @foreach ($user as $item)
-                                        <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -34,6 +34,14 @@
                                 <h3><strong>Login</strong></h3>
                             </div>
                             <form action="{{ route('login') }}" method="post">
+                                @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Sukses!</strong> {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @endif
                                 @if ($errors->any())
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <strong>Terjadi Kesalahan!</strong>
@@ -49,8 +57,8 @@
                                 @endif
                                 @csrf
                                 <div class="form-group first">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" placeholder="Masukkan username" id="username">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Masukkan email" id="email" required>
                                 </div>
                                 <div class="form-group last mb-3">
                                     <label for="password">Password</label>
@@ -64,7 +72,7 @@
                                     </label>
                                     <span class="ml-auto">
                                         <a href="{{ route('register') }}" class="forgot-pass">Belum punya akun? Daftar</a>
-                                    </span>                                    
+                                    </span>
                                 </div>
                                 <input type="submit" value="Submit" class="btn btn-block btn-primary">
                             </form>

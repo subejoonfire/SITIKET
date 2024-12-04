@@ -16,11 +16,11 @@
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
 
-                        <h1 class="display-2 text-capitalize text-white mb-4">Quick Solution!</h1>
-                        <p class="mb-5 fs-5">We provide quick solutions to fix bugs and tech issues, ensuring your system gets back up and running smoothly without prolonged downtime.
+                        <h1 class="display-2 text-capitalize text-white mb-4">Solusi Cepat!</h1>
+                        <p class="mb-5 fs-5">Kami menyediakan solusi cepat untuk memperbaiki masalah teknis, memastikan sistem Anda kembali berjalan lancar tanpa gangguan.
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{{ url('/login') }}">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#contact-section">Submit A Bug Report</a>
                         </div>
                     </div>
                 </div>
@@ -30,11 +30,11 @@
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
 
-                        <h1 class="display-2 text-capitalize text-white mb-4">Seamless Repairs</h1>
-                        <p class="mb-5 fs-5">Our team of experts is ready to provide seamless repairs for any technical issues, ensuring your business operations remain efficient and uninterrupted.
+                        <h1 class="display-2 text-capitalize text-white mb-4">Perbaikan Cepat</h1>
+                        <p class="mb-5 fs-5">Kami hadir dengan solusi cepat untuk mengatasi masalah teknis, agar sistem Anda kembali normal tanpa kendala.
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{{ url('/login') }}">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#contact-section">Submit A Bug Report</a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         <h1 class="display-2 text-capitalize text-white mb-4">Smart Solutions</h1>
                         <p class="mb-5 fs-5">With our smart solutions approach, we not only resolve existing issues but also identify and prevent potential problems in the future, ensuring your systems remain optimized at all times.</p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="{{ url('/login') }}">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#contact-section">Submit A Bug Report</a>
                         </div>
                     </div>
                 </div>
@@ -79,8 +79,8 @@
             <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(templates/img/about-img-1.png);">
                 <h5 class="section-about-title pe-3">About Us</h5>
                 <h1 class="mb-4">Welcome to <span class="text-primary">SI-TIKET</span></h1>
-                <p class="mb-4">We are a team of professionals specializing in solving various technology issues, including hardware, networks, SAP, and user access. We address hardware problems, ensuring your devices function optimally and avoid operational disruptions. For networks, we offer reliable connectivity solutions, ensuring smooth communication and data flow within your business. We also have expertise in SAP implementation and maintenance, supporting your business systems to be more efficient and integrated.</p>
-                <p class="mb-4">Additionally, we ensure secure and controlled user access, keeping your systems and data protected. With a fast and intelligent approach, we are ready to provide the best solutions for any technical challenges you face, allowing your business to operate seamlessly without interruptions.</p>
+                <p class="mb-4">Ingin meningkatkan bisnis Anda dan menyelesaikan lebih banyak hal? Kami siap membantu! Tim kami dapat menyelesaikan semua masalah teknis Anda, besar maupun kecil. Mulai dari komputer yang rusak hingga jaringan yang lambat, kami pastikan bisnis Anda berjalan lancar sehingga Anda bisa fokus pada hal-hal yang benar-benar penting.</p>
+                <p class="mb-4">kami menjaga akses pengguna dengan aman dan terkendali, melindungi sistem serta data Anda. Dengan pendekatan yang cepat dan cerdas, kami siap memberikan solusi terbaik untuk setiap tantangan teknis yang Anda hadapi, memastikan bisnis Anda beroperasi tanpa gangguan.</p>
             </div>
         </div>
     </div>
@@ -254,72 +254,7 @@
                         </div>
                     </div>
                     
-                </div>
-                <div id="InternationalTab-2" class="tab-pane fade show p-0">
-                    <div class="InternationalTour-carousel owl-carousel">
-                        <div class="international-item">
-                            <img src="templates/img/explore-tour-1.jpg" class="img-fluid w-100 rounded" alt="Image">
-                            <div class="international-content">
-                                <div class="international-info">
-                                    <h5 class="text-white text-uppercase mb-2">Australia</h5>
-                                    <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 8 Cities</a>
-                                    <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>143+ Tour Places</span></a>
-                                </div>
-                            </div>
-                            <div class="tour-offer bg-success">30% Off</div>
-                            <div class="international-plus-icon">
-                                <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                            </div>
-                        </div>
-                        <div class="international-item">
-                            <img src="templates/img/explore-tour-2.jpg" class="img-fluid w-100 rounded" alt="Image">
-                            <div class="international-content">
-                                <div class="international-info">
-                                    <h5 class="text-white text-uppercase mb-2">Germany</h5>
-                                    <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 12 Cities</a>
-                                    <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>21+ Tour Places</span></a>
-                                </div>
-                            </div>
-                            <div class="international-plus-icon">
-                                <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                            </div>
-                        </div>
-                        <div class="international-item">
-                            <img src="templates/img/explore-tour-3.jpg" class="img-fluid w-100 rounded" alt="Image">
-                            <div class="international-content">
-                                <div class="tour-offer bg-warning">45% Off</div>
-                                <div class="international-info">
-                                    <h5 class="text-white text-uppercase mb-2">Spain</h5>
-                                    <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 9 Cities</a>
-                                    <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>133+ Tour Places</span></a>
-                                </div>
-                            </div>
-                            <div class="international-plus-icon">
-                                <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                            </div>
-                        </div>
-                        <div class="international-item">
-                            <img src="templates/img/explore-tour-4.jpg" class="img-fluid w-100 rounded" alt="Image">
-                            <div class="international-content">
-                                <div class="international-info">
-                                    <h5 class="text-white text-uppercase mb-2">Japan</h5>
-                                    <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 8 Cities</a>
-                                    <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>137+ Tour Places</span></a>
-                                </div>
-                            </div>
-                            <div class="international-plus-icon">
-                                <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                            </div>
-                        </div>
-                        <div class="international-item">
-                            <img src="templates/img/explore-tour-5.jpg" class="img-fluid w-100 rounded" alt="Image">
-                            <div class="international-content">
-                                <div class="tour-offer bg-info">70% Off</div>
-                                <div class="international-info">
-                                    <h5 class="text-white text-uppercase mb-2">London</h5>
-                                    <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 17 Cities</a>
-                                    <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>26+ Tour Places</span></a>
-                                </div>
+                {{--  --}}
                             </div>
                             <div class="international-plus-icon">
                                 <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
@@ -334,84 +269,6 @@
 
 
 <!-- Explore Tour Start -->
-
-
-<div class="container-fluid contact bg-light py-5" id="contact-section">
-    <div class="container py-5">
-        <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-            <h5 class="section-title px-3">Contact Us</h5>
-            <h1 class="mb-0">Contact For Any Query</h1>
-        </div>
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-4">
-                <div class="bg-white rounded p-4">
-                    <div class="text-center mb-4">
-                        <i class="fa fa-map-marker-alt fa-3x text-primary"></i>
-                        <h4 class="text-primary">
-                            <Address></Address>
-                        </h4>
-                        <p class="mb-0">Gn. Antasari, Kec. Simpang Empat, Kabupaten Tanah Bumbu, Kalimantan Selatan 72211
-                    </div>
-                    <div class="text-center mb-4">
-                        <i class="fa fa-phone-alt fa-3x text-primary mb-3"></i>
-                        <h4 class="text-primary">Mobile</h4>
-                        <p class="mb-0">+012 345 67890</p>
-                        <p class="mb-0">+012 345 67890</p>
-                    </div>
-
-                    <div class="text-center">
-                        <i class="fa fa-envelope-open fa-3x text-primary mb-3"></i>
-                        <h4 class="text-primary">Email</h4>
-                        <p class="mb-0">info@example.com</p>
-                        <p class="mb-0">info@example.com</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <h3 class="mb-2">Submit A Bug Report</h3>
-                <p class="mb-4">Feel free to contact us if you encounter any issues or need technical assistance. We are ready to help you resolve various challenges related to hardware, networking, SAP, and user access.</p>
-                <form>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control border-0" id="name" placeholder="Your Name">
-                                <label for="name">Your Name</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control border-0" id="email" placeholder="Your Email">
-                                <label for="email">Your Email</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
-                                <label for="subject">No Phone</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
-                                <label for="subject">Subject</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 160px"></textarea>
-                                <label for="message">Message</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 {{-- <!-- Packages Start -->
       

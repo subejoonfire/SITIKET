@@ -5,13 +5,13 @@
         <div class="sidebar-content">
             <ul class="nav">
                 <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                    <a href="{{ url('helpdesk/dashboard') }}">
+                    <a href="{{ url('helpdesk') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('validasi') ? 'active' : '' }}">
-                    <a href="{{ url('helpdesk/validasi') }}">
+                <li class="nav-item {{ request()->routeIs('validation') ? 'active' : '' }}">
+                    <a href="{{ url('helpdesk/validation') }}">
                         <i class="fas fa-hourglass-half"></i>
                         <p>Validation History</p>
                     </a>
