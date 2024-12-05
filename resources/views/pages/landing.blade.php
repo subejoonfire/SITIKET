@@ -20,7 +20,7 @@
                         <p class="mb-5 fs-5">Kami menyediakan solusi cepat untuk memperbaiki masalah teknis, memastikan sistem Anda kembali berjalan lancar tanpa gangguan.
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#contact-section">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         <p class="mb-5 fs-5">Kami hadir dengan solusi cepat untuk mengatasi masalah teknis, agar sistem Anda kembali normal tanpa kendala.
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#contact-section">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         <h1 class="display-2 text-capitalize text-white mb-4">Smart Solutions</h1>
                         <p class="mb-5 fs-5">With our smart solutions approach, we not only resolve existing issues but also identify and prevent potential problems in the future, ensuring your systems remain optimized at all times.</p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#contact-section">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a>
                         </div>
                     </div>
                 </div>
