@@ -86,15 +86,12 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->iddepartment ? $item->iddepartment : 'Menunggu' }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>{{ $item->trouble }}</td>
+                                            <td>{{ $item->idticket }}</td>
+                                            <td>{{ $item->tickets->iddepartment ? $item->tickets->departments->departmentname : 'Menunggu' }}</td>
+                                            <td>{{ $item->tickets->status }}</td>
+                                            <td>{{ $item->tickets->trouble }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    {{-- <a href="{{ url('user/edit/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                    <i class="fa fa-edit"></i>
-                                                    </a> --}}
                                                     <a href="{{ url('user/action/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
                                                     </a>
