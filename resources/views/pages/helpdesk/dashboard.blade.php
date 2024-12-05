@@ -104,11 +104,11 @@
                                     <tbody>
                                         @foreach ($collection as $item)
                                         <tr>
-                                            <td>{{ $item->tickets_helpdesk->first()->idticket }}</td>
-                                            <td>{{ $item->tickets_helpdesk->first()->name }}</td>
-                                            <td>{{ $item->iddepartment ? $item->departmentname : 'Menunggu' }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>{{ $item->trouble }}</td>
+                                            <td>{{ $item->idticket }}</td>
+                                            <td>{{ $item->users->name }}</td>
+                                            <td>{{ $item->tickets->iddepartment ? $item->tickets->departments->departmentname : 'Menunggu' }}</td>
+                                            <td>{{ $item->tickets->status }}</td>
+                                            <td>{{ $item->tickets->trouble }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ url('helpdesk/detail/'. $item->idticket) }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
