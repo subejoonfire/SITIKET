@@ -12,7 +12,7 @@ class Ticket extends Model
     use HasFactory;
     protected $fillable = ['iddepartment', 'status', 'trouble'];
 
-    public function departments()
+    public function departments(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'iddepartment');
     }
