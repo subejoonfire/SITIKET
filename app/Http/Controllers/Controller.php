@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class Controller
 {
+    public $ticket;
+    public function __construct()
+    {
+        $this->ticket = new Ticket();
+    }
     public function login(Request $request)
     {
         $request->validate([
