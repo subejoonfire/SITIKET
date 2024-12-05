@@ -6,6 +6,7 @@
     .text-danger {
         color: red;
     }
+
 </style>
 
 <div class="main-panel">
@@ -53,36 +54,29 @@
                                 @csrf
                                 <!-- Data Dummy -->
                                 @php
-                                    $name = 'Jhonlin Bratama DSP'; 
-                                   
+                                $name = 'Jhonlin Bratama DSP';
+
                                 @endphp
 
                                 <div class="form-group">
                                     <label for="category_name">Departement</label>
                                     <select name="name" class="form-control" id="category_name">
                                         <option value="">Select Department</option>
-                                        <option value="IT" {{ $name == 'IT' ? 'selected' : '' }}>IT</option>
-                                        <option value="HR" {{ $name == 'HR' ? 'selected' : '' }}>HR</option>
-                                        <option value="Finance" {{ $name == 'Finance' ? 'selected' : '' }}>Finance</option>
-                                        <option value="Marketing" {{ $name == 'Marketing' ? 'selected' : '' }}>Marketing</option>
+                                        @foreach ($collection as $department)
+                                        <option value="{{ $department->id }}" {{ old('iddepartment') == $department->id ? 'selected' : '' }}>{{ $department->departmentname }}</option>
+                                        @endforeach
                                     </select>
-                                    @error('name') 
-                                    <small class="text-danger">{{ $message }}</small> 
+                                    @error('name')
+                                    <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
-
                                 <div class="form-group">
                                     <label for="category_name">Masalah</label>
-                                    <textarea name="name" class="form-control" id="category_name" placeholder="Enter Trouble Description" disabled>mASALAH SERIUS</textarea>
-                                    @error('name') 
-                                    <small class="text-danger">{{ $message }}</small> 
+                                    <textarea name="name" class="form-control" id="category_name" placeholder="Enter Trouble Description" readonly>mASALAH SERIUS</textarea>
+                                    @error('name')
+                                    <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                
-                                
-                              
-
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Save</button>
                                     <a href="#" class="btn btn-danger">Cancel</a>
