@@ -14,17 +14,18 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'collection' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->join('departments', 'departments.id', '=', 'tickets.iddepartment')->join('users', 'user_tickets.iduser', '=', 'users.id')->get()
+            'collection' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->leftJoin('departments', 'departments.id', '=', 'tickets.iddepartment')->join('users', 'user_tickets.iduser', '=', 'users.id')->get()
         ];
 
         return view('pages.helpdesk.dashboard', $data);
     }
 
-    public function detail()
+    public function detail($id)
     {
 
         $data = [
             'title' => 'SI-TIKET | Dashboard',
+            'data' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->leftJoin('departments', 'departments.id', '=', 'tickets.iddepartment')->join('users', 'user_tickets.iduser', '=', 'users.id')->where('tickets.id', $id)->first(),
             'collection' => Department::all(),
         ];
 
