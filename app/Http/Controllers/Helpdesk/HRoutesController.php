@@ -6,21 +6,17 @@ use App\Models\Ticket;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\UserTicket;
 
 class HRoutesController extends Controller
 {
     public function index()
     {
-        // $data = $this->ticket->with('tickets_helpdesk')->get();
-        // foreach ($data as $ticket) {
-        //     var_dump($ticket->tickets_helpdesk->first()->name);
-        // }
-        // die;
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'incoming' => $this->ticket->with('tickets_helpdesk')->whereNull('tickets.iddepartment')->count(),
-            'done' => $this->ticket->with('tickets_helpdesk')->whereNotNull('tickets.iddepartment')->count(),
-            'collection' => $this->ticket->with('tickets_helpdesk')->get()
+            'incoming' => Ticket::with('departments')->whereNotNull('iddepartments')->count(),
+            'done' => Ticket::with('departments')->whereNull('iddepartments')->count(),
+            'collection' => UserTicket::with(['users', 'tickets.departments'])->get()
         ];
 
         return view('pages.helpdesk.dashboard', $data);
@@ -31,7 +27,7 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'data' => $this->ticket->with('tickets_helpdesk')->where('tickets.id', $id)->first(),
+            'data' => UserTicket::with(['users', 'tickets'])->where('idticket', $id)->first(),
             'collection' => Department::all(),
         ];
 
