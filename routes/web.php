@@ -24,7 +24,6 @@ Route::post('/register', [Controller::class, 'registerr'])->name('register');
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
         Route::get('/', [DRoutesController::class, 'dashboard'])->name('/');
-        Route::get('profile', [DRoutesController::class, 'profile'])->name('profile');
         Route::get('tiket', [DRoutesController::class, 'tiket'])->name('utama');
         Route::get('setuju', [DRoutesController::class, 'index'])->name('setuju');
         Route::get('proses', [DRoutesController::class, 'proses'])->name('proses');
@@ -58,7 +57,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::group(['prefix' => 'helpdesk', 'as' => 'helpdesk.'], function () {
         Route::get('/', [HRoutesController::class, 'index'])->name('/');
-        Route::get('/profile', [HRoutesController::class, 'profile'])->name('profile');
         Route::get('/validation', [HRoutesController::class, 'validation'])->name('validation');
         Route::get('/detail', [HRoutesController::class, 'detail'])->name('detail');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
@@ -69,7 +67,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
         Route::get('/', [URoutesController::class, 'index'])->name('/');
-        Route::get('/profile', [URoutesController::class, 'profile'])->name('profile');
         Route::get('/add', [URoutesController::class, 'add'])->name('add');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [UserController::class, 'userStore'])->name('store');
@@ -77,5 +74,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/update/{id}', [UserController::class, 'userUpdate'])->name('update');
         });
     });
+    Route::get('/profile', [RoutesController::class, 'profile'])->name('profile');
 });
 Route::get('logout', [Controller::class, 'logout'])->name('logout');

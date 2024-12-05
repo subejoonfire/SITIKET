@@ -18,16 +18,6 @@ class ARoutesController extends Controller
         return view('pages.admin.dashboard', $data);
     }
 
-    public function profile()
-    {
-
-        $data = [
-            'title' => 'SI-TIKET | PROFILE',
-        ];
-
-        return view('pages.admin.profile', $data);
-    }
-
     public function user()
     {
         $data = [

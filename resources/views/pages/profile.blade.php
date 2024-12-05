@@ -1,5 +1,12 @@
+@if (auth()->user()->level = 1)
+@extends('layout.mainadmin')
+@elseif (auth()->user()->level = 2)
 @extends('layout.mainhelp')
-
+@elseif (auth()->user()->level = 3)
+@extends('layout.main')
+@elseif (auth()->user()->level = 4)
+@extends('layout.mainuser')
+@endif
 @section('content')
 
 <div class="main-panel">
@@ -31,12 +38,12 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                             <div class="row mt-3">
                                 <div class="col-md-12">
                                     <div class="form-group form-group-default">
                                         <label>Password Lama</label>
-                                        <input type="text" class="form-control" placeholder="Masukan Password Lama" name="address" >
+                                        <input type="text" class="form-control" placeholder="Masukan Password Lama" name="address">
                                     </div>
                                 </div>
                             </div>
@@ -67,16 +74,16 @@
                         <div class="card-body">
                             <div class="user-profile text-center">
                                 <div class="name">Rizky</div>
-                             
+
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
 </div>
 
 

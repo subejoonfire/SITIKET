@@ -26,4 +26,14 @@ class RoutesController extends Controller
     {
         return view('pages.register');
     }
+
+    public function profile()
+    {
+
+        $data = [
+            'title' => 'SI-TIKET | PROFILE',
+        ];
+
+        return view('pages.profile', $data);
+    }
 }
