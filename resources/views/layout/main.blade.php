@@ -74,8 +74,8 @@
                                     <div class="user-box">
                                         <div class="avatar-lg"><img src="{{ url('back-end/assets/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
-                                            <h4>Hizrian</h4>
-                                            <p class="text-muted">hello@example.com</p>
+                                            <h4>{{ auth()->user()->name }}</h4>
+                                            <p class="text-muted">{{ auth()->user()->email}}</p>
                                         </div>
                                     </div>
                                 </li>
