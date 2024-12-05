@@ -56,6 +56,10 @@
                                     <input type="email" name="email" class="form-control" placeholder="Masukkan email" id="email" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="phone">Nomor HP</label>
+                                    <input type="tel" name="phone" class="form-control" placeholder="Masukkan nomor HP" id="phone" pattern="\+?[0-9]{10,15}" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" placeholder="Masukkan password" id="password" required>
                                 </div>
