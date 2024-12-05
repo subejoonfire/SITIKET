@@ -19,12 +19,91 @@
     <!-- Style -->
     <link rel="stylesheet" href="loginTemplate/css/style.css">
 
-    <title> Register | Page</title>
+    <title> Register | Page</title><style>
+        .half {
+            display: flex;
+            height: 100vh;
+            
+        }
+        .blue-section {
+            background: #91C8E4;
+            background-size: 40px 40px; 
+            color: rgb(255, 255, 255);
+            flex: 0.4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding:130px;
+            
+        }
+         .blue-section img.logo {
+            max-width: 30%;
+            margin-top: 40%; 
+            margin-bottom: 10px;
+        }
+        .blue-section img.illustration {
+            max-width: 300px;
+            margin-top: 20px;
+            margin-bottom: 100%;
+        }
+        .blue-section img {
+            max-width: 250px;
+            margin-bottom: 20%;
+            max-height: 43%;
+            
+        }
+
+        .blue-section .illustration {
+            max-width: 250px;
+            margin-top: 50px;
+
+        }.blue-section img.logo {
+            max-width: 40%;
+            margin-bottom: 40px;
+            margin-top: 20%;
+            object-fit: contain; 
+        }
+
+        .blue-section img.illustration {
+            max-width: 350px;
+            margin-top: auto; 
+            margin-bottom: 40px; 
+            object-fit: flex; 
+            align-self: flex; 
+        }
+
+        .container-section {
+            flex: 1; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .blue-section img.logo {
+            object-fit: contain;
+        }
+
+        .blue-section img.illustration {
+            object-fit: contain;
+        }
+        .blue-section h3 {
+            font-family: 'Nunito', serif;
+
+            font-weight: 20; 
+            font-size: 35px; 
+            margin: 30px 0; 
+        }
+    </style>
 </head>
 <body>
-    <div class="d-md-flex half">
-        <div class="bg" style="background-image: url('loginTemplate/images/bg_1.png');"></div>
-        <div class="contents">
+    <body>
+        <div class="half">
+            <div class="blue-section">
+                <img src="loginTemplate/images/LOGOJG.png" alt="Jhonlin Group Logo" class="logo">
+                <h3>Masuk untuk melangkah</h3>
+                    <h3>lebih jauh bersama kami.</h3>
+                <img src="loginTemplate/images/PCJG.png" alt="Illustration  "class="illustration">
+            </div>
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-12">
