@@ -106,13 +106,13 @@
                                         <tr>
                                             <td>{{ $item->idticket }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->departmentname }}</td>
-                                            <td>Menunggu Validasi</td>
+                                            <td>{{ $item->iddepartment ? $item->departmentname : 'Menunggu' }}</td>
+                                            <td>{{ $item->status }}</td>
                                             <td>{{ $item->trouble }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('helpdesk/detail') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
-                                                        <i class="fa fa-eye me-3"></i> <!-- Ikon mata untuk tombol -->
+                                                    <a href="{{ url('helpdesk/detail/'. $item->idticket) }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                        <i class="fa fa-eye me-3"></i>
                                                         <span>Review</span>
                                                     </a>
                                                 </div>

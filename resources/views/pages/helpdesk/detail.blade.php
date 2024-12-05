@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="category_name">Masalah</label>
-                                    <textarea name="name" class="form-control" id="category_name" placeholder="Enter Trouble Description" readonly>mASALAH SERIUS</textarea>
+                                    <textarea name="name" class="form-control" id="category_name" placeholder="Enter Trouble Description" readonly>{{ $data->trouble }}</textarea>
                                     @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
