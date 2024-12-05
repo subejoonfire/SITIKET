@@ -7,6 +7,12 @@
         color: red;
     }
 
+    /* Custom CSS untuk textarea readonly */
+    #keluhan[readonly] {
+        background-color: white !important; /* Membuat background menjadi putih */
+        color: black !important; /* Membuat teks menjadi hitam */
+        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
+    }
 </style>
 
 <div class="main-panel">
@@ -55,12 +61,39 @@
                                 <!-- Data Dummy -->
                                 @php
                                 $name = 'Jhonlin Bratama DSP';
-
                                 @endphp
 
+                                <!-- Username -->
                                 <div class="form-group">
-                                    <label for="category_name">Departement</label>
-                                    <select name="name" class="form-control" id="category_name">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" class="form-control" id="username" value="jhonlinbratama" readonly>
+                                    @error('username')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <!-- No Handphone -->
+                                <div class="form-group">
+                                    <label for="phone">No Handphone</label>
+                                    <input type="text" name="phone" class="form-control" id="phone" value="081234567890" readonly>
+                                    @error('phone')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email" value="jhonlin@example.com" readonly>
+                                    @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
+                                <!-- Departement -->
+                                <div class="form-group">
+                                    <label for="department">Departement</label>
+                                    <select name="name" class="form-control" id="department">
                                         <option value="">Select Department</option>
                                         @foreach ($collection as $department)
                                         <option value="{{ $department->id }}" {{ old('iddepartment') == $department->id ? 'selected' : '' }}>{{ $department->departmentname }}</option>
@@ -70,13 +103,16 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+
+                                <!-- Keluhan Textarea -->
                                 <div class="form-group">
-                                    <label for="category_name">Masalah</label>
-                                    <textarea name="name" class="form-control" id="category_name" placeholder="Enter Trouble Description" readonly>{{ $data->trouble }}</textarea>
-                                    @error('name')
+                                    <label for="keluhan">Keluhan</label>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description" readonly>mASALAH SERIUS</textarea>
+                                    @error('keluhan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Save</button>
                                     <a href="#" class="btn btn-danger">Cancel</a>

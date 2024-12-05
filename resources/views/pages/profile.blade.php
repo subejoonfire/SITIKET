@@ -45,6 +45,14 @@ default => 'layout.default',
                             <div class="row mt-3">
                                 <div class="col-md-12">
                                     <div class="form-group form-group-default">
+                                        <label>No Handphone</label>
+                                        <input type="text" class="form-control" placeholder="Masukkan Nomor Handphone" value="083142170067" name="address">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-default">
                                         <label>Password Lama</label>
                                         <input type="text" class="form-control" placeholder="Masukan Password Lama" name="address">
                                     </div>
