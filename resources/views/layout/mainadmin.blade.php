@@ -81,7 +81,7 @@
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ url('admin/profile') }}">My Profile</a>
+                                    <a class="dropdown-item" href="{{ url('profile') }}">My Profile</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                                 </li>
