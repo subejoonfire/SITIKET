@@ -7,41 +7,24 @@
         color: red;
     }
 
-    /* Custom CSS untuk textarea readonly */
-    #keluhan[readonly] {
-        background-color: white !important; /* Membuat background menjadi putih */
-        color: black !important; /* Membuat teks menjadi hitam */
-        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
-    }
+  /* Custom CSS untuk elemen input yang tidak bisa diubah */
+#keluhan, 
+#email, 
+#username, 
+#phone, 
+#tanggal_diajukan {
+    background-color: #ffffff !important; /* Latar belakang putih */
+    color: #000000 !important; /* Teks hitam */
+    border: 1px solid #D1D1D1 !important; /* Border abu-abu muda untuk batas yang jelas */
+    padding: 8px; /* Menambahkan padding agar lebih rapi */
+    font-weight: normal !important; /* Menghilangkan efek tebal di font */
+    pointer-events: none; /* Menonaktifkan interaksi pengguna */
+}
 
-    #email[readonly] {
-        background-color: white !important; /* Membuat background menjadi putih */
-        color: black !important; /* Membuat teks menjadi hitam */
-        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
-    }
-
-    #username[readonly] {
-        background-color: white !important; /* Membuat background menjadi putih */
-        color: black !important; /* Membuat teks menjadi hitam */
-        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
-    }
-
-    #phone[readonly] {
-        background-color: white !important; /* Membuat background menjadi putih */
-        color: black !important; /* Membuat teks menjadi hitam */
-        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
-    }
-
-    #tanggal_diajukan[readonly] {
-        background-color: white !important; /* Membuat background menjadi putih */
-        color: black !important; /* Membuat teks menjadi hitam */
-        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
-    }
-
-    /* Custom CSS untuk select Departemen */
+/* Custom CSS untuk select Departemen yang bisa diubah */
 #department {
     background-color: #ffffff !important; /* Latar belakang putih */
-    color: #000 !important; /* Teks hitam */
+    color: #000000 !important; /* Teks hitam */
     border: 2px solid #4CAF50 !important; /* Border hijau agar lebih mencolok */
     padding: 8px; /* Menambahkan padding agar lebih rapi */
     cursor: pointer; /* Menunjukkan elemen dapat dipilih */
@@ -52,6 +35,8 @@
     border-color: #2196F3 !important; /* Ganti border menjadi biru saat fokus */
     box-shadow: 0 0 5px rgba(33, 150, 243, 0.5); /* Menambahkan efek cahaya */
 }
+
+
 
     
     
@@ -105,32 +90,32 @@
                                 $name = 'Jhonlin Bratama DSP';
                                 @endphp
 
-                                <!-- Username -->
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" id="username" value="jhonlinbratama" readonly>
-                                    @error('username')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                             <!-- Username -->
+<div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" name="username" class="form-control" id="username" value="jhonlinbratama">
+    @error('username')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
 
-                                <!-- No Handphone -->
-                                <div class="form-group">
-                                    <label for="phone">No Handphone</label>
-                                    <input type="text" name="phone" class="form-control" id="phone" value="081234567890" readonly>
-                                    @error('phone')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+<!-- No Handphone -->
+<div class="form-group">
+    <label for="phone">No Handphone</label>
+    <input type="text" name="phone" class="form-control" id="phone" value="081234567890">
+    @error('phone')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
 
-                                <!-- Email -->
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email" value="jhonlin@example.com" readonly>
-                                    @error('email')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+<!-- Email -->
+<div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="email" class="form-control" id="email" value="jhonlin@example.com">
+    @error('email')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
 
                                 <!-- Departement -->
                                 <div class="form-group">
@@ -149,20 +134,20 @@
                                 <!-- Keluhan Textarea -->
                                 <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
-                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description" readonly>mASALAH SERIUS</textarea>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description" >mASALAH SERIUS</textarea>
                                     @error('keluhan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
 
-                                <!-- Tanggal Diajukan -->
-                                <div class="form-group">
-                                    <label for="tanggal_diajukan">Tanggal Diajukan</label>
-                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ \Carbon\Carbon::now()->format('d-m-Y') }}" readonly>
-                                    @error('tanggal_diajukan')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                               <!-- Tanggal Diajukan -->
+<div class="form-group">
+    <label for="tanggal_diajukan">Tanggal Diajukan</label>
+    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ \Carbon\Carbon::now()->format('d-m-Y') }}">
+    @error('tanggal_diajukan')
+        <small class="text-danger">{{ $message }}</small>
+    @enderror
+</div>
 
 
                                 <div class="card-action">
