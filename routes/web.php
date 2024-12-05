@@ -58,7 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'helpdesk', 'as' => 'helpdesk.'], function () {
         Route::get('/', [HRoutesController::class, 'index'])->name('/');
         Route::get('/validation', [HRoutesController::class, 'validation'])->name('validation');
-        Route::get('/detail', [HRoutesController::class, 'detail'])->name('detail');
+        Route::get('/detail/{id}', [HRoutesController::class, 'detail'])->name('detail');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [HelpdeskController::class, 'helpdeskStore'])->name('store');
             Route::get('/delete/{id}', [HelpdeskController::class, 'helpdeskDelete'])->name('delete');
