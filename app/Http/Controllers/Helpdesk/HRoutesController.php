@@ -11,10 +11,16 @@ class HRoutesController extends Controller
 {
     public function index()
     {
-
+        // $data = $this->ticket->with('tickets_helpdesk')->get();
+        // foreach ($data as $ticket) {
+        //     var_dump($ticket->tickets_helpdesk->first()->name);
+        // }
+        // die;
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'collection' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->leftJoin('departments', 'departments.id', '=', 'tickets.iddepartment')->join('users', 'user_tickets.iduser', '=', 'users.id')->get()
+            'incoming' => $this->ticket->with('tickets_helpdesk')->whereNull('tickets.iddepartment')->count(),
+            'done' => $this->ticket->with('tickets_helpdesk')->whereNotNull('tickets.iddepartment')->count(),
+            'collection' => $this->ticket->with('tickets_helpdesk')->get()
         ];
 
         return view('pages.helpdesk.dashboard', $data);
@@ -25,7 +31,7 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'data' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->leftJoin('departments', 'departments.id', '=', 'tickets.iddepartment')->join('users', 'user_tickets.iduser', '=', 'users.id')->where('tickets.id', $id)->first(),
+            'data' => $this->ticket->with('tickets_helpdesk')->where('tickets.id', $id)->first(),
             'collection' => Department::all(),
         ];
 

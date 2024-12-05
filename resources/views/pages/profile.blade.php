@@ -1,12 +1,15 @@
-@if (auth()->user()->level = 1)
-@extends('layout.mainadmin')
-@elseif (auth()->user()->level = 2)
-@extends('layout.mainhelp')
-@elseif (auth()->user()->level = 3)
-@extends('layout.main')
-@elseif (auth()->user()->level = 4)
-@extends('layout.mainuser')
-@endif
+@php
+$wire = match (auth()->user()->level) {
+1 => 'layout.mainadmin',
+2 => 'layout.mainhelp',
+3 => 'layout.main',
+4 => 'layout.mainuser',
+default => 'layout.default',
+};
+@endphp
+
+@extends($wire)
+
 @section('content')
 
 <div class="main-panel">
@@ -91,7 +94,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 
