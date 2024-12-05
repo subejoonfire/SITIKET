@@ -13,6 +13,48 @@
         color: black !important; /* Membuat teks menjadi hitam */
         border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
     }
+
+    #email[readonly] {
+        background-color: white !important; /* Membuat background menjadi putih */
+        color: black !important; /* Membuat teks menjadi hitam */
+        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
+    }
+
+    #username[readonly] {
+        background-color: white !important; /* Membuat background menjadi putih */
+        color: black !important; /* Membuat teks menjadi hitam */
+        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
+    }
+
+    #phone[readonly] {
+        background-color: white !important; /* Membuat background menjadi putih */
+        color: black !important; /* Membuat teks menjadi hitam */
+        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
+    }
+
+    #tanggal_diajukan[readonly] {
+        background-color: white !important; /* Membuat background menjadi putih */
+        color: black !important; /* Membuat teks menjadi hitam */
+        border: 1px solid #fffefe; /* Memberikan border yang lebih jelas */
+    }
+
+    /* Custom CSS untuk select Departemen */
+#department {
+    background-color: #ffffff !important; /* Latar belakang putih */
+    color: #000 !important; /* Teks hitam */
+    border: 2px solid #4CAF50 !important; /* Border hijau agar lebih mencolok */
+    padding: 8px; /* Menambahkan padding agar lebih rapi */
+    cursor: pointer; /* Menunjukkan elemen dapat dipilih */
+}
+
+/* Untuk menambahkan efek fokus agar lebih jelas saat dropdown dipilih */
+#department:focus {
+    border-color: #2196F3 !important; /* Ganti border menjadi biru saat fokus */
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.5); /* Menambahkan efek cahaya */
+}
+
+    
+    
 </style>
 
 <div class="main-panel">
@@ -102,7 +144,7 @@
                                     @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
-                                </div>
+                                </div>                                
 
                                 <!-- Keluhan Textarea -->
                                 <div class="form-group">
@@ -112,6 +154,16 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+
+                                <!-- Tanggal Diajukan -->
+                                <div class="form-group">
+                                    <label for="tanggal_diajukan">Tanggal Diajukan</label>
+                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ \Carbon\Carbon::now()->format('d-m-Y') }}" readonly>
+                                    @error('tanggal_diajukan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
 
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Save</button>
