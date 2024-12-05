@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('iddepartment')->default(NULL);
+            $table->unsignedBigInteger('iddepartment')->nullable()->default(NULL);
             $table->string('status')->default('PENDING');
             $table->text('trouble');
             $table->timestamps();
