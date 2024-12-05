@@ -12,7 +12,6 @@ class UserController extends Controller
     public function userStore(Request $request)
     {
         $request->validate([
-            'iddepartment' => 'required|exists:departments,id',
             'trouble' => 'required|string|max:255',
         ]);
         $ticket = Ticket::create([
