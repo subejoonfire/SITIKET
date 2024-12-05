@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Helpdesk;
 
 use App\Models\Ticket;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -23,7 +24,8 @@ class HRoutesController extends Controller
     {
 
         $data = [
-            'title' => 'SI-TIKET | Dashboard'
+            'title' => 'SI-TIKET | Dashboard',
+            'collection' => Department::all(),
         ];
 
         return view('pages.helpdesk.detail', $data);

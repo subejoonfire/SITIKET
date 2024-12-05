@@ -29,7 +29,7 @@ class DRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | TIKET',
-            'collection' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->join('users', 'users.id', '=', 'user_tickets.iduser')->get()
+            'collection' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->join('users', 'users.id', '=', 'user_tickets.iduser')->whereNotNull('tickets.iddepartment')->get()
         ];
         return view('pages.department.ticket.ticket', $data);
     }
