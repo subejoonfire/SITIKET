@@ -1,7 +1,12 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Middleware\user;
 
+use App\Http\Middleware\admin;
+use App\Http\Middleware\logged;
+use App\Http\Middleware\helpdesk;
+use App\Http\Middleware\department;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoutesController;
 use App\Http\Controllers\User\UserController;
@@ -11,18 +16,15 @@ use App\Http\Controllers\Admin\ARoutesController;
 use App\Http\Controllers\Helpdesk\HRoutesController;
 use App\Http\Controllers\Helpdesk\HelpdeskController;
 use App\Http\Controllers\Department\DRoutesController;
-use App\Http\Middleware\department;
-use App\Http\Middleware\admin;
-use App\Http\Middleware\helpdesk;
-use App\Http\Middleware\user;
-use Illuminate\Session\Middleware\AuthenticateSession;
 
 Route::get('/', [RoutesController::class, 'landing']);
-Route::get('/login', [RoutesController::class, 'index'])->name('login');
-Route::get('/register', [RoutesController::class, 'register'])->name('register');
 
-Route::post('/login', [Controller::class, 'login'])->name('login');
-Route::post('/register', [Controller::class, 'registerr'])->name('register');
+Route::group(['middleware' => logged::class], function () {
+    Route::get('/login', [RoutesController::class, 'index'])->name('login');
+    Route::get('/register', [RoutesController::class, 'register'])->name('register');
+    Route::post('/login', [Controller::class, 'login'])->name('login');
+    Route::post('/register', [Controller::class, 'registerr'])->name('register');
+});
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
