@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Helpdesk;
 
-use App\Http\Controllers\Controller;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HRoutesController extends Controller
 {
@@ -11,7 +12,8 @@ class HRoutesController extends Controller
     {
 
         $data = [
-            'title' => 'SI-TIKET | Dashboard'
+            'title' => 'SI-TIKET | Dashboard',
+            'collection' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->join('departments', 'departments.id', '=', 'tickets.iddepartment')->join('users', 'user_tickets.iduser', '=', 'users.id')->get()
         ];
 
         return view('pages.helpdesk.dashboard', $data);

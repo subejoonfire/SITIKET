@@ -93,78 +93,32 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Nama</th>
                                             <th>Department</th>
                                             <th>Status</th>
+                                            <th>Masalah</th>
 
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td>T12</td>
-                                        <td>Jhonlin Group DSP</td>
-                                        <td>Menunggu Validasi</td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <!-- Link untuk mengubah status -->
-                                                <a href="{{ url('helpdesk/detail') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
-                                                    <i class="fa fa-eye me-3"></i> <!-- Ikon mata untuk tombol -->
-                                                    <span>Review</span>
-                                                </a>
-                                            </div>
-                                        </td>
-
-                                        {{-- @foreach ($user as $item)
+                                        @foreach ($collection as $item)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </div>
-                                        </td>
+                                            <td>{{ $item->idticket }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->departmentname }}</td>
+                                            <td>Menunggu Validasi</td>
+                                            <td>{{ $item->trouble }}</td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <a href="{{ url('helpdesk/detail') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                        <i class="fa fa-eye me-3"></i> <!-- Ikon mata untuk tombol -->
+                                                        <span>Review</span>
+                                                    </a>
+                                                </div>
+                                            </td>
                                         </tr>
-                                        @endforeach --}}
-                                    </tbody>
-
-                                    <tbody>
-                                        <td>T1</td>
-                                        <td>Jhonlin Group DSP</td>
-                                        <td>Menunggu Validasi</td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <!-- Link untuk mengubah status -->
-                                                <a href="{{ url('helpdesk/detail') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
-                                                    <i class="fa fa-eye me-3"></i> <!-- Ikon mata untuk tombol -->
-                                                    <span>Review</span>
-                                                </a>
-                                            </div>
-                                        </td>
-
-                                        {{-- @foreach ($user as $item)
-                                        <tr>
-                                            <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
