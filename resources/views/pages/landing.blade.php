@@ -40,17 +40,17 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="templates/img/home2.jpg" class="img-fluid" alt="Image">
+                <img src="templates/img/home2.jpg" class="img-fluid" alt="Gambar">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
-                        <h1 class="display-2 text-capitalize text-white mb-4">Smart Solutions</h1>
-                        <p class="mb-5 fs-5">With our smart solutions approach, we not only resolve existing issues but also identify and prevent potential problems in the future, ensuring your systems remain optimized at all times.</p>
+                        <h1 class="display-2 text-capitalize text-white mb-4">Solusi Pintar</h1>
+                        <p class="mb-5 fs-5">Dengan pendekatan solusi pintar kami, kami tidak hanya menyelesaikan masalah yang ada, tetapi juga mengidentifikasi dan mencegah potensi masalah di masa depan, memastikan sistem Anda tetap optimal setiap saat.</p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a>
+                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Laporkan Bug</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
             <span class="carousel-control-prev-icon btn bg-primary" aria-hidden="false"></span>
