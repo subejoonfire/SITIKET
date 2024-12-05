@@ -52,20 +52,8 @@
                             <form method="POST" action="{{ url('user/action/store') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="iddepartment">Departemen</label>
-                                    <select class="form-control" id="iddepartment" name="iddepartment">
-                                        <option selected disabled hidden>Pilih Departemen</option>
-                                        @foreach ($collection as $department)
-                                        <option value="{{ $department->id }}" {{ old('iddepartment') == $department->id ? 'selected' : '' }}>{{ $department->departmentname }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('iddepartment')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="category_name">Trouble</label>
-                                    <textarea type="text" name="trouble" class="form-control" id="category_name" placeholder="Enter Category Name" cols="30" rows="10"></textarea>
+                                    <label for="category_name">Permintaan</label>
+                                    <textarea type="text" name="trouble" class="form-control" id="category_name" placeholder="Masukan Permintaan" cols="30" rows="10"></textarea>
                                     @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
                                 <div class="card-action">
