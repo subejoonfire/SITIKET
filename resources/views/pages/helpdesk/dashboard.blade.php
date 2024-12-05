@@ -21,7 +21,7 @@
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">Incoming Validation</p>
-                                        <h4 class="card-title">12</h4>
+                                        <h4 class="card-title">{{ $incoming }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">Validation History</p>
-                                        <h4 class="card-title">3</h4>
+                                        <h4 class="card-title">{{ $done }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -104,8 +104,8 @@
                                     <tbody>
                                         @foreach ($collection as $item)
                                         <tr>
-                                            <td>{{ $item->idticket }}</td>
-                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->tickets_helpdesk->first()->idticket }}</td>
+                                            <td>{{ $item->tickets_helpdesk->first()->name }}</td>
                                             <td>{{ $item->iddepartment ? $item->departmentname : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->trouble }}</td>

@@ -87,7 +87,7 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->iddepartment }}</td>
+                                            <td>{{ $item->iddepartment ? $item->iddepartment : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->trouble }}</td>
                                             <td>
