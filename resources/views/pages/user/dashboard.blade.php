@@ -87,12 +87,12 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $item->idticket }}</td>
-                                            <td>{{ $item->tickets->iddepartment ? $item->tickets->departments->departmentname : 'Menunggu' }}</td>
-                                            <td>{{ $item->tickets->status }}</td>
-                                            <td>{{ $item->tickets->trouble }}</td>
+                                            <td>{{ $item->tickets && $item->tickets->iddepartment ? $item->tickets->departments->departmentname : 'Menunggu' }}</td>
+                                            <td>{{ $item->tickets->status ?? 'null' }}</td>
+                                            <td>{{ $item->tickets->trouble ?? 'null' }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('user/action/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <a href="{{ url('user/action/delete/'. $item->idticket) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </div>
