@@ -10,6 +10,11 @@ use Illuminate\Http\RedirectResponse;
 
 class DRoutesController extends Controller
 {
+    public $ticket;
+    public function __construct()
+    {
+        $this->ticket = new Ticket();
+    }
     public function dashboard()
     {
 
@@ -24,7 +29,7 @@ class DRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | TIKET',
-            'collection' => Ticket::all(),
+            'collection' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->join('users', 'users.id', '=', 'user_tickets.iduser')->get()
         ];
         return view('pages.department.ticket.ticket', $data);
     }
