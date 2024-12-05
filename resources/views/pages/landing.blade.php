@@ -77,8 +77,8 @@
                 </div>
             </div>
             <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(templates/img/about-img-1.png);">
-                <h5 class="section-about-title pe-3">About Us</h5>
-                <h1 class="mb-4">Welcome to <span class="text-primary">SI-TIKET</span></h1>
+                <h5 class="section-about-title pe-3">Tentang Kami</h5>
+                <h1 class="mb-4">Selamat Datang Di <span class="text-primary">SI-TIKET</span></h1>
                 <p class="mb-4">Ingin meningkatkan bisnis Anda dan menyelesaikan lebih banyak hal? Kami siap membantu! Tim kami dapat menyelesaikan semua masalah teknis Anda, besar maupun kecil. Mulai dari komputer yang rusak hingga jaringan yang lambat, kami pastikan bisnis Anda berjalan lancar sehingga Anda bisa fokus pada hal-hal yang benar-benar penting.</p>
                 <p class="mb-4">kami menjaga akses pengguna dengan aman dan terkendali, melindungi sistem serta data Anda. Dengan pendekatan yang cepat dan cerdas, kami siap memberikan solusi terbaik untuk setiap tantangan teknis yang Anda hadapi, memastikan bisnis Anda beroperasi tanpa gangguan.</p>
             </div>
@@ -91,8 +91,8 @@
 <div class="container-fluid bg-light service py-5" id="services-section">
     <div class="container py-5">
         <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-            <h5 class="section-title px-3">Services</h5>
-            <h1 class="mb-0">Our Services</h1>
+            <h5 class="section-title px-3">Layanan</h5>
+            <h1 class="mb-0">Pelayanan Kami</h1>
         </div>
         <div class="row g-4">
             <div class="col-lg-6">
@@ -101,7 +101,7 @@
                         <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
                             <div class="service-content text-end">
                                 <h5 class="mb-4">Hardware</h5>
-                                <p class="mb-0">Installation, maintenance, and upkeep of hardware to ensure your systems function optimally.</p>
+                                <p class="mb-0">Instalasi, pemeliharaan, dan pemeliharaan perangkat keras untuk memastikan sistem Anda berfungsi secara optimal.</p>
                             </div>
                             <div class="service-icon p-4">
                                 <i class="fa fa-desktop fa-4x text-primary"></i>
@@ -112,7 +112,7 @@
                         <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
                             <div class="service-content text-end">
                                 <h5 class="mb-4">Networking</h5>
-                                <p class="mb-0">Reliable networking solutions to enhance your company's connectivity and data access speed.</p>
+                                <p class="mb-0">Solusi jaringan yang andal untuk meningkatkan konektivitas dan kecepatan akses data perusahaan Anda.</p>
                             </div>
                             <div class="service-icon p-4">
                                 <i class="fa fa-signal fa-4x text-primary"></i>
@@ -130,7 +130,7 @@
                             </div>
                             <div class="service-content">
                                 <h5 class="mb-4">User Access</h5>
-                                <p class="mb-0">Secure user access management to protect sensitive data and ensure appropriate access for each user.</p>
+                                <p class="mb-0">Manajemen akses pengguna yang aman untuk melindungi data sensitif dan memastikan akses yang sesuai untuk setiap pengguna.</p>
                             </div>
                         </div>
                     </div>
@@ -141,7 +141,7 @@
                             </div>
                             <div class="service-content">
                                 <h5 class="mb-4">SAP</h5>
-                                <p class="mb-0">SAP implementation and support to help your business operate more efficiently and in an integrated manner.</p>
+                                <p class="mb-0">Implementasi dan dukungan SAP untuk membantu bisnis Anda beroperasi lebih efisien dan terintegrasi.</p>
                             </div>
                         </div>
                     </div>
