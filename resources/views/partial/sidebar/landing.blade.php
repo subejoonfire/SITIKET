@@ -13,21 +13,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-<<<<<<< HEAD
-                <a href="#beranda-section" class="nav-item nav-link">Home</a>
-                <a href="#about-section" class="nav-item nav-link">About</a>
-                <a href="#services-section" class="nav-item nav-link">Services</a>
-                <a href="#contact-section" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="#contact-section" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Submit A Bug Report</a>
-=======
                 <a href="#beranda-section" class="nav-item nav-link">Halaman Utama</a>
                 <a href="#about-section" class="nav-item nav-link">Tentang Kami</a>
                 <a href="#services-section" class="nav-item nav-link">Layanan</a>
                 </div>
                 
             <a href="/login" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Login</a>
->>>>>>> ba4040444660827fe941a15a3d3e2afaaeda7bf6
         </div>        
     </nav>
     
