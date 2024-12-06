@@ -18,7 +18,7 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="loginTemplate/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Garamond&display=swap" rel="stylesheet">
     <title>Login | Page</title>
     <style>
         .half {
@@ -36,34 +36,13 @@
             justify-content: center;
             padding: 20px;
         }
-         .blue-section img.logo {
-            max-width: 30%;
-            margin-top: 20%; 
-            margin-bottom: 30px;
-        }
-        .blue-section img.illustration {
-            max-width: 300px;
-            margin-top: 20px;
-            margin-bottom: 100%;
-        }
-        .blue-section img {
-            max-width: 200px;
-            margin-bottom: 30%;
-            max-height: 103%;
-            
-        }
-
-        .blue-section .illustration {
-            max-width: 250px;
-            margin-top: 50px;
-
-        }.blue-section img.logo {
+        
+        .blue-section img.logo {
             max-width: 450px;
             margin-bottom: 0%;
-            margin-top: -15%;
+            margin-top: -2%;
             object-fit: contain; 
         }
-
         .blue-section img.illustration {
             max-width: 300px;
             margin-top: auto; 
@@ -82,26 +61,33 @@
             object-fit: contain;
         }
 
-        .blue-section img.illustration {
-            object-fit: contain;
-        }
         .blue-section h3 {
-            font-family: 'Alata',serif;
+        font-family: 'Playfair Display', serif;
+        font-size: 50px;
+        margin-block-end: 10%;
+        margin-top: 10%;
+        line-height: 0.1; /* Mengurangi jarak antar baris */
+        position: relative; 
+        top: -10%; /* Menggeser teks ke atas */
+    }
 
-            font-weight: 20; 
-            font-size: 35px; 
-            margin: 30px 0; 
-            line-height: 0.3;
-        }
+    .blue-section h2 {
+        font-family: 'Times New Roman', serif;
+        font-size: 37px;
+        line-height: 1; /* Mengatur jarak antar baris */
+        position: relative;
+        top: -50px; /* Menggeser teks ke atas */
+    }
     </style>
 </head>
 <body>
     <div class="half">
         <div class="blue-section">
             <img src="loginTemplate/images/SI-TIKET.png" alt="Jhonlin Group Logo" class="logo">
-            <h3>Masuk Untuk Melangkah</h3>
-                    <h3>Lebih Jauh Bersama Kami.</h3>
-            <img src="loginTemplate/images/GCOMPUTER.png" alt="Illustration  "class="illustration">
+            <h3>Selamat Datang.</h3>
+            <h2>Sistem Informasi</h2>
+                    <h2>Pelayanan.</h2>
+            <img src="loginTemplate/images/GCOMPUTER.png" alt="illustration  "class="illustration">
         </div>
         <div class="login-section">
             <div class="container">
@@ -144,7 +130,7 @@
                                 </div>
 
                                 <div class="d-sm-flex mb-5 align-items-center">
-                                    <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
+                                    <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Ingat Saya</span>
                                         <input type="checkbox" checked="checked" />
                                         <div class="control__indicator"></div>
                                     </label>
@@ -152,7 +138,7 @@
                                         <a href="{{ route('register') }}" class="forgot-pass">Belum punya akun? Daftar</a>
                                     </span>
                                 </div>
-                                <input type="submit" value="Submit" class="btn btn-block btn-primary">
+                                <input type="submit" value="Login" class="btn btn-block btn-success">
                             </form>
                         </div>
                     </div>
