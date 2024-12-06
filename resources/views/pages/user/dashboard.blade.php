@@ -86,7 +86,7 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->iddepartment ? $item->department->departmentname : 'Belum ada' }}</td>
+                                            <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Belum ada' }}</td>
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
                                             <td>{{ $item->trouble ?? 'Tidak ada' }}</td>
                                             <td>
