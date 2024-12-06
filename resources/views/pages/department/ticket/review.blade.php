@@ -20,9 +20,6 @@
         pointer-events: none;
     }
 
-   
-
-  
 </style>
 
 <div class="main-panel">
@@ -70,50 +67,70 @@
                                 <!-- Departemen sebagai input text biasa -->
                                 <div class="form-group">
                                     <label for="department">Departemen</label>
-                                    <input type="text" name="iddepartment" class="form-control" id="department" value="IT Support">
+                                    <input type="text" name="iddepartment" class="form-control" id="department" value="{{ $data->departments->departmentname }}">
                                     @error('iddepartment')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" name="username" class="form-control" id="username" value="Jhonlin Bratama">
+                                    <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
                                     @error('username')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
-                            
+
                                     <label for="phone">No Handphone</label>
-                                    <input type="text" name="phone" class="form-control" id="phone" value="081234567890">
+                                    <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
                                     @error('phone')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email" value="jhonlin@example.com">
+                                    <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
                                     @error('email')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
-                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">Problem with login access</textarea>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
                                     @error('keluhan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="tanggal_diajukan">Tanggal Diajukan</label>
-                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="Wednesday, 6 December 2024">
+                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}">
                                     @error('tanggal_diajukan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                @if ($type == 'index')
                                 <div class="card-action">
-                                    <button type="submit" class="btn btn-success">Simpan</button>
-                                    <button type="submit" class="btn btn-danger">Tolak</button>
-                                    <a href="#" class="btn btn-primary">Kembali</a>
+                                    @if ($data->status == 'DIAJUKAN')
+                                    <a href="{{ url('department/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
+                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    @endif
+                                    <a href="{{ url('department/ticket') }}" class="btn btn-primary">Kembali</a>
                                 </div>
+                                @elseif ($type == 'approved')
+                                <div class="card-action">
+                                    <a href="{{ url('department/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
+                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    <a href="{{ url('department/ticket/approved') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @elseif ($type == 'processed')
+                                <div class="card-action">
+                                    <a href="{{ url('department/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
+                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    <a href="{{ url('department/ticket/processed') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @elseif ($type == 'done')
+                                <div class="card-action">
+                                    <a href="{{ url('department/ticket/done') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </form>
