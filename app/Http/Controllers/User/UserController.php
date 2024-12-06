@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\UserTicket;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserController extends Controller
 {
@@ -24,9 +25,12 @@ class UserController extends Controller
 
     public function userDelete($id)
     {
-        $ticket = Ticket::findOrFail($id);
-        $ticket->delete();
-
+        try {
+            $ticket = Ticket::findOrFail($id);
+            $ticket->delete();
+        } catch (ModelNotFoundException $e) {
+            return redirect()->back()->with('error', 'Ticket tidak ditemukan.');
+        }
         return redirect()->to('user')->with('success', 'Ticket berhasil dihapus!');
     }
 }

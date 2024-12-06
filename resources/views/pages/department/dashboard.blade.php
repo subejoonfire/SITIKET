@@ -22,7 +22,7 @@
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">Disetujui</p>
-                                        <h4 class="card-title">12</h4>
+                                        <h4 class="card-title">{{ $approved }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">Proses</p>
-                                        <h4 class="card-title">3</h4>
+                                        <h4 class="card-title">{{ $processed }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">Selesai</p>
-                                        <h4 class="card-title">10</h4>
+                                        <h4 class="card-title">{{ $done }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
                                         <p class="card-category">Ditolak</p>
-                                        <h4 class="card-title">2</h4>
+                                        <h4 class="card-title">{{ $declined }}</h4>
                                     </div>
                                 </div>
                             </div>
