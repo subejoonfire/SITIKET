@@ -20,7 +20,7 @@
                         <p class="mb-5 fs-5">Kami menyediakan solusi cepat untuk memperbaiki masalah teknis, memastikan sistem Anda kembali berjalan lancar tanpa gangguan.
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a>
+                            {{-- <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a> --}}
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         <p class="mb-5 fs-5">Kami hadir dengan solusi cepat untuk mengatasi masalah teknis, agar sistem Anda kembali normal tanpa kendala.
                         </p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a>
+                            {{-- <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a> --}}
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         <h1 class="display-2 text-capitalize text-white mb-4">Solusi Pintar</h1>
                         <p class="mb-5 fs-5">Dengan pendekatan solusi pintar kami, kami tidak hanya menyelesaikan masalah yang ada, tetapi juga mengidentifikasi dan mencegah potensi masalah di masa depan, memastikan sistem Anda tetap optimal setiap saat.</p>
                         <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a>
+                            {{-- <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Submit A Bug Report</a> --}}
                         </div>
                     </div>
                 </div>

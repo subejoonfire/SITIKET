@@ -93,11 +93,9 @@
                                             <td>{{ $item->status }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a href="" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
+                                                    <a href="{{ url('department/review')}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                        <i class="fa fa-eye me-3"></i>
+                                                        <span>Review</span>
                                                     </a>
                                                 </div>
                                             </td>

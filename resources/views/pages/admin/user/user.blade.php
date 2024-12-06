@@ -6,7 +6,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">User</h4>
+                <h4 class="page-title">Pengguna</h4>
             </div>
 
             <div class="row">
@@ -39,7 +39,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">User</h4>
+                                <h4 class="card-title">Pengguna</h4>
                                 <a href="{{ url('admin/user/add') }}" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah

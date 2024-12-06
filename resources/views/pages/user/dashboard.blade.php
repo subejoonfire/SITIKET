@@ -6,7 +6,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Dashboard</h4>
+                <h4 class="page-title">Beranda</h4>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-3">
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
-                                        <p class="card-category">Add Request</p>
+                                        <p class="card-category">Riwayat Pengajuan</p>
                                         <h4 class="card-title">{{ $count }}</h4>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Incoming Validation</h4>
+                                <h4 class="card-title">Riwayat Pengajuan</h4>
                                 <a href="{{ url('user/add') }}" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
@@ -73,7 +73,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>ID Tiket</th>
-                                            <th>Department</th>
+                                            <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
                                         </tr>
