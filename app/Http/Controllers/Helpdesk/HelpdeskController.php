@@ -14,7 +14,7 @@ class HelpdeskController extends Controller
 
         if ($ticket) {
             $ticket->iddepartment = $request->iddepartment;
-            $ticket->status = 'DIPROSES';
+            $ticket->status = 'DIAJUKAN';
             $ticket->save();
 
             return redirect()->to('helpdesk')
