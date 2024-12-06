@@ -28,11 +28,18 @@
     <link rel="stylesheet" href="{{ url('back-end/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('back-end/assets/css/azzara.min.css') }}">
     <link rel="stylesheet" href="{{ url('back-end/assets/css/demo.css') }}">
+<style>
+        .main-header {
+        background-color: #70c55b !important;
+    }
+</style>
+
+    
 </head>
 <body>
     <div class="wrapper">
         <!-- Main Header -->
-        <div class="main-header" data-background-color="blue">
+        <div class="main-header" data-background-color>
             <!-- Logo Header -->
             <div class="logo-header">
                 <a href="/" class="logo">
