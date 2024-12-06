@@ -6,7 +6,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Dashboard</h4>
+                <h4 class="page-title">Beranda</h4>
 
             </div>
             <div class="row">
@@ -92,7 +92,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-head-row">
-                                <div class="card-title">User Statistics</div>
+                                <div class="card-title">Statistik Pengguna</div>
                                 <div class="card-tools">
                                     {{-- <a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
 										<span class="btn-label">
