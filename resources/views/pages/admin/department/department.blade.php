@@ -6,7 +6,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Department</h4>
+                <h4 class="page-title">Departemen</h4>
             </div>
 
             <div class="row">
@@ -39,7 +39,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Department</h4>
+                                <h4 class="card-title">Departemen</h4>
                                 <a href="{{ url('admin/department/add') }}" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
@@ -54,7 +54,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Department</th>
+                                            <th>Departemen</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>

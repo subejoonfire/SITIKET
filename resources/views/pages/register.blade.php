@@ -19,7 +19,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="loginTemplate/css/style.css">
 
-    <title> Register | Page</title>
+    <title> Halaman | Registrasi</title>
 </head>
 <body>
     <div class="d-md-flex half">
@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <div class="form-block mx-auto">
                             <div class="text-center mb-5">
-                                <h3><strong>Register</strong></h3>
+                                <h3><strong>Daftar </strong></h3>
                             </div>
                             <form action="{{ url('register') }}" method="post">
                                 @if ($errors->any())
@@ -72,7 +72,7 @@
                                         <a href="{{ url('login') }}" class="forgot-pass">Sudah punya akun? Login</a>
                                     </span>
                                 </div>
-                                <input type="submit" value="Register" class="btn btn-block btn-primary">
+                                <input type="submit" value="Daftar" class="btn btn-block btn-primary">
                             </form>
                         </div>
                     </div>

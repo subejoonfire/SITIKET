@@ -13,7 +13,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Dashboard</h4>
+                <h4 class="page-title">Beranda</h4>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -45,7 +45,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Add Request</h4>
+                                <h4 class="card-title">Tambah Pengajuan</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -57,8 +57,8 @@
                                     @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
                                 <div class="card-action">
-                                    <button type="submit" class="btn btn-success">Save</button>
-                                    <a href="#" class="btn btn-danger">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                    <a href="#" class="btn btn-danger">Batal</a>
                                 </div>
                             </form>
                         </div>

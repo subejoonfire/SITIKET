@@ -6,7 +6,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title"> Validation History</h4>
+                <h4 class="page-title"> Riwayat Validasi</h4>
             </div>
 
             <div class="row">
@@ -39,7 +39,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Validation</h4>
+                                <h4 class="card-title">Validasi</h4>
                                 {{-- <a href="{{ url('admin.add_depart') }}" class="btn btn-primary btn-round ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
@@ -54,10 +54,10 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Department</th>
+                                            <th>Departemen</th>
                                             <th>Status</th>
                                         
-                                            <th style="width: 10%">Action</th>
+                                            <th style="width: 10%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

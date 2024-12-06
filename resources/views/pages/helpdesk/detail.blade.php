@@ -39,7 +39,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Detail User</h4>
+                <h4 class="page-title">Detail Pengguna</h4>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -72,15 +72,15 @@
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
-                                    <h4 class="card-title">Change Status</h4>
+                                    <h4 class="card-title">Ubah Status</h4>
                                 </div>
                             </div>
                             <div class="card-body">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="department">Departement</label>
+                                    <label for="department">Departemen</label>
                                     <select name="iddepartment" class="form-control" id="department">
-                                        <option value="">Select Department</option>
+                                        <option value="">Pilih Departemen</option>
                                         @foreach ($collection as $department)
                                         <option value="{{ $department->id }}" {{ old('iddepartment') == $department->id ? 'selected' : '' }}>{{ $department->departmentname }}</option>
                                         @endforeach
@@ -124,8 +124,8 @@
                                     @enderror
                                 </div>
                                 <div class="card-action">
-                                    <button type="submit" class="btn btn-success">Save</button>
-                                    <a href="#" class="btn btn-danger">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                    <a href="#" class="btn btn-danger">Batal</a>
                                 </div>
                             </div>
                         </div>

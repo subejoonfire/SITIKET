@@ -13,7 +13,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Edit User</h4>
+                <h4 class="page-title">Ubah Pengguna</h4>
             </div>
 
             <div class="row">
@@ -47,7 +47,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Edit User</h4>
+                                <h4 class="card-title">Ubah Pengguna</h4>
                             </div>
                         </div>
                         <div class="card-body">

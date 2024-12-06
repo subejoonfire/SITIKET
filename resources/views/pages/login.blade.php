@@ -19,7 +19,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="loginTemplate/css/style.css">
 
-    <title>Login | Page</title>
+    <title>Halaman | Login</title>
 </head>
 <body>
     <div class="d-md-flex half">
@@ -66,7 +66,7 @@
                                 </div>
 
                                 <div class="d-sm-flex mb-5 align-items-center">
-                                    <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
+                                    <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Ingat Saya</span>
                                         <input type="checkbox" checked="checked" />
                                         <div class="control__indicator"></div>
                                     </label>
@@ -74,7 +74,7 @@
                                         <a href="{{ route('register') }}" class="forgot-pass">Belum punya akun? Daftar</a>
                                     </span>
                                 </div>
-                                <input type="submit" value="Submit" class="btn btn-block btn-primary">
+                                <input type="submit" value="Masuk" class="btn btn-block btn-primary">
                             </form>
                         </div>
                     </div>

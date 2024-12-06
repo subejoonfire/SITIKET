@@ -13,7 +13,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Edit Department</h4>
+                <h4 class="page-title">Ubah Departemen</h4>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -45,7 +45,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Edit Department</h4>
+                                <h4 class="card-title">Ubah Departemen</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -53,14 +53,14 @@
                                 @csrf
                                 <!-- @method('PUT')  -->
                                 <div class="form-group">
-                                    <label for="category_name">Department Name</label>
+                                    <label for="category_name">Nama Departemen</label>
                                     <input type="text" name="name" class="form-control" id="category_name" placeholder="Enter Category Name" value="{{ $name }}">
                                     @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
 
                                 <div class="card-action">
-                                    <button type="submit" class="btn btn-success">Save</button>
-                                    <a href="{{ url('admin/department') }}" class="btn btn-danger">Cancel</a>
+                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                    <a href="{{ url('admin/department') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </form>
                         </div>
