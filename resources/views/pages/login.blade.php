@@ -19,7 +19,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="loginTemplate/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Garamond&display=swap" rel="stylesheet">
-    <title>Login | Page</title>
+    <title>Halaman | Login</title>
     <style>
         .half {
             display: flex;
@@ -138,7 +138,7 @@
                                         <a href="{{ route('register') }}" class="forgot-pass">Belum punya akun? Daftar</a>
                                     </span>
                                 </div>
-                                <input type="submit" value="Submit" class="btn btn-block btn-success">
+                                <input type="submit" value="Masuk" class="btn btn-block btn-success">
                             </form>
                         </div>
                     </div>
