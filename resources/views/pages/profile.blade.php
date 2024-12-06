@@ -78,10 +78,36 @@ default => 'layout.default',
                         <div class="card-header" style="background-image: url('../assets/img/blogpost.jpg')">
                             <div class="profile-picture">
                                 <div class="avatar avatar-xl">
-                                    <img src="{{  asset('back-end/assets/img/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
+                                    <img id="profile-img" 
+                                         src="{{ asset('back-end/assets/img/profile.jpg') }}" 
+                                         alt="..." 
+                                         class="avatar-img rounded-circle" 
+                                         style="cursor: pointer;">
                                 </div>
                             </div>
+                            <input type="file" id="file-input" accept="image/jpeg,image/png,image/jpg" style="display: none;">
                         </div>
+                        
+                        <script>
+                            const profileImg = document.getElementById('profile-img');
+                            const fileInput = document.getElementById('file-input');
+
+                            profileImg.addEventListener('click', () => {
+                                fileInput.click(); 
+                            });
+                        
+                            fileInput.addEventListener('change', (event) => {
+                                const file = event.target.files[0];
+                                if (file) {
+                                    const reader = new FileReader(); 
+                                    reader.onload = (e) => {
+                                        profileImg.src = e.target.result; 
+                                    };
+                                    reader.readAsDataURL(file);
+                                }
+                            });
+                        </script>
+                        
                         <div class="card-body">
                             <div class="user-profile text-center">
                                 <div class="name">Rizky</div>
