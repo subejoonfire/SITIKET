@@ -85,33 +85,17 @@ default => 'layout.default',
                                          style="cursor: pointer;">
                                 </div>
                             </div>
-                            <input type="file" id="file-input" accept="image/jpeg,image/png,image/jpg" style="display: none;">
                         </div>
                         
-                        <script>
-                            const profileImg = document.getElementById('profile-img');
-                            const fileInput = document.getElementById('file-input');
-
-                            profileImg.addEventListener('click', () => {
-                                fileInput.click(); 
-                            });
-                        
-                            fileInput.addEventListener('change', (event) => {
-                                const file = event.target.files[0];
-                                if (file) {
-                                    const reader = new FileReader(); 
-                                    reader.onload = (e) => {
-                                        profileImg.src = e.target.result; 
-                                    };
-                                    reader.readAsDataURL(file);
-                                }
-                            });
-                        </script>
+                     
                         
                         <div class="card-body">
                             <div class="user-profile text-center">
                                 <div class="name">Rizky</div>
 
+                            </div>
+                            <div class="view-profile">
+                                <a href="#" class="btn btn-info btn-block">Ganti Profil</a>
                             </div>
                         </div>
 
