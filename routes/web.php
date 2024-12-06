@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::post('/update/{id}', [AdminController::class, 'userUpdate'])->name('update');
             });
         });
-        Route::group(['prefix' => 'department', 'as' => 'department.', 'middleware' => department::class], function () {
+        Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
             Route::get('/', [ARoutesController::class, 'depart'])->name('/');
             Route::get('/add', [ARoutesController::class, 'adddepart'])->name('add');
             Route::get('/edit/{id}', [ARoutesController::class, 'editdepart'])->name('edit');
