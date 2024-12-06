@@ -86,9 +86,9 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>SAP</td>
-                                            <td>{{ $item->phone }}</td>
+                                            <td>{{ $item->users->name }}</td>
+                                            <td>{{ $item->departments->departmentname }}</td>
+                                            <td>{{ $item->users->phone }}</td>
                                             <td>{{ $item->trouble }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>

@@ -68,7 +68,7 @@
                         </ul>
                     </div>
                     @endif
-                    <form method="POST" action="{{ url('helpdesk/action/update/'. $data->tickets->id) }}">
+                    <form method="POST" action="{{ url('helpdesk/action/update/'. $data->id) }}">
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
@@ -82,10 +82,12 @@
                                     <select name="iddepartment" class="form-control" id="department">
                                         <option value="">Select Department</option>
                                         @foreach ($collection as $department)
-                                        <option value="{{ $department->id }}" {{ old('iddepartment') == $department->id ? 'selected' : '' }}>{{ $department->departmentname }}</option>
+                                        <option value="{{ $department->id }}" {{ old('iddepartment', $data->iddepartment ?? '') == $department->id ? 'selected' : '' }}>
+                                            {{ $department->departmentname }}
+                                        </option>
                                         @endforeach
                                     </select>
-                                    @error('name')
+                                    @error('iddepartment')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -111,14 +113,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
-                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->tickets->trouble }}</textarea>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
                                     @error('keluhan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="tanggal_diajukan">Tanggal Diajukan</label>
-                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ \Carbon\Carbon::parse($data->tickets->created_at)->isoFormat('dddd, D MMMM YYYY') }}">
+                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ \Carbon\Carbon::parse($data->created_at)->isoFormat('dddd, D MMMM YYYY') }}">
                                     @error('tanggal_diajukan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
