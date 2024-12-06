@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Department;
 
+use App\Models\User;
 use App\Models\Ticket;
+use App\Models\UserTicket;
 use Illuminate\Http\Request;
+use App\Models\UserDepartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -29,7 +32,12 @@ class DRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | TIKET',
-            'collection' => Ticket::join('user_tickets', 'user_tickets.idticket', '=', 'tickets.id')->join('users', 'users.id', '=', 'user_tickets.iduser')->whereNotNull('tickets.iddepartment')->get()
+            'collection' => Ticket::with(['users', 'departments'])
+                ->whereHas('departments', function ($query) {
+                    $query->whereNotNull('iddepartment')
+                        ->where('iddepartment', auth()->user()->iddepartment);
+                })
+                ->get()
         ];
         return view('pages.department.ticket.ticket', $data);
     }
