@@ -20,14 +20,14 @@
                     </a>
                     <div class="{{ request()->routeIs('department/utama') || request()->routeIs('department.setuju') || request()->routeIs('department.proses') || request()->routeIs('department.selesai') || request()->routeIs('department.tolak') ? 'show' : '' }}" id="base">
                         <ul class="nav nav-collapse">
-                            <li class="{{ request()->routeIs('department/setuju') ? 'active' : '' }}">
-                                <a href="{{ url('department/setuju') }}">
-                                    <span class="sub-item">Disetujui</span>
-                                </a>
-                            </li>
                             <li class="{{ request()->routeIs('department/proses') ? 'active' : '' }}">
                                 <a href="{{ url('department/proses') }}">
                                     <span class="sub-item">Proses</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('department/setuju') ? 'active' : '' }}">
+                                <a href="{{ url('department/setuju') }}">
+                                    <span class="sub-item">Disetujui</span>
                                 </a>
                             </li>
                             <li class="{{ request()->routeIs('department/selesai') ? 'active' : '' }}">

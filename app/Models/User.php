@@ -3,9 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\UserDepartment;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -18,6 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'iddepartment',
         'level',
         'email',
         'password',
@@ -45,15 +48,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function departments()
+    public function departments(): BelongsTo
     {
-        return $this->belongsToMany(Department::class, 'userdepartment', 'iduser', 'iddepartment')
-            ->withPivot('datetime');
-    }
-
-    public function tickets()
-    {
-        return $this->belongsToMany(Ticket::class, 'userticket', 'iduser', 'idticket')
-            ->withPivot('datetime');
+        return $this->belongsTo(Department::class, 'iddepartment');
     }
 }

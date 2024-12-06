@@ -76,7 +76,6 @@
                                             <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
-                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,10 +85,10 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $item->idticket }}</td>
-                                            <td>{{ $item->tickets && $item->tickets->iddepartment ? $item->tickets->departments->departmentname : 'Menunggu' }}</td>
-                                            <td>{{ $item->tickets->status ?? 'null' }}</td>
-                                            <td>{{ $item->tickets->trouble ?? 'null' }}</td>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->iddepartment ? $item->department->departmentname : 'Belum ada' }}</td>
+                                            <td>{{ $item->status ?? 'Tidak ada' }}</td>
+                                            <td>{{ $item->trouble ?? 'Tidak ada' }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ url('user/action/delete/'. $item->idticket) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">

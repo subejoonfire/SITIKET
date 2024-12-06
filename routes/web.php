@@ -1,9 +1,13 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Middleware\user;
 
+use App\Http\Middleware\admin;
+use App\Http\Middleware\logged;
+use App\Http\Middleware\helpdesk;
+use App\Http\Middleware\department;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\authmiddleware;
 use App\Http\Controllers\RoutesController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
@@ -12,14 +16,15 @@ use App\Http\Controllers\Admin\ARoutesController;
 use App\Http\Controllers\Helpdesk\HRoutesController;
 use App\Http\Controllers\Helpdesk\HelpdeskController;
 use App\Http\Controllers\Department\DRoutesController;
-use Illuminate\Session\Middleware\AuthenticateSession;
 
 Route::get('/', [RoutesController::class, 'landing']);
-Route::get('/login', [RoutesController::class, 'index'])->name('login');
-Route::get('/register', [RoutesController::class, 'register'])->name('register');
 
-Route::post('/login', [Controller::class, 'login'])->name('login');
-Route::post('/register', [Controller::class, 'registerr'])->name('register');
+Route::group(['middleware' => logged::class], function () {
+    Route::get('/login', [RoutesController::class, 'index'])->name('login');
+    Route::get('/register', [RoutesController::class, 'register'])->name('register');
+    Route::post('/login', [Controller::class, 'login'])->name('login');
+    Route::post('/register', [Controller::class, 'registerr'])->name('register');
+});
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
@@ -31,7 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('selesai', [DRoutesController::class, 'selesai'])->name('selesai');
         Route::get('/review', [DRoutesController::class, 'review'])->name('review');
     });
-    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => admin::class], function () {
         Route::get('/', [ARoutesController::class, 'index'])->name('/');
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
 
@@ -56,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
             });
         });
     });
-    Route::group(['prefix' => 'helpdesk', 'as' => 'helpdesk.'], function () {
+    Route::group(['prefix' => 'helpdesk', 'as' => 'helpdesk.', 'middleware' => helpdesk::class], function () {
         Route::get('/', [HRoutesController::class, 'index'])->name('/');
         Route::get('/validation', [HRoutesController::class, 'validation'])->name('validation');
         Route::get('/detail/{id}', [HRoutesController::class, 'detail'])->name('detail');
@@ -66,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/update/{id}', [HelpdeskController::class, 'helpdeskUpdate'])->name('update');
         });
     });
-    Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => user::class], function () {
         Route::get('/', [URoutesController::class, 'index'])->name('/');
         Route::get('/add', [URoutesController::class, 'add'])->name('add');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {

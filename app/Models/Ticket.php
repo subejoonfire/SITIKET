@@ -10,9 +10,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Ticket extends Model
 {
     use HasFactory;
-    protected $fillable = ['iddepartment', 'status', 'trouble'];
+    protected $fillable = ['iddepartment', 'iduser', 'status', 'trouble'];
 
-    public function departments()
+    public function users(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'iduser');
+    }
+    public function departments(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'iddepartment');
     }
