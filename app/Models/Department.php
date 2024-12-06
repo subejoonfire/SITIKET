@@ -17,9 +17,4 @@ class Department extends Model
         return $this->belongsToMany(User::class, 'userdepartment', 'iddepartment', 'iduser')
             ->withPivot('datetime');
     }
-
-    public function tickets()
-    {
-        return $this->hasMany(Ticket::class);
-    }
 }

@@ -19,65 +19,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="loginTemplate/css/style.css">
 
-    <title> Register | Page</title><style>
-        .half {
-            display: flex;
-            height: 100vh;
-        }
-        .blue-section {
-            background: #70c55b;
-            background-size: 40px 40px;
-            color: rgb(255, 255, 255);
-            flex: 0.4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .blue-section img.logo {
-            max-width: 450px;
-            margin-bottom: 0%;
-            margin-top: -2%;
-            object-fit: contain; 
-        }
-        .blue-section img.illustration {
-            max-width: 300px;
-            margin-top: auto; 
-            margin-bottom: 40px; 
-            object-fit: flex; 
-            align-self: flex; 
-        }
-
-        .login-section {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .blue-section img.logo {
-            object-fit: contain;
-        }
-
-        .blue-section h3 {
-        font-family: 'Playfair Display', serif;
-        font-size: 50px;
-        margin-block-end: 10%;
-        margin-top: 10%;
-        line-height: 0.1; /* Mengurangi jarak antar baris */
-        position: relative; 
-        top: -10%; /* Menggeser teks ke atas */
-    }
-
-    .blue-section h2 {
-        font-family: 'Times New Roman', serif;
-        font-size: 37px;
-        line-height: 1; /* Mengatur jarak antar baris */
-        position: relative;
-        top: -50px; /* Menggeser teks ke atas */
-    }
-    </style>
+    <title> Register | Page</title>
 </head>
 <body>
     <body>
@@ -94,7 +36,7 @@
                     <div class="col-md-12">
                         <div class="form-block mx-auto">
                             <div class="text-center mb-5">
-                                <h3><strong>Register</strong></h3>
+                                <h3><strong>Daftar </strong></h3>
                             </div>
                             <form action="{{ url('register') }}" method="post">
                                 @if ($errors->any())
@@ -136,7 +78,7 @@
                                         <a href="{{ url('login') }}" class="forgot-pass">Sudah punya akun? Login</a>
                                     </span>
                                 </div>
-                                <input type="submit" value="Register" class="btn btn-block btn-success">
+                                <input type="submit" value="Register" class="btn btn-block btn-primary">
                             </form>
                         </div>
                     </div>

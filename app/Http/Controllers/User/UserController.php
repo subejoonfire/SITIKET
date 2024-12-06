@@ -30,6 +30,8 @@ class UserController extends Controller
     {
         $ticket = Ticket::findOrFail($id);
         $ticket->delete();
+        $userticket = UserTicket::where('idticket', $id);
+        $userticket->delete();
 
         return redirect()->to('user')->with('success', 'Ticket berhasil dihapus!');
     }
@@ -42,6 +44,7 @@ class UserController extends Controller
         ]);
 
         $ticket = Ticket::findOrFail($id);
+        $ticket = UserTicket::where('idticket', $id);
         $ticket->update([
             'iddepartment' => $request->input('iddepartment'),
             'trouble' => $request->input('trouble'),

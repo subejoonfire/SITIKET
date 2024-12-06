@@ -18,67 +18,8 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="loginTemplate/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Garamond&display=swap" rel="stylesheet">
+
     <title>Login | Page</title>
-    <style>
-        .half {
-            display: flex;
-            height: 100vh;
-        }
-        .blue-section {
-            background: #70c55b;
-            background-size: 40px 40px;
-            color: rgb(255, 255, 255);
-            flex: 0.4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .blue-section img.logo {
-            max-width: 450px;
-            margin-bottom: 0%;
-            margin-top: -2%;
-            object-fit: contain; 
-        }
-        .blue-section img.illustration {
-            max-width: 300px;
-            margin-top: auto; 
-            margin-bottom: 40px; 
-            object-fit: flex; 
-            align-self: flex; 
-        }
-
-        .login-section {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .blue-section img.logo {
-            object-fit: contain;
-        }
-
-        .blue-section h3 {
-        font-family: 'Playfair Display', serif;
-        font-size: 50px;
-        margin-block-end: 10%;
-        margin-top: 10%;
-        line-height: 0.1; /* Mengurangi jarak antar baris */
-        position: relative; 
-        top: -10%; /* Menggeser teks ke atas */
-    }
-
-    .blue-section h2 {
-        font-family: 'Times New Roman', serif;
-        font-size: 37px;
-        line-height: 1; /* Mengatur jarak antar baris */
-        position: relative;
-        top: -50px; /* Menggeser teks ke atas */
-    }
-    </style>
 </head>
 <body>
     <div class="half">
@@ -138,7 +79,7 @@
                                         <a href="{{ route('register') }}" class="forgot-pass">Belum punya akun? Daftar</a>
                                     </span>
                                 </div>
-                                <input type="submit" value="Login" class="btn btn-block btn-success">
+                                <input type="submit" value="Submit" class="btn btn-block btn-primary">
                             </form>
                         </div>
                     </div>

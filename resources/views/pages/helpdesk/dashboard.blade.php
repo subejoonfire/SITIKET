@@ -6,7 +6,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Dashboard</h4>
+                <h4 class="page-title">Beranda</h4>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-3">
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
-                                        <p class="card-category">Incoming Validation</p>
+                                        <p class="card-category">Pengajuan Masuk</p>
                                         <h4 class="card-title">{{ $incoming }}</h4>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
-                                        <p class="card-category">Validation History</p>
+                                        <p class="card-category">Riwayat Validasi</p>
                                         <h4 class="card-title">{{ $done }}</h4>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Incoming Validation</h4>
+                                <h4 class="card-title">Permintaan Validasi</h4>
                                 {{-- <a href="{{ url('admin.add_depart') }}" class="btn btn-primary btn-round ml-auto">
                                 <i class="fa fa-plus"></i>
                                 Tambah
@@ -94,21 +94,21 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
-                                            <th>Department</th>
+                                            <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
 
-                                            <th style="width: 10%">Action</th>
+                                            <th style="width: 10%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($collection as $item)
                                         <tr>
-                                            <td>{{ $item->tickets_helpdesk->first()->idticket }}</td>
-                                            <td>{{ $item->tickets_helpdesk->first()->name }}</td>
-                                            <td>{{ $item->iddepartment ? $item->departmentname : 'Menunggu' }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>{{ $item->trouble }}</td>
+                                            <td>{{ $item->idticket }}</td>
+                                            <td>{{ $item->users->name }}</td>
+                                            <td>{{ $item->tickets->iddepartment ? $item->tickets->departments->departmentname : 'Menunggu' }}</td>
+                                            <td>{{ $item->tickets->status }}</td>
+                                            <td>{{ $item->tickets->trouble }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ url('helpdesk/detail/'. $item->idticket) }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">

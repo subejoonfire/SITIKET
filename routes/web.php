@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('proses', [DRoutesController::class, 'proses'])->name('proses');
         Route::get('tolak', [DRoutesController::class, 'tolak'])->name('tolak');
         Route::get('selesai', [DRoutesController::class, 'selesai'])->name('selesai');
+        Route::get('/review', [DRoutesController::class, 'review'])->name('review');
     });
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', [ARoutesController::class, 'index'])->name('/');

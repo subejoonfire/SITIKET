@@ -6,7 +6,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Dashboard</h4>
+                <h4 class="page-title">Beranda</h4>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-3">
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
-                                        <p class="card-category">User</p>
+                                        <p class="card-category">Pengguna</p>
                                         <h4 class="card-title">{{ $userCount }}</h4>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
-                                        <p class="card-category">Department</p>
+                                        <p class="card-category">Departemen</p>
                                         <h4 class="card-title">{{ $departmentCount }}</h4>
                                     </div>
                                 </div>
