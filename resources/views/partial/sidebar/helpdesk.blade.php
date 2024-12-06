@@ -7,13 +7,13 @@
                 <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                     <a href="{{ url('helpdesk') }}">
                         <i class="fas fa-home"></i>
-                        <p>Dashboard</p>
+                        <p>Beranda</p>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('validation') ? 'active' : '' }}">
                     <a href="{{ url('helpdesk/validation') }}">
                         <i class="fas fa-hourglass-half"></i>
-                        <p>Validation History</p>
+                        <p>Riwayat Validasi</p>
                     </a>
                 </li>
             </ul>

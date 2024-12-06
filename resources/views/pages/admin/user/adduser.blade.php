@@ -17,7 +17,7 @@
                         @csrf
                         <div class="card">
                             <div class="card-header">
-                                <div class="card-title">Form Tambah User</div>
+                                <div class="card-title">Form Tambah Pengguna</div>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">

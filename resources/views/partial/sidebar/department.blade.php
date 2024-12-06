@@ -9,7 +9,7 @@
                 <li class="nav-item {{ request()->routeIs('department/dashboard') ? 'active' : '' }}">
                     <a href="{{ url('department') }}">
                         <i class="fas fa-home"></i>
-                        <p>Dashboard</p>
+                        <p>Beranda</p>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('department/utama') || request()->routeIs('department.setuju') || request()->routeIs('department.proses') || request()->routeIs('department.selesai') || request()->routeIs('department.tolak') ? 'active' : '' }}">
