@@ -83,11 +83,15 @@
     <body>
         <div class="half">
             <div class="blue-section">
+            <a href="{{ url('/') }}">
                 <img src="loginTemplate/images/SI-TIKET.png" alt="Jhonlin Group Logo" class="logo">
+            </a>
                 <h3>Selamat Datang.</h3>
                 <h2>Sistem Informasi</h2>
                         <h2>Pelayanan.</h2>
+            <a href="{{ url('/') }}">
                 <img src="loginTemplate/images/GCOMPUTER.png" alt="Illustration  "class="illustration">
+            </a>
             </div>
             <div class="container">
                 <div class="row align-items-center justify-content-center">
