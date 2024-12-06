@@ -390,7 +390,7 @@ body {
   max-width: 400px; }
 
 .sidebar .nav > .nav-item.active > a:before, .sidebar .nav > .nav-item.active:hover > a:before, .sidebar .nav > .nav-item a[data-toggle=collapse][aria-expanded=true]:before {
-  background: #1d7af3;
+  background: #346ab0;
   opacity: 1 !important;
   position: absolute;
   z-index: 1;

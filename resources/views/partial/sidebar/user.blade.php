@@ -7,7 +7,7 @@
                 <li class="nav-item {{ request()->routeIs('user/dashboard') ? 'active' : '' }}">
                     <a href="{{ url('user') }}">
                         <i class="fas fa-home"></i>
-                        <p>Dashboard</p>
+                        <p>Beranda</p>
                     </a>
                 </li>
 
