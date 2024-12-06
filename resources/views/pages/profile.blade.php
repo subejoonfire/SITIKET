@@ -21,7 +21,7 @@ default => 'layout.default',
                     <div class="card card-with-nav">
                         <div class="card-header">
                             <div class="row row-nav-line">
-                                <ul class="nav nav-tabs nav-line nav-color-secondary" role="tablist">
+                                <ul class="nav nav-tabs nav-line nav-color-info" role="tablist">
                                     <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#home" role="tab" aria-selected="true">Profile</a> </li>
                                 </ul>
                             </div>
