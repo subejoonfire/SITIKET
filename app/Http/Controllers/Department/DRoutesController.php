@@ -83,4 +83,14 @@ class DRoutesController extends Controller
 
         return view('pages.department.profile', $data);
     }
+
+    public function review()
+    {
+
+        $data = [
+            'title' => 'SITIKET | Review',
+        ];
+
+        return view('pages.department.ticket.review', $data);
+    }
 }
