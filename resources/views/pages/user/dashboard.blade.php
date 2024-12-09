@@ -133,7 +133,7 @@
                                                     </a>
 
                                                     <!-- Notification Icon -->
-                                                    <a href="#" class="notification-link" data-toggle="tooltip" title="Notification">
+                                                    <a href="{{ url('user/review')}}" class="notification-link" data-toggle="tooltip" title="Notification">
                                                         <i class="fa fa-bell"></i>
                                                         <span class="notification-count">5</span> <!-- Example of notification number -->
                                                     </a>
