@@ -32,6 +32,12 @@
         .main-header {
         background-color: #70c55b !important;
     }
+        .btn-custom {
+        background-color: #70c55b;
+        color: white;
+        border-radius: 25px;
+    }
+
 </style>
 
     

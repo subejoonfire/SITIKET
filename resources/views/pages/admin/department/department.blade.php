@@ -40,7 +40,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Departemen</h4>
-                                <a href="{{ url('admin/department/add') }}" class="btn btn-primary btn-round ml-auto">
+                                <a href="{{ url('admin/department/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
                                 </a>
