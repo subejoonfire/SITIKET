@@ -81,30 +81,35 @@ default => 'layout.default',
                                     <img id="profile-img" 
                                          src="{{ asset('back-end/assets/img/profile.jpg') }}" 
                                          alt="..." 
-                                         class="avatar-img rounded-circle" 
-                                         style="cursor: pointer;">
+                                         class="avatar-img rounded-circle">
                                 </div>
                             </div>
                         </div>
-                        
-                     
-                        
                         <div class="card-body">
                             <div class="user-profile text-center">
                                 <div class="name">Rizky</div>
-
                             </div>
                             <div class="view-profile">
-                                <a href="#" class="btn btn-info btn-block">Ganti Profil</a>
+                                <button class="btn btn-info btn-block" onclick="document.getElementById('foto').click();">Ganti Profil</button>
                             </div>
+                            <input type="file" id="foto" style="display: none;" accept="image/*" onchange="previewImage(event)">
                         </div>
-
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
 
-
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('profile-img');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 @endsection
