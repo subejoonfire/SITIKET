@@ -3,6 +3,27 @@
 @section('content')
 <style>
 
+/* Menambahkan styling untuk badge notifikasi */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #f44336;  /* Warna merah untuk notifikasi */
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Membuat tombol review relatif agar badge notifikasi bisa ditempatkan di pojok kanan atas */
+.form-button-action a {
+    position: relative;
+}
 
 
 </style>
@@ -99,23 +120,20 @@
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Belum ada' }}</td>
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($item->trouble ?? 'Tidak ada', 70) }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($item->trouble ?? 'Tidak ada', 60) }}</td>
                                             <td>
-                                                <div class="form-button-action"> 
-                                                    <!-- Button Delete -->
-                                                    <div class="form-button-action">
-                                                        <a href="{{ url('user/action/delete/'. $item->idticket) }}" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-toggle="tooltip" title="Remove">
-                                                            <i class="fa fa-trash me-3"></i>
-                                                            <span>Delete</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="form-button-action">
-                                                        <a href="{{ url('user/review') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Review">
-                                                            <i class="fa fa-eye me-3"></i>
-                                                            <span>Review</span>
-                                                        </a>
-                                                    </div>                                                    
+                                                <div class="form-button-action">
+                                                    <a href="{{ url('user/action/delete/'. $item->idticket) }}" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-toggle="tooltip" title="Remove">
+                                                        <span>Delete</span>
+                                                    </a>
                                                 </div>
+                                                <div class="form-button-action">
+                                                    <a href="{{ url('user/review') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Review">
+                                                        <span>Review</span>
+                                                        <!-- Notifikasi dengan angka -->
+                                                        <span class="notification-badge">5</span>
+                                                    </a>
+                                                </div>                                                
                                             </td>
                                         </tr>
                                         @endforeach
