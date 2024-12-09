@@ -28,13 +28,14 @@
     <link rel="stylesheet" href="{{ url('back-end/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('back-end/assets/css/azzara.min.css') }}">
     <link rel="stylesheet" href="{{ url('back-end/assets/css/demo.css') }}">
-<style>
+    <style>
         .main-header {
-        background-color: #70c55b !important;
-    }
-</style>
+            background-color: #70c55b !important;
+        }
 
-    
+    </style>
+
+
 </head>
 <body>
     <div class="wrapper">
@@ -73,13 +74,13 @@
                         <li class="nav-item dropdown hidden-caret">
                             <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <div class="avatar-sm">
-                                    <img src="{{ url('back-end/assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
+                                    <img src="{{ url('back-end/assets/img/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-user animated fadeIn">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="{{ url('back-end/assets/img/profile.jpg') }}" alt="image profile" class="avatar-img rounded"></div>
+                                        <div class="avatar-lg"><img src="{{ url('back-end/assets/img/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4>{{ auth()->user()->name }}</h4>
                                             <p class="text-muted">{{ auth()->user()->email}}</p>

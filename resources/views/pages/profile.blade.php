@@ -26,51 +26,59 @@ default => 'layout.default',
                                 </ul>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="row mt-3">
-                                <div class="col-md-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Name" value="{{ auth()->user()->name }}">
+                        <form action="{{ url('update/profile') }}" method="post">
+                            @csrf
+                            <div class="card-body">
+                                @if(session('success'))
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                                @endif
+                                @if(session('error'))
+                                <div class="alert alert-danger">{{ session('error') }}</div>
+                                @endif
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Username</label>
+                                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{ auth()->user()->name }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" name="email" placeholder="Name" value="{{ auth()->user()->email }}">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group form-group-default">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" name="email" placeholder="Name" value="{{ auth()->user()->email }}">
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label>No Handphone</label>
+                                            <input type="text" class="form-control" placeholder="Masukkan Nomor Handphone" value="{{ auth()->user()->phone }}" name="phone">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-md-12">
-                                    <div class="form-group form-group-default">
-                                        <label>No Handphone</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Nomor Handphone" value="{{ auth()->user()->phone }}" name="address">
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Password Lama</label>
+                                            <input type="text" class="form-control" placeholder="Masukan Password Lama" name="old_password">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12">
-                                    <div class="form-group form-group-default">
-                                        <label>Password Lama</label>
-                                        <input type="text" class="form-control" placeholder="Masukan Password Lama" name="address">
+                                <div class="row mt-3 mb-1">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Password Baru</label>
+                                            <input class="form-control" name="about" placeholder="Masukan Password Baru" name="new_password" rows="3">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mt-3 mb-1">
-                                <div class="col-md-12">
-                                    <div class="form-group form-group-default">
-                                        <label>Password Baru</label>
-                                        <input class="form-control" name="about" placeholder="Masukan Password Baru" rows="3">
-                                    </div>
+                                <div class="text-right mt-3 mb-3">
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                    <button class="btn btn-danger">Reset</button>
                                 </div>
                             </div>
-                            <div class="text-right mt-3 mb-3">
-                                <button class="btn btn-success">Save</button>
-                                <button class="btn btn-danger">Reset</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -78,22 +86,28 @@ default => 'layout.default',
                         <div class="card-header" style="background-image: url('{{ asset('back-end/assets/img/blogpost.jpg') }}')">
                             <div class="profile-picture">
                                 <div class="avatar avatar-xl">
-                                    <img id="profile-img" src="{{ asset('back-end/assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle" style="cursor: pointer;">
+                                    <img id="profile-img" src="{{ url('back-end/assets/img/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle" style="cursor: pointer;">
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="user-profile text-center">
-                                <div class="name">Rizky</div>
+                                <div class="name">{{ auth()->user()->name }}</div>
                             </div>
-                            <div class="view-profile">
-                                <button class="btn btn-info btn-block" onclick="document.getElementById('foto').click();">Ganti Profil</button>
-                            </div>
-                            <input type="file" id="foto" style="display: none;" accept="image/*" onchange="previewImage(event)">
+                            <form action="{{ url('profile/image') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <div class="view-profile">
+                                    <button type="button" class="btn btn-info btn-block" onclick="document.getElementById('foto').click();">Pilih Foto</button>
+                                </div>
+                                <input type="file" id="foto" name="image" style="display: none;" accept="image/*" onchange="previewImage(event)">
+                                <div id="save-button-container" class="text-center mt-3" style="display: none;">
+                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -101,10 +115,11 @@ default => 'layout.default',
 
 <script>
     function previewImage(event) {
-        var reader = new FileReader();
+        const reader = new FileReader();
         reader.onload = function() {
-            var output = document.getElementById('profile-img');
+            const output = document.getElementById('profile-img');
             output.src = reader.result;
+            document.getElementById('save-button-container').style.display = 'block';
         };
         reader.readAsDataURL(event.target.files[0]);
     }
