@@ -79,7 +79,7 @@ class Controller
             $user->image = $fileName;
             $user->save();
         }
-        if ($request->hasFile('image')) {
+        else if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = time() . 'user' . auth()->user()->id . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('back-end/assets/img/'), $fileName);
