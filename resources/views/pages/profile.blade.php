@@ -82,9 +82,6 @@ default => 'layout.default',
                                 </div>
                             </div>
                         </div>
-
-
-
                         <div class="card-body">
                             <div class="user-profile text-center">
                                 <div class="name">Rizky</div>
