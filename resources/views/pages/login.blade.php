@@ -19,7 +19,16 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="loginTemplate/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Garamond&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&family=Pridi:wght@200;300;400;500;600;700&family=Readex+Pro:wght@160..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Esteban&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&family=Rokkitt:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&family=Rokkitt:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <title>Login | Page</title>
     <style>
 /* Gaya dasar */
@@ -80,7 +89,7 @@ html, body {
     font-family: 'esteban', serif;
     font-size: 27px;
     line-height: 1.2;
-    font-weight: bold;
+    font-weight: bold; 
     margin: 5px 0;
     position: relative;
     top: -55px;
@@ -127,12 +136,11 @@ html, body {
     <div class="half">
         <div class="blue-section">
             <img src="loginTemplate/images/SI-TIKET.png" alt="Jhonlin Group Logo" class="logo">
-            <h3>Selamat Datang.</h3>
+            <h3>SELAMAT DATANG</h3>
             <h2>Sistem Informasi</h2>
-                    <h2>Pelayanan.</h2>
+                    <h2>Pelayanan</h2>
             <img src="loginTemplate/images/GCOMPUTER.png" alt="illustration  "class="illustration">
         </div>
-        
         <div class="login-section">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -205,7 +213,7 @@ html, body {
                                         <a href="{{ route('register') }}" class="forgot-pass">Belum punya akun? Daftar</a>
                                     </span>
                                 </div>
-                                <input type="submit" value="Submit" class="btn btn-block btn-success">
+                                <input type="submit" value="Login" class="btn btn-block btn-success">
                             </form>
                         </div>
                     </div>
