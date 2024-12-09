@@ -90,5 +90,7 @@ Route::group(['middleware' => 'auth'], function () {
         });
     });
     Route::get('/profile', [RoutesController::class, 'profile'])->name('profile');
+    Route::post('/profile/image', [Controller::class, 'image_update'])->name('profile/image');
+    Route::post('update/profile', [RoutesController::class, 'profile_update'])->name('update/profile');
 });
 Route::get('logout', [Controller::class, 'logout'])->name('logout');
