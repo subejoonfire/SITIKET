@@ -70,10 +70,18 @@ class Controller
     {
         $user = User::find(auth()->user()->id);
 
-        if ($request->hasFile('image')) {
+
+        if ($request->hasFile('image') && $user->image != NULL) {
             $file = $request->file('image');
             $fileName = time() . 'user' . auth()->user()->id . '.' . $file->getClientOriginalExtension();
             unlink(public_path('back-end/assets/img/' . $user->image));
+            $file->move(public_path('back-end/assets/img/'), $fileName);
+            $user->image = $fileName;
+            $user->save();
+        }
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = time() . 'user' . auth()->user()->id . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('back-end/assets/img/'), $fileName);
             $user->image = $fileName;
             $user->save();
