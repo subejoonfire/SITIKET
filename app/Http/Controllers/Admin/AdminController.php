@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use App\Models\Department;
+use App\Models\Pic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Ticket;
-use App\Models\UserDepartment;
+use App\Models\UserPic;
 
 class AdminController extends Controller
 {
@@ -22,12 +22,12 @@ class AdminController extends Controller
 
         if ($validated['level'] == 3) {
             $validated = array_merge($validated, $request->validate([
-                'iddepartment' => 'required|max:5',
+                'idpic' => 'required|max:5',
             ]));
         }
 
         User::create([
-            'iddepartment' => $validated['level'] == 3 ? $validated['iddepartment'] : null,
+            'idpic' => $validated['level'] == 3 ? $validated['idpic'] : null,
             'name' => $validated['name'],
             'level' => $validated['level'],
             'email' => $validated['email'],
@@ -49,7 +49,7 @@ class AdminController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'level' => 'required|integer|max:5',
-            'iddepartment' => 'required|integer',
+            'idpic' => 'required|integer',
             'email' => 'required|email|unique:users,email,' . $request->id,
         ]);
         $user = User::findOrFail($id);
@@ -61,36 +61,36 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'User berhasil diperbarui!');
     }
-    public function departmentStore(Request $request)
+    public function picStore(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        Department::create([
-            'departmentname' => $request->name,
+        Pic::create([
+            'picname' => $request->name,
         ]);
 
-        return redirect()->to(url('admin/department'))->with('success', 'Departemen berhasil ditambahkan.');
+        return redirect()->to(url('admin/pic'))->with('success', 'Departemen berhasil ditambahkan.');
     }
 
-    public function departmentDelete($id)
+    public function picDelete($id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
+        $pic = Pic::findOrFail($id);
+        $pic->delete();
 
         return redirect()->back()->with('success', 'Departemen berhasil dihapus.');
     }
 
-    public function departmentUpdate(Request $request, $id)
+    public function picUpdate(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
 
-        $department = Department::findOrFail($id);
-        $department->update([
-            'departmentname' => $request->name,
+        $pic = Pic::findOrFail($id);
+        $pic->update([
+            'picname' => $request->name,
         ]);
 
         return redirect()->back()->with('success', 'Departemen berhasil diperbarui.');

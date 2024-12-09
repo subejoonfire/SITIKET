@@ -32,11 +32,13 @@
         .main-header {
             background-color: #70c55b !important;
         }
+
         .btn-custom {
-        background-color: #70c55b;
-        color: white;
-        border-radius: 25px;
-    }
+            background-color: #70c55b;
+            color: white;
+            border-radius: 25px;
+        }
+
     </style>
 </head>
 <body>
@@ -103,7 +105,7 @@
             <!-- End Navbar -->
         </div>
 
-        @include('partial.sidebar.department')
+        @include('partial.sidebar.pic')
 
         @yield('content')
 

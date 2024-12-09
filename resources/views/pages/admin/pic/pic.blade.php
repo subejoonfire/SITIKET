@@ -1,4 +1,4 @@
-@extends('layout.mainuser')
+@extends('layout.mainadmin')
 
 @section('content')
 
@@ -6,29 +6,9 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Beranda</h4>
+                <h4 class="page-title">Departemen</h4>
             </div>
-            <div class="row">
-                <div class="col-sm-6 col-md-3">
-                    <div class="card card-stats card-round">
-                        <div class="card-body ">
-                            <div class="row align-items-center">
-                                <div class="col-icon">
-                                    <div class="icon-big text-center icon-primary bubble-shadow-small">
-                                        <i class="fas fa-clock"></i>
-                                    </div>
-                                </div>
-                                <div class="col col-stats ml-3 ml-sm-0">
-                                    <div class="numbers">
-                                        <p class="card-category">Riwayat Pengajuan</p>
-                                        <h4 class="card-title">{{ $count }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="col-md-12">
                     @if (session('success'))
@@ -59,39 +39,36 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Riwayat Pengajuan</h4>
-                                <a href="{{ url('user/add') }}" class="btn btn-custom ml-auto">
+                                <h4 class="card-title">Departemen</h4>
+                                <a href="{{ url('admin/pic/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
                                 </a>
                             </div>
                         </div>
                         <div class="card-body">
+                            <!-- Modal -->
+
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Tiket</th>
                                             <th>Departemen</th>
-                                            <th>Status</th>
-                                            <th>Masalah</th>
+                                            <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php
-                                        $i=1;
-                                        @endphp
                                         @foreach ($collection as $item)
                                         <tr>
-                                            <td>{{ $i++ }}</td>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->idpic ? $item->pics->picname : 'Belum ada' }}</td>
-                                            <td>{{ $item->status ?? 'Tidak ada' }}</td>
-                                            <td>{{ $item->trouble ?? 'Tidak ada' }}</td>
+                                            <td>{{ $item->picname }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('user/action/delete/'. $item->idticket) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                    <a href="{{ url('admin/pic/edit/' . $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </div>
@@ -107,6 +84,6 @@
             </div>
         </div>
     </div>
-
 </div>
+
 @endsection

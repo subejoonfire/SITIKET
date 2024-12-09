@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Department;
+use App\Models\Pic;
 use App\Models\User;
 
 class ARoutesController extends Controller
@@ -13,7 +13,7 @@ class ARoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | DASHBOARD',
             'userCount' => User::count(),
-            'departmentCount' => Department::count(),
+            'picCount' => Pic::count(),
         ];
         return view('pages.admin.dashboard', $data);
     }
@@ -31,7 +31,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Tambah_User',
-            'collection' => Department::all(),
+            'collection' => Pic::all(),
         ];
         return view('pages.admin.user.adduser', $data);
     }
@@ -44,7 +44,7 @@ class ARoutesController extends Controller
         }
         $data = [
             'title' => 'SI-TIKET | USER',
-            'collection' => Department::all(),
+            'collection' => Pic::all(),
             'user' => $user,
         ];
 
@@ -79,9 +79,9 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DEPARTMENT',
-            'collection' => Department::all(),
+            'collection' => Pic::all(),
         ];
-        return view('pages.admin.department.department', $data);
+        return view('pages.admin.pic.pic', $data);
     }
 
     public function adddepart()
@@ -89,17 +89,17 @@ class ARoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | ADD_DEPARTMENT',
         ];
-        return view('pages.admin.department.adddepartment', $data);
+        return view('pages.admin.pic.addpic', $data);
     }
 
     public function editdepart($id)
     {
-        $query = Department::findOrFail($id);
+        $query = Pic::findOrFail($id);
         $data = [
             'title' => 'SI-TIKET | EDIT_DEPARTMENT',
-            'name' => $query->departmentname,
+            'name' => $query->picname,
             'id' => $query->id,
         ];
-        return view('pages.admin.department.editdepartment', $data);
+        return view('pages.admin.pic.editpic', $data);
     }
 }

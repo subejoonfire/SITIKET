@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Truncate the users and departments table to avoid duplicate entries
+        // Truncate the users and pics table to avoid duplicate entries
         DB::table('users')->truncate();
-        DB::table('departments')->truncate();
+        DB::table('pics')->truncate();
 
         // Seed users table
         DB::table('users')->insert([
@@ -76,17 +76,39 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
-        // Seed departments table
-        $departments = [
-            'GA', 'HR', 'HSE', 'LOG', 'ENGINEERING', 'CDR', 'PLANT', 'PCR',
-            'WAREHOUSE', 'MPLANT', 'FPLANT', 'DREDGING', 'PROJECT', 'HRGA',
-            'ACCOUNTING', 'LOGISTIC', 'SHE', 'JSS', 'COAL', 'LEGAL', 'FUEL',
-            'MARKETING', 'OPR', 'BOD', 'SCFUEL', 'MPLANT'
+        // Seed pics table
+        $pics = [
+            'GA',
+            'HR',
+            'HSE',
+            'LOG',
+            'ENGINEERING',
+            'CDR',
+            'PLANT',
+            'PCR',
+            'WAREHOUSE',
+            'MPLANT',
+            'FPLANT',
+            'DREDGING',
+            'PROJECT',
+            'HRGA',
+            'ACCOUNTING',
+            'LOGISTIC',
+            'SHE',
+            'JSS',
+            'COAL',
+            'LEGAL',
+            'FUEL',
+            'MARKETING',
+            'OPR',
+            'BOD',
+            'SCFUEL',
+            'MPLANT'
         ];
 
-        foreach ($departments as $department) {
-            DB::table('departments')->insert([
-                'departmentname' => $department,
+        foreach ($pics as $pic) {
+            DB::table('pics')->insert([
+                'picname' => $pic,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

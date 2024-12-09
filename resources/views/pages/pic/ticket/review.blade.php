@@ -1,5 +1,4 @@
-@extends('layout.mainhelp')
-
+@extends('layout.main')
 @section('content')
 
 <style>
@@ -11,6 +10,7 @@
     #email,
     #username,
     #phone,
+    #pic,
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -20,26 +20,13 @@
         pointer-events: none;
     }
 
-    #pic {
-        background-color: #ffffff !important;
-        color: #000000 !important;
-        border: 2px solid #4CAF50 !important;
-        padding: 8px;
-        cursor: pointer;
-    }
-
-    #pic:focus {
-        border-color: #2196F3 !important;
-        box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
-    }
-
 </style>
 
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Detail Pengguna</h4>
+                <h4 class="page-title">Detail User</h4>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -68,25 +55,19 @@
                         </ul>
                     </div>
                     @endif
-                    <form method="POST" action="{{ url('helpdesk/action/update/'. $data->id) }}">
+                    <form method="POST" action="{{ url('#') }}">
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
-                                    <h4 class="card-title">Ubah Status</h4>
+                                    <h4 class="card-title">Change Status</h4>
                                 </div>
                             </div>
                             <div class="card-body">
                                 @csrf
+                                <!-- Departemen sebagai input text biasa -->
                                 <div class="form-group">
                                     <label for="pic">Departemen</label>
-                                    <select name="idpic" class="form-control" id="pic">
-                                        <option value="">Pilih Departemen</option>
-                                        @foreach ($collection as $pic)
-                                        <option value="{{ $pic->id }}" {{ old('idpic', $data->idpic ?? '') == $pic->id ? 'selected' : '' }}>
-                                            {{ $pic->picname }}
-                                        </option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" name="idpic" class="form-control" id="pic" value="{{ $data->pics->picname }}">
                                     @error('idpic')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -125,10 +106,31 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                @if ($type == 'index')
                                 <div class="card-action">
-                                    <button type="submit" class="btn btn-success">Simpan</button>
-                                    <a href="#" class="btn btn-danger">Batal</a>
+                                    @if ($data->status == 'DIAJUKAN')
+                                    <a href="{{ url('pic/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
+                                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    @endif
+                                    <a href="{{ url('pic/ticket') }}" class="btn btn-primary">Kembali</a>
                                 </div>
+                                @elseif ($type == 'approved')
+                                <div class="card-action">
+                                    <a href="{{ url('pic/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
+                                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    <a href="{{ url('pic/ticket/approved') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @elseif ($type == 'processed')
+                                <div class="card-action">
+                                    <a href="{{ url('pic/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
+                                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    <a href="{{ url('pic/ticket/processed') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @elseif ($type == 'done')
+                                <div class="card-action">
+                                    <a href="{{ url('pic/ticket/done') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </form>
