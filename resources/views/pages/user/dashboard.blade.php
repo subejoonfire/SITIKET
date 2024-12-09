@@ -2,32 +2,7 @@
 
 @section('content')
 <style>
-.notification-link {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    margin-left: 15px;
-    text-decoration: none; /* Menghilangkan underline */
-}
 
-.notification-link .fa-bell {
-    font-size: 20px; /* Ukuran icon lonceng */
-    color: #ff6600; /* Warna icon notifikasi */
-}
-
-.notification-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red; /* Warna latar belakang angka */
-    color: white; /* Warna angka */
-    border-radius: 50%;
-    padding: 3px 6px; /* Menyesuaikan padding supaya lebih kecil */
-    font-size: 12px; /* Ukuran font angka agar tidak terlalu besar */
-    min-width: 18px; /* Menetapkan lebar minimal agar angka tetap terlihat proporsional */
-    text-align: center;
-    line-height: 1;
-}
 
 
 </style>
@@ -124,19 +99,22 @@
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Belum ada' }}</td>
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
-                                            <td>{{ $item->trouble ?? 'Tidak ada' }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($item->trouble ?? 'Tidak ada', 70) }}</td>
                                             <td>
                                                 <div class="form-button-action"> 
                                                     <!-- Button Delete -->
-                                                    <a href="{{ url('user/action/delete/'. $item->idticket) }}" data-toggle="tooltip" title="Remove" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-
-                                                    <!-- Notification Icon -->
-                                                    <a href="{{ url('user/review')}}" class="notification-link" data-toggle="tooltip" title="Notification">
-                                                        <i class="fa fa-bell"></i>
-                                                        <span class="notification-count">5</span> <!-- Example of notification number -->
-                                                    </a>
+                                                    <div class="form-button-action">
+                                                        <a href="{{ url('user/action/delete/'. $item->idticket) }}" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-toggle="tooltip" title="Remove">
+                                                            <i class="fa fa-trash me-3"></i>
+                                                            <span>Delete</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="form-button-action">
+                                                        <a href="{{ url('user/review') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Review">
+                                                            <i class="fa fa-eye me-3"></i>
+                                                            <span>Review</span>
+                                                        </a>
+                                                    </div>                                                    
                                                 </div>
                                             </td>
                                         </tr>
