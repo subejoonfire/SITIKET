@@ -29,6 +29,27 @@
     <link rel="stylesheet" href="{{ url('back-end/assets/css/azzara.min.css') }}">
     <link rel="stylesheet" href="{{ url('back-end/assets/css/demo.css') }}">
     <style>
+      .notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #f44336;  /* Warna merah untuk notifikasi */
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Membuat tombol review relatif agar badge notifikasi bisa ditempatkan di pojok kanan atas */
+.form-button-action a {
+    position: relative;
+}
+
         .main-header {
             background-color: #70c55b !important;
         }
