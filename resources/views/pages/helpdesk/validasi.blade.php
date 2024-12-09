@@ -41,8 +41,8 @@
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Validasi</h4>
                                 {{-- <a href="{{ url('admin.add_depart') }}" class="btn btn-primary btn-round ml-auto">
-                                    <i class="fa fa-plus"></i>
-                                    Tambah
+                                <i class="fa fa-plus"></i>
+                                Tambah
                                 </a> --}}
                             </div>
                         </div>
@@ -54,41 +54,23 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Nama</th>
                                             <th>Departemen</th>
                                             <th>Status</th>
-                                        
-                                            <th style="width: 10%">Aksi</th>
+                                            <th>Masalah</th>
+                                        </tr>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td>T12</td>
-                                        <td>Jhonlin Group DSP</td>
-                                        <td>Diterima</td>
-                                        <td>
-                                            <div class="form-button-action">
-                                                <a href="#" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                        {{-- @foreach ($user as $item)
+                                        @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a href="{{ url('admin/user/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
+                                            <td>{{ $item->users->name }}</td>
+                                            <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Menunggu' }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>{{ $item->trouble }}</td>
                                         </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

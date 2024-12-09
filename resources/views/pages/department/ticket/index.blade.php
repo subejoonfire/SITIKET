@@ -68,7 +68,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
@@ -86,14 +85,14 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>SAP</td>
-                                            <td>{{ $item->phone }}</td>
+                                            <td>{{ $item->users->name }}</td>
+                                            <td>{{ $item->departments->departmentname }}</td>
+                                            <td>{{ $item->users->phone }}</td>
                                             <td>{{ $item->trouble }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('department/review')}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                    <a href="{{ url('department/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
                                                         <i class="fa fa-eye me-3"></i>
                                                         <span>Review</span>
                                                     </a>

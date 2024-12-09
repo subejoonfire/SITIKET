@@ -40,10 +40,11 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Pengguna</h4>
-                                <a href="{{ url('admin/user/add') }}" class="btn btn-primary btn-round ml-auto">
+                                <a href="{{ url('admin/user/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
                                 </a>
+                                
                             </div>
                         </div>
                         <div class="card-body">

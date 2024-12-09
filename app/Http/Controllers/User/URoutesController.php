@@ -16,7 +16,7 @@ class URoutesController extends Controller
         $ticket = new Ticket();
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'collection' => UserTicket::with(['users', 'tickets.departments'])->get(),
+            'collection' => Ticket::with(['users', 'departments'])->get(),
             'count' => Ticket::count(),
         ];
         return view('pages.user.dashboard', $data);

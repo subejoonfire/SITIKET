@@ -60,7 +60,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Riwayat Pengajuan</h4>
-                                <a href="{{ url('user/add') }}" class="btn btn-primary btn-round ml-auto">
+                                <a href="{{ url('user/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
                                 </a>
@@ -76,7 +76,6 @@
                                             <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
-                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,10 +85,10 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $item->idticket }}</td>
-                                            <td>{{ $item->tickets && $item->tickets->iddepartment ? $item->tickets->departments->departmentname : 'Menunggu' }}</td>
-                                            <td>{{ $item->tickets->status ?? 'null' }}</td>
-                                            <td>{{ $item->tickets->trouble ?? 'null' }}</td>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Belum ada' }}</td>
+                                            <td>{{ $item->status ?? 'Tidak ada' }}</td>
+                                            <td>{{ $item->trouble ?? 'Tidak ada' }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ url('user/action/delete/'. $item->idticket) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">

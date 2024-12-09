@@ -11,9 +11,6 @@ use App\Models\UserDepartment;
 
 class AdminController extends Controller
 {
-    /**
-     * Store a new user.
-     */
     public function userStore(Request $request)
     {
         $validated = $request->validate([
@@ -22,20 +19,24 @@ class AdminController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
         ]);
-        $user = User::create([
+
+        if ($validated['level'] == 3) {
+            $validated = array_merge($validated, $request->validate([
+                'iddepartment' => 'required|max:5',
+            ]));
+        }
+
+        User::create([
+            'iddepartment' => $validated['level'] == 3 ? $validated['iddepartment'] : null,
             'name' => $validated['name'],
             'level' => $validated['level'],
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
         ]);
-        if ($request->iddepartment != NULL) {
-            UserDepartment::create([
-                'iddepartment' => $request->iddepartment,
-                'iduser' => $user->id,
-            ]);
-        }
+
         return redirect()->to(url('admin/user'))->with('success', 'User berhasil ditambahkan!');
     }
+
 
     public function userDelete($id)
     {
