@@ -14,8 +14,8 @@
     #tanggal_diajukan,
     #tiket,
     #priority,
-    #Module,
-    #Issue
+    #module,
+    #issue
 
      {
         background-color: #ffffff !important;
@@ -74,7 +74,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label for="tiket">ID Tiket</label>
-                                        <input type="tiket" name="tiket" class="form-control" id="tiket" value="tktq212">
+                                        <input type="text" name="tiket" class="form-control" id="tiket" value="tktq212">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="priority">Priority</label>
@@ -85,12 +85,11 @@
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label for="module">Module</label>
-                                        <input type="text" name="module" class="form-control" id="module" value="Software" >
+                                        <input type="text" name="module" class="form-control" id="module" value="tktq212">
                                     </div>
-                    
                                     <div class="col-md-6">
                                         <label for="issue">Issue</label>
-                                        <input type="text" name="issue" class="form-control" id="issue" value="System Error" >
+                                        <input type="text" name="issue" class="form-control" id="issue" value="Medium">
                                     </div>
                                 </div>
 
