@@ -31,13 +31,13 @@ default => 'layout.default',
                                 <div class="col-md-6">
                                     <div class="form-group form-group-default">
                                         <label>Username</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Name" value="Rizky">
+                                        <input type="text" class="form-control" name="name" placeholder="Name" value="{{ auth()->user()->name }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group form-group-default">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" name="email" placeholder="Name" value="rizky@gmail.com">
+                                        <input type="email" class="form-control" name="email" placeholder="Name" value="{{ auth()->user()->email }}">
                                     </div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@ default => 'layout.default',
                                 <div class="col-md-12">
                                     <div class="form-group form-group-default">
                                         <label>No Handphone</label>
-                                        <input type="text" class="form-control" placeholder="Masukkan Nomor Handphone" value="083142170067" name="address">
+                                        <input type="text" class="form-control" placeholder="Masukkan Nomor Handphone" value="{{ auth()->user()->phone }}" name="address">
                                     </div>
                                 </div>
                             </div>
@@ -78,17 +78,13 @@ default => 'layout.default',
                         <div class="card-header" style="background-image: url('{{ asset('back-end/assets/img/blogpost.jpg') }}')">
                             <div class="profile-picture">
                                 <div class="avatar avatar-xl">
-                                    <img id="profile-img" 
-                                         src="{{ asset('back-end/assets/img/profile.jpg') }}" 
-                                         alt="..." 
-                                         class="avatar-img rounded-circle" 
-                                         style="cursor: pointer;">
+                                    <img id="profile-img" src="{{ asset('back-end/assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle" style="cursor: pointer;">
                                 </div>
                             </div>
                         </div>
-                        
-                     
-                        
+
+
+
                         <div class="card-body">
                             <div class="user-profile text-center">
                                 <div class="name">Rizky</div>
