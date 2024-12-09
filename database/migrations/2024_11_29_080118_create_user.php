@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('iddepartment')->nullable()->default(NULL);
             $table->string('name');
+            $table->string('image')->nullable()->default(NULL);
             $table->string('phone')->nullable();
             $table->integer('level');
             $table->string('email')->unique();
