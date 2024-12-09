@@ -1,17 +1,48 @@
 @extends('layout.mainuser')
 
 @section('content')
+<style>
+.notification-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 15px;
+    text-decoration: none; /* Menghilangkan underline */
+}
 
+.notification-link .fa-bell {
+    font-size: 20px; /* Ukuran icon lonceng */
+    color: #ff6600; /* Warna icon notifikasi */
+}
+
+.notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red; /* Warna latar belakang angka */
+    color: white; /* Warna angka */
+    border-radius: 50%;
+    padding: 3px 6px; /* Menyesuaikan padding supaya lebih kecil */
+    font-size: 12px; /* Ukuran font angka agar tidak terlalu besar */
+    min-width: 18px; /* Menetapkan lebar minimal agar angka tetap terlihat proporsional */
+    text-align: center;
+    line-height: 1;
+}
+
+
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
                 <h4 class="page-title">Beranda</h4>
             </div>
+
             <div class="row">
+                <!-- Card Riwayat Pengajuan -->
                 <div class="col-sm-6 col-md-3">
                     <div class="card card-stats card-round">
-                        <div class="card-body ">
+                        <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-icon">
                                     <div class="icon-big text-center icon-primary bubble-shadow-small">
@@ -29,8 +60,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
+                    <!-- Alert Success, Error, dan Validation Errors -->
                     @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
@@ -56,6 +89,8 @@
                         </ul>
                     </div>
                     @endif
+                    
+                    <!-- Card Riwayat Pengajuan Table -->
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
@@ -76,11 +111,12 @@
                                             <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
-                                        $i=1;
+                                        $i = 1;
                                         @endphp
                                         @foreach ($collection as $item)
                                         <tr>
@@ -90,9 +126,16 @@
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
                                             <td>{{ $item->trouble ?? 'Tidak ada' }}</td>
                                             <td>
-                                                <div class="form-button-action">
-                                                    <a href="{{ url('user/action/delete/'. $item->idticket) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                                <div class="form-button-action"> 
+                                                    <!-- Button Delete -->
+                                                    <a href="{{ url('user/action/delete/'. $item->idticket) }}" data-toggle="tooltip" title="Remove" class="btn btn-link btn-danger" data-original-title="Remove">
                                                         <i class="fa fa-times"></i>
+                                                    </a>
+
+                                                    <!-- Notification Icon -->
+                                                    <a href="#" class="notification-link" data-toggle="tooltip" title="Notification">
+                                                        <i class="fa fa-bell"></i>
+                                                        <span class="notification-count">5</span> <!-- Example of notification number -->
                                                     </a>
                                                 </div>
                                             </td>
@@ -105,8 +148,9 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-
 </div>
+
 @endsection
