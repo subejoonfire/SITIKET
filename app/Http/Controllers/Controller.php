@@ -66,7 +66,38 @@ class Controller
 
         return redirect()->to('login')->with('success', 'Registrasi berhasil! Silakan login.');
     }
-    public function logout(Request $request)
+    public function image_update(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = time() . 'user' . auth()->user()->id . '.' . $file->getClientOriginalExtension();
+            unlink(public_path('back-end/assets/img/' . $user->image));
+            $file->move(public_path('back-end/assets/img/'), $fileName);
+            $user->image = $fileName;
+            $user->save();
+        }
+
+        return back()->with('success', 'Foto berhasil diperbarui!');
+    }
+    public function profile_update(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        if (!empty($request->old_password) && !empty($request->new_password)) {
+            if (Hash::check($request->old_password, $user->password)) {
+                $user->password = Hash::make($request->new_password);
+            } else {
+                return back()->withErrors(['old_password' => 'Password lama tidak sesuai']);
+            }
+        }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->save();
+        return back()->with('success', 'Profil berhasil diperbarui!');
+    }
+    public function logout()
     {
         Auth::logout();
         return redirect('/login');
