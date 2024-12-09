@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Department;
+use App\Models\Pic;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,14 +10,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Ticket extends Model
 {
     use HasFactory;
-    protected $fillable = ['iddepartment', 'iduser', 'status', 'trouble'];
+    protected $fillable = ['idpic', 'iduser', 'status', 'trouble'];
 
     public function users(): BelongsTo
     {
         return $this->belongsTo(User::class, 'iduser');
     }
-    public function departments(): BelongsTo
+    public function pics(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'iddepartment');
+        return $this->belongsTo(Pic::class, 'idpic');
     }
 }

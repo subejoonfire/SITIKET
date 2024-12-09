@@ -27,7 +27,7 @@ class Controller
             } elseif (Auth::user()->level == 2) {
                 return redirect()->to(url('helpdesk'));
             } elseif (Auth::user()->level == 3) {
-                return redirect()->to(url('department'));
+                return redirect()->to(url('pic'));
             } elseif (Auth::user()->level == 4) {
                 return redirect()->to(url('user'));
             }

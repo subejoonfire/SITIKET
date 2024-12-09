@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use App\Models\Ticket;
-use App\Models\Department;
+use App\Models\Pic;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,7 +16,7 @@ class URoutesController extends Controller
         $ticket = new Ticket();
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'collection' => Ticket::with(['users', 'departments'])->get(),
+            'collection' => Ticket::with(['users', 'pics'])->get(),
             'count' => Ticket::count(),
         ];
         return view('pages.user.dashboard', $data);
@@ -27,7 +27,7 @@ class URoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | ADD',
-            'collection' => Department::all(),
+            'collection' => Pic::all(),
         ];
 
         return view('pages.user.addrequest', $data);

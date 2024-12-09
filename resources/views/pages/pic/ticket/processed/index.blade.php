@@ -5,17 +5,23 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Tiket Ditolak</h4>
+                <h4 class="page-title">Tiket Diproses</h4>
+
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Ditolak</h4>
+                                <h4 class="card-title">Diproses</h4>
+                                {{-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+                                    <i class="fa fa-plus"></i>
+                                   
+                                </button> --}}
                             </div>
                         </div>
                         <div class="card-body">
+                            <!-- Modal -->
                             <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -81,13 +87,13 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->departments->departmentname }}</td>
+                                            <td>{{ $item->pics->picname }}</td>
                                             <td>{{ $item->users->phone }}</td>
                                             <td>{{ $item->trouble }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('department/ticket/review/declined/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                    <a href="{{ url('pic/ticket/review/processed/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
                                                         <i class="fa fa-eye me-3"></i>
                                                         <span>Review</span>
                                                     </a>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Helpdesk;
 
 use App\Models\Ticket;
-use App\Models\Department;
+use App\Models\Pic;
 use App\Http\Controllers\Controller;
 
 class HRoutesController extends Controller
@@ -12,9 +12,9 @@ class HRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'incoming' => Ticket::with('departments')->whereNull('iddepartments')->count(),
-            'done' => Ticket::with('departments')->whereNotNull('iddepartments')->count(),
-            'collection' => Ticket::with(['users', 'departments'])->get()
+            'incoming' => Ticket::with('pics')->whereNull('idpics')->count(),
+            'done' => Ticket::with('pics')->whereNotNull('idpics')->count(),
+            'collection' => Ticket::with(['users', 'pics'])->get()
         ];
         return view('pages.helpdesk.dashboard', $data);
     }
@@ -25,7 +25,7 @@ class HRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | Dashboard',
             'data' => Ticket::with(['users'])->where('tickets.id', $id)->first(),
-            'collection' => Department::all(),
+            'collection' => Pic::all(),
         ];
 
         return view('pages.helpdesk.detail', $data);
@@ -36,7 +36,7 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | RIWAYAT_VALIDASI',
-            'collection' => Ticket::with(['users', 'departments'])->whereNotNull('tickets.iddepartment')->get(),
+            'collection' => Ticket::with(['users', 'pics'])->whereNotNull('tickets.idpic')->get(),
             'page' => 'beranda',
         ];
 

@@ -17,19 +17,19 @@
                     </a>
                 </li>
                 {{-- <li class="nav-item {{ request()->is('admin/category') ? 'active' : '' }}">
-                    <a href="{{ url('admin/category') }}">
-                        <i class="fas fa-box"></i>
-                        <p>Category</p>
-                    </a>
-                </li>  --}}
-                <li class="nav-item {{ request()->is('admin/department') ? 'active' : '' }}">
-                    <a href="{{ url('admin/department') }}">
+                <a href="{{ url('admin/category') }}">
+                    <i class="fas fa-box"></i>
+                    <p>Category</p>
+                </a>
+                </li> --}}
+                <li class="nav-item {{ request()->is('admin/pic') ? 'active' : '' }}">
+                    <a href="{{ url('admin/pic') }}">
                         <i class="fas fa-building"></i>
                         <p>Departemen</p>
                     </a>
                 </li>
             </ul>
-            
+
         </div>
     </div>
 </div>

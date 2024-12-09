@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ url('admin/department/action/update/'. $id) }}">
+                            <form method="POST" action="{{ url('admin/pic/action/update/'. $id) }}">
                                 @csrf
                                 <!-- @method('PUT')  -->
                                 <div class="form-group">
@@ -60,7 +60,7 @@
 
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
-                                    <a href="{{ url('admin/department') }}" class="btn btn-danger">Batal</a>
+                                    <a href="{{ url('admin/pic') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </form>
                         </div>

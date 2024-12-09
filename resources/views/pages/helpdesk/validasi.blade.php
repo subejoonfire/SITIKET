@@ -66,7 +66,7 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Menunggu' }}</td>
+                                            <td>{{ $item->idpic ? $item->pics->picname : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->trouble }}</td>
                                         </tr>

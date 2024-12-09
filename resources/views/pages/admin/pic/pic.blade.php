@@ -40,12 +40,12 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Departemen</h4>
-                                <a href="{{ url('admin/department/add') }}" class="btn btn-custom ml-auto">
+                                <a href="{{ url('admin/pic/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
                                 </a>
                             </div>
-                        </div>  
+                        </div>
                         <div class="card-body">
                             <!-- Modal -->
 
@@ -62,10 +62,10 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->departmentname }}</td>
+                                            <td>{{ $item->picname }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('admin/department/edit/' . $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <a href="{{ url('admin/pic/edit/' . $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                     <a href="#" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">

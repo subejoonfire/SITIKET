@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Department;
+namespace App\Http\Controllers\Pic;
 
 use App\Models\Ticket;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class DepartmentController extends Controller
+class PicController extends Controller
 {
     public function approved($id)
     {
@@ -16,9 +16,9 @@ class DepartmentController extends Controller
             $ticket->status  = 'DISETUJUI';
             $ticket->save();
         } catch (ModelNotFoundException $e) {
-            return redirect()->to('department/ticket')->with('error', 'Ticket tidak ditemukan.');
+            return redirect()->to('pic/ticket')->with('error', 'Ticket tidak ditemukan.');
         }
-        return redirect()->to('department/ticket/approved')->with('success', 'Tiket berhasil di setujui.');
+        return redirect()->to('pic/ticket/approved')->with('success', 'Tiket berhasil di setujui.');
     }
     public function declined($id)
     {
@@ -28,9 +28,9 @@ class DepartmentController extends Controller
             $ticket->status  = 'DITOLAK';
             $ticket->save();
         } catch (ModelNotFoundException $e) {
-            return redirect()->to('department/ticket')->with('error', 'Ticket tidak ditemukan.');
+            return redirect()->to('pic/ticket')->with('error', 'Ticket tidak ditemukan.');
         }
-        return redirect()->to('department/ticket/declined')->with('success', 'Tiket berhasil di setujui.');
+        return redirect()->to('pic/ticket/declined')->with('success', 'Tiket berhasil di setujui.');
     }
     public function processed($id)
     {
@@ -40,9 +40,9 @@ class DepartmentController extends Controller
             $ticket->status  = 'DIPROSES';
             $ticket->save();
         } catch (ModelNotFoundException $e) {
-            return redirect()->to('department/ticket')->with('error', 'Ticket tidak ditemukan.');
+            return redirect()->to('pic/ticket')->with('error', 'Ticket tidak ditemukan.');
         }
-        return redirect()->to('department/ticket/processed')->with('success', 'Tiket berhasil di setujui.');
+        return redirect()->to('pic/ticket/processed')->with('success', 'Tiket berhasil di setujui.');
     }
     public function done($id)
     {
@@ -52,8 +52,8 @@ class DepartmentController extends Controller
             $ticket->status  = 'SELESAI';
             $ticket->save();
         } catch (ModelNotFoundException $e) {
-            return redirect()->to('department/ticket')->with('error', 'Ticket tidak ditemukan.');
+            return redirect()->to('pic/ticket')->with('error', 'Ticket tidak ditemukan.');
         }
-        return redirect()->to('department/ticket/done')->with('success', 'Tiket berhasil di setujui.');
+        return redirect()->to('pic/ticket/done')->with('success', 'Tiket berhasil di setujui.');
     }
 }

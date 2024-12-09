@@ -97,7 +97,7 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $item->id }}</td>
-                                            <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Belum ada' }}</td>
+                                            <td>{{ $item->idpic ? $item->pics->picname : 'Belum ada' }}</td>
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
                                             <td>{{ \Illuminate\Support\Str::limit($item->trouble ?? 'Tidak ada', 70) }}</td>
                                             <td>
