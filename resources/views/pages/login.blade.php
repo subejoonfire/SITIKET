@@ -25,6 +25,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Esteban&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&family=Rokkitt:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&family=Rokkitt:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <title>Login | Page</title>
     <style>
 /* Gaya dasar */
@@ -72,18 +76,20 @@ html, body {
 }
 
 .blue-section h3 {
-    font-family: 'Parkinsans', sans-serif;
+    font-family: 'Vollkorn', serif;
     font-weight: 300;
     font-size: 33px;
+    font-weight: bold;    
     margin: 10px 0;
     position: relative;
     top: -60px;
 }
 
 .blue-section h2 {
-    font-family: 'Doppio one', sans-serif;
+    font-family: 'esteban', serif;
     font-size: 27px;
     line-height: 1.2;
+    font-weight: bold;
     margin: 5px 0;
     position: relative;
     top: -55px;
@@ -215,7 +221,7 @@ html, body {
             </div>
         </div>
     </div>
-    
+
     <script src="loginTemplate/js/jquery-3.3.1.min.js"></script>
     <script src="loginTemplate/js/popper.min.js"></script>
     <script src="loginTemplate/js/bootstrap.min.js"></script>
