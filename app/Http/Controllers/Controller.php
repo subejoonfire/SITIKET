@@ -83,6 +83,13 @@ class Controller
     }
     public function profile_update(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:15',
+            'old_password' => 'nullable|string|max:255',
+            'new_password' => 'nullable|string|min:8|confirmed',
+        ]);
         $user = User::find(auth()->user()->id);
         if (!empty($request->old_password) && !empty($request->new_password)) {
             if (Hash::check($request->old_password, $user->password)) {
