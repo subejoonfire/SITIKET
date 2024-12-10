@@ -11,6 +11,7 @@
 #priority,
 #module,
 #status,
+#subjek,
 #issue {
     background-color: #ffffff !important;
     color: #000000 !important;
@@ -107,7 +108,16 @@
                                             @enderror
                                         </div>
                                     </div>                                    
-
+                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="subjek">Subjek</label>
+                                            <span class="form-control" id="subjek">Server Mati</span>
+                                            @error('subjek')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>    
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="issue">Issue</label>

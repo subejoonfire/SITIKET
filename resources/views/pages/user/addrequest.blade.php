@@ -51,6 +51,16 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('user/action/store') }}">
                                 @csrf
+
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" name="subject" class="form-control" id="subject" placeholder="Masukan Subject" cols="30" rows="10"></input>
+                                    @error('subject') 
+                                        <small class="text-danger">{{ $message }}</small> 
+                                    @enderror
+                                </div>
+                                
+
                                 <div class="form-group">
                                     <label for="category_name">Keluhan</label>
                                     <textarea type="text" name="trouble" class="form-control" id="category_name" placeholder="Masukan Keluhan" cols="30" rows="10"></textarea>
