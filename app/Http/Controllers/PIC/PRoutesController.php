@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Department;
+namespace App\Http\Controllers\PIC;
 
 use App\Models\User;
 use App\Models\Ticket;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
-use App\Models\UserDepartment;
 use App\Http\Controllers\Controller;
 use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
-class DRoutesController extends Controller
+class PRoutesController extends Controller
 {
     public function profile()
     {
@@ -21,7 +20,7 @@ class DRoutesController extends Controller
             'title' => 'SI-TIKET | PROFILE',
         ];
 
-        return view('pages.department.profile', $data);
+        return view('pages.pic.profile', $data);
     }
 
     public function dashboard()
@@ -36,7 +35,7 @@ class DRoutesController extends Controller
             'done' => Ticket::where('status', 'SELESAI')->count(),
         ];
 
-        return view('pages.department.dashboard', $data);
+        return view('pages.pic.dashboard', $data);
     }
     public function ticket()
     {
@@ -49,7 +48,7 @@ class DRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.department.ticket.index', $data);
+        return view('pages.pic.ticket.index', $data);
     }
 
     public function approved()
@@ -66,7 +65,7 @@ class DRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.department.ticket.approved.index', $data);
+        return view('pages.pic.ticket.approved.index', $data);
     }
 
     public function processed()
@@ -83,7 +82,7 @@ class DRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.department.ticket.processed.index', $data);
+        return view('pages.pic.ticket.processed.index', $data);
     }
 
     public function declined()
@@ -100,7 +99,7 @@ class DRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.department.ticket.declined.index', $data);
+        return view('pages.pic.ticket.declined.index', $data);
     }
 
     public function done()
@@ -117,7 +116,7 @@ class DRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.department.ticket.done.index', $data);
+        return view('pages.pic.ticket.done.index', $data);
     }
     public function review($type, $id)
     {
@@ -128,13 +127,13 @@ class DRoutesController extends Controller
             'data' => Ticket::with(['users', 'departments'])->where('id', $id)->first(),
         ];
         if ($type == 'approved') {
-            return view('pages.department.ticket.review', $data);
+            return view('pages.pic.ticket.review', $data);
         } elseif ($type == 'processed') {
-            return view('pages.department.ticket.review', $data);
+            return view('pages.pic.ticket.review', $data);
         } elseif ($type == 'index') {
-            return view('pages.department.ticket.review', $data);
+            return view('pages.pic.ticket.review', $data);
         } elseif ($type == 'done') {
-            return view('pages.department.ticket.review', $data);
+            return view('pages.pic.ticket.review', $data);
         }
         return redirect()->back()->with('error', 'Halaman yang anda cari tidak ditemukan');
     }

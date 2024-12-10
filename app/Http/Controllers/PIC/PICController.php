@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Department;
+namespace App\Http\Controllers\PIC;
 
 use App\Models\Ticket;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class DepartmentController extends Controller
+class PICController extends Controller
 {
     public function approved($id)
     {
