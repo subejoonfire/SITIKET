@@ -13,7 +13,7 @@ class HelpdeskController extends Controller
         $ticket = Ticket::find($id);
 
         if ($ticket) {
-            $ticket->iddepartment = $request->iddepartment;
+            $ticket->iduser_pic = $request->iduser_pic;
             $ticket->status = 'DIAJUKAN';
             $ticket->save();
 

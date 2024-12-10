@@ -78,16 +78,16 @@
                             <div class="card-body">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="department">Departemen</label>
-                                    <select name="iddepartment" class="form-control" id="department">
-                                        <option value="">Pilih Departemen</option>
-                                        @foreach ($collection as $department)
-                                        <option value="{{ $department->id }}" {{ old('iddepartment', $data->iddepartment ?? '') == $department->id ? 'selected' : '' }}>
-                                            {{ $department->departmentname }}
+                                    <label for="department">Pilih PIC</label>
+                                    <select name="iduser_pic" class="form-control" id="department">
+                                        <option value="">Pilih PIC</option>
+                                        @foreach ($collection as $item)
+                                        <option value="{{ $item->id }}" {{ old('iditem', $data->id ?? '') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->name }}
                                         </option>
                                         @endforeach
                                     </select>
-                                    @error('iddepartment')
+                                    @error('iduser')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
