@@ -22,8 +22,8 @@
                     <p>Category</p>
                 </a>
                 </li> --}}
-                <li class="nav-item {{ request()->is('admin/pic') ? 'active' : '' }}">
-                    <a href="{{ url('admin/pic') }}">
+                <li class="nav-item {{ request()->is('admin/department') ? 'active' : '' }}">
+                    <a href="{{ url('admin/department') }}">
                         <i class="fas fa-building"></i>
                         <p>Departemen</p>
                     </a>

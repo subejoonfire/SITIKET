@@ -3,7 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\UserPic;
+use App\Models\UserDepartment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +21,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'image',
-        'idpic',
+        'phone',
+        'iddepartment',
         'level',
         'email',
         'password',
@@ -49,8 +50,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function pics(): BelongsTo
+    public function departments(): BelongsTo
     {
-        return $this->belongsTo(Pic::class, 'idpic');
+        return $this->belongsTo(Department::class, 'iddepartment');
     }
 }
