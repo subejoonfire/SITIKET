@@ -5,7 +5,7 @@ use App\Http\Middleware\user;
 use App\Http\Middleware\admin;
 use App\Http\Middleware\logged;
 use App\Http\Middleware\helpdesk;
-use App\Http\Middleware\department;
+use App\Http\Middleware\pic;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoutesController;
@@ -15,8 +15,8 @@ use App\Http\Controllers\User\URoutesController;
 use App\Http\Controllers\Admin\ARoutesController;
 use App\Http\Controllers\Helpdesk\HRoutesController;
 use App\Http\Controllers\Helpdesk\HelpdeskController;
-use App\Http\Controllers\Department\DRoutesController;
-use App\Http\Controllers\Department\DepartmentController;
+use App\Http\Controllers\PIC\PRoutesController;
+use App\Http\Controllers\PIC\PICController;
 
 Route::get('/', [RoutesController::class, 'landing']);
 
@@ -28,21 +28,21 @@ Route::group(['middleware' => logged::class], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::group(['prefix' => 'department', 'as' => 'department.', 'middleware' => department::class], function () {
-        Route::get('/', [DRoutesController::class, 'dashboard'])->name('/');
+    Route::group(['prefix' => 'pic', 'as' => 'pic.', 'middleware' => pic::class], function () {
+        Route::get('/', [PRoutesController::class, 'dashboard'])->name('/');
         Route::group(['prefix' => 'ticket', 'as' => 'ticket.'], function () {
-            Route::get('/', [DRoutesController::class, 'ticket'])->name('/');
-            Route::get('approved', [DRoutesController::class, 'approved'])->name('approved');
-            Route::get('declined', [DRoutesController::class, 'declined'])->name('declined');
-            Route::get('processed', [DRoutesController::class, 'processed'])->name('processed');
-            Route::get('done', [DRoutesController::class, 'done'])->name('processed');
-            Route::get('review/{type}/{id}', [DRoutesController::class, 'review'])->name('review');
+            Route::get('/', [PRoutesController::class, 'ticket'])->name('/');
+            Route::get('approved', [PRoutesController::class, 'approved'])->name('approved');
+            Route::get('declined', [PRoutesController::class, 'declined'])->name('declined');
+            Route::get('processed', [PRoutesController::class, 'processed'])->name('processed');
+            Route::get('done', [PRoutesController::class, 'done'])->name('processed');
+            Route::get('review/{type}/{id}', [PRoutesController::class, 'review'])->name('review');
         });
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
-            Route::get('approved/{id}', [DepartmentController::class, 'approved'])->name('approved');
-            Route::get('declined/{id}', [DepartmentController::class, 'declined'])->name('declined');
-            Route::get('processed/{id}', [DepartmentController::class, 'processed'])->name('processed');
-            Route::get('done/{id}', [DepartmentController::class, 'done'])->name('processed');
+            Route::get('approved/{id}', [PICController::class, 'approved'])->name('approved');
+            Route::get('declined/{id}', [PICController::class, 'declined'])->name('declined');
+            Route::get('processed/{id}', [PICController::class, 'processed'])->name('processed');
+            Route::get('done/{id}', [PICController::class, 'done'])->name('processed');
         });
     });
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => admin::class], function () {

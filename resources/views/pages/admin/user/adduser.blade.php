@@ -33,7 +33,7 @@
                                         <option selected disabled hidden>Pilih Level</option>
                                         <option value="1" {{ old('level') == 1 ? 'selected' : '' }}>Admin</option>
                                         <option value="2" {{ old('level') == 2 ? 'selected' : '' }}>Helpdesk</option>
-                                        <option value="3" {{ old('level') == 3 ? 'selected' : '' }}>Department</option>
+                                        <option value="3" {{ old('level') == 3 ? 'selected' : '' }}>PIC</option>
                                         <option value="4" {{ old('level') == 4 ? 'selected' : '' }}>User </option>
                                     </select>
                                     @error('level')
