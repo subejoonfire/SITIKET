@@ -59,6 +59,7 @@
         border-color: #70c55b !important;
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
+
     #subjek {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -194,7 +195,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="subjek">Subjek</label>
-                                    <textarea name="subjek" class="form-control" id="subjek" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
+                                    <input type="text" name="subjek" class="form-control" id="subjek" value="{{ $data->issue }}">
                                     @error('subjek')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
