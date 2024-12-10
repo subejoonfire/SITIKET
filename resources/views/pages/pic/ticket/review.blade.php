@@ -90,21 +90,10 @@
                                         <label for="issue">Issue</label>
                                         <input type="text" name="issue" class="form-control" id="issue" value="Medium">
                                     </div>
-                                <!-- Departemen sebagai input text biasa -->
-                            </div>
-                            <div class="col-md-6">
-                                <label for="issue">Issue</label>
-                                <input type="text" name="issue" class="form-control" id="issue" value="Medium">
-                            </div>
-
                                 <!-- Username, Phone, Email, Keluhan (menggunakan data) -->
-                                <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <label for="username">Username</label>
-                                        <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
-                                        @error('username')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                <div class="col-md-6">
+                                        <label for="issue">Issue</label>
+                                        <input type="text" name="issue" class="form-control" id="issue" value="Medium">
                                     </div>
                     
                                     <div class="col-md-6">
@@ -124,20 +113,16 @@
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                <div class="form-group">
-                                    <label for="tanggal_diajukan">Tanggal Diajukan</label>
-                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}">
-                                    @error('tanggal_diajukan')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="keluhan">Keluhan</label>
-                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
-                                    @error('keluhan')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                                    <div class="col-md-6">
+                                        <label for="issue">Issue</label>
+                                        <input type="text" name="issue" class="form-control" id="issue" value="Medium">
+                                        <div class="form-group">
+                                            <label for="keluhan">Keluhan</label>
+                                            <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
+                                            @error('keluhan')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
                                 @if ($type == 'index')
                                 <div class="card-action">
                                     @if ($data->status == 'DIAJUKAN')
