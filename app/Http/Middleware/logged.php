@@ -17,6 +17,16 @@ class logged
     {
         if (!auth()->check()) {
             return $next($request);
+        } else {
+            if (auth()->user()->level == 1) {
+                return redirect()->to(url('admin'));
+            } elseif (auth()->user()->level == 2) {
+                return redirect()->to(url('helpdesk'));
+            } elseif (auth()->user()->level == 3) {
+                return redirect()->to(url('pic'));
+            } elseif (auth()->user()->level == 4) {
+                return redirect()->to(url('user'));
+            }
         }
         return redirect()->back();
     }
