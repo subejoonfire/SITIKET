@@ -15,6 +15,7 @@
     #tiket,
     #priority,
     #module,
+    #subjek,
     #issue
 
      {
@@ -116,9 +117,16 @@
                                         @enderror
                                     </div>
                                 </div>
-                        
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label for="subjek">Subjek</label>
+                                        <input type="text" name="subjek" class="form-control" id="subjek" value="{{ $data->subjek }}">
+                                        @error('subjek')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
                                 <!-- Keluhan -->
-                                <div class="form-group">
+                                <div class="col-md-12">
                                     <label for="keluhan">Keluhan</label>
                                     <textarea name="keluhan" class="form-control" id="keluhan" rows="3" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
                                     @error('keluhan')
@@ -128,7 +136,7 @@
                                 </div>
                             </div>
                             @if ($type == 'index')
-                            <div class="col-md-8">
+                            
                             <div class="form-group">
                                 @if ($data->status == 'DIAJUKAN')
                                 <a href="{{ url('pic/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
