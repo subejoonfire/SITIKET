@@ -12,6 +12,8 @@
     #module,
     #status,
     #subjek,
+    #department,
+    #tanggal_diajukan,
     #issue {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -65,64 +67,73 @@
                             </div>
                             <div class="card-body">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="ticket_id">ID_Tiket</label>
-                                            <input type="text" name="ticket_id" class="form-control" id="ticket_id" value="{{ $data->id }}">
-                                            @error('ticket_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
+                                <div class="form-group row">
+                                    <!-- Baris 1 -->
+                                    <div class="col-md-4">
+                                        <label for="ticket_id">ID Tiket</label>
+                                        <input type="text" name="ticket_id" class="form-control" id="ticket_id" value="{{ $data->id }}">
+                                        @error('ticket_id')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="priority">Priority</label>
-                                            <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priority ?? 'Belum ada' }}">
-                                            @error('priority')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
+                                    <div class="col-md-4">
+                                        <label for="priority">Priority</label>
+                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priority ?? 'Belum ada' }}">
+                                        @error('priority')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="module">Module</label>
-                                            <input type="text" name="module" class="form-control" id="module" value="{{ $data->module ?? 'Belum ada' }}">
-                                            @error('module')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="status">Status</label>
-                                            <span class="form-control" id="status">{{ $data->status }}</span>
-                                            @error('status')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="subjek">Subjek</label>
-                                            <span class="form-control" id="subjek">{{ $data->issue }}</span>
-                                            @error('subjek')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="issue">Issue</label>
-                                            <textarea name="issue" class="form-control" id="issue" rows="4">{{ $data->detailissue }}</textarea>
-                                            @error('issue')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
+                                    <div class="col-md-4">
+                                        <label for="module">Module</label>
+                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->module ?? 'Belum ada' }}">
+                                        @error('module')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
+                                
+                                <div class="form-group row">
+                                    <!-- Baris 2 -->
+                                    <div class="col-md-4">
+                                        <label for="status">Status</label>
+                                        <span class="form-control" id="status">{{ $data->status }}</span>
+                                        @error('status')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="subjek">Subjek</label>
+                                        <span class="form-control" id="subjek">{{ $data->issue }}</span>
+                                        @error('subjek')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="department">Departemen Diterima</label>
+                                        <span class="form-control" id="department">{{ $data->issue }}</span>
+                                        @error('iddepartment')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <!-- Tanggal Diajukan -->
+                                    <label for="tanggal_diajukan">Tanggal Diajukan</label>
+                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}" placeholder="Masukkan Tanggal">
+                                    @error('tanggal_diajukan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <!-- Issue -->
+                                    <label for="issue">Issue</label>
+                                    <textarea name="issue" class="form-control" id="issue" rows="4">{{ $data->detailissue }}</textarea>
+                                    @error('issue')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                
                             </div>
                         </div>
                     </form>
