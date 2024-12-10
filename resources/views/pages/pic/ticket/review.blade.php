@@ -10,7 +10,8 @@
     #email,
     #username,
     #phone,
-    #department,
+<<<<<<<<< Temporary merge branch 1:resources/views/pages/pic/ticket/review.blade.php
+    #pic,
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -71,6 +72,30 @@
                                     @error('iddepartment')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
+=========
+                                <!-- Id_ticket, Priority, Module, Issue -->
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="tiket">ID Tiket</label>
+                                        <input type="tiket" name="tiket" class="form-control" id="tiket" value="tktq212">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="priority">Priority</label>
+                                        <input type="text" name="priority" class="form-control" id="priority" value="Medium">
+                                    </div>
+                                </div>
+                    
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="module">Module</label>
+                                        <input type="text" name="module" class="form-control" id="module" value="Software" >
+                                    </div>
+                    
+                                    <div class="col-md-6">
+                                        <label for="issue">Issue</label>
+                                        <input type="text" name="issue" class="form-control" id="issue" value="System Error" >
+                                    </div>
+>>>>>>>>> Temporary merge branch 2:resources/views/pages/department/ticket/review.blade.php
                                 </div>
 
                                 <!-- Username, Phone, Email, Keluhan (menggunakan data) -->
@@ -109,6 +134,21 @@
                                         @enderror
                                     </div>
                                 </div>
+<<<<<<<<< Temporary merge branch 1:resources/views/pages/pic/ticket/review.blade.php
+                                <div class="form-group">
+                                    <label for="keluhan">Keluhan</label>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
+                                    @error('keluhan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="tanggal_diajukan">Tanggal Diajukan</label>
+                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}">
+                                    @error('tanggal_diajukan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
                                 @if ($type == 'index')
                                 <div class="card-action">
                                     @if ($data->status == 'DIAJUKAN')
@@ -131,7 +171,100 @@
                                 </div>
                                 @elseif ($type == 'done')
                                 <div class="card-action">
-                                    <a href="{{ url('department/ticket/done') }}" class="btn btn-primary">Kembali</a>
+                                    <a href="{{ url('pic/ticket/done') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @endif
+=========
+>>>>>>>>> Temporary merge branch 2:resources/views/pages/department/ticket/review.blade.php
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+            <h4 class="page-title">Pesan Masuk</h4>
+            {{-- CHAT NEW --}}
+            <div class="container">
+                <div class="panel messages-panel">
+                    <div class="tab-content">
+                        <div class="tab-pane message-body active" id="inbox-message-1">
+                                <div class="new-message-wrapper">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Send message to...">
+                                        <a class="btn btn-danger close-new-message" href="#"><i class="fa fa-times"></i></a>
+                                    </div>
+            
+                                    <div class="chat-footer new-message-textarea">
+                                        <textarea class="send-message-text"></textarea>
+                                        <label class="upload-file">
+                                            <input type="file" required="">
+                                            <i class="fa fa-paperclip"></i>
+                                        </label>
+                                        <button type="button" class="send-message-button btn-info"> <i class="fa fa-send"></i> </button>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="message-chat">
+                                <div class="chat-body">
+                                    <div class="message info">
+                                        <img alt="" class="img-circle medium-image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+            
+                                        <div class="message-body">
+                                            <div class="message-info">
+                                                <h4> {{ $data->users->name }} </h4>
+                                                <h5> <i class="fa fa-clock-o"></i> 2:25 PM </h5>
+                                            </div>
+                                            <hr>
+                                            <div class="message-text">
+                                                {{ $data->trouble }}
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </div>
+            
+                                    <div class="message my-message">
+                                        <img alt="" class="img-circle medium-image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+            
+                                        <div class="message-body">
+                                            <div class="message-body-inner">
+                                                <div class="message-info">
+                                                    <h4> Dennis Novac </h4>
+                                                    <h5> <i class="fa fa-clock-o"></i> 2:28 PM </h5>
+                                                </div>
+                                                <hr>
+                                                <div class="message-text">
+                                                    Thanks, I think I will use this for my next dashboard system.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </div>
+            
+                                    <div class="message info">
+                                        <img alt="" class="img-circle medium-image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+            
+                                        <div class="message-body">
+                                            <div class="message-info">
+                                                <h4> Elon Musk </h4>
+                                                <h5> <i class="fa fa-clock-o"></i> 2:32 PM </h5>
+                                            </div>
+                                            <hr>
+                                            <div class="message-text">
+                                                Hah, too late, I already bought it and my team is impleting the new design right now.
+                                            </div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+            
+                                <div class="chat-footer">
+                                    <textarea class="send-message-text"></textarea>
+                                    <label class="upload-file">
+                                        <input type="file" required="">
+                                        <i class="fa fa-paperclip"></i>
+                                    </label>
+                                    <button type="button" class="send-message-button btn-info"> <i class="fas fa-paper-plane"></i> </button>
                                 </div>
                             </div>
                         </div>
