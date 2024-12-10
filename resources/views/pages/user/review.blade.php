@@ -78,7 +78,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="priority">Priority</label>
-                                            <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priority }}">
+                                            <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priority ?? 'Belum ada' }}">
                                             @error('priority')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -89,7 +89,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="module">Module</label>
-                                            <input type="text" name="module" class="form-control" id="module" value="{{ $data->module }}">
+                                            <input type="text" name="module" class="form-control" id="module" value="{{ $data->module ?? 'Belum ada' }}">
                                             @error('module')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
@@ -128,6 +128,7 @@
                     </form>
                 </div>
             </div>
+            @if ($data->status != 'DIAJUKAN' && $data->status != 'TERKIRIM')
             <h4 class="page-title">Pesan Masuk</h4>
             <div class="container">
                 <div class="panel messages-panel">
@@ -193,9 +194,9 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
-</div>
 </div>
 
 
