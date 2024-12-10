@@ -11,17 +11,12 @@
     #username,
     #phone,
     #department,
-<<<<<<<<< Temporary merge branch 1
     #tanggal_diajukan,
     #tiket,
     #priority,
     #module,
     #issue
-
-     {
-=========
-    #tanggal_diajukan {
->>>>>>>>> Temporary merge branch 2
+      {
         background-color: #ffffff !important;
         color: #000000 !important;
         border: 1px solid #D1D1D1 !important;
@@ -74,7 +69,6 @@
                             </div>
                             <div class="card-body">
                                 @csrf
-<<<<<<<<< Temporary merge branch 1
                                 <!-- Id_ticket, Priority, Module, Issue -->
                                 <div class="form-group row">
                                     <div class="col-md-6">
@@ -96,7 +90,6 @@
                                         <label for="issue">Issue</label>
                                         <input type="text" name="issue" class="form-control" id="issue" value="Medium">
                                     </div>
-=========
                                 <!-- Departemen sebagai input text biasa -->
                                 <div class="form-group">
                                     <label for="department">Departemen</label>
@@ -104,7 +97,6 @@
                                     @error('iddepartment')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
->>>>>>>>> Temporary merge branch 2
                                 </div>
 
                                 <!-- Username, Phone, Email, Keluhan (menggunakan data) -->
@@ -143,8 +135,6 @@
                                         @enderror
                                     </div>
                                 </div>
-<<<<<<<<< Temporary merge branch 1
-=========
                                 <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
                                     <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
@@ -184,7 +174,6 @@
                                     <a href="{{ url('department/ticket/done') }}" class="btn btn-primary">Kembali</a>
                                 </div>
                                 @endif
->>>>>>>>> Temporary merge branch 2
                             </div>
                         </div>
                     </form>

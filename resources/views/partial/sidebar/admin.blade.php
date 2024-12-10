@@ -16,7 +16,6 @@
                         <p>Pengguna</p>
                     </a>
                 </li>
-<<<<<<<<< Temporary merge branch 1
                 <li class="nav-item {{ request()->is('admin/module') ? 'active' : '' }}">
                     <a href="{{ url('admin/module') }}">
                         <i class="fas fa-cogs"></i>
@@ -25,7 +24,6 @@
                 </li>                
                 <li class="nav-item {{ request()->is('admin/pic') ? 'active' : '' }}">
                     <a href="{{ url('admin/pic') }}">
-=========
                 {{-- <li class="nav-item {{ request()->is('admin/category') ? 'active' : '' }}">
                 <a href="{{ url('admin/category') }}">
                     <i class="fas fa-box"></i>
@@ -34,13 +32,11 @@
                 </li> --}}
                 <li class="nav-item {{ request()->is('admin/department') ? 'active' : '' }}">
                     <a href="{{ url('admin/department') }}">
->>>>>>>>> Temporary merge branch 2
                         <i class="fas fa-building"></i>
                         <p>Departemen</p>
                     </a>
                 </li>
             </ul>
-
         </div>
     </div>
 </div>
