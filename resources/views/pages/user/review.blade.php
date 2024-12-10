@@ -10,6 +10,7 @@
     #ticket_id,
 #priority,
 #module,
+#status,
 #issue {
     background-color: #ffffff !important;
     color: #000000 !important;
@@ -21,6 +22,7 @@
 
 
 </style>
+
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -98,13 +100,24 @@
                             
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <span class="form-control" id="status">Diterima</span>
+                                            @error('status')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>                                    
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                             <label for="issue">Issue</label>
-                                            <input type="text" name="issue" class="form-control" id="issue" value="System Error">
+                                            <textarea name="issue" class="form-control" id="issue" rows="4">{{ old('issue', 'System Error') }}</textarea>
                                             @error('issue')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                             
