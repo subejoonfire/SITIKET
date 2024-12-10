@@ -96,8 +96,6 @@
                                             <th>Nama</th>
                                             <th>Departemen</th>
                                             <th>Status</th>
-                                            <th>Masalah</th>
-
                                             <th style="width: 10%">Aksi</th>
                                         </tr>
                                     </thead>
