@@ -15,9 +15,9 @@
     #tiket,
     #priority,
     #module,
-    #subjek,
     #issue
-      {
+
+     {
         background-color: #ffffff !important;
         color: #000000 !important;
         border: 1px solid #D1D1D1 !important;
@@ -25,7 +25,6 @@
         font-weight: normal !important;
         pointer-events: none;
     }
-    
 
 </style>
 
@@ -65,40 +64,26 @@
                     <form method="POST" action="{{ url('#') }}">
                         <div class="card">
                             <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <h4 class="card-title">Change Status</h4>
-                                </div>
+                                <h4 class="card-title">Change Status</h4>
                             </div>
                             <div class="card-body">
-                                @csrf
-                                <!-- Id_ticket, Priority, Module, Issue -->
+                                <!-- Username, Email, No Handphone -->
                                 <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <label for="tiket">ID Tiket</label>
-                                        <input type="text" name="tiket" class="form-control" id="tiket" value="tktq212">
+                                    <div class="col-md-4">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
+                                        @error('username')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="priority">Priority</label>
-                                        <input type="text" name="priority" class="form-control" id="priority" value="Medium">
+                                    <div class="col-md-4">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
+                                        @error('email')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
-                                </div>
-                    
-                                <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <label for="module">Module</label>
-                                        <input type="text" name="module" class="form-control" id="module" value="tktq212">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="issue">Issue</label>
-                                        <input type="text" name="issue" class="form-control" id="issue" value="Medium">
-                                    </div>
-                                <!-- Username, Phone, Email, Keluhan (menggunakan data) -->
-                                <div class="col-md-6">
-                                        <label for="issue">Issue</label>
-                                        <input type="text" name="issue" class="form-control" id="issue" value="Medium">
-                                    </div>
-                    
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <label for="phone">No Handphone</label>
                                         <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
                                         @error('phone')
@@ -106,57 +91,71 @@
                                         @enderror
                                     </div>
                                 </div>
-                    
+                        
+                                <!-- Departement, Tanggal Diajukan, Priority -->
                                 <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <label for="email">Email</label>
-                                        <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
-                                        @error('email')
+                                    <div class="col-md-4">
+                                        <label for="department">Department</label>
+                                        <input type="text" name="department" class="form-control" id="department" value="{{ $data->department }}">
+                                        @error('department')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="issue">Issue</label>
-                                        <input type="text" name="issue" class="form-control" id="issue" value="Medium">
+                                    <div class="col-md-4">
+                                        <label for="tanggal_diajukan">Tanggal Diajukan</label>
+                                        <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->tanggal_diajukan }}">
+                                        @error('tanggal_diajukan')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="priority">Priority</label>
+                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priority }}">
+                                        @error('priority')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <label for="subjek">Subjek</label>
-                                    <input type="text" name="issue" class="form-control" id="Subjek" value="Dayum">
-                            </div>
-                                <div class="col-md-12">
+                        
+                                <!-- Keluhan -->
+                                <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
-                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" rows="3" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
                                     @error('keluhan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
+                                    
                                 </div>
-                                @if ($type == 'index')
-                                <div class="card-action">
-                                    @if ($data->status == 'DIAJUKAN')
-                                    <a href="{{ url('department/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
-                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                                    @endif
-                                    <a href="{{ url('department/ticket') }}" class="btn btn-primary">Kembali</a>
-                                </div>
-                                @elseif ($type == 'approved')
-                                <div class="card-action">
-                                    <a href="{{ url('department/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
-                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                                    <a href="{{ url('department/ticket/approved') }}" class="btn btn-primary">Kembali</a>
-                                </div>
-                                @elseif ($type == 'processed')
-                                <div class="card-action">
-                                    <a href="{{ url('department/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
-                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                                    <a href="{{ url('department/ticket/processed') }}" class="btn btn-primary">Kembali</a>
-                                </div>
-                                @elseif ($type == 'done')
-                                <div class="card-action">
-                                    <a href="{{ url('department/ticket/done') }}" class="btn btn-primary">Kembali</a>
-                                </div>
-                                @endif
                             </div>
+                            @if ($type == 'index')
+                            <div class="col-md-8">
+                            <div class="form-group">
+                                @if ($data->status == 'DIAJUKAN')
+                                <a href="{{ url('pic/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
+                                <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                @endif
+                                <a href="{{ url('pic/ticket') }}" class="btn btn-primary">Kembali</a>
+                            </div>
+                            @elseif ($type == 'approved')
+                            <div class="card-action">
+                                <a href="{{ url('pic/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
+                                <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                <a href="{{ url('pic/ticket/approved') }}" class="btn btn-primary">Kembali</a>
+                            </div>
+                            @elseif ($type == 'processed')
+                            <div class="card-action">
+                                <a href="{{ url('pic/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
+                                <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                <a href="{{ url('pic/ticket/processed') }}" class="btn btn-primary">Kembali</a>
+                            </div>
+                            @elseif ($type == 'done')
+                            <div class="card-action">
+                                <a href="{{ url('pic/ticket/done') }}" class="btn btn-primary">Kembali</a>
+                            </div>
+                            @endif
+                    </div>
                         </div>
+                        
                     </form>
                     
                 </div>
@@ -249,7 +248,8 @@
                         </div>
                     </div>
                 </div>
-        </div>
+
+                
         </div>
         </div>
     </div>
