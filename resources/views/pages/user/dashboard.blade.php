@@ -119,7 +119,7 @@
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Belum ada' }}</td>
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($item->trouble ?? 'Tidak ada', 60) }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($item->issue ?? 'Tidak ada', 60) }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ url('user/action/delete/'. $item->idticket) }}" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-toggle="tooltip" title="Remove">
@@ -127,7 +127,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('user/review') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Review">
+                                                    <a href="{{ url('user/review/' . $item->id) }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Review">
                                                         <span>Review</span>
                                                         <!-- Notifikasi dengan angka -->
                                                         <span class="notification-badge">5</span>
