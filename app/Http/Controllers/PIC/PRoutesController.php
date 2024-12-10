@@ -42,12 +42,13 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | TIKET',
             'collection' => Ticket::with(['users', 'departments'])
-                ->whereHas('departments', function ($query) {
-                    $query->whereNotNull('iddepartment')
-                        ->where('iddepartment', auth()->user()->iddepartment);
+                ->whereHas('users', function ($query) {
+                    $query->whereNotNull('iduser_pic')
+                        ->where('iduser_pic', auth()->user()->id);
                 })
                 ->get()
         ];
+        dd($data['collection']);
         return view('pages.pic.ticket.index', $data);
     }
 
@@ -56,10 +57,10 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | DISETUJUI',
             'collection' => Ticket::with(['users', 'departments'])
-                ->whereHas('departments', function ($query) {
-                    $query->whereNotNull('iddepartment')
+                ->whereHas('users', function ($query) {
+                    $query->whereNotNull('iduser_pic')
                         ->where([
-                            'iddepartment' => auth()->user()->iddepartment,
+                            'iduser_pic' => auth()->user()->id,
                             'status' => 'DISETUJUI'
                         ]);
                 })
@@ -73,10 +74,10 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | DIPROSES',
             'collection' => Ticket::with(['users', 'departments'])
-                ->whereHas('departments', function ($query) {
-                    $query->whereNotNull('iddepartment')
+                ->whereHas('users', function ($query) {
+                    $query->whereNotNull('iduser_pic')
                         ->where([
-                            'iddepartment' => auth()->user()->iddepartment,
+                            'iduser_pic' => auth()->user()->id,
                             'status' => 'DIPROSES'
                         ]);
                 })
@@ -90,10 +91,10 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | DITOLAK',
             'collection' => Ticket::with(['users', 'departments'])
-                ->whereHas('departments', function ($query) {
-                    $query->whereNotNull('iddepartment')
+                ->whereHas('users', function ($query) {
+                    $query->whereNotNull('iduser_pic')
                         ->where([
-                            'iddepartment' => auth()->user()->iddepartment,
+                            'iduser_pic' => auth()->user()->id,
                             'status' => 'DITOLAK'
                         ]);
                 })
@@ -107,10 +108,10 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | SELESAI',
             'collection' => Ticket::with(['users', 'departments'])
-                ->whereHas('departments', function ($query) {
-                    $query->whereNotNull('iddepartment')
+                ->whereHas('users', function ($query) {
+                    $query->whereNotNull('iduser_pic')
                         ->where([
-                            'iddepartment' => auth()->user()->iddepartment,
+                            'iduser_pic' => auth()->user()->id,
                             'status' => 'SELESAI'
                         ]);
                 })
