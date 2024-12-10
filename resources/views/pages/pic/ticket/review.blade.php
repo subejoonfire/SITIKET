@@ -223,6 +223,34 @@
                         </div>
                     </div>
                 </div>
+
+                @if ($type == 'index')
+                <div class="card-action">
+                    @if ($data->status == 'DIAJUKAN')
+                    <a href="{{ url('pic/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
+                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                    @endif
+                    <a href="{{ url('pic/ticket') }}" class="btn btn-primary">Kembali</a>
+                </div>
+                @elseif ($type == 'approved')
+                <div class="card-action">
+                    <a href="{{ url('pic/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
+                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                    <a href="{{ url('pic/ticket/approved') }}" class="btn btn-primary">Kembali</a>
+                </div>
+                @elseif ($type == 'processed')
+                <div class="card-action">
+                    <a href="{{ url('pic/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
+                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                    <a href="{{ url('pic/ticket/processed') }}" class="btn btn-primary">Kembali</a>
+                </div>
+                @elseif ($type == 'done')
+                <div class="card-action">
+                    <a href="{{ url('pic/ticket/done') }}" class="btn btn-primary">Kembali</a>
+                </div>
+                @endif
+        </div>
+        </div>
         </div>
     </div>
 </div>
