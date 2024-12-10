@@ -43,11 +43,12 @@ class URoutesController extends Controller
         return view('pages.user.profile', $data);
     }
 
-    public function review()
+    public function review($id)
     {
 
         $data = [
-            'title' => 'SI-TIKET | Review'
+            'title' => 'SI-TIKET | Review',
+            'data' => Ticket::find($id)->first(),
         ];
 
         return view('pages.user.review', $data);

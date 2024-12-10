@@ -52,8 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
             Route::get('add', [ARoutesController::class, 'addmodule'])->name('addmodule');
-
-        });    
+        });
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
             Route::get('/', [ARoutesController::class, 'user'])->name('/');
@@ -89,9 +88,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => user::class], function () {
         Route::get('/', [URoutesController::class, 'index'])->name('/');
         Route::get('/add', [URoutesController::class, 'add'])->name('add');
-
-        Route::get('review', [URoutesController::class, 'review'])->name('review');
-
+        Route::get('review/{id}', [URoutesController::class, 'review'])->name('review/{id}');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [UserController::class, 'userStore'])->name('store');
             Route::get('/delete/{id}', [UserController::class, 'userDelete'])->name('delete');
