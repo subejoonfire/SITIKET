@@ -96,6 +96,7 @@
                                             <th>Nama</th>
                                             <th>Departemen</th>
                                             <th>Status</th>
+                                            <th>Masalah</th>
                                             <th style="width: 10%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -106,15 +107,14 @@
                                             <td>{{ $item->users->name }}</td>
                                             <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
+                                            <td>{{ $item->issue }}</td>
                                             <td>
-                                                @if ($item->status == 'TERKIRIM')
                                                 <div class="form-button-action">
                                                     <a href="{{ url('helpdesk/detail/'. $item->id) }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
                                                         <i class="fa fa-eye me-3"></i>
                                                         <span>Review</span>
                                                     </a>
                                                 </div>
-                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach

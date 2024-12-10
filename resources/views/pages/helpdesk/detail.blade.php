@@ -28,15 +28,14 @@
         cursor: pointer;
     }
 
-    #pic{
+    #pic {
         background-color: #ffffff !important;
         color: #000000 !important;
-        border: 2px solid #4CAF50 !important;
         padding: 8px;
         cursor: pointer;
     }
 
-    #pic:focus{
+    #pic:focus {
         border-color: #70c55b !important;
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
@@ -49,7 +48,7 @@
         cursor: pointer;
     }
 
-    #priority:focus{
+    #priority:focus {
         border-color: #70c55b !important;
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
@@ -58,8 +57,6 @@
         border-color: #70c55b !important;
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
-
-    
 
 </style>
 
@@ -115,8 +112,6 @@
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                
-                                        <!-- Gmail -->
                                         <div style="flex: 1;">
                                             <label for="email">Email</label>
                                             <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
@@ -124,8 +119,6 @@
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                
-                                        <!-- Handphone -->
                                         <div style="flex: 1;">
                                             <label for="phone">No Handphone</label>
                                             <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
@@ -135,17 +128,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div class="form-group">
                                     <div style="display: flex; gap: 10px; justify-content: space-between;">
-                                        <!-- Departemen -->
                                         <div style="flex: 1;">
-                                            <label for="department">Departemen</label>
+                                            <label for="department">Pilih Departemen</label>
                                             <select name="iddepartment" class="form-control" id="department">
                                                 <option value="">Pilih Departemen</option>
-                                                @foreach ($collection as $department)
-                                                <option value="{{ $department->id }}" {{ old('iddepartment', $data->iddepartment ?? '') == $department->id ? 'selected' : '' }}>
-                                                    {{ $department->departmentname }}
+                                                @foreach ($department as $item)
+                                                <option value="{{ $item->id }}" {{ old('id', $data->iddepartment ?? '') == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->departmentname }}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -153,41 +144,27 @@
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                
-                                        <!-- PIC -->
                                         <div style="flex: 1;">
-                                            <label for="pic">PIC</label>
-                                            <select name="idpic" class="form-control" id="pic">
+                                            <label for="pic">Pilih PIC</label>
+                                            <select name="iduser_pic" class="form-control" id="pic">
                                                 <option value="">Pilih PIC</option>
-                                                @php
-                                                    // Data dummy PIC
-                                                    $picCollection = [
-                                                        ['id' => 1, 'picname' => 'John Doe'],
-                                                        ['id' => 2, 'picname' => 'Jane Smith'],
-                                                        ['id' => 3, 'picname' => 'Michael Johnson'],
-                                                        ['id' => 4, 'picname' => 'Emily Davis']
-                                                    ];
-                                                @endphp
-                                
-                                                @foreach ($picCollection as $pic)
-                                                <option value="{{ $pic['id'] }}" {{ old('idpic', $data->idpic ?? '') == $pic['id'] ? 'selected' : '' }}>
-                                                    {{ $pic['picname'] }}
+                                                @foreach ($pic as $item)
+                                                <option value="{{ $item->id }}" data-department="{{ $item->iddepartment }}" {{ old('iduser_pic', $data->iduser_pic ?? '') == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->name }}
                                                 </option>
                                                 @endforeach
                                             </select>
-                                            @error('idpic')
+                                            @error('iduser_pic')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                
-                                        <!-- Priority -->
                                         <div style="flex: 1;">
                                             <label for="priority">Priority</label>
                                             <select name="priority" class="form-control" id="priority">
                                                 <option value="">Pilih Priority</option>
-                                                <option value="can_wait" {{ old('priority', $data->priority ?? '') == 'can_wait' ? 'selected' : '' }}>Can Wait</option>
-                                                <option value="medium" {{ old('priority', $data->priority ?? '') == 'medium' ? 'selected' : '' }}>Medium</option>
-                                                <option value="urgent" {{ old('priority', $data->priority ?? '') == 'urgent' ? 'selected' : '' }}>Urgent</option>
+                                                <option value="Bisa Menunggu" {{ old('priority', $data->priority ?? '') == 'Bisa Menunggu' ? 'selected' : '' }}>Bisa Menunggu</option>
+                                                <option value="Sedang" {{ old('priority', $data->priority ?? '') == 'Sedang' ? 'selected' : '' }}>Sedang</option>
+                                                <option value="Mendesak" {{ old('priority', $data->priority ?? '') == 'Mendesak' ? 'selected' : '' }}>Mendesak</option>
                                             </select>
                                             @error('priority')
                                             <small class="text-danger">{{ $message }}</small>
@@ -195,10 +172,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <div style="display: flex; gap: 10px; justify-content: space-between;">
-                                        <!-- Tanggal Diajukan -->
                                         <div style="flex: 1;">
                                             <label for="tanggal_diajukan">Tanggal Diajukan</label>
                                             <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}">
@@ -208,21 +184,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div class="form-group">
-                                    <!-- Keluhan -->
                                     <label for="keluhan">Keluhan</label>
-                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
                                     @error('keluhan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                
-                                
-                                
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
-                                    <a href="#" class="btn btn-danger">Batal</a>
+                                    <a href="{{ url('helpdesk') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </div>
                         </div>

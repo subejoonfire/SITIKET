@@ -13,11 +13,13 @@ class UserController extends Controller
     public function userStore(Request $request)
     {
         $request->validate([
-            'trouble' => 'required|string|max:255',
+            'issue' => 'required|string|max:255',
+            'detailissue' => 'required|string',
         ]);
         $ticket = Ticket::create([
             'iduser' => auth()->user()->id,
-            'trouble' => $request->input('trouble'),
+            'issue' => $request->input('issue'),
+            'detailissue' => $request->input('detailissue'),
             'status' => 'TERKIRIM',
         ]);
         return redirect()->to('user')->with('success', 'Request berhasil dikirim! ID Tiket: ' . $ticket->id);

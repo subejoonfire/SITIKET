@@ -16,6 +16,7 @@ class AdminController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'level' => 'required|integer|max:5',
+            'phone' => 'required|string|max:14',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
         ]);
@@ -29,6 +30,7 @@ class AdminController extends Controller
         User::create([
             'iddepartment' => $validated['level'] == 3 ? $validated['iddepartment'] : null,
             'name' => $validated['name'],
+            'phone' => $validated['phone'],
             'level' => $validated['level'],
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
