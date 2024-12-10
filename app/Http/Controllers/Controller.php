@@ -27,7 +27,7 @@ class Controller
             } elseif (Auth::user()->level == 2) {
                 return redirect()->to(url('helpdesk'));
             } elseif (Auth::user()->level == 3) {
-                return redirect()->to(url('pic'));
+                return redirect()->to(url('department'));
             } elseif (Auth::user()->level == 4) {
                 return redirect()->to(url('user'));
             }
@@ -76,8 +76,7 @@ class Controller
             $file->move(public_path('back-end/assets/img/'), $fileName);
             $user->image = $fileName;
             $user->save();
-        }
-        else if ($request->hasFile('image')) {
+        } else if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = time() . 'user' . auth()->user()->id . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('back-end/assets/img/'), $fileName);

@@ -127,7 +127,7 @@
             <!-- End Navbar -->
         </div>
 
-        @include('partial.sidebar.pic')
+        @include('partial.sidebar.department')
 
         @yield('content')
 

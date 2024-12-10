@@ -5,17 +5,17 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Tiket</h4>
+                <h4 class="page-title">Tiket Disetujui</h4>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Semua Tiket</h4>
+                                <h4 class="card-title">Disetujui</h4>
                                 {{-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
                                     <i class="fa fa-plus"></i>
-                                   
+                                   Tambah Tiket
                                 </button> --}}
                             </div>
                         </div>
@@ -86,16 +86,15 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->pics->picname }}</td>
+                                            <td>{{ $item->departments->departmentname }}</td>
                                             <td>{{ $item->users->phone }}</td>
                                             <td>{{ $item->trouble }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                    <a href="{{ url('department/ticket/review/approved/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
                                                         <i class="fa fa-eye me-3"></i>
                                                         <span>Review</span>
-                                                        <span class="notification-badge">5</span>
                                                     </a>
                                                 </div>
                                             </td>

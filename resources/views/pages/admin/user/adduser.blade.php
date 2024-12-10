@@ -33,22 +33,22 @@
                                         <option selected disabled hidden>Pilih Level</option>
                                         <option value="1" {{ old('level') == 1 ? 'selected' : '' }}>Admin</option>
                                         <option value="2" {{ old('level') == 2 ? 'selected' : '' }}>Helpdesk</option>
-                                        <option value="3" {{ old('level') == 3 ? 'selected' : '' }}>Pic</option>
+                                        <option value="3" {{ old('level') == 3 ? 'selected' : '' }}>Department</option>
                                         <option value="4" {{ old('level') == 4 ? 'selected' : '' }}>User </option>
                                     </select>
                                     @error('level')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group" id="pic-container" style="display: none;">
-                                    <label for="idpic">Departemen</label>
-                                    <select class="form-control" id="idpic" name="idpic">
+                                <div class="form-group" id="department-container" style="display: none;">
+                                    <label for="iddepartment">Departemen</label>
+                                    <select class="form-control" id="iddepartment" name="iddepartment">
                                         <option selected disabled hidden>Pilih Departemen</option>
-                                        @foreach ($collection as $pic)
-                                        <option value="{{ $pic->id }}" {{ old('idpic') == $pic->id ? 'selected' : '' }}>{{ $pic->picname }}</option>
+                                        @foreach ($collection as $department)
+                                        <option value="{{ $department->id }}" {{ old('iddepartment') == $department->id ? 'selected' : '' }}>{{ $department->departmentname }}</option>
                                         @endforeach
                                     </select>
-                                    @error('idpic')
+                                    @error('iddepartment')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -89,11 +89,11 @@
 <script>
     function togglePic() {
         var levelSelect = document.getElementById("level");
-        var picContainer = document.getElementById("pic-container");
+        var departmentContainer = document.getElementById("department-container");
         if (levelSelect.value == "3") {
-            picContainer.style.display = "block";
+            departmentContainer.style.display = "block";
         } else {
-            picContainer.style.display = "none";
+            departmentContainer.style.display = "none";
         }
     }
 

@@ -14,7 +14,7 @@
         <div class="page-inner">
             <div class="page-header">
                 <div class="col-md-12">
-                    <form method="POST" action="{{ url('admin/pic/action/store') }}">
+                    <form method="POST" action="{{ url('admin/department/action/store') }}">
                         @csrf
                         <div class="card">
                             <div class="card-header">
