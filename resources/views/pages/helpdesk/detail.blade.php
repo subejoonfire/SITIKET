@@ -11,6 +11,7 @@
     #email,
     #username,
     #phone,
+    #subjek,
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -31,6 +32,7 @@
     #pic {
         background-color: #ffffff !important;
         color: #000000 !important;
+        border: 2px solid #4CAF50 !important;
         padding: 8px;
         cursor: pointer;
     }
@@ -56,6 +58,12 @@
     #department:focus {
         border-color: #70c55b !important;
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
+    }
+    #subjek {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 8px;
+        cursor: pointer
     }
 
 </style>
@@ -185,6 +193,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="subjek">Subjek</label>
+                                    <textarea name="subjek" class="form-control" id="subjek" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
+                                    @error('subjek')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
                                     <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
                                     @error('keluhan')
@@ -206,3 +221,27 @@
 </div>
 
 @endsection
+@if ($data->iduser_pic == NULL)
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const departmentSelect = document.getElementById('department');
+        const picSelect = document.getElementById('pic');
+
+        const updatePicOptions = () => {
+            const selectedDepartment = departmentSelect.value;
+            picSelect.disabled = !selectedDepartment;
+
+            Array.from(picSelect.options).forEach(option => {
+                const optionDepartment = option.getAttribute('data-department');
+                option.style.display = (!selectedDepartment || optionDepartment === selectedDepartment) ? '' : 'none';
+            });
+
+            picSelect.value = '';
+        };
+
+        departmentSelect.addEventListener('change', updatePicOptions);
+        updatePicOptions();
+    });
+
+</script>
+@endif

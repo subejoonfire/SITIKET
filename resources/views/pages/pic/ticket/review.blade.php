@@ -91,13 +91,11 @@
                                         <input type="text" name="issue" class="form-control" id="issue" value="Medium">
                                     </div>
                                 <!-- Departemen sebagai input text biasa -->
-                                <div class="form-group">
-                                    <label for="department">Departemen</label>
-                                    <input type="text" name="iddepartment" class="form-control" id="department" value="{{ $data->departments->departmentname }}">
-                                    @error('iddepartment')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="issue">Issue</label>
+                                <input type="text" name="issue" class="form-control" id="issue" value="Medium">
+                            </div>
 
                                 <!-- Username, Phone, Email, Keluhan (menggunakan data) -->
                                 <div class="form-group row">
@@ -126,26 +124,17 @@
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                    
-                                    <div class="col-md-6">
-                                        <label for="keluhan">Keluhan</label>
-                                        <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
-                                        @error('keluhan')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
+                                <div class="form-group">
+                                    <label for="tanggal_diajukan">Tanggal Diajukan</label>
+                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}">
+                                    @error('tanggal_diajukan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
                                     <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
                                     @error('keluhan')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="tanggal_diajukan">Tanggal Diajukan</label>
-                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}">
-                                    @error('tanggal_diajukan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -268,32 +257,6 @@
                         </div>
                     </div>
                 </div>
-
-                @if ($type == 'index')
-                <div class="card-action">
-                    @if ($data->status == 'DIAJUKAN')
-                    <a href="{{ url('pic/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
-                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                    @endif
-                    <a href="{{ url('pic/ticket') }}" class="btn btn-primary">Kembali</a>
-                </div>
-                @elseif ($type == 'approved')
-                <div class="card-action">
-                    <a href="{{ url('pic/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
-                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                    <a href="{{ url('pic/ticket/approved') }}" class="btn btn-primary">Kembali</a>
-                </div>
-                @elseif ($type == 'processed')
-                <div class="card-action">
-                    <a href="{{ url('pic/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
-                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                    <a href="{{ url('pic/ticket/processed') }}" class="btn btn-primary">Kembali</a>
-                </div>
-                @elseif ($type == 'done')
-                <div class="card-action">
-                    <a href="{{ url('pic/ticket/done') }}" class="btn btn-primary">Kembali</a>
-                </div>
-                @endif
         </div>
         </div>
         </div>
