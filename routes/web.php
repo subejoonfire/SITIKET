@@ -49,6 +49,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [ARoutesController::class, 'index'])->name('/');
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
 
+        Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
+            Route::get('/', [ARoutesController::class, 'module'])->name('index');
+            Route::get('add', [ARoutesController::class, 'addmodule'])->name('addmodule');
+
+        });    
+
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
             Route::get('/', [ARoutesController::class, 'user'])->name('/');
             Route::get('add', [ARoutesController::class, 'adduser'])->name('add');
