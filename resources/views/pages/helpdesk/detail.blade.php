@@ -112,9 +112,16 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="keluhan">Keluhan</label>
-                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
-                                    @error('keluhan')
+                                    <label for="issue">Subjek</label>
+                                    <textarea name="issue" class="form-control" id="issue" placeholder="Enter Complaint Description">{{ $data->issue }}</textarea>
+                                    @error('issue')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="detailissue">Keluhan</label>
+                                    <textarea name="detailissue" class="form-control" id="detailissue" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
+                                    @error('detailissue')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
