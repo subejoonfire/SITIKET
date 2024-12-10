@@ -97,44 +97,26 @@
                                     </div>
 >>>>>>>>> Temporary merge branch 2:resources/views/pages/department/ticket/review.blade.php
                                 </div>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
+                                    @error('username')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
 
-                                <!-- Username, Phone, Email, Keluhan (menggunakan data) -->
-                                <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <label for="username">Username</label>
-                                        <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
-                                        @error('username')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                    
-                                    <div class="col-md-6">
-                                        <label for="phone">No Handphone</label>
-                                        <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
-                                        @error('phone')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
+                                    <label for="phone">No Handphone</label>
+                                    <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
+                                    @error('phone')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
-                    
-                                <div class="form-group row">
-                                    <div class="col-md-6">
-                                        <label for="email">Email</label>
-                                        <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
-                                        @error('email')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                    
-                                    <div class="col-md-6">
-                                        <label for="keluhan">Keluhan</label>
-                                        <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
-                                        @error('keluhan')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
+                                    @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
-<<<<<<<<< Temporary merge branch 1:resources/views/pages/pic/ticket/review.blade.php
                                 <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
                                     <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
