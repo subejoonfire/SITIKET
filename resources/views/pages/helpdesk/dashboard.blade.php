@@ -96,8 +96,6 @@
                                             <th>Nama</th>
                                             <th>Departemen</th>
                                             <th>Status</th>
-                                            <th>Masalah</th>
-
                                             <th style="width: 10%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -108,7 +106,6 @@
                                             <td>{{ $item->users->name }}</td>
                                             <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
-                                            <td>{{ $item->trouble }}</td>
                                             <td>
                                                 @if ($item->status == 'TERKIRIM')
                                                 <div class="form-button-action">
