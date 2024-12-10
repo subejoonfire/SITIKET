@@ -16,8 +16,8 @@ class URoutesController extends Controller
         $ticket = new Ticket();
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'collection' => Ticket::with(['users', 'departments'])->get(),
-            'count' => Ticket::count(),
+            'collection' => Ticket::with(['users', 'departments'])->where('iduser', auth()->user()->id)->get(),
+            'count' => Ticket::where('iduser', auth()->user()->id)->count(),
         ];
         return view('pages.user.dashboard', $data);
     }
@@ -43,11 +43,12 @@ class URoutesController extends Controller
         return view('pages.user.profile', $data);
     }
 
-    public function review()
+    public function review($id)
     {
 
         $data = [
-            'title' => 'SI-TIKET | Review'
+            'title' => 'SI-TIKET | Review',
+            'data' => Ticket::find($id)->first(),
         ];
 
         return view('pages.user.review', $data);
