@@ -12,8 +12,8 @@ class HRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'incoming' => Ticket::with('pics')->whereNull('idpics')->count(),
-            'done' => Ticket::with('pics')->whereNotNull('idpics')->count(),
+            'incoming' => Ticket::with('pics')->whereNull('idpic')->count(),
+            'done' => Ticket::with('pics')->whereNotNull('idpic')->count(),
             'collection' => Ticket::with(['users', 'pics'])->get()
         ];
         return view('pages.helpdesk.dashboard', $data);
