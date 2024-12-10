@@ -75,9 +75,8 @@
                                             <th>ID Tiket</th>
                                             <th>Nama Pelapor</th>
                                             <th>Departemen</th>
-                                            <th>Nomor HP</th>
-                                            <th>Masalah</th>
                                             <th>Status</th>
+                                            <th>Masalah</th>
                                             <th style="width: 10%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -87,12 +86,11 @@
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>{{ $item->departments->departmentname }}</td>
-                                            <td>{{ $item->users->phone }}</td>
-                                            <td>{{ $item->trouble }}</td>
                                             <td>{{ $item->status }}</td>
+                                            <td>{{ $item->issue }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('department/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
+                                                    <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
                                                         <i class="fa fa-eye me-3"></i>
                                                         <span>Review</span>
                                                         <span class="notification-badge">5</span>
