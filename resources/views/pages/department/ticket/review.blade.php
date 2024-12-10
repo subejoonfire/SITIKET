@@ -11,6 +11,7 @@
     #username,
     #phone,
     #department,
+<<<<<<< HEAD:resources/views/pages/pic/ticket/review.blade.php
     #tanggal_diajukan,
     #tiket,
     #priority,
@@ -18,6 +19,9 @@
     #issue
 
      {
+=======
+    #tanggal_diajukan {
+>>>>>>> ab9b0d14e4a04b779602db7f7b50df05e6b39527:resources/views/pages/department/ticket/review.blade.php
         background-color: #ffffff !important;
         color: #000000 !important;
         border: 1px solid #D1D1D1 !important;
@@ -70,6 +74,7 @@
                             </div>
                             <div class="card-body">
                                 @csrf
+<<<<<<< HEAD:resources/views/pages/pic/ticket/review.blade.php
                                 <!-- Id_ticket, Priority, Module, Issue -->
                                 <div class="form-group row">
                                     <div class="col-md-6">
@@ -91,6 +96,15 @@
                                         <label for="issue">Issue</label>
                                         <input type="text" name="issue" class="form-control" id="issue" value="Medium">
                                     </div>
+=======
+                                <!-- Departemen sebagai input text biasa -->
+                                <div class="form-group">
+                                    <label for="department">Departemen</label>
+                                    <input type="text" name="iddepartment" class="form-control" id="department" value="{{ $data->departments->departmentname }}">
+                                    @error('iddepartment')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+>>>>>>> ab9b0d14e4a04b779602db7f7b50df05e6b39527:resources/views/pages/department/ticket/review.blade.php
                                 </div>
 
                                 <!-- Username, Phone, Email, Keluhan (menggunakan data) -->
@@ -129,6 +143,48 @@
                                         @enderror
                                     </div>
                                 </div>
+<<<<<<< HEAD:resources/views/pages/pic/ticket/review.blade.php
+=======
+                                <div class="form-group">
+                                    <label for="keluhan">Keluhan</label>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->trouble }}</textarea>
+                                    @error('keluhan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="tanggal_diajukan">Tanggal Diajukan</label>
+                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}">
+                                    @error('tanggal_diajukan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                @if ($type == 'index')
+                                <div class="card-action">
+                                    @if ($data->status == 'DIAJUKAN')
+                                    <a href="{{ url('department/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
+                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    @endif
+                                    <a href="{{ url('department/ticket') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @elseif ($type == 'approved')
+                                <div class="card-action">
+                                    <a href="{{ url('department/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
+                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    <a href="{{ url('department/ticket/approved') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @elseif ($type == 'processed')
+                                <div class="card-action">
+                                    <a href="{{ url('department/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
+                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    <a href="{{ url('department/ticket/processed') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @elseif ($type == 'done')
+                                <div class="card-action">
+                                    <a href="{{ url('department/ticket/done') }}" class="btn btn-primary">Kembali</a>
+                                </div>
+                                @endif
+>>>>>>> ab9b0d14e4a04b779602db7f7b50df05e6b39527:resources/views/pages/department/ticket/review.blade.php
                             </div>
                         </div>
                     </form>

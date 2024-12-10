@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Truncate the users and pics table to avoid duplicate entries
+        // Truncate the users and departments table to avoid duplicate entries
         DB::table('users')->truncate();
-        DB::table('pics')->truncate();
+        DB::table('departments')->truncate();
 
         // Seed users table
         DB::table('users')->insert([
@@ -76,8 +76,8 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
-        // Seed pics table
-        $pics = [
+        // Seed departments table
+        $departments = [
             'GA',
             'HR',
             'HSE',
@@ -106,9 +106,9 @@ class DatabaseSeeder extends Seeder
             'MPLANT'
         ];
 
-        foreach ($pics as $pic) {
-            DB::table('pics')->insert([
-                'picname' => $pic,
+        foreach ($departments as $department) {
+            DB::table('departments')->insert([
+                'departmentname' => $department,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

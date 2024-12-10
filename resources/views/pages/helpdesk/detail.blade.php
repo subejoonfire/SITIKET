@@ -20,7 +20,7 @@
         pointer-events: none;
     }
 
-    #pic {
+    #department {
         background-color: #ffffff !important;
         color: #000000 !important;
         border: 2px solid #4CAF50 !important;
@@ -28,7 +28,7 @@
         cursor: pointer;
     }
 
-    #pic:focus {
+    #department:focus {
         border-color: #2196F3 !important;
         box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
     }
@@ -78,16 +78,16 @@
                             <div class="card-body">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="pic">Departemen</label>
-                                    <select name="idpic" class="form-control" id="pic">
+                                    <label for="department">Departemen</label>
+                                    <select name="iddepartment" class="form-control" id="department">
                                         <option value="">Pilih Departemen</option>
-                                        @foreach ($collection as $pic)
-                                        <option value="{{ $pic->id }}" {{ old('idpic', $data->idpic ?? '') == $pic->id ? 'selected' : '' }}>
-                                            {{ $pic->picname }}
+                                        @foreach ($collection as $department)
+                                        <option value="{{ $department->id }}" {{ old('iddepartment', $data->iddepartment ?? '') == $department->id ? 'selected' : '' }}>
+                                            {{ $department->departmentname }}
                                         </option>
                                         @endforeach
                                     </select>
-                                    @error('idpic')
+                                    @error('iddepartment')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
