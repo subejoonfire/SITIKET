@@ -48,7 +48,6 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        dd($data['collection']);
         return view('pages.pic.ticket.index', $data);
     }
 

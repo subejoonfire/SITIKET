@@ -68,7 +68,7 @@
                                             <td>{{ $item->users->name }}</td>
                                             <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
-                                            <td>{{ $item->trouble }}</td>
+                                            <td>{{ $item->issue }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
