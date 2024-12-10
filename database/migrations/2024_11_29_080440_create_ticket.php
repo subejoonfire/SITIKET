@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('iddepartment')->nullable()->default(NULL);
             $table->unsignedBigInteger('iduser')->nullable()->default(NULL);
+            $table->unsignedBigInteger('iduser_pic')->nullable()->default(NULL);
             $table->string('status')->default('TERKIRIM');
-            $table->text('trouble');
+            $table->string('issue');
+            $table->text('detailissue');
+            $table->string('priority')->nullable()->default(NULL);
             $table->timestamps();
             //
         });
