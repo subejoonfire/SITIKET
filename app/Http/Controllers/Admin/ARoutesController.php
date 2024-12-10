@@ -83,6 +83,21 @@ class ARoutesController extends Controller
         ];
         return view('pages.admin.pic.pic', $data);
     }
+    public function module()
+    {
+        $data = [
+            'title' => 'SI-TIKET | DEPARTMENT',
+        ];
+        return view('pages.admin.module.module', $data);
+    }
+
+    public function addmodule()
+    {
+        $data = [
+            'title' => 'SI-TIKET | ADD_MODULE',
+        ];
+        return view('pages.admin.module.addmodule', $data);
+    }
 
     public function adddepart()
     {
