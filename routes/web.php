@@ -83,6 +83,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => user::class], function () {
         Route::get('/', [URoutesController::class, 'index'])->name('/');
         Route::get('/add', [URoutesController::class, 'add'])->name('add');
+
+        Route::get('review', [URoutesController::class, 'review'])->name('review');
+
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [UserController::class, 'userStore'])->name('store');
             Route::get('/delete/{id}', [UserController::class, 'userDelete'])->name('delete');

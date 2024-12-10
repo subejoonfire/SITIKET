@@ -1,17 +1,44 @@
 @extends('layout.mainuser')
 
 @section('content')
+<style>
 
+/* Menambahkan styling untuk badge notifikasi */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #f44336;  /* Warna merah untuk notifikasi */
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Membuat tombol review relatif agar badge notifikasi bisa ditempatkan di pojok kanan atas */
+.form-button-action a {
+    position: relative;
+}
+
+
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
                 <h4 class="page-title">Beranda</h4>
             </div>
+
             <div class="row">
+                <!-- Card Riwayat Pengajuan -->
                 <div class="col-sm-6 col-md-3">
                     <div class="card card-stats card-round">
-                        <div class="card-body ">
+                        <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-icon">
                                     <div class="icon-big text-center icon-primary bubble-shadow-small">
@@ -29,8 +56,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
+                    <!-- Alert Success, Error, dan Validation Errors -->
                     @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
@@ -56,6 +85,8 @@
                         </ul>
                     </div>
                     @endif
+                    
+                    <!-- Card Riwayat Pengajuan Table -->
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
@@ -76,11 +107,12 @@
                                             <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
-                                        $i=1;
+                                        $i = 1;
                                         @endphp
                                         @foreach ($collection as $item)
                                         <tr>
@@ -88,13 +120,20 @@
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->idpic ? $item->pics->picname : 'Belum ada' }}</td>
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
-                                            <td>{{ $item->trouble ?? 'Tidak ada' }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($item->trouble ?? 'Tidak ada', 60) }}</td>
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('user/action/delete/'. $item->idticket) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
+                                                    <a href="{{ url('user/action/delete/'. $item->idticket) }}" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-toggle="tooltip" title="Remove">
+                                                        <span>Delete</span>
                                                     </a>
                                                 </div>
+                                                <div class="form-button-action">
+                                                    <a href="{{ url('user/review') }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Review">
+                                                        <span>Review</span>
+                                                        <!-- Notifikasi dengan angka -->
+                                                        <span class="notification-badge">5</span>
+                                                    </a>
+                                                </div>                                                
                                             </td>
                                         </tr>
                                         @endforeach
@@ -105,8 +144,9 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
-
 </div>
+
 @endsection

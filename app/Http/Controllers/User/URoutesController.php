@@ -42,4 +42,14 @@ class URoutesController extends Controller
 
         return view('pages.user.profile', $data);
     }
+
+    public function review()
+    {
+
+        $data = [
+            'title' => 'SI-TIKET | Review'
+        ];
+
+        return view('pages.user.review', $data);
+    }
 }

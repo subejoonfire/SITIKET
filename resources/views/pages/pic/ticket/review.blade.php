@@ -10,7 +10,7 @@
     #email,
     #username,
     #phone,
-    #pic,
+    #department,
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -66,9 +66,9 @@
                                 @csrf
                                 <!-- Departemen sebagai input text biasa -->
                                 <div class="form-group">
-                                    <label for="pic">Departemen</label>
-                                    <input type="text" name="idpic" class="form-control" id="pic" value="{{ $data->pics->picname }}">
-                                    @error('idpic')
+                                    <label for="department">Departemen</label>
+                                    <input type="text" name="iddepartment" class="form-control" id="department" value="{{ $data->departments->departmentname }}">
+                                    @error('iddepartment')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -109,26 +109,26 @@
                                 @if ($type == 'index')
                                 <div class="card-action">
                                     @if ($data->status == 'DIAJUKAN')
-                                    <a href="{{ url('pic/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
-                                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    <a href="{{ url('department/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
+                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
                                     @endif
-                                    <a href="{{ url('pic/ticket') }}" class="btn btn-primary">Kembali</a>
+                                    <a href="{{ url('department/ticket') }}" class="btn btn-primary">Kembali</a>
                                 </div>
                                 @elseif ($type == 'approved')
                                 <div class="card-action">
-                                    <a href="{{ url('pic/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
-                                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                                    <a href="{{ url('pic/ticket/approved') }}" class="btn btn-primary">Kembali</a>
+                                    <a href="{{ url('department/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
+                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    <a href="{{ url('department/ticket/approved') }}" class="btn btn-primary">Kembali</a>
                                 </div>
                                 @elseif ($type == 'processed')
                                 <div class="card-action">
-                                    <a href="{{ url('pic/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
-                                    <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                                    <a href="{{ url('pic/ticket/processed') }}" class="btn btn-primary">Kembali</a>
+                                    <a href="{{ url('department/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
+                                    <a href="{{ url('department/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                    <a href="{{ url('department/ticket/processed') }}" class="btn btn-primary">Kembali</a>
                                 </div>
                                 @elseif ($type == 'done')
                                 <div class="card-action">
-                                    <a href="{{ url('pic/ticket/done') }}" class="btn btn-primary">Kembali</a>
+                                    <a href="{{ url('department/ticket/done') }}" class="btn btn-primary">Kembali</a>
                                 </div>
                                 @endif
                             </div>
