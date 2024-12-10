@@ -22,9 +22,9 @@
                         <p>Modul</p>
                     </a>
                 </li>                
-                <li class="nav-item {{ request()->is('admin/pic') ? 'active' : '' }}">
+                {{-- <li class="nav-item {{ request()->is('admin/pic') ? 'active' : '' }}">
                     <a href="{{ url('admin/pic') }}">
-                {{-- <li class="nav-item {{ request()->is('admin/category') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->is('admin/category') ? 'active' : '' }}">
                 <a href="{{ url('admin/category') }}">
                     <i class="fas fa-box"></i>
                     <p>Category</p>
