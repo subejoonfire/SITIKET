@@ -143,9 +143,9 @@
                                             @error('iddepartment')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
-                                        </div>
+                                        </div>  
                                         <div style="flex: 1;">
-                                            <label for="pic">Pilih PIC</label>
+                                            <label for="iduser_pic">Pilih PIC</label>
                                             <select name="iduser_pic" class="form-control" id="pic">
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
