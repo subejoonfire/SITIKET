@@ -51,9 +51,9 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th style="width: 8%">No</th>
                                             <th>Nama Modul</th>
-                                            <th>Jumlah PIC</th>
+                                            <!-- <th>Jumlah PIC</th> -->
                                             <th style="width: 18%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
@@ -73,6 +73,7 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $module['modul'] }}</td>
+                                            <!--
                                             <td>
                                                 <ol>
                                                     @foreach ($module['submodules'] as $submodule)
@@ -80,11 +81,12 @@
                                                     @endforeach
                                                 </ol>
                                             </td>
+                                            -->
                                             <td>
                                                 <a href="{{ url('admin/module/editmodul') }}" class="btn btn-warning">
                                                     <i class="fa fa-edit fa-lg"></i> Edit
                                                 </a>
-                                                                                              
+                                                                                          
                                                 <a href="#" class="btn btn-danger">
                                                     <i class="fa fa-trash fa-lg"></i> Delete
                                                 </a>
@@ -96,6 +98,7 @@
                                 </table>
                             </div>
                         </div>
+                        
                         
                         
                     </div>
