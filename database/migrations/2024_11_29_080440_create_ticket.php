@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('iduser_pic')->nullable()->default(NULL);
             $table->string('ticketcode')->unique();
             $table->string('status')->default('TERKIRIM');
+            $table->string('category');
             $table->string('issue');
             $table->text('detailissue');
             $table->string('priority')->nullable()->default(NULL);
