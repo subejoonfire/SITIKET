@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('ticketcode')->unique();
             $table->unsignedBigInteger('iddepartment')->nullable()->default(NULL);
+            $table->unsignedBigInteger('idmodule')->nullable()->default(NULL);
             $table->unsignedBigInteger('iduser')->nullable()->default(NULL);
             $table->unsignedBigInteger('iduser_pic')->nullable()->default(NULL);
+            $table->string('ticketcode')->unique();
             $table->string('status')->default('TERKIRIM');
             $table->string('issue');
             $table->text('detailissue');
