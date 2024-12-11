@@ -35,7 +35,6 @@
                         </ul>
                     </div>
                     @endif
-
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
@@ -43,7 +42,7 @@
                                 <a href="{{ url('admin/module/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
-                                </a>                                                           
+                                </a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -53,44 +52,24 @@
                                         <tr>
                                             <th style="width: 8%">No</th>
                                             <th>Nama Modul</th>
-                                            <!-- <th>Jumlah PIC</th> -->
+                                            <th>PIC Modul</th>
                                             <th style="width: 18%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php
-                                        $modules = [
-                                            ['modul' => 'FI', 'submodules' => ['PIC Finance 1', 'PIC Finance 2']],
-                                            ['modul' => 'CO', 'submodules' => ['PIC Controlling 1', 'PIC Controlling 2']],
-                                            ['modul' => 'FM', 'submodules' => ['PIC Facility Management']],
-                                            ['modul' => 'MM', 'submodules' => ['PIC Material 1', 'PIC Material 2']],
-                                            ['modul' => 'PM', 'submodules' => ['PIC Project Management']],
-                                            ['modul' => 'SD', 'submodules' => ['PIC Sales 1', 'PIC Sales 2']]
-                                        ];
-                                        @endphp
-                        
-                                        @foreach ($modules as $key => $module)
+                                        @foreach ($module as $item)
                                         <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $module['modul'] }}</td>
-                                            <!--
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->modulename }}</td>
+                                            <td>{{ $item->modulename }}</td>
                                             <td>
-                                                <ol>
-                                                    @foreach ($module['submodules'] as $submodule)
-                                                    <li>{{ $submodule }}</li>
-                                                    @endforeach
-                                                </ol>
-                                            </td>
-                                            -->
-                                            <td>
-                                                <a href="{{ url('admin/module/editmodul') }}" class="btn btn-warning">
+                                                <a href="{{ url('admin/module/edit/'. $item->id) }}" class="btn btn-warning">
                                                     <i class="fa fa-edit fa-lg"></i> Edit
                                                 </a>
-                                                                                          
-                                                <a href="#" class="btn btn-danger">
+
+                                                <a href="{{ url('admin/module/action/delete/'. $item->id) }}" class="btn btn-danger">
                                                     <i class="fa fa-trash fa-lg"></i> Delete
                                                 </a>
-                                                
                                             </td>
                                         </tr>
                                         @endforeach
@@ -98,9 +77,6 @@
                                 </table>
                             </div>
                         </div>
-                        
-                        
-                        
                     </div>
                 </div>
             </div>

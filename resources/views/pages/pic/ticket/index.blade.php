@@ -80,7 +80,7 @@
                                             <th>Masalah</th>
                                             <th>Tanggal Diajukan</th>
                                             <th style="width: 10%" data-orderable="false">Aksi</th>
-                                     
+
 
                                         </tr>
                                     </thead>
@@ -90,7 +90,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->module->modulename }}</td>
+                                            <td>{{ $item->modules->modulename }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>

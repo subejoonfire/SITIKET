@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Department;
+use App\Models\Module;
 use App\Models\User;
 
 class ARoutesController extends Controller
@@ -31,7 +32,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Tambah_User',
-            'collection' => Department::all(),
+            'collection' => Module::all(),
         ];
         return view('pages.admin.user.adduser', $data);
     }
@@ -50,20 +51,6 @@ class ARoutesController extends Controller
 
         return view('pages.admin.user.edituser', $data);
     }
-    public function editmodul()
-    {
-        // $user = User::find($id);
-        // if (!$user) {
-        //     return redirect()->route('admin.user')->with('error', 'User tidak ditemukan.');
-        // }
-        $data = [
-            'title' => 'SI-TIKET | USER',
-            // 'user' => $user,
-        ];
-
-        return view('pages.admin.module.editmodule', $data);
-    }
-
     public function category()
     {
         $data = [
@@ -96,22 +83,6 @@ class ARoutesController extends Controller
         ];
         return view('pages.admin.department.department', $data);
     }
-    public function module()
-    {
-        $data = [
-            'title' => 'SI-TIKET | DEPARTMENT',
-        ];
-        return view('pages.admin.module.module', $data);
-    }
-
-    public function addmodule()
-    {
-        $data = [
-            'title' => 'SI-TIKET | ADD_MODULE',
-        ];
-        return view('pages.admin.module.addmodule', $data);
-    }
-
     public function adddepart()
     {
         $data = [
@@ -129,5 +100,33 @@ class ARoutesController extends Controller
             'id' => $query->id,
         ];
         return view('pages.admin.department.editdepartment', $data);
+    }
+    public function module()
+    {
+        $data = [
+            'title' => 'SI-TIKET | DEPARTMENT',
+            'module' => Module::all(),
+        ];
+        return view('pages.admin.module.module', $data);
+    }
+    public function addmodule()
+    {
+        $data = [
+            'title' => 'SI-TIKET | ADD_MODULE',
+        ];
+        return view('pages.admin.module.addmodule', $data);
+    }
+    public function editmodule($id)
+    {
+        $data = Module::find($id);
+        if (!$data) {
+            return redirect()->route('admin.module')->with('error', 'Module tidak ditemukan.');
+        }
+        $data = [
+            'title' => 'SI-TIKET | Module',
+            'data' => $data,
+        ];
+
+        return view('pages.admin.module.editmodule', $data);
     }
 }

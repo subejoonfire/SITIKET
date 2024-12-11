@@ -44,7 +44,7 @@
                                     <i class="fa fa-plus"></i>
                                     Tambah
                                 </a>
-                                
+
                             </div>
                         </div>
                         <div class="card-body">
@@ -57,6 +57,8 @@
                                             <th>ID User</th>
                                             <th>Username</th>
                                             <th>Email</th>
+                                            <th>Modul</th>
+                                            <th>Level</th>
                                             <th style="width: 10%">Action</th>
                                         </tr>
                                     </thead>
@@ -66,6 +68,8 @@
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
+                                            <td>{{ $item->modules->modulename ?? '' }}</td>
+                                            <td>{{ $item->level == 1 ? 'Admin' : ($item->level == 2 ? 'Helpdesk' : ($item->level == 3 ? 'PIC' : 'User')) }}</td>
                                             {{-- <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td> --}}
                                             <td>
                                                 <div class="form-button-action">

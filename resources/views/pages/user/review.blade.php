@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="module">Module</label>
-                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->module ?? 'Belum ada' }}">
+                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->modules->modulename ?? 'Belum ada' }}">
                                         @error('module')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -116,7 +116,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="tanggal_diajukan">Tanggal Diajukan</label>
                                     <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}" placeholder="Masukkan Tanggal">

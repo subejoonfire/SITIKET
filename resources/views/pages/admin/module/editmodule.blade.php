@@ -6,6 +6,7 @@
     .text-danger {
         color: red;
     }
+
 </style>
 
 <div class="main-panel">
@@ -13,7 +14,32 @@
         <div class="page-inner">
             <div class="page-header">
                 <div class="col-md-12">
-                    <form method="POST" action="#">
+                    @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    <form method="POST" action="{{ url('admin/module/action/update/'. $data->id) }}">
                         @csrf
                         <div class="card">
                             <div class="card-header">
@@ -21,23 +47,13 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="module_name">Nama Modul</label>
-                                    <input type="text" name="module_name" class="form-control" id="module_name" placeholder="Masukkan nama modul" value="MM">
-                                    @error('module_name')
+                                    <label for="modulename">Nama Modul</label>
+                                    <input type="text" name="modulename" class="form-control" id="modulename" placeholder="Masukkan nama modul" value="{{ $data->modulename }}">
+                                    @error('modulename')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label for="module_list">Jumlah Modul</label>
-                                    <div id="module_list">
-                                        1. Ferdi<br>
-                                        2. Iky<br>
-                                        3. Kurdi
-                                    </div>
-                                </div> --}}
-                                
                             </div>
-
                             <div class="card-action">
                                 <button type="submit" class="btn btn-success">Simpan</button>
                                 <a href="{{ url('admin/module') }}" class="btn btn-danger">Batal</a>
@@ -52,7 +68,7 @@
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const moduleCountInput = document.getElementById('module_count');
         const dynamicInputsContainer = document.getElementById('dynamic_module_inputs');
 
@@ -69,7 +85,7 @@
             }
         };
 
-        moduleCountInput.addEventListener('input', function () {
+        moduleCountInput.addEventListener('input', function() {
             const count = parseInt(moduleCountInput.value) || 0;
             if (count > 0 && count <= 10) {
                 createDynamicInputs(count);
@@ -78,6 +94,7 @@
             }
         });
     });
+
 </script>
 
 @endsection

@@ -148,8 +148,8 @@
                                 <div class="form-group">
                                     <div style="display: flex; gap: 10px; justify-content: space-between;">
                                         <div style="flex: 1;">
-                                            <label for="module">Pilih Module</label>
-                                            <select name="idmodule" class="form-control" id="module">
+                                            <label for="idmodule">Pilih Module</label>
+                                            <select name="idmodule" class="form-control" id="idmodule">
                                                 <option value="">Pilih Module</option>
                                                 @foreach ($module as $item)
                                                 <option value="{{ $item->id }}" {{ old('id', $data->idmodule ?? '') == $item->id ? 'selected' : '' }}>

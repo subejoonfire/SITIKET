@@ -69,7 +69,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Menunggu' }}</td>
+                                            <td>{{ $item->idmodule ? $item->modules->modulename : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
@@ -127,27 +127,27 @@
         </div>
     </div>
 
-            <!-- Modal Tolak -->
-            <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="rejectModalLabel">Konfirmasi Tolak</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Apakah Anda yakin ingin menolak permintaan ini?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-danger">Tolak</button>
-                        </div>
-                    </div>
+    <!-- Modal Tolak -->
+    <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rejectModalLabel">Konfirmasi Tolak</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda yakin ingin menolak permintaan ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger">Tolak</button>
                 </div>
             </div>
-
         </div>
     </div>
+
+</div>
+</div>
 
 </div>
 @endsection
