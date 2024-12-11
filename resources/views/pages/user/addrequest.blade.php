@@ -6,7 +6,32 @@
     .text-danger {
         color: red;
     }
-
+    .form-row {
+        display: flex;
+        gap: 20px;
+    }
+    .form-row .form-group {
+        flex: 1;
+    }
+    .form-control {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
 </style>
 
 <div class="main-panel">
@@ -54,21 +79,50 @@
 
                                 <div class="form-group">
                                     <label for="issue">Subjek</label>
-                                    <input type="text" name="issue" class="form-control" id="issue" placeholder="Masukan issue" cols="30" rows="10"></input>
+                                    <input type="text" name="issue" class="form-control" id="issue" placeholder="Masukan issue">
                                     @error('issue')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
 
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="module">Module</label>
+                                        <select name="module" class="form-control" id="module">
+                                            <option value="">Pilih Module</option>
+                                            <option value="Module1">Module 1</option>
+                                            <option value="Module2">Module 2</option>
+                                            <option value="Module3">Module 3</option>
+                                        </select>
+                                        @error('module')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="priority">Priority</label>
+                                        <select name="priority" class="form-control" id="priority">
+                                            <option value="">Pilih Priority</option>
+                                            <option value="Bisa Menunggu" {{ old('priority', $data->priority ?? '') == 'Bisa Menunggu' ? 'selected' : '' }}>Bisa Menunggu</option>
+                                            <option value="Sedang" {{ old('priority', $data->priority ?? '') == 'Sedang' ? 'selected' : '' }}>Sedang</option>
+                                            <option value="Mendesak" {{ old('priority', $data->priority ?? '') == 'Mendesak' ? 'selected' : '' }}>Mendesak</option>
+                                        </select>
+                                        @error('priority')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="detailissue">Keluhan</label>
                                     <textarea type="text" name="detailissue" class="form-control" id="detailissue" placeholder="Masukan Keluhan" cols="30" rows="10"></textarea>
-                                    @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                                    @error('detailissue')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
+
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
-                                    <a href="#" class="btn btn-danger">Batal</a>
+                                    <a href="{{ url('user/dashboard') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </form>
                         </div>

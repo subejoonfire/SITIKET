@@ -21,7 +21,7 @@
         pointer-events: none;
     }
 
-    #department {
+    #module {
         background-color: #ffffff !important;
         color: #000000 !important;
         border: 2px solid #4CAF50 !important;
@@ -55,7 +55,7 @@
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
 
-    #department:focus {
+    #module:focus {
         border-color: #70c55b !important;
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
@@ -140,12 +140,12 @@
                                 <div class="form-group">
                                     <div style="display: flex; gap: 10px; justify-content: space-between;">
                                         <div style="flex: 1;">
-                                            <label for="department">Pilih Departemen</label>
-                                            <select name="iddepartment" class="form-control" id="department">
-                                                <option value="">Pilih Departemen</option>
+                                            <label for="department">Pilih Module</label>
+                                            <select name="idmodule" class="form-control" id="module">
+                                                <option value="">Pilih Module</option>
                                                 @foreach ($department as $item)
-                                                <option value="{{ $item->id }}" {{ old('id', $data->iddepartment ?? '') == $item->id ? 'selected' : '' }}>
-                                                    {{ $item->departmentname }}
+                                                <option value="{{ $item->id }}" {{ old('id', $data->idmodule ?? '') == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->modulename }}
                                                 </option>
                                                 @endforeach
                                             </select>

@@ -10,7 +10,7 @@
     #email,
     #username,
     #phone,
-    #department,
+    #module,
     #tanggal_diajukan,
     #tiket,
     #priority,
@@ -94,9 +94,9 @@
                                 <!-- Departement, Tanggal Diajukan, Priority -->
                                 <div class="form-group row">
                                     <div class="col-md-4">
-                                        <label for="department">Department</label>
-                                        <input type="text" name="department" class="form-control" id="department" value="{{ $data->department }}">
-                                        @error('department')
+                                        <label for="module">Module</label>
+                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->module }}">
+                                        @error('module')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
