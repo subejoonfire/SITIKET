@@ -12,7 +12,7 @@
     #username,
     #phone,
     #subjek,
-    #kategori,  
+    #kategori,
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -67,11 +67,12 @@
         padding: 8px;
         cursor: pointer
     }
+
     #kategori {
         background-color: #ffffff !important;
         color: #000000 !important;
         padding: 8px;
-        cursor: pointer 
+        cursor: pointer
     }
 
 </style>
@@ -147,25 +148,25 @@
                                 <div class="form-group">
                                     <div style="display: flex; gap: 10px; justify-content: space-between;">
                                         <div style="flex: 1;">
-                                            <label for="department">Pilih Module</label>
+                                            <label for="module">Pilih Module</label>
                                             <select name="idmodule" class="form-control" id="module">
                                                 <option value="">Pilih Module</option>
-                                                @foreach ($department as $item)
+                                                @foreach ($module as $item)
                                                 <option value="{{ $item->id }}" {{ old('id', $data->idmodule ?? '') == $item->id ? 'selected' : '' }}>
                                                     {{ $item->modulename }}
                                                 </option>
                                                 @endforeach
                                             </select>
-                                            @error('iddepartment')
+                                            @error('idmodule')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
-                                        </div>  
+                                        </div>
                                         <div style="flex: 1;">
                                             <label for="iduser_pic">Pilih PIC</label>
                                             <select name="iduser_pic" class="form-control" id="pic">
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
-                                                <option value="{{ $item->id }}" data-department="{{ $item->iddepartment }}" {{ old('iduser_pic', $data->iduser_pic ?? '') == $item->id ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}" {{ old('iduser_pic', $data->iduser_pic ?? '') == $item->id ? 'selected' : '' }}>
                                                     {{ $item->name }}
                                                 </option>
                                                 @endforeach
@@ -175,9 +176,9 @@
                                             @enderror
                                         </div>
                                         <div style="flex: 1;">
-                                            <label for="priority">Priority</label>
+                                            <label for="priority">Prioritas</label>
                                             <select name="priority" class="form-control" id="priority">
-                                                <option value="">Pilih Priority</option>
+                                                <option value="">Pilih Prioritas</option>
                                                 <option value="Bisa Menunggu" {{ old('priority', $data->priority ?? '') == 'Bisa Menunggu' ? 'selected' : '' }}>Bisa Menunggu</option>
                                                 <option value="Sedang" {{ old('priority', $data->priority ?? '') == 'Sedang' ? 'selected' : '' }}>Sedang</option>
                                                 <option value="Mendesak" {{ old('priority', $data->priority ?? '') == 'Mendesak' ? 'selected' : '' }}>Mendesak</option>
@@ -209,7 +210,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="kategori">Kategori</label>
-                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="MUHAHAHAHA">
+                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="MUHAHAHA">
                                     @error('kategori')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -239,22 +240,22 @@
 @if ($data->iduser_pic == NULL)
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const departmentSelect = document.getElementById('department');
+        const moduleSelect = document.getElementById('module');
         const picSelect = document.getElementById('pic');
 
         const updatePicOptions = () => {
-            const selectedDepartment = departmentSelect.value;
-            picSelect.disabled = !selectedDepartment;
+            const selectedmodule = moduleSelect.value;
+            picSelect.disabled = !selectedmodule;
 
             Array.from(picSelect.options).forEach(option => {
-                const optionDepartment = option.getAttribute('data-department');
-                option.style.display = (!selectedDepartment || optionDepartment === selectedDepartment) ? '' : 'none';
+                const optionmodule = option.getAttribute('data-module');
+                option.style.display = (!selectedmodule || optionmodule === selectedmodule) ? '' : 'none';
             });
 
             picSelect.value = '';
         };
 
-        departmentSelect.addEventListener('change', updatePicOptions);
+        moduleSelect.addEventListener('change', updatePicOptions);
         updatePicOptions();
     });
 

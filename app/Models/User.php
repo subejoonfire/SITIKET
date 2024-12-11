@@ -23,6 +23,7 @@ class User extends Authenticatable
         'image',
         'phone',
         'iddepartment',
+        'idmodule',
         'level',
         'email',
         'password',
@@ -53,5 +54,9 @@ class User extends Authenticatable
     public function departments(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'iddepartment');
+    }
+    public function modules(): BelongsTo
+    {
+        return $this->belongsTo(Module::class, 'idmodule');
     }
 }

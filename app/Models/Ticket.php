@@ -10,7 +10,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Ticket extends Model
 {
     use HasFactory;
-    protected $fillable = ['ticketcode', 'iddepartment', 'issue', 'detailissue', 'iduser_pic', 'priority', 'iduser', 'status', 'trouble'];
+    protected $fillable = [
+        'ticketcode',
+        'iduser',
+        'iddepartment',
+        'idmodule',
+        'iduser_pic',
+        'issue',
+        'detailissue',
+        'priority',
+        'status',
+        'trouble'
+    ];
 
     public function users(): BelongsTo
     {
@@ -19,5 +30,9 @@ class Ticket extends Model
     public function departments(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'iddepartment');
+    }
+    public function modules(): BelongsTo
+    {
+        return $this->belongsTo(Module::class, 'idmodule');
     }
 }

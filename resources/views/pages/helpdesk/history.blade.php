@@ -56,7 +56,7 @@
                                             <th>No</th>
                                             <th>Kode Tiket</th>
                                             <th>Nama</th>
-                                            <th>Module</th>
+                                            <th>Modul</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
                                             <th>Tanggal Diajukan</th>
