@@ -94,7 +94,7 @@
 
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="module">Module</label>
+                                        <label for="module">Modul</label>
                                         <select name="module" class="form-control" id="module">
                                             <option value="">Pilih Modul</option>
                                             <option value="Module1">Modul 1</option>

@@ -100,7 +100,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Kode Tiket</th>
-                                            <th>Departemen</th>
+                                            <th>Modul</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
                                             <th style="width: 10%" data-orderable="false">Aksi</th>
