@@ -12,6 +12,7 @@
     #username,
     #phone,
     #subjek,
+    #kategori,  
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -65,6 +66,12 @@
         color: #000000 !important;
         padding: 8px;
         cursor: pointer
+    }
+    #kategori {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 8px;
+        cursor: pointer 
     }
 
 </style>
@@ -197,6 +204,13 @@
                                     <label for="subjek">Subjek</label>
                                     <input type="text" name="subjek" class="form-control" id="subjek" value="{{ $data->issue }}">
                                     @error('subjek')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="kategori">Kategori</label>
+                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="MUHAHAHAHA">
+                                    @error('kategori')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
