@@ -96,19 +96,19 @@
                                     <div class="form-group">
                                         <label for="module">Module</label>
                                         <select name="module" class="form-control" id="module">
-                                            <option value="">Pilih Module</option>
-                                            <option value="Module1">Module 1</option>
-                                            <option value="Module2">Module 2</option>
-                                            <option value="Module3">Module 3</option>
+                                            <option value="">Pilih Modul</option>
+                                            <option value="Module1">Modul 1</option>
+                                            <option value="Module2">Modul 2</option>
+                                            <option value="Module3">Modul 3</option>
                                         </select>
                                         @error('module')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="priority">Priority</label>
+                                        <label for="priority">Prioritas</label>
                                         <select name="priority" class="form-control" id="priority">
-                                            <option value="">Pilih Priority</option>
+                                            <option value="">Pilih Prioritas</option>
                                             <option value="Bisa Menunggu" {{ old('priority', $data->priority ?? '') == 'Bisa Menunggu' ? 'selected' : '' }}>Bisa Menunggu</option>
                                             <option value="Sedang" {{ old('priority', $data->priority ?? '') == 'Sedang' ? 'selected' : '' }}>Sedang</option>
                                             <option value="Mendesak" {{ old('priority', $data->priority ?? '') == 'Mendesak' ? 'selected' : '' }}>Mendesak</option>
