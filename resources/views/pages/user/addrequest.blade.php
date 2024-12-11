@@ -6,13 +6,16 @@
     .text-danger {
         color: red;
     }
+
     .form-row {
         display: flex;
         gap: 20px;
     }
+
     .form-row .form-group {
         flex: 1;
     }
+
     .form-control {
         box-sizing: border-box;
         width: 100%;
@@ -20,18 +23,22 @@
         border: 1px solid #ccc;
         border-radius: 4px;
     }
+
     .form-group label {
         font-weight: bold;
         display: block;
         margin-bottom: 5px;
     }
+
     .card-body {
         padding: 20px;
     }
+
     .form-group {
         display: flex;
         flex-direction: column;
     }
+
 </style>
 
 <div class="main-panel">
@@ -76,32 +83,32 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('user/action/store') }}">
                                 @csrf
-                                
                                 <div class="form-group">
-                                    <label for="kategori">Kategori</label>
-                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori">
-                                    @error('kategori')
+                                    <label for="category">Kategori</label>
+                                    <input type="text" name="category" class="form-control" id="category" placeholder="Masukan Kategori">
+                                    @error('category')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="subjek">Subjek</label>
-                                    <input type="text" name="subjek" class="form-control" id="issue" placeholder="Masukan Subjek">
-                                    @error('subjek')
+                                    <label for="issue">Subjek</label>
+                                    <input type="text" name="issue" class="form-control" id="issue" placeholder="Masukan Subjek">
+                                    @error('issue')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="module">Modul</label>
-                                        <select name="module" class="form-control" id="module">
+                                        <label for="idmodule">Modul</label>
+                                        <select name="idmodule" class="form-control" id="idmodule">
                                             <option value="">Pilih Modul</option>
-                                            <option value="Module1">Modul 1</option>
-                                            <option value="Module2">Modul 2</option>
-                                            <option value="Module3">Modul 3</option>
+                                            @foreach ($module as $item)
+                                            <option value="{{ $item->id }}" {{ old('id', $data->idmodule ?? '') == $item->id ? 'selected' : '' }}>
+                                                {{ $item->modulename }}
+                                            </option>
+                                            @endforeach
                                         </select>
-                                        @error('module')
+                                        @error('idmodule')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
@@ -118,7 +125,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="detailissue">Keluhan</label>
                                     <textarea type="text" name="detailissue" class="form-control" id="detailissue" placeholder="Masukan Keluhan" cols="30" rows="10"></textarea>
@@ -126,7 +132,6 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                     <a href="{{ url('user/dashboard') }}" class="btn btn-danger">Batal</a>

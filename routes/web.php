@@ -52,13 +52,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
             Route::get('add', [ARoutesController::class, 'addmodule'])->name('addmodule');
-            Route::get('/editmodul', [ARoutesController::class, 'editmodul'])->name('editmodul');
+            Route::get('/edit/{id}', [ARoutesController::class, 'editmodule'])->name('edit');
+            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+                Route::post('/store', [AdminController::class, 'moduleStore'])->name('store');
+                Route::get('/delete/{id}', [AdminController::class, 'moduleDelete'])->name('delete');
+                Route::post('/update/{id}', [AdminController::class, 'moduleUpdate'])->name('update');
+            });
         });
-
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
             Route::get('/', [ARoutesController::class, 'user'])->name('/');
             Route::get('add', [ARoutesController::class, 'adduser'])->name('add');
-            Route::get('/edit/{id}', [ARoutesController::class, 'edituser'])->name('edit_user');
+            Route::get('/edit/{id}', [ARoutesController::class, 'edituser'])->name('edit');
             Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
                 Route::post('/store', [AdminController::class, 'userStore'])->name('store');
                 Route::get('/delete/{id}', [AdminController::class, 'userDelete'])->name('delete');

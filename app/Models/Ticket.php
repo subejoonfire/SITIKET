@@ -19,6 +19,7 @@ class Ticket extends Model
         'issue',
         'detailissue',
         'priority',
+        'category',
         'status',
         'trouble'
     ];

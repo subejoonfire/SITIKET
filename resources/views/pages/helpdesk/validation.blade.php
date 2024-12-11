@@ -60,7 +60,7 @@
                                             <th>Status</th>
                                             <th>Masalah</th>
                                             <th>Tanggal Diajukan</th>
-                                            <th style="width: 10%" data-orderable="false">Aksi</th>                                            
+                                            <th style="width: 10%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,7 +69,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Menunggu' }}</td>
+                                            <td>{{ $item->idmodule ? $item->modules->modulename : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>

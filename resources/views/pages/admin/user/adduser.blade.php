@@ -40,15 +40,15 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group" id="department-container" style="display: none;">
-                                    <label for="iddepartment">Departemen</label>
-                                    <select class="form-control" id="iddepartment" name="iddepartment">
-                                        <option selected disabled hidden>Pilih Departemen</option>
-                                        @foreach ($collection as $department)
-                                        <option value="{{ $department->id }}" {{ old('iddepartment') == $department->id ? 'selected' : '' }}>{{ $department->departmentname }}</option>
+                                <div class="form-group" id="module-container" style="display: none;">
+                                    <label for="idmodule">Modul</label>
+                                    <select class="form-control" id="idmodule" name="idmodule">
+                                        <option selected disabled hidden>Pilih Modul</option>
+                                        @foreach ($collection as $module)
+                                        <option value="{{ $module->id }}" {{ old('idmodule') == $module->id ? 'selected' : '' }}>{{ $module->modulename }}</option>
                                         @endforeach
                                     </select>
-                                    @error('iddepartment')
+                                    @error('idmodule')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -89,11 +89,11 @@
 <script>
     function togglePic() {
         var levelSelect = document.getElementById("level");
-        var departmentContainer = document.getElementById("department-container");
+        var moduleContainer = document.getElementById("module-container");
         if (levelSelect.value == "3") {
-            departmentContainer.style.display = "block";
+            moduleContainer.style.display = "block";
         } else {
-            departmentContainer.style.display = "none";
+            moduleContainer.style.display = "none";
         }
     }
 

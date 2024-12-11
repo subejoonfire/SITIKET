@@ -8,6 +8,7 @@ use App\Models\Department;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Module;
 
 class URoutesController extends Controller
 {
@@ -26,7 +27,7 @@ class URoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | ADD',
-            'collection' => Department::all(),
+            'module' => Module::all(),
         ];
 
         return view('pages.user.addrequest', $data);

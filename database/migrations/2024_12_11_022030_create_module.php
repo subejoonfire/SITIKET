@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('module', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('iddepartment')->nullable()->default(NULL);
+            // $table->unsignedBigInteger('iddepartment')->nullable()->default(NULL);
             $table->string('modulename');
             $table->timestamps();
         });
