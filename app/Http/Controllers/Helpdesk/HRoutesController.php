@@ -43,7 +43,7 @@ class HRoutesController extends Controller
         ];
 
 
-        return view('pages.helpdesk.validasi', $data);
+        return view('pages.helpdesk.history', $data);
     }
 
     public function profile()
