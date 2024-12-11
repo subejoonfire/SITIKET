@@ -12,7 +12,7 @@
     #username,
     #phone,
     #subjek,
-    #kategori,  
+    #kategori,
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -67,11 +67,12 @@
         padding: 8px;
         cursor: pointer
     }
+
     #kategori {
         background-color: #ffffff !important;
         color: #000000 !important;
         padding: 8px;
-        cursor: pointer 
+        cursor: pointer
     }
 
 </style>
@@ -175,9 +176,9 @@
                                             @enderror
                                         </div>
                                         <div style="flex: 1;">
-                                            <label for="priority">Priority</label>
+                                            <label for="priority">Prioritas</label>
                                             <select name="priority" class="form-control" id="priority">
-                                                <option value="">Pilih Priority</option>
+                                                <option value="">Pilih Prioritas</option>
                                                 <option value="Bisa Menunggu" {{ old('priority', $data->priority ?? '') == 'Bisa Menunggu' ? 'selected' : '' }}>Bisa Menunggu</option>
                                                 <option value="Sedang" {{ old('priority', $data->priority ?? '') == 'Sedang' ? 'selected' : '' }}>Sedang</option>
                                                 <option value="Mendesak" {{ old('priority', $data->priority ?? '') == 'Mendesak' ? 'selected' : '' }}>Mendesak</option>
@@ -209,7 +210,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="kategori">Kategori</label>
-                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="MUHAHAHAHA">
+                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="MUHAHAHA">
                                     @error('kategori')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
