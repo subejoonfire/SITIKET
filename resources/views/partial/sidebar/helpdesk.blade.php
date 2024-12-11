@@ -12,10 +12,17 @@
                 </li>
                 <li class="nav-item {{ request()->routeIs('validation') ? 'active' : '' }}">
                     <a href="{{ url('helpdesk/validation') }}">
+                        <i class="fas fa-clipboard-check"></i>
+                        <p>Validasi</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('history') ? 'active' : '' }}">
+                    <a href="{{ url('helpdesk/history') }}">
                         <i class="fas fa-hourglass-half"></i>
                         <p>Riwayat Validasi</p>
                     </a>
                 </li>
+    
             </ul>
         </div>
     </div>

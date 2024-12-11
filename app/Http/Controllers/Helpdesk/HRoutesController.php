@@ -33,7 +33,7 @@ class HRoutesController extends Controller
         return view('pages.helpdesk.detail', $data);
     }
 
-    public function validation()
+    public function history()
     {
 
         $data = [
@@ -44,6 +44,18 @@ class HRoutesController extends Controller
 
 
         return view('pages.helpdesk.history', $data);
+    }
+    public function validation()
+    {
+
+        $data = [
+            'title' => 'SI-TIKET | HALAMAN_VALIDASI',
+            'collection' => Ticket::whereNotNull('tickets.iddepartment')->get(),
+            'page' => 'validation',
+        ];
+
+
+        return view('pages.helpdesk.validasi', $data);
     }
 
     public function profile()
