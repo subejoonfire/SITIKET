@@ -73,7 +73,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Tiket</th>
+                                            <th>Kode Tiket</th>
                                             <th>Nama Pelapor</th>
                                             <th>Departemen</th>
                                             <th>Status</th>
@@ -86,7 +86,7 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>{{ $item->departments->departmentname }}</td>
                                             <td>{{ $item->status }}</td>

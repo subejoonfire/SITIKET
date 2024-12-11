@@ -73,7 +73,8 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>ID Tiket</th>
+                                            <th>No</th>
+                                            <th>Kode Tiket</th>
                                             <th>Nama Pelapor</th>
                                             <th>Departemen</th>
                                             <th>Nomor HP</th>
@@ -85,7 +86,8 @@
                                     <tbody>
                                         @foreach ($collection as $item)
                                         <tr>
-                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>{{ $item->departments->departmentname }}</td>
                                             <td>{{ $item->users->phone }}</td>
