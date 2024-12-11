@@ -49,12 +49,12 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | HALAMAN_VALIDASI',
-            'collection' => Ticket::whereNotNull('tickets.iddepartment')->get(),
+            'collection' => Ticket::whereNull(['tickets.iddepartment', 'tickets.iduser_pic'])->get(),
             'page' => 'validation',
         ];
 
 
-        return view('pages.helpdesk.validasi', $data);
+        return view('pages.helpdesk.validation', $data);
     }
 
     public function profile()
