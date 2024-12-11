@@ -75,7 +75,7 @@
                                             <th>No</th>
                                             <th>Kode Tiket</th>
                                             <th>Nama Pelapor</th>
-                                            <th>Module</th>
+                                            <th>Modul</th>
                                             <th>Nomor HP</th>
                                             <th>Masalah</th>
                                             <th>Status</th>

@@ -147,9 +147,9 @@
                                 <div class="form-group">
                                     <div style="display: flex; gap: 10px; justify-content: space-between;">
                                         <div style="flex: 1;">
-                                            <label for="department">Pilih Module</label>
+                                            <label for="department">Pilih Modul</label>
                                             <select name="idmodule" class="form-control" id="module">
-                                                <option value="">Pilih Module</option>
+                                                <option value="">Pilih Modul</option>
                                                 @foreach ($department as $item)
                                                 <option value="{{ $item->id }}" {{ old('id', $data->idmodule ?? '') == $item->id ? 'selected' : '' }}>
                                                     {{ $item->modulename }}
@@ -175,9 +175,9 @@
                                             @enderror
                                         </div>
                                         <div style="flex: 1;">
-                                            <label for="priority">Priority</label>
+                                            <label for="priority">Prioritas</label>
                                             <select name="priority" class="form-control" id="priority">
-                                                <option value="">Pilih Priority</option>
+                                                <option value="">Pilih Prioritas</option>
                                                 <option value="Bisa Menunggu" {{ old('priority', $data->priority ?? '') == 'Bisa Menunggu' ? 'selected' : '' }}>Bisa Menunggu</option>
                                                 <option value="Sedang" {{ old('priority', $data->priority ?? '') == 'Sedang' ? 'selected' : '' }}>Sedang</option>
                                                 <option value="Mendesak" {{ old('priority', $data->priority ?? '') == 'Mendesak' ? 'selected' : '' }}>Mendesak</option>
@@ -209,7 +209,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="kategori">Kategori</label>
-                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="MUHAHAHAHA">
+                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="MUHAHAHA">
                                     @error('kategori')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
