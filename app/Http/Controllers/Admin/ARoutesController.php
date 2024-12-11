@@ -50,6 +50,19 @@ class ARoutesController extends Controller
 
         return view('pages.admin.user.edituser', $data);
     }
+    public function editmodul()
+    {
+        // $user = User::find($id);
+        // if (!$user) {
+        //     return redirect()->route('admin.user')->with('error', 'User tidak ditemukan.');
+        // }
+        $data = [
+            'title' => 'SI-TIKET | USER',
+            // 'user' => $user,
+        ];
+
+        return view('pages.admin.module.editmodule', $data);
+    }
 
     public function category()
     {
