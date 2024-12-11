@@ -13,7 +13,6 @@ class URoutesController extends Controller
 {
     public function index()
     {
-        $ticket = new Ticket();
         $data = [
             'title' => 'SI-TIKET | Dashboard',
             'collection' => Ticket::where('iduser', auth()->user()->id)->get(),
