@@ -207,7 +207,7 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="card-action">
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                     <a href="{{ url('helpdesk/validation') }}" class="btn btn-danger">Batal</a>
                                 </div>
