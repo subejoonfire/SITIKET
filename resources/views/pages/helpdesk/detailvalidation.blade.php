@@ -209,7 +209,7 @@
                                 </div>
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
-                                    <a href="{{ url('helpdesk') }}" class="btn btn-danger">Batal</a>
+                                    <a href="{{ url('helpdesk/validation') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </div>
                         </div>

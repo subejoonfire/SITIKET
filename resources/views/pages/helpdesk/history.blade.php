@@ -58,7 +58,7 @@
                                             <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
-                                        </tr>
+                                            <th>Aksi</th> <!-- Kolom baru untuk fitur detail -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,11 +69,17 @@
                                             <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->issue }}</td>
+                                            <td>
+                                                <a href="{{ url('helpdesk/detailhistory/' . $item->id) }}" class="btn btn-info btn-sm">
+                                                    <i class="fas fa-eye"></i> Detail
+                                                </a>
+                                            </td> <!-- Tombol detail -->
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
