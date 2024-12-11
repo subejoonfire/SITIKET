@@ -79,7 +79,9 @@
                                             <th>Status</th>
                                             <th>Masalah</th>
                                             <th>Tanggal Diajukan</th>
-                                            <th style="width: 10%">Aksi</th>
+                                            <th style="width: 10%" data-orderable="false">Aksi</th>
+                                     
+
                                         </tr>
                                     </thead>
                                     <tbody>
