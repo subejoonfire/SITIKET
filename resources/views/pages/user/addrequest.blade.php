@@ -13,6 +13,25 @@
     .form-row .form-group {
         flex: 1;
     }
+    .form-control {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
 </style>
 
 <div class="main-panel">
@@ -57,10 +76,24 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('user/action/store') }}">
                                 @csrf
+
+                                <div class="form-group">
+                                    <label for="issue">Subjek</label>
+                                    <input type="text" name="issue" class="form-control" id="issue" placeholder="Masukan issue">
+                                    @error('issue')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="module">Module</label>
-                                        <input type="text" name="module" class="form-control" id="module" placeholder="Masukan module">
+                                        <select name="module" class="form-control" id="module">
+                                            <option value="">Pilih Module</option>
+                                            <option value="Module1">Module 1</option>
+                                            <option value="Module2">Module 2</option>
+                                            <option value="Module3">Module 3</option>
+                                        </select>
                                         @error('module')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -77,13 +110,6 @@
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="issue">Subjek</label>
-                                    <input type="text" name="issue" class="form-control" id="issue" placeholder="Masukan issue">
-                                    @error('issue')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
                                 </div>
 
                                 <div class="form-group">
