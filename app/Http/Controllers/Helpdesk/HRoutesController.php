@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Helpdesk;
 
 use App\Models\User;
+use App\Models\Module;
 use App\Models\Ticket;
 use App\Models\Department;
 use App\Http\Controllers\Controller;
@@ -26,7 +27,8 @@ class HRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | Dashboard',
             'data' => Ticket::where('id', $id)->first(),
-            'department' => Department::all(),
+            // 'department' => Department::all(),
+            'module' => Module::all(),
             'pic' => User::where('level', 3)->get(),
         ];
 
