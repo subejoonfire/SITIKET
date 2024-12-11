@@ -72,22 +72,26 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
+                                            <th>No</th>
                                             <th>ID Tiket</th>
                                             <th>Nama Pelapor</th>
                                             <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
+                                            <th>Tanggal Diajukan</th>
                                             <th style="width: 10%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($collection as $item)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>{{ $item->departments->departmentname }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->issue }}</td>
+                                            <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
