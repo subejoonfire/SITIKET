@@ -27,14 +27,14 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="module_list">Jumlah Modul</label>
                                     <div id="module_list">
                                         1. Ferdi<br>
                                         2. Iky<br>
                                         3. Kurdi
                                     </div>
-                                </div>
+                                </div> --}}
                                 
                             </div>
 

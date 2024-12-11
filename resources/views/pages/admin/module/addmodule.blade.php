@@ -43,13 +43,13 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="module_count">Jumlah Modul</label>
                                     <input type="number" name="module_count" class="form-control" id="module_count" placeholder="Masukkan jumlah modul" min="1" max="10" value="{{ old('module_count') }}">
                                     @error('module_count')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div id="dynamic_module_inputs"></div>
                             </div>

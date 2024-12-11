@@ -53,15 +53,16 @@
                             <div class="row align-items-center">
                                 <div class="col-icon">
                                     <div class="icon-big text-center icon-primary bubble-shadow-small">
-                                        <i class="fas fa-building"></i>
+                                        <i class="fas fa-cogs"></i>
                                     </div>
                                 </div>
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
-                                        <p class="card-category">Departemen</p>
-                                        <h4 class="card-title">{{ $departmentCount }}</h4>
+                                        <p class="card-category">Module</p>
+                                        <h4 class="card-title">{{  $departmentCount}}</h4>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
