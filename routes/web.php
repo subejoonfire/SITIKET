@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
             Route::get('add', [ARoutesController::class, 'addmodule'])->name('addmodule');
+            Route::get('/editmodul', [ARoutesController::class, 'editmodul'])->name('editmodul');
         });
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {

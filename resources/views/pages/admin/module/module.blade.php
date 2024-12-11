@@ -52,36 +52,43 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Departemen</th>
                                             <th>Nama Modul</th>
-                                            <th>Jumlah Modul</th>
-                                            <th>Aksi</th>
+                                            <th>Jumlah PIC</th>
+                                            <th style="width: 18%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @php
                                         $modules = [
-                                            ['department' => 'HR', 'modul' => 'SAP', 'submodules' => ['Module Plant', 'Module HR', 'Module BOD']],
-                                            ['department' => 'IT', 'modul' => 'NETWORK', 'submodules' => ['Module Network 1', 'Module Network 2']]
+                                            ['modul' => 'FI', 'submodules' => ['PIC Finance 1', 'PIC Finance 2']],
+                                            ['modul' => 'CO', 'submodules' => ['PIC Controlling 1', 'PIC Controlling 2']],
+                                            ['modul' => 'FM', 'submodules' => ['PIC Facility Management']],
+                                            ['modul' => 'MM', 'submodules' => ['PIC Material 1', 'PIC Material 2']],
+                                            ['modul' => 'PM', 'submodules' => ['PIC Project Management']],
+                                            ['modul' => 'SD', 'submodules' => ['PIC Sales 1', 'PIC Sales 2']]
                                         ];
                                         @endphp
-
+                        
                                         @foreach ($modules as $key => $module)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ $module['department'] }}</td>
                                             <td>{{ $module['modul'] }}</td>
                                             <td>
                                                 <ol>
-                                                    @foreach ($module['submodules'] as $subkey => $submodule)
+                                                    @foreach ($module['submodules'] as $submodule)
                                                     <li>{{ $submodule }}</li>
                                                     @endforeach
                                                 </ol>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i> Delete
+                                                <a href="{{ url('admin/module/editmodul') }}" class="btn btn-warning">
+                                                    <i class="fa fa-edit fa-lg"></i> Edit
                                                 </a>
+                                                                                              
+                                                <a href="#" class="btn btn-danger">
+                                                    <i class="fa fa-trash fa-lg"></i> Delete
+                                                </a>
+                                                
                                             </td>
                                         </tr>
                                         @endforeach
@@ -89,6 +96,8 @@
                                 </table>
                             </div>
                         </div>
+                        
+                        
                     </div>
                 </div>
             </div>
