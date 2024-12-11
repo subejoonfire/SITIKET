@@ -31,10 +31,10 @@ class HelpdeskController extends Controller
             $ticket->priority = $validated['priority'];
             $ticket->status = 'DIAJUKAN';
             $ticket->save();
-            return redirect()->to('helpdesk')
+            return redirect()->to('helpdesk/validation')
                 ->with('success', 'Ticket berhasil diperbarui');
         } else {
-            return redirect()->to('helpdesk')
+            return redirect()->to('helpdesk/validation')
                 ->with('error', 'Ticket tidak ditemukan');
         }
     }
