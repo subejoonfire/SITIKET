@@ -20,7 +20,7 @@
                                 <div class="card-title">Form Tambah Module</div>
                             </div>
                             <div class="card-body">
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="department">Nama Departemen</label>
                                     <select name="department" class="form-control" id="department">
                                         <option value="" disabled selected>Pilih Departemen</option>
@@ -33,7 +33,7 @@
                                     @error('department')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <label for="module_name">Nama Modul</label>
