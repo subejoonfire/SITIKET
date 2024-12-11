@@ -48,7 +48,7 @@ class URoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | Review',
-            'data' => Ticket::find($id)->first(),
+            'data' => Ticket::where('iduser', $id)->first(),
         ];
 
         return view('pages.user.review', $data);
