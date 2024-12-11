@@ -76,11 +76,18 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('user/action/store') }}">
                                 @csrf
-
+                                
                                 <div class="form-group">
-                                    <label for="issue">Subjek</label>
-                                    <input type="text" name="issue" class="form-control" id="issue" placeholder="Masukan issue">
-                                    @error('issue')
+                                    <label for="kategori">Kategori</label>
+                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori">
+                                    @error('kategori')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="subjek">Subjek</label>
+                                    <input type="text" name="subjek" class="form-control" id="issue" placeholder="Masukan Subjek">
+                                    @error('subjek')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
