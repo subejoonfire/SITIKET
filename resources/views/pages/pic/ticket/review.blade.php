@@ -166,8 +166,8 @@
 
                 </div>
             </div>
+            @if ($data->status != 'DIAJUKAN' && $data->status != 'TERKIRIM')
             <h4 class="page-title">Pesan Masuk</h4>
-            {{-- CHAT NEW --}}
             <div class="container">
                 <div class="panel messages-panel">
                     <div class="tab-content">
@@ -254,8 +254,7 @@
                     </div>
                 </div>
             </div>
-
-
+            @endif
         </div>
     </div>
 </div>
