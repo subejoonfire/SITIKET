@@ -70,7 +70,7 @@
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->issue }}</td>
                                             <td>
-                                                <a href="{{ url('helpdesk/detailhistory/' . $item->id) }}" class="btn btn-info btn-sm">
+                                                <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fas fa-eye"></i> Detail
                                                 </a>
                                             </td> <!-- Tombol detail -->
@@ -79,7 +79,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

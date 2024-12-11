@@ -30,22 +30,8 @@ class HRoutesController extends Controller
             'pic' => User::where('level', 3)->get(),
         ];
 
-        return view('pages.helpdesk.detailvalidation', $data);
+        return view('pages.helpdesk.detail', $data);
     }
-
-    public function detailhistory($id)
-    {
-
-        $data = [
-            'title' => 'SI-TIKET | Dashboard',
-            'data' => Ticket::where('id', $id)->first(),
-            'department' => Department::all(),
-            'pic' => User::where('level', 3)->get(),
-        ];
-
-        return view('pages.helpdesk.detailhistory', $data);
-    }
-
     public function history()
     {
 

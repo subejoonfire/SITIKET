@@ -80,7 +80,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/history', [HRoutesController::class, 'history'])->name('history');
         Route::get('/validation', [HRoutesController::class, 'validation'])->name('validation');
         Route::get('/detail/{id}', [HRoutesController::class, 'detail'])->name('detail');
-        Route::get('/detailhistory/{id}', [HRoutesController::class, 'detailhistory'])->name('detailhistory');
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [HelpdeskController::class, 'helpdeskStore'])->name('store');
             Route::get('/delete/{id}', [HelpdeskController::class, 'helpdeskDelete'])->name('delete');
