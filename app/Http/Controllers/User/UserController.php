@@ -16,7 +16,9 @@ class UserController extends Controller
             'issue' => 'required|string|max:255',
             'detailissue' => 'required|string',
         ]);
+        $count = Ticket::where('iduser', auth()->user()->id)->count();
         $ticket = Ticket::create([
+            'id' => 'TKT' . auth()->user()->id . date('Ymd') . $count,
             'iduser' => auth()->user()->id,
             'issue' => $request->input('issue'),
             'detailissue' => $request->input('detailissue'),
