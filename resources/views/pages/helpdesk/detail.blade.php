@@ -12,6 +12,7 @@
     #username,
     #phone,
     #subjek,
+    #kategori,  
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -21,7 +22,7 @@
         pointer-events: none;
     }
 
-    #department {
+    #module {
         background-color: #ffffff !important;
         color: #000000 !important;
         border: 2px solid #4CAF50 !important;
@@ -55,7 +56,7 @@
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
 
-    #department:focus {
+    #module:focus {
         border-color: #70c55b !important;
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
@@ -65,6 +66,12 @@
         color: #000000 !important;
         padding: 8px;
         cursor: pointer
+    }
+    #kategori {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 8px;
+        cursor: pointer 
     }
 
 </style>
@@ -140,12 +147,12 @@
                                 <div class="form-group">
                                     <div style="display: flex; gap: 10px; justify-content: space-between;">
                                         <div style="flex: 1;">
-                                            <label for="department">Pilih Departemen</label>
-                                            <select name="iddepartment" class="form-control" id="department">
-                                                <option value="">Pilih Departemen</option>
+                                            <label for="department">Pilih Module</label>
+                                            <select name="idmodule" class="form-control" id="module">
+                                                <option value="">Pilih Module</option>
                                                 @foreach ($department as $item)
-                                                <option value="{{ $item->id }}" {{ old('id', $data->iddepartment ?? '') == $item->id ? 'selected' : '' }}>
-                                                    {{ $item->departmentname }}
+                                                <option value="{{ $item->id }}" {{ old('id', $data->idmodule ?? '') == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->modulename }}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -197,6 +204,13 @@
                                     <label for="subjek">Subjek</label>
                                     <input type="text" name="subjek" class="form-control" id="subjek" value="{{ $data->issue }}">
                                     @error('subjek')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="kategori">Kategori</label>
+                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="MUHAHAHAHA">
+                                    @error('kategori')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
