@@ -140,25 +140,25 @@
                                 <div class="form-group">
                                     <div style="display: flex; gap: 10px; justify-content: space-between;">
                                         <div style="flex: 1;">
-                                            <label for="department">Pilih Module</label>
+                                            <label for="module">Pilih Module</label>
                                             <select name="idmodule" class="form-control" id="module">
                                                 <option value="">Pilih Module</option>
-                                                @foreach ($department as $item)
+                                                @foreach ($module as $item)
                                                 <option value="{{ $item->id }}" {{ old('id', $data->idmodule ?? '') == $item->id ? 'selected' : '' }}>
                                                     {{ $item->modulename }}
                                                 </option>
                                                 @endforeach
                                             </select>
-                                            @error('iddepartment')
+                                            @error('idmodule')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
-                                        </div>  
+                                        </div>
                                         <div style="flex: 1;">
                                             <label for="iduser_pic">Pilih PIC</label>
                                             <select name="iduser_pic" class="form-control" id="pic">
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
-                                                <option value="{{ $item->id }}" data-department="{{ $item->iddepartment }}" {{ old('iduser_pic', $data->iduser_pic ?? '') == $item->id ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}" {{ old('iduser_pic', $data->iduser_pic ?? '') == $item->id ? 'selected' : '' }}>
                                                     {{ $item->name }}
                                                 </option>
                                                 @endforeach
@@ -225,22 +225,22 @@
 @if ($data->iduser_pic == NULL)
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const departmentSelect = document.getElementById('department');
+        const moduleSelect = document.getElementById('module');
         const picSelect = document.getElementById('pic');
 
         const updatePicOptions = () => {
-            const selectedDepartment = departmentSelect.value;
-            picSelect.disabled = !selectedDepartment;
+            const selectedmodule = moduleSelect.value;
+            picSelect.disabled = !selectedmodule;
 
             Array.from(picSelect.options).forEach(option => {
-                const optionDepartment = option.getAttribute('data-department');
-                option.style.display = (!selectedDepartment || optionDepartment === selectedDepartment) ? '' : 'none';
+                const optionmodule = option.getAttribute('data-module');
+                option.style.display = (!selectedmodule || optionmodule === selectedmodule) ? '' : 'none';
             });
 
             picSelect.value = '';
         };
 
-        departmentSelect.addEventListener('change', updatePicOptions);
+        moduleSelect.addEventListener('change', updatePicOptions);
         updatePicOptions();
     });
 
