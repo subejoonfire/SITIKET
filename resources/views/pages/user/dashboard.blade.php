@@ -106,7 +106,7 @@
                                             <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
-                                            <th>Aksi</th>
+                                            <th style="width: 10%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
