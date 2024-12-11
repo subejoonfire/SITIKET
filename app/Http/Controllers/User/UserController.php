@@ -17,14 +17,14 @@ class UserController extends Controller
             'detailissue' => 'required|string',
         ]);
         $count = Ticket::where('iduser', auth()->user()->id)->count();
-        $ticket = Ticket::create([
-            'id' => 'TKT' . auth()->user()->id . date('Ymd') . $count,
+        Ticket::create([
+            'ticketcode' => 'TKT' . auth()->user()->id . date('Ymd') . $count,
             'iduser' => auth()->user()->id,
             'issue' => $request->input('issue'),
             'detailissue' => $request->input('detailissue'),
             'status' => 'TERKIRIM',
         ]);
-        return redirect()->to('user')->with('success', 'Request berhasil dikirim! ID Tiket: ' . $ticket->id);
+        return redirect()->to('user')->with('success', 'Request berhasil dikirim!');
     }
 
     public function userDelete($id)

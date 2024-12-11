@@ -7,7 +7,7 @@
         color: red;
     }
 
-    #ticket_id,
+    #ticketcode,
     #priority,
     #module,
     #status,
@@ -70,9 +70,9 @@
                                 <div class="form-group row">
                                     <!-- Baris 1 -->
                                     <div class="col-md-4">
-                                        <label for="ticket_id">ID Tiket</label>
-                                        <input type="text" name="ticket_id" class="form-control" id="ticket_id" value="{{ $data->id }}">
-                                        @error('ticket_id')
+                                        <label for="ticketcode">Kode Tiket</label>
+                                        <input type="text" name="ticketcode" class="form-control" id="ticketcode" value="{{ $data->ticketcode }}">
+                                        @error('ticketcode')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
@@ -91,7 +91,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <!-- Baris 2 -->
                                     <div class="col-md-4">
@@ -116,9 +116,8 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
-                                    <!-- Tanggal Diajukan -->
                                     <label for="tanggal_diajukan">Tanggal Diajukan</label>
                                     <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}" placeholder="Masukkan Tanggal">
                                     @error('tanggal_diajukan')
@@ -126,14 +125,13 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <!-- Issue -->
                                     <label for="issue">Issue</label>
                                     <textarea name="issue" class="form-control" id="issue" rows="4">{{ $data->detailissue }}</textarea>
                                     @error('issue')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                
+
                             </div>
                         </div>
                     </form>

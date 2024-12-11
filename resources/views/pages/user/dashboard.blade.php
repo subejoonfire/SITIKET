@@ -99,7 +99,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>ID Tiket</th>
+                                            <th>Kode Tiket</th>
                                             <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
@@ -110,7 +110,7 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->ticketcode }}</td>
                                             <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Belum ada' }}</td>
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
                                             <td>{{ \Illuminate\Support\Str::limit($item->issue ?? 'Tidak ada', 60) }}</td>
