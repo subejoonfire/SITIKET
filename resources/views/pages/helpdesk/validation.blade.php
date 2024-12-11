@@ -54,21 +54,26 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>ID Tiket</th>
                                             <th>Nama</th>
                                             <th>Departemen</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
+                                            <th>Tanggal Diajukan</th>
                                             <th style="width: 10%" data-orderable="false">Aksi</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($collection as $item)
                                         <tr>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>{{ $item->iddepartment ? $item->departments->departmentname : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->issue }}</td>
+                                            <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
                                                 <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fas fa-eye"></i> Detail
@@ -124,27 +129,27 @@
         </div>
     </div>
 
-            <!-- Modal Tolak -->
-            <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="rejectModalLabel">Konfirmasi Tolak</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Apakah Anda yakin ingin menolak permintaan ini?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-danger">Tolak</button>
-                        </div>
-                    </div>
+    <!-- Modal Tolak -->
+    <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rejectModalLabel">Konfirmasi Tolak</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda yakin ingin menolak permintaan ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger">Tolak</button>
                 </div>
             </div>
-
         </div>
     </div>
+
+</div>
+</div>
 
 </div>
 @endsection
