@@ -5,7 +5,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">PIC</h4>
+                <h4 class="page-title">Modul</h4>
             </div>
 
             <div class="row">
@@ -39,7 +39,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">PIC</h4>
+                                <h4 class="card-title">Modul</h4>
                                 <a href="{{ url('admin/module/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
@@ -81,7 +81,7 @@
                                                 </ol>
                                             </td>
                                             <td>
-                                                <a href="{{ url('admin/department/editmodul') }}" class="btn btn-warning">
+                                                <a href="{{ url('admin/module/editmodul') }}" class="btn btn-warning">
                                                     <i class="fa fa-edit fa-lg"></i> Edit
                                                 </a>
                                                                                               

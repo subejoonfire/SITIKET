@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
             Route::get('add', [ARoutesController::class, 'addmodule'])->name('addmodule');
+            Route::get('/editmodul', [ARoutesController::class, 'editmodul'])->name('editmodul');
         });
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
@@ -67,7 +68,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
             Route::get('/', [ARoutesController::class, 'depart'])->name('/');
             Route::get('/add', [ARoutesController::class, 'adddepart'])->name('add');
-            Route::get('/editmodul', [ARoutesController::class, 'editmodul'])->name('editmodul');
             Route::get('/edit/{id}', [ARoutesController::class, 'editdepart'])->name('edit');
             Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
                 Route::post('/store', [AdminController::class, 'departmentStore'])->name('store');
