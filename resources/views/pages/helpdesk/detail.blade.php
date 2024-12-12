@@ -13,7 +13,6 @@
     #phone,
     #subjek,
     #kategori,
-    #idmodule,
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
