@@ -75,7 +75,7 @@ default => 'layout.default',
                                 </div>
                                 <div class="text-right mt-3 mb-3">
                                     <button type="submit" class="btn btn-success">Save</button>
-                                    <button class="btn btn-danger">Reset</button>
+                                    <button class="btn btn-danger">Batal</button>
                                 </div>
                             </div>
                         </form>
