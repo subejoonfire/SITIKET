@@ -92,8 +92,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
-                                <!-- Departement, Tanggal Diajukan, Priority -->
                                 <div class="form-group row">
                                     <div class="col-md-4">
                                         <label for="module">Module</label>
@@ -125,7 +123,6 @@
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                {{-- <div class="form-group row"> --}}
                                     <div class="col-md-12">
                                         <label for="issue">Subjek</label>
                                         <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->issue }}">
@@ -205,7 +202,7 @@
                                         </div>
                                         <hr>
                                         <div class="message-text">
-                                            {{ $data->trouble }}
+                                            {{ $data->issue }}
                                         </div>
                                     </div>
                                     <br>
@@ -261,8 +258,6 @@
             @endif
         </div>
     </div>
-</div>
-</div>
 </div>
 
 @endsection
