@@ -30,7 +30,7 @@
         cursor: pointer;
     }
 
-    #pic {
+    #iduser_pic {
         background-color: #ffffff !important;
         color: #000000 !important;
         border: 2px solid #4CAF50 !important;
@@ -38,7 +38,7 @@
         cursor: pointer;
     }
 
-    #pic:focus {
+    #iduser_pic:focus {
         border-color: #70c55b !important;
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
