@@ -16,6 +16,8 @@
     #priority,
     #module,
     #subjek,
+    #category,
+    #detailissue,
     #issue {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -116,6 +118,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <label for="category">Kategori</label>
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->category }}">
+                                        @error('issue')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                {{-- <div class="form-group row"> --}}
                                     <div class="col-md-12">
                                         <label for="issue">Subjek</label>
                                         <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->issue }}">
