@@ -115,14 +115,13 @@
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
                                             <td>{{ \Illuminate\Support\Str::limit($item->issue ?? 'Tidak ada', 60) }}</td>
                                             <td>
-                                                <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
+                                                <a href="{{ url('user/review/' . $item->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fas fa-eye"></i> Detail
                                                 </a>
-                                            
                                                 @if ($item->status == 'TERKIRIM')
-                                                    <a href="{{ url('user/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Remove">
-                                                        <i class="fas fa-trash"></i> Delete
-                                                    </a>
+                                                <a href="{{ url('user/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Remove">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </a>
                                                 @endif
                                             </td>
                                         </tr>
