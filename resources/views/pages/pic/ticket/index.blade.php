@@ -95,13 +95,9 @@
                                             <td>{{ $item->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
-                                                <div class="form-button-action">
-                                                    <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
-                                                        <i class="fa fa-eye me-3"></i>
-                                                        <span>Review</span>
-                                                        <span class="notification-badge">5</span>
-                                                    </a>
-                                                </div>
+                                                <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-eye"></i> Review
+                                                </a>
                                             </td>
                                         </tr>
                                         @endforeach
