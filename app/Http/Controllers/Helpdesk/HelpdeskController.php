@@ -4,31 +4,18 @@ namespace App\Http\Controllers\Helpdesk;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HelpdeskController extends Controller
 {
     public function helpdeskUpdate(Request $request, $id)
     {
-        $validated = $request->validate([
-            'idmodule' => 'required|exists:modules,id',
-            'iduser_pic' => 'required|exists:users,id',
-            'priority' => 'required|in:Bisa Menunggu,Sedang,Mendesak',
-        ], [
-            'idmodule.required' => 'Departemen harus dipilih.',
-            'idmodule.exists' => 'Departemen yang dipilih tidak valid.',
-            'iduser_pic.required' => 'PIC harus dipilih.',
-            'iduser_pic.exists' => 'PIC yang dipilih tidak valid.',
-            'priority.required' => 'Prioritas harus dipilih.',
-            'priority.in' => 'Prioritas yang dipilih tidak valid.',
-        ]);
-
         $ticket = Ticket::find($id);
-
         if ($ticket) {
-            $ticket->idmodule = $validated['idmodule'];
-            $ticket->iduser_pic = $validated['iduser_pic'];
-            $ticket->priority = $validated['priority'];
+            $ticket->idmodule = $request->idmodule;
+            $ticket->iduser_pic = $request->iduser_pic;
+            $ticket->priority = $request->priority;
             $ticket->status = 'DIAJUKAN';
             $ticket->save();
             return redirect()->to('helpdesk/validation')
