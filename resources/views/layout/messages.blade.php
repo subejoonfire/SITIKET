@@ -5,15 +5,15 @@
     <main class="inbox">
         <div class="message-tools">
             <div class="btn-group">
-                {{-- <button type="button" class="btn btn-light" data-toggle="dropdown">
+                <button type="button" class="btn btn-light" data-toggle="dropdown">
                     <span class="fa fa-comments"></span> Conversation
-                </button> --}}
+                </button>
                 <button type="button" class="btn btn-light">
                     <span class="fa fa-paperclip"></span> Attachments
                 </button>
-                <button type="button" class="btn btn-light">
+                {{-- <button type="button" class="btn btn-light">
                     <span class="fa fa-info-circle"></span> Details
-                </button>
+                </button> --}}
             </div>
         </div>
         
@@ -29,7 +29,7 @@
                     </div>
                     <div class="message-content">
                         <div class="header">
-                            <span class="from">Ferdi Electric Team</span>
+                            <span class="from">Ferdi Childer Team</span>
                         </div>
                         <div class="title">
                             Dear SAP,
