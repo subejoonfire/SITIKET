@@ -13,6 +13,7 @@
     #phone,
     #subjek,
     #kategori,
+    #idmodule,
     #tanggal_diajukan {
         background-color: #ffffff !important;
         color: #000000 !important;
@@ -22,7 +23,7 @@
         pointer-events: none;
     }
 
-    #module {
+    #idmodule {
         background-color: #ffffff !important;
         color: #000000 !important;
         border: 2px solid #4CAF50 !important;
