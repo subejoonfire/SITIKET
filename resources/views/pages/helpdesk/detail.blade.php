@@ -22,7 +22,7 @@
         pointer-events: none;
     }
 
-    #module {
+    #idmodule {
         background-color: #ffffff !important;
         color: #000000 !important;
         border: 2px solid #4CAF50 !important;
@@ -56,7 +56,7 @@
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
 
-    #module:focus {
+    #idmodule:focus {
         border-color: #70c55b !important;
         box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
     }
@@ -163,7 +163,7 @@
                                         </div>
                                         <div style="flex: 1;">
                                             <label for="iduser_pic">Pilih PIC</label>
-                                            <select name="iduser_pic" class="form-control" id="pic">
+                                            <select name="iduser_pic" class="form-control" id="iduser_pic">
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
                                                 <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}" {{ old('iduser_pic', $data->iduser_pic ?? '') == $item->id ? 'selected' : '' }}>
@@ -240,8 +240,8 @@
 @if ($data->iduser_pic == NULL)
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const moduleSelect = document.getElementById('module');
-        const picSelect = document.getElementById('pic');
+        const moduleSelect = document.getElementById('idmodule');
+        const picSelect = document.getElementById('iduser_pic');
 
         const updatePicOptions = () => {
             const selectedmodule = moduleSelect.value;

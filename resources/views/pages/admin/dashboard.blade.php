@@ -58,11 +58,11 @@
                                 </div>
                                 <div class="col col-stats ml-3 ml-sm-0">
                                     <div class="numbers">
-                                        <p class="card-category">Module</p>
-                                        <h4 class="card-title">{{  $departmentCount}}</h4>
+                                        <p class="card-category">Modul</p>
+                                        <h4 class="card-title">{{ $moduleCount}}</h4>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
