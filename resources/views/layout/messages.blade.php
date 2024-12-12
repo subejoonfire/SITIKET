@@ -1,19 +1,42 @@
 {{-- <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"> --}}
-   
+   <style>/* Style for active buttons */
+    .active {
+        background-color: #0056b3;
+        color: white;
+    }
+
+    /* Style for attachments */
+    .attachments {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .attachment-item {
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .attachment-item img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }</style>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="email-app mb-4">
     <main class="inbox">
         <div class="message-tools">
             <div class="btn-group">
-                <button type="button" class="btn btn-light" data-toggle="dropdown">
+                {{-- <button type="button" class="btn btn-light" data-toggle="dropdown">
                     <span class="fa fa-comments"></span> Conversation
-                </button>
+                </button> --}}
                 <button type="button" class="btn btn-light">
                     <span class="fa fa-paperclip"></span> Attachments
                 </button>
-                {{-- <button type="button" class="btn btn-light">
+                <button type="button" class="btn btn-light">
                     <span class="fa fa-info-circle"></span> Details
-                </button> --}}
+                </button>
             </div>
         </div>
         
@@ -29,7 +52,7 @@
                     </div>
                     <div class="message-content">
                         <div class="header">
-                            <span class="from">Ferdi Childer Team</span>
+                            <span class="from">Ferdi Electric Team</span>
                         </div>
                         <div class="title">
                             Dear SAP,
@@ -75,12 +98,12 @@
                     </div>
                     <div class="fa fa-paper-clip"></span> Today, 3:47 PM</div>
                 </div>
+                <div class="attachment-item">
+                    <img src="path_to_file_image.jpg" alt="File 2">
+                    <p>File2.docx</p>
                 </div>
-            </li>
-
-
-
-        </ul>
+            </div>
+        </div>
     </main>
 </div>
 </div>
@@ -88,6 +111,22 @@
 <script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	
+</script>
+
+<script>
+    function setActiveTab(tabName) {
+        if (tabName === 'conversation') {
+            document.getElementById('conversation').style.display = 'block';
+            document.getElementById('attachments').style.display = 'none';
+            document.getElementById('conversation-btn').classList.add('active');
+            document.getElementById('attachments-btn').classList.remove('active');
+        } else {
+            document.getElementById('conversation').style.display = 'none';
+            document.getElementById('attachments').style.display = 'block';
+            document.getElementById('attachments-btn').classList.add('active');
+            document.getElementById('conversation-btn').classList.remove('active');
+        }
+    }
 </script>
 </body>
 </html>
