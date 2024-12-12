@@ -53,7 +53,7 @@ default => 'layout.default',
                                     <div class="col-md-12">
                                         <div class="form-group form-group-default">
                                             <label>No Handphone</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nomor Handphone" value="{{ auth()->user()->phone }}" name="phone">
+                                            <input type="text" class="form-control" placeholder="Masukkan Nomor Handphone" value="{{ auth()->user()->phone }}" name="phone" pattern="[0-9]*" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                         </div>
                                     </div>
                                 </div>

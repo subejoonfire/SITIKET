@@ -53,7 +53,7 @@
                                             <th style="width: 8%">No</th>
                                             <th>Nama Modul</th>
                                             <th>PIC Modul</th>
-                                            <th style="width: 18%" data-orderable="false">Aksi</th>
+                                            <th style="width: 15%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,12 +63,12 @@
                                             <td>{{ $item->modulename }}</td>
                                             <td>{{ $item->modulename }}</td>
                                             <td>
-                                                <a href="{{ url('admin/module/edit/'. $item->id) }}" class="btn btn-warning">
-                                                    <i class="fa fa-edit fa-lg"></i> Edit
+                                                <a href="{{ url('admin/module/edit/'. $item->id) }}" class="btn btn-warning btn-sm">
+                                                    <i class="fa fa-edit"></i> Edit
                                                 </a>
-
-                                                <a href="{{ url('admin/module/action/delete/'. $item->id) }}" class="btn btn-danger">
-                                                    <i class="fa fa-trash fa-lg"></i> Delete
+                                            
+                                                <a href="{{ url('admin/module/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
+                                                    <i class="fa fa-trash"></i> Hapus
                                                 </a>
                                             </td>
                                         </tr>
