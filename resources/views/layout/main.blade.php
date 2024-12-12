@@ -553,32 +553,7 @@
           margin: 0 5px 20px 15px;
           color: #788288;
         }
-        
-        .message:after {
-          content: "";
-          position: absolute;
-          top: 11px;
-          left: 63px;
-          float: left;
-          z-index: 100;
-          border-top: 10px solid transparent;
-          border-left: none;
-          border-bottom: 10px solid transparent;
-          border-right: 13px solid #fff;
-        }
-        
-        .message:before {
-          content: "";
-          position: absolute;
-          top: 10px;
-          left: 62px;
-          float: left;
-          z-index: 99;
-          border-top: 11px solid transparent;
-          border-left: none;
-          border-bottom: 11px solid transparent;
-          border-right: 13px solid #dbe3e8;
-        }
+      
         
         .message .medium-image {
           float: left;
