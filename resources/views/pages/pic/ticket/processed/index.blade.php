@@ -77,10 +77,10 @@
                                             <th>Kode Tiket</th>
                                             <th>Nama Pelapor</th>
                                             <th>Module</th>
-                                            <th>Nomor HP</th>
-                                            <th>Masalah</th>
                                             <th>Status</th>
-                                            <th style="width: 10%">Aksi</th>
+                                            <th>Masalah</th>
+                                            <th>Tanggal Diajukan</th>
+                                            <th style="width: 10%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -90,9 +90,9 @@
                                             <td>{{ $item->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
                                             <td>{{ $item->modules->modulename }}</td>
-                                            <td>{{ $item->users->phone }}</td>
-                                            <td>{{ $item->trouble }}</td>
                                             <td>{{ $item->status }}</td>
+                                            <td>{{ $item->issue }}</td>
+                                            <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
                                                 <a href="{{ url('pic/ticket/review/processed/'. $item->id)}}" class="btn btn-info btn-sm">
                                                     <i class="fa fa-eye"></i> Review
