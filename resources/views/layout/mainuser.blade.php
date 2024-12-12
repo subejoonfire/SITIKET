@@ -255,6 +255,98 @@ background:#eee
         flex: 0 0 100%;
     }
 }
+.message-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    
+    /* Styling the content section */
+    .message-content {
+        margin-bottom: 20px;
+    }
+    
+    /* Styling the toolbar buttons */
+    .toolbar-buttons {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .toolbar-buttons button {
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+    }
+    
+    /* Styling the textarea and send button */
+    .message-input {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .message-input textarea {
+        flex-grow: 1;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        resize: vertical;
+        min-height: 50px;
+    }
+    
+    .message-input button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .message-input button:hover {
+        background-color: #0056b3;
+    }
+
+    /* dibawha ini css profile */
+
+      .message-container {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .profile-picture {
+        margin-right: 15px; /* Jarak antara gambar dan konten pesan */
+    }
+
+    .profile-img {
+        width: 50px; /* Atur ukuran gambar sesuai keinginan */
+        height: 50px;
+        border-radius: 50%; /* Membuat gambar bulat */
+        object-fit: cover;
+    }
+
+    .message-content {
+        max-width: 90%; /* Membatasi lebar konten pesan */
+    }
+
+    .header {
+        font-weight: bold;
+    }
+
+    .title {
+        font-size: 18px;
+        margin-top: 5px;
+    }
+
+    .description {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .signature {
+        font-style: italic;
+    }
     </style>
 
     </style>
