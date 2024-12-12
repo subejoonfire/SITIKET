@@ -83,7 +83,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->module->modulename }}</td>
+                                            <td>{{ $item->modules->modulename }}</td>
                                             <td>{{ $item->users->phone }}</td>
                                             <td>{{ $item->trouble }}</td>
                                             <td>{{ $item->status }}</td>
