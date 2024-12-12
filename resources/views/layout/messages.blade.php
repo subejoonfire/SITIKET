@@ -41,70 +41,59 @@
             <textarea placeholder="Post something here..."></textarea>
             <button type="button" class="btn btn-primary">Send</button>
         </div>
-
-        <div id="conversation" class="tab-content">
-            <ul class="messages">
-                <li class="message unread">
-                    <div class="message-container">
-                        <div class="profile-picture">
-                            <img src="{{ url('/images/logo/gkt.jpg') }}" alt="Profile Picture" class="profile-img">
-                        </div>
-                        <div class="message-content">
-                            <div class="header">
-                                <span class="from">Ferdi Electric Team</span>
-                            </div>
-                            <div class="title">
-                                Dear SAP,
-                            </div>
-                            <div class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </div>
-                            <br>
-                            <div class="FOOTER">
-                                <span class="signature">Regards,</span><br />
-                            </div>
-                            <div>  
-                                <span class="name">Eclectic Support Team</span>
-                            </div>
-                            <div class="fa fa-paper-clip"> Today, 3:47 PM</div>
-                        </div>
+        <ul class="messages">
+            <li class="message unread">
+                <div class="message-container">
+                    <div class="profile-picture">
+                        <img src="{{ url('/images/logo/gkt.jpg') }}" alt="Profile Picture" class="profile-img">
                     </div>
-                </li>
-
-                <li class="message unread">
-                    <div class="message-container">
-                        <div class="profile-picture">
-                            <img src="{{ url('/images/logo/gkt.jpg') }}" alt="Profile Picture" class="profile-img">
+                    <div class="message-content">
+                        <div class="header">
+                            <span class="from">Ferdi Electric Team</span>
                         </div>
-                        <div class="message-content">
-                            <div class="header">
-                                <span class="from">Rizky Budi</span>
-                            </div>
-                            <div class="title">
-                                Dear Electric Team,
-                            </div>
-                            <div class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </div>
-                            <br>
-                            <div class="FOOTER">
-                                <span class="signature">Regards,</span><br />
-                            </div>
-                            <div>  
-                                <span class="name">Jhonlin Support Team</span>
-                            </div>
-                            <div class="fa fa-paper-clip"> Today, 3:47 PM</div>
+                        <div class="title">
+                            Dear SAP,
                         </div>
+                        <div class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </div>
+                        <br>
+                        <div class="FOOTER">
+                            <span class="signature">Regards,</span><br />
+                        </div>
+                        <div>  
+                            <span class="name">Eclectic Support Team</span>
+                        </div>
+                        <div class="fa fa-paper-clip"> Today, 3:47 PM</div>
                     </div>
-                </li>
-            </ul>
-        </div>
+                </div>
+            </li>
+         
 
-        <div id="attachments" class="tab-content" style="display: none;">
-            <div class="attachments">
-                <div class="attachment-item">
-                    <img src="path_to_file_image.jpg" alt="File 1">
-                    <p>File1.pdf</p>
+            <ul class="message unread">    
+                <div class="message-container">
+                    <div class="profile-picture">
+                        <img src="{{ url('/images/logo/gkt.jpg') }}" alt="Profile Picture" class="profile-img">
+                    </div>
+                <div class="message-content">
+                    <div class="header">
+                        <span class="from">Rizky Budi</span>
+                    </div>
+
+                    <div class="title">
+                        Dear Electric Team,
+                    </div>
+                    <div class="description">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                    </div>
+                    <br>
+                    <div class="FOOTER">
+                        <span class="signature">Regards,</span><br />
+                    </div>
+                    <div>  
+                        <span class="name">Jhonlin Support Team</span>
+                    </div>
+                    <div class="fa fa-paper-clip"></span> Today, 3:47 PM</div>
                 </div>
                 <div class="attachment-item">
                     <img src="path_to_file_image.jpg" alt="File 2">
