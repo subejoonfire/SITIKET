@@ -142,7 +142,6 @@
                                     </div>
                                 </div>
                                 @if ($type == 'index')
-
                                 <div class="form-group">
                                     @if ($data->status == 'DIAJUKAN')
                                     <a href="{{ url('pic/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
@@ -150,28 +149,26 @@
                                     @endif
                                     <a href="{{ url('pic/ticket') }}" class="btn btn-primary">Kembali</a>
                                 </div>
-                                @elseif ($type == 'approved')
+                                @elseif ($data->status == 'DISETUJUI')
                                 <div class="card-action">
                                     <a href="{{ url('pic/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
                                     <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
                                     <a href="{{ url('pic/ticket/approved') }}" class="btn btn-primary">Kembali</a>
                                 </div>
-                                @elseif ($type == 'processed')
+                                @elseif ($data->status == 'DIPROSES')
                                 <div class="card-action">
                                     <a href="{{ url('pic/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
                                     <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
                                     <a href="{{ url('pic/ticket/processed') }}" class="btn btn-primary">Kembali</a>
                                 </div>
-                                @elseif ($type == 'done')
+                                @elseif ($data->status == 'SELESAI')
                                 <div class="card-action">
                                     <a href="{{ url('pic/ticket/done') }}" class="btn btn-primary">Kembali</a>
                                 </div>
                                 @endif
                             </div>
                         </div>
-
                     </form>
-
                 </div>
             </div>
             @if ($data->status != 'DIAJUKAN' && $data->status != 'TERKIRIM')
@@ -196,7 +193,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="message-chat">
                             <div class="chat-body">
                                 <div class="message info">
