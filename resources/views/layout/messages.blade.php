@@ -118,8 +118,6 @@
             <textarea placeholder="Post something here..."></textarea>
             <button type="button" class="btn btn-primary">Send</button>
         </div>
-        
-
         <ul class="messages">
             <li class="message unread">
                 <div class="message-container">
