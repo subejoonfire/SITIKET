@@ -103,7 +103,7 @@
                                             <th>Modul</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
-                                            <th style="width: 10%" data-orderable="false">Aksi</th>
+                                            <th style="width: 9%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -115,17 +115,14 @@
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
                                             <td>{{ \Illuminate\Support\Str::limit($item->issue ?? 'Tidak ada', 60) }}</td>
                                             <td>
-                                                <div class="form-button-action">
-                                                    <a href="{{ url('user/review/' . $item->id) }}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-4 py-2" data-original-title="Review">
-                                                        <span>Review</span>
-                                                        <span class="notification-badge">5</span>
-                                                    </a>
-                                                </div>
-
-                                                @if ($item->status == 'TERKIRIM')
-                                                <a href="{{ url('user/action/delete/'. $item->id) }}" class="btn btn-danger btn-lg rounded-pill d-flex align-items-center px-4 py-2" data-toggle="tooltip" title="Remove">
-                                                    <span>Delete</span>
+                                                <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
+                                                    <i class="fas fa-eye"></i> Detail
                                                 </a>
+                                            
+                                                @if ($item->status == 'TERKIRIM')
+                                                    <a href="{{ url('user/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Remove">
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </a>
                                                 @endif
                                             </td>
                                         </tr>
