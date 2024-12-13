@@ -125,6 +125,7 @@ class PRoutesController extends Controller
             'title' => 'SITIKET | Review',
             'type' => $type,
             'data' => Ticket::with(['categories'])->where('id', $id)->first(),
+            'collection' => Message::where('idticket', $id)->orderBy('created_at', 'asc')->get(),
         ];
         if ($type == 'approved') {
             return view('pages.pic.ticket.review', $data);
