@@ -69,14 +69,24 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::post('/update/{id}', [AdminController::class, 'userUpdate'])->name('update');
             });
         });
-        Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
-            Route::get('/', [ARoutesController::class, 'depart'])->name('/');
-            Route::get('/add', [ARoutesController::class, 'adddepart'])->name('add');
-            Route::get('/edit/{id}', [ARoutesController::class, 'editdepart'])->name('edit');
+        // Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
+        //     Route::get('/', [ARoutesController::class, 'depart'])->name('/');
+        //     Route::get('/add', [ARoutesController::class, 'adddepart'])->name('add');
+        //     Route::get('/edit/{id}', [ARoutesController::class, 'editdepart'])->name('edit');
+        //     Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+        //         Route::post('/store', [AdminController::class, 'departmentStore'])->name('store');
+        //         Route::get('/delete/{id}', [AdminController::class, 'departmentDelete'])->name('delete');
+        //         Route::post('/update/{id}', [AdminController::class, 'departmentUpdate'])->name('update');
+        //     });
+        // });
+        Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+            Route::get('/', [ARoutesController::class, 'category'])->name('/');
+            Route::get('/add', [ARoutesController::class, 'addcategory'])->name('add');
+            Route::get('/edit/{id}', [ARoutesController::class, 'editcategory'])->name('edit');
             Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
-                Route::post('/store', [AdminController::class, 'departmentStore'])->name('store');
-                Route::get('/delete/{id}', [AdminController::class, 'departmentDelete'])->name('delete');
-                Route::post('/update/{id}', [AdminController::class, 'departmentUpdate'])->name('update');
+                Route::post('/store', [AdminController::class, 'categoryStore'])->name('store');
+                Route::get('/delete/{id}', [AdminController::class, 'categoryDelete'])->name('delete');
+                Route::post('/update/{id}', [AdminController::class, 'categoryUpdate'])->name('update');
             });
         });
     });
