@@ -57,14 +57,14 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="priority">Priority</label>
+                                        <label for="priority">Prioritas</label>
                                         <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priority ?? 'Belum ada' }}">
                                         @error('priority')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="module">Module</label>
+                                        <label for="module">Modul</label>
                                         <input type="text" name="module" class="form-control" id="module" value="{{ $data->modules->modulename ?? 'Belum ada' }}">
                                         @error('module')
                                         <small class="text-danger">{{ $message }}</small>

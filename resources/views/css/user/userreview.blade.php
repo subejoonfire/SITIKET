@@ -10,6 +10,7 @@
     #subjek,
     #department,
     #tanggal_diajukan,
+    #PIC,
     #issue {
         background-color: #ffffff !important;
         color: #000000 !important;
