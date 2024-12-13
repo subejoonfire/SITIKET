@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="PIC">PIC</label>
-                                        <input type="text" name="PIC" class="form-control" id="PIC" value="{{ $data->users_pic->name }}" placeholder="Masukkan Tanggal">
+                                        <input type="text" name="PIC" class="form-control" id="PIC" value="{{ $data->users_pic->name  ?? 'Belum ada' }}" placeholder="Masukkan Tanggal">
                                         @error('PIC')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
