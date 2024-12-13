@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
+use App\Models\Module;
 use App\Models\Ticket;
+use App\Models\Category;
 use App\Models\Department;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Module;
 
 class URoutesController extends Controller
 {
@@ -28,6 +29,7 @@ class URoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | ADD',
             'module' => Module::all(),
+            'category' => Category::all(),
         ];
 
         return view('pages.user.addrequest', $data);

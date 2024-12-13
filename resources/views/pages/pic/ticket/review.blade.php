@@ -118,7 +118,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <label for="category">Kategori</label>
-                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->category }}">
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
                                         @error('issue')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror

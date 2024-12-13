@@ -16,7 +16,7 @@ class UserController extends Controller
             'issue' => 'required|string|max:255',
             'idmodule' => 'integer|max:5',
             'priority' => 'string|max:255',
-            'category' => 'required|string|max:255',
+            'idcategory' => 'required|integer|max:10',
             'detailissue' => 'required|string',
         ]);
         $count = Ticket::where('iduser', auth()->user()->id)->count();
@@ -26,7 +26,7 @@ class UserController extends Controller
             'idmodule' => $request->input('idmodule'),
             'issue' => $request->input('issue'),
             'priority' => $request->input('priority'),
-            'category' => $request->input('category'),
+            'idcategory' => $request->input('idcategory'),
             'detailissue' => $request->input('detailissue'),
             'status' => 'TERKIRIM',
         ]);
