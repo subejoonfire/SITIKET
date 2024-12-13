@@ -84,14 +84,16 @@
                             <form method="POST" action="{{ url('user/action/store') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="category">Kategori</label>
-                                    <select name="category" class="form-control" id="category">
+                                    <label for="idcategory">Kategori</label>
+                                    <select name="idcategory" class="form-control" id="idcategory">
                                         <option value="">Pilih Kategori</option>
-                                        <option value="kategori1">Kategori 1</option>
-                                        <option value="kategori2">Kategori 2</option>
-                                        <option value="kategori3">Kategori 3</option>
+                                        @foreach ($category as $item)
+                                        <option value="{{ $item->id }}" {{ old('id', $data->idcategory ?? '') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->categoryname }}
+                                        </option>
+                                        @endforeach
                                     </select>
-                                    @error('category')
+                                    @error('idcategory')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>

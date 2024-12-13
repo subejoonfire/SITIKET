@@ -15,6 +15,7 @@ class Ticket extends Model
         'iduser',
         'iddepartment',
         'idmodule',
+        'idcategory',
         'iduser_pic',
         'issue',
         'detailissue',
@@ -31,6 +32,10 @@ class Ticket extends Model
     public function departments(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'iddepartment');
+    }
+    public function categories(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'idcategory');
     }
     public function modules(): BelongsTo
     {
