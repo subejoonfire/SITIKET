@@ -53,16 +53,16 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email" value="{{ old('email') }}">
-                                    @error('email')
+                                    <label for="phone">Nomor HP</label>
+                                    <input type="phone" name="phone" class="form-control" id="phone" placeholder="Masukkan phone" value="{{ old('phone') }}">
+                                    @error('phone')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">Nomor HP</label>
-                                    <input type="phone" name="phone" class="form-control" id="phone" placeholder="Masukkan phone" value="{{ old('phone') }}">
-                                    @error('phone')
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email" value="{{ old('email') }}">
+                                    @error('email')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>

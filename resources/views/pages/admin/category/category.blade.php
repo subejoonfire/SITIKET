@@ -1,12 +1,11 @@
 @extends('layout.mainadmin')
 
 @section('content')
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Pengguna</h4>
+                <h4 class="page-title">Category</h4>
             </div>
 
             <div class="row">
@@ -39,52 +38,45 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Pengguna</h4>
-                                <a href="{{ url('admin/user/add') }}" class="btn btn-custom ml-auto">
+                                <h4 class="card-title">category</h4>
+                                <a href="{{ url('admin/category/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
                                 </a>
-
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- Modal -->
-
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>ID User</th>
-                                            <th>Username</th>
-                                            <th>No HP</th>
-                                            <th>Email</th>
-                                            <th>Modul</th>
-                                            <th>Level</th>
-                                            <th style="width: 10%">Action</th>
+                                            <th style="width: 8%">No</th>
+                                            <th>Nama category</th>
+                                            {{-- <th>PIC category</th> --}}
+                                            <th style="width: 15%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($user as $item)
+                                        {{-- @foreach ($category as $item) --}}
                                         <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>123456789</td>
-                                            <td>{{ $item->email }}</td>
-                                            <td>{{ $item->modules->modulename ?? '' }}</td>
-                                            <td>{{ $item->level == 1 ? 'Admin' : ($item->level == 2 ? 'Helpdesk' : ($item->level == 3 ? 'PIC' : 'User')) }}</td>
-                                            {{-- <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td> --}}
+                                            {{-- <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->categoryname }}</td>
+                                            <td>{{ $item->categoryname }}</td> --}}
+                                                  
+                                           
+                                            <td>69696969</td>
+                                            <td>hamumumu</td>
                                             <td>
-                                                <div class="form-button-action">
-                                                    <a href="{{ url('admin/user/edit', ['id' => $item->id]) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a href="{{ url('admin/user/action/delete/'. $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </div>
+                                                <a href="{{ url('admin/category/edit/') }}" class="btn btn-warning btn-sm">
+                                                    <i class="fa fa-edit"></i> Edit
+                                                </a>
+                                            
+                                                <a href="{{ url('admin/category/action/delete/') }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
+                                                    <i class="fa fa-trash"></i> Hapus
+                                                </a>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                        {{-- @endforeach --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -95,5 +87,4 @@
         </div>
     </div>
 </div>
-
 @endsection
