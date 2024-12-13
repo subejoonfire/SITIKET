@@ -25,7 +25,7 @@
                 <li class="nav-item {{ request()->is('admin/category') ? 'active' : '' }}">
                     <a href="{{ url('admin/category') }}">
                         <i class="fas fa-layer-group"></i>
-                        <p>Category</p>
+                        <p>Kategori</p>
                     </a>
                 </li>                
                 {{-- <li class="nav-item {{ request()->is('admin/pic') ? 'active' : '' }}">

@@ -5,7 +5,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Category</h4>
+                <h4 class="page-title">Kategori</h4>
             </div>
 
             <div class="row">
@@ -38,7 +38,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">category</h4>
+                                <h4 class="card-title">Kategori</h4>
                                 <a href="{{ url('admin/category/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah
@@ -51,7 +51,7 @@
                                     <thead>
                                         <tr>
                                             <th style="width: 8%">No</th>
-                                            <th>Nama category</th>
+                                            <th>Nama Kategori</th>
                                             <th style="width: 15%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
