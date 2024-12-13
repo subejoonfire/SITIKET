@@ -60,7 +60,7 @@
                                             <th>Email</th>
                                             <th>Modul</th>
                                             <th>Level</th>
-                                            <th style="width: 10%">Action</th>
+                                            <th style="width: 10%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
