@@ -94,7 +94,7 @@ button.send-btn:hover {
                 </label>
                 <input type="file" id="file-upload" accept=".pdf" style="display: none;" onchange="uploadFile(event)">
             </div>
-            <button type="button" class="btn btn-primary send-btn">Send</button>
+            <button type="button" class="btn btn-info send-btn">Kirim</button>
         </div>
 
         <div id="conversation" class="tab-content">
