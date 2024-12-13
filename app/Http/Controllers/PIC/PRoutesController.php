@@ -4,10 +4,11 @@ namespace App\Http\Controllers\PIC;
 
 use App\Models\User;
 use App\Models\Ticket;
+use App\Models\Message;
+use App\Models\Department;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
