@@ -52,31 +52,24 @@
                                         <tr>
                                             <th style="width: 8%">No</th>
                                             <th>Nama category</th>
-                                            {{-- <th>PIC category</th> --}}
                                             <th style="width: 15%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($category as $item) --}}
+                                        @foreach ($collection as $item)
                                         <tr>
-                                            {{-- <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->categoryname }}</td>
-                                            <td>{{ $item->categoryname }}</td> --}}
-                                                  
-                                           
-                                            <td>69696969</td>
-                                            <td>hamumumu</td>
                                             <td>
-                                                <a href="{{ url('admin/category/edit/') }}" class="btn btn-warning btn-sm">
+                                                <a href="{{ url('admin/category/edit/' . $item->id) }}" class="btn btn-warning btn-sm">
                                                     <i class="fa fa-edit"></i> Edit
                                                 </a>
-                                            
-                                                <a href="{{ url('admin/category/action/delete/') }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
+                                                <a href="{{ url('admin/category/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
                                                     <i class="fa fa-trash"></i> Hapus
                                                 </a>
                                             </td>
                                         </tr>
-                                        {{-- @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

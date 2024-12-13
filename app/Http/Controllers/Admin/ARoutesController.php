@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Department;
-use App\Models\Module;
 use App\Models\User;
+use App\Models\Module;
+use App\Models\Category;
+use App\Models\Department;
+use App\Http\Controllers\Controller;
 
 class ARoutesController extends Controller
 {
@@ -55,6 +56,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | CATEGORY',
+            'collection' => Category::all(),
         ];
         return view('pages.admin.category.category', $data);
     }
@@ -67,10 +69,11 @@ class ARoutesController extends Controller
         return view('pages.admin.category.addcategory', $data);
     }
 
-    public function editcategory()
+    public function editcategory($id)
     {
         $data = [
             'title' => 'SI-TIKET | ADD_CATEGORY',
+            'data' => Category::find($id),
         ];
         return view('pages.admin.category.editcategory', $data);
     }
