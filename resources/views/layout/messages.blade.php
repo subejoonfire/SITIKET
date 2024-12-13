@@ -87,8 +87,14 @@ button.send-btn:hover {
         </div>
         
         <div class="message-input">
-            <textarea placeholder="Post something here..."></textarea>
-            <button type="button" class="btn btn-info">Send</button>
+            <div class="input-wrapper">
+                <textarea placeholder="Post something here..."></textarea>
+                <label for="file-upload" class="attach-icon">
+                    <i class="fas fa-paperclip"></i>
+                </label>
+                <input type="file" id="file-upload" accept=".pdf" style="display: none;" onchange="uploadFile(event)">
+            </div>
+            <button type="button" class="btn btn-info send-btn">Kirim</button>
         </div>
 
         <div id="conversation" class="tab-content">
