@@ -26,8 +26,7 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'data' => Ticket::where('id', $id)->first(),
-            // 'department' => Department::all(),
+            'data' => Ticket::with(['categories'])->where('id', $id)->first(),
             'module' => Module::all(),
             'pic' => User::where('level', 3)->get(),
         ];
