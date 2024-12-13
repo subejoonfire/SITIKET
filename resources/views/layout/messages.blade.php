@@ -15,7 +15,7 @@
 
         <div class="message-input">
             <div class="input-wrapper">
-                <textarea placeholder="Post something here..."></textarea>
+                <textarea placeholder="Tulis Sesuatu disini ..."></textarea>
                 <label for="file-upload" class="attach-icon">
                     <i class="fas fa-paperclip"></i>
                 </label>
