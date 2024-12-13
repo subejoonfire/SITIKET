@@ -53,14 +53,23 @@ class AdminController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'level' => 'required|integer|max:5',
+            'phone' => 'required|string|max:16',
             'idmodule' => 'required|integer',
             'email' => 'required|email|unique:users,email,' . $request->id,
         ]);
         $user = User::findOrFail($id);
-        $user->name = $validated['name'];
-        $user->level = $validated['level'];
-        $user->email = $validated['email'];
-        $user->password = bcrypt($request->password);
+        if (empty($request->password)) {
+            $user->name = $validated['name'];
+            $user->level = $validated['level'];
+            $user->phone = $validated['phone'];
+            $user->email = $validated['email'];
+        } else {
+            $user->name = $validated['name'];
+            $user->level = $validated['level'];
+            $user->phone = $validated['phone'];
+            $user->email = $validated['email'];
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
 
         return redirect()->back()->with('success', 'User berhasil diperbarui!');

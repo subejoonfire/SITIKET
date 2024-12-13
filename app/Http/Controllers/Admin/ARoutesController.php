@@ -46,7 +46,7 @@ class ARoutesController extends Controller
         }
         $data = [
             'title' => 'SI-TIKET | USER',
-            'collection' => Department::all(),
+            'collection' => Module::all(),
             'user' => $user,
         ];
 
