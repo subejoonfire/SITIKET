@@ -110,8 +110,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/delete/{id}', [UserController::class, 'userDelete'])->name('delete');
             Route::post('/update/{id}', [UserController::class, 'userUpdate'])->name('update');
         });
-        Route::post('message_store/{id}', [UserController::class, 'message_store'])->name('message_store/{id}');
     });
+    Route::post('message_store/{id}', [UserController::class, 'message_store'])->name('message_store/{id}');
     Route::get('/profile', [RoutesController::class, 'profile'])->name('profile');
     Route::post('/profile/image', [Controller::class, 'image_update'])->name('profile/image');
     Route::post('update/profile', [RoutesController::class, 'profile_update'])->name('update/profile');

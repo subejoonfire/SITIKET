@@ -1,7 +1,7 @@
 @include('css/message/message')
 <div class="email-app mb-4">
     <main class="inbox">
-        <form action="{{ url('user/message_store/'. $data->id) }}" method="post">
+        <form action="{{ url('message_store/'. $data->id) }}" method="post">
             @csrf
             <div class="message-tools">
                 <div class="btn-group">
