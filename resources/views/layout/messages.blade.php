@@ -154,13 +154,13 @@
 
                 <div class="attachment-item">
                     <a href="path_to_file_1.pdf" target="_blank">
-                        <i class="fas fa-file-pdf" style="font-size: 30px; color: red;"></i>
+                        <i class="fas fa-file-pdf" style="font-size: 30px; color: rgb(165, 165, 165);"></i>
                     </a>
                     <p><a href="path_to_file_1.pdf" target="_blank">File1.pdf</a></p>
                 </div>
                 <div class="attachment-item">
                     <a href="path_to_image2.jpg" target="_blank">
-                        <i class="fas fa-image" style="font-size: 30px; color: green;"></i> <!-- Ikon Foto -->
+                        <i class="fas fa-image" style="font-size: 30px; color: rgb(165, 165, 165);"></i> <!-- Ikon Foto -->
                     </a>
                     <p><a href="path_to_image2.jpg" target="_blank">Image2.jpg</a></p>
                 </div>
