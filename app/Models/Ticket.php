@@ -29,6 +29,10 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class, 'iduser');
     }
+    public function users_pic(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'iduser_pic');
+    }
     public function departments(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'iddepartment');

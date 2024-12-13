@@ -82,28 +82,26 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="subjek">Subjek</label>
-                                        <span class="form-control" id="subjek">{{ $data->issue }}</span>
-                                        @error('subjek')
+                                        <label for="tanggal_diajukan">Tanggal Diajukan</label>
+                                        <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}" placeholder="Masukkan Tanggal">
+                                        @error('tanggal_diajukan')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="department">Departemen Diterima</label>
-                                        <span class="form-control" id="department">{{ $data->issue }}</span>
-                                        @error('iddepartment')
+                                        <label for="PIC">PIC</label>
+                                        <input type="text" name="PIC" class="form-control" id="PIC" value="{{ $data->users_pic->name }}" placeholder="Masukkan Tanggal">
+                                        @error('PIC')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tanggal_diajukan">Tanggal Diajukan</label>
-                                    <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}" placeholder="Masukkan Tanggal">
-                                    @error('tanggal_diajukan')
+                                    <label for="subjek">Subjek</label>
+                                    <span class="form-control" id="subjek">{{ $data->issue }}</span>
+                                    @error('subjek')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
-                                </div>
-                                <div class="form-group">
                                     <label for="issue">Issue</label>
                                     <textarea name="issue" class="form-control" id="issue" rows="4">{{ $data->detailissue }}</textarea>
                                     @error('issue')
