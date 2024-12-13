@@ -1,7 +1,16 @@
 @include('css/message/message')
 <div class="email-app mb-4">
     <main class="inbox">
-        <form action="{{ url('message_store/'. $data->id) }}" method="post">
+        @php
+        $user = '';
+        if (auth()->user()->level == '3') {
+        $user = 'pic';
+        }
+        elseif (auth()->user()->level == '4') {
+        $user = 'user';
+        }
+        @endphp
+        <form action="{{ url("$user/message_store/". $data->id) }}" method="post">
             @csrf
             <div class="message-tools">
                 <div class="btn-group">

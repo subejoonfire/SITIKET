@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\PIC;
 
 use App\Models\Ticket;
+use App\Models\Message;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PICController extends Controller
@@ -55,5 +57,16 @@ class PICController extends Controller
             return redirect()->to('pic/ticket')->with('error', 'Ticket tidak ditemukan.');
         }
         return redirect()->to('pic/ticket/done')->with('success', 'Tiket berhasil di setujui.');
+    }
+    public function message_store(Request $request, $id)
+    {
+        $ticket = Ticket::find($id);
+        $message = new Message();
+        $message->message = $request->input('message');
+        $message->idticket = $id;
+        $message->iduser_from = auth()->user()->id;
+        $message->iduser_to = $ticket->iduser;
+        $message->save();
+        return redirect()->back();
     }
 }

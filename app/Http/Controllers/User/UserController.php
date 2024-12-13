@@ -53,5 +53,6 @@ class UserController extends Controller
         $message->iduser_from = auth()->user()->id;
         $message->iduser_to = $ticket->iduser_pic;
         $message->save();
+        return redirect()->back();
     }
 }
