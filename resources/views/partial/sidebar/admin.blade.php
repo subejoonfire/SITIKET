@@ -18,13 +18,13 @@
                 </li>
                 <li class="nav-item {{ request()->is('admin/module') ? 'active' : '' }}">
                     <a href="{{ url('admin/module') }}">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fas fa-file-alt"></i>
                         <p>Modul</p>
                     </a>
                 </li>                
                 <li class="nav-item {{ request()->is('admin/category') ? 'active' : '' }}">
                     <a href="{{ url('admin/category') }}">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fas fa-layer-group"></i>
                         <p>Category</p>
                     </a>
                 </li>                
