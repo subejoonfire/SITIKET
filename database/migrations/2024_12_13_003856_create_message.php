@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->string('modulename');
+            $table->unsignedBigInteger('idticket')->nullable()->default(NULL);
+            $table->unsignedBigInteger('iduser_from')->nullable()->default(NULL);
+            $table->unsignedBigInteger('iduser_to')->nullable()->default(NULL);
+            $table->string('message');
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('module');
+        Schema::dropIfExists('message');
     }
 };

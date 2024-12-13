@@ -59,6 +59,11 @@
                                     @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="no_hp">No HP</label>
+                                    <input type="no_hp" name="no_hp" class="form-control" id="no_hp" placeholder="Masukkan no_hp" value="{{ old('no_hp', $user->no_hp) }}">
+                                    @error('no_hp') <small class="text-danger">{{ $message }}</small> @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email" value="{{ old('email', $user->email) }}">
                                     @error('email') <small class="text-danger">{{ $message }}</small> @enderror
@@ -70,23 +75,23 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="level">Level</label>
-                                    <select class="form-control" id="level" name="level">
+                                    <select class="form-control" id="level" name="level" onchange="toggleModuleField()">
                                         <option value="1" {{ old('level') == 1 ? 'selected' : '' }}>Admin</option>
                                         <option value="2" {{ old('level') == 2 ? 'selected' : '' }}>Helpdesk</option>
-                                        <option value="3" {{ old('level') == 3 ? 'selected' : '' }}>Department</option>
+                                        <option value="3" {{ old('level') == 3 ? 'selected' : '' }}>PIC</option>
                                         <option value="4" {{ old('level') == 4 ? 'selected' : '' }}>User</option>
                                     </select>
                                     @error('level') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="iddepartment">Departemen</label>
-                                    <select class="form-control" id="iddepartment" name="iddepartment">
-                                        <option selected disabled hidden>Pilih Departemen</option>
-                                        @foreach ($collection as $department)
-                                        <option value="{{ $department->id }}" {{ old('iddepartment') == $department->id ? 'selected' : '' }}>{{ $department->departmentname }}</option>
+                                <div class="form-group" id="moduleField" style="display: none;">
+                                    <label for="idmodule">Pilih Modul</label>
+                                    <select class="form-control" id="idmodule" name="idmodule">
+                                        <option selected disabled hidden>Pilih Modul</option>
+                                        @foreach ($collection as $module)
+                                        <option value="{{ $module->id }}" {{ old('idmodule') == $module->id ? 'selected' : '' }}>{{ $module->modulename }}</option>
                                         @endforeach
                                     </select>
-                                    @error('iddepartment')
+                                    @error('idmodule')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -103,5 +108,18 @@
         </div>
     </div>
 </div>
+<script>
+    function toggleModuleField() {
+        const level = document.getElementById('level').value;
+        const moduleField = document.getElementById('moduleField');
+
+        if (level === '3') {
+            moduleField.style.display = 'block';
+        } else {
+            moduleField.style.display = 'none';
+        }
+    }
+    document.addEventListener('DOMContentLoaded', toggleModuleField);
+</script>
 
 @endsection
