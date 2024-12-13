@@ -39,6 +39,82 @@
     }
 
     </style>
+
+    
+<style>
+    .text-danger {
+        color: red;
+    }
+
+    #keluhan,
+    #email,
+    #username,
+    #phone,
+    #subjek,
+    #kategori,
+    #tanggal_diajukan {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #D1D1D1 !important;
+        padding: 8px;
+        font-weight: normal !important;
+        pointer-events: none;
+    }
+
+    #idmodule {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #4CAF50 !important;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    #iduser_pic {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #4CAF50 !important;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    #iduser_pic:focus {
+        border-color: #70c55b !important;
+        box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
+    }
+
+    #priority {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 2px solid #4CAF50 !important;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    #priority:focus {
+        border-color: #70c55b !important;
+        box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
+    }
+
+    #idmodule:focus {
+        border-color: #70c55b !important;
+        box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
+    }
+
+    #subjek {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 8px;
+        cursor: pointer
+    }
+
+    #kategori {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        padding: 8px;
+        cursor: pointer
+    }
+
+</style>
 </head>
 <body>
     <div class="wrapper">

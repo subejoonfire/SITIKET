@@ -95,9 +95,7 @@
                 </label>
                 <input type="file" id="file-upload" accept=".pdf" style="display: none;" onchange="uploadFile(event)">
             </div>
-            <button type="button" class="btn btn-primary send-btn">Send</button>
-            <textarea placeholder="Post something here..."></textarea>
-            <button type="button" class="btn btn-info">Send</button>
+            <button type="button" class="btn btn-info">Kirim</button>
         </div>
         <div id="conversation" class="tab-content">
             <ul class="messages">
