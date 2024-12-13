@@ -85,7 +85,12 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="category">Kategori</label>
-                                    <input type="text" name="category" class="form-control" id="category" placeholder="Masukan Kategori">
+                                    <select name="category" class="form-control" id="category">
+                                        <option value="">Pilih Kategori</option>
+                                        <option value="kategori1">Kategori 1</option>
+                                        <option value="kategori2">Kategori 2</option>
+                                        <option value="kategori3">Kategori 3</option>
+                                    </select>
                                     @error('category')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
