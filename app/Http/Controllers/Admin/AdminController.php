@@ -9,6 +9,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\UserDepartment;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class AdminController extends Controller
 {
@@ -108,7 +109,7 @@ class AdminController extends Controller
             'modulename' => $request->modulename,
         ]);
 
-        return redirect()->to(url('admin/module'))->with('success', 'Modul berhasil ditambahkan.');
+        return redirect()->to(url('admin/module'))->with('success', 'Modul berhasil dihapus.');
     }
 
     public function moduleDelete($id)
@@ -130,5 +131,33 @@ class AdminController extends Controller
             'modulename' => $request->modulename,
         ]);
         return redirect()->to(url('admin/module'))->with('success', 'Modul berhasil diperbarui.');
+    }
+    public function categoryStore(Request $request)
+    {
+        $request->validate([
+            'categoryname' => 'required|string|max:255',
+        ]);
+        Category::create([
+            'categoryname' => $request->categoryname,
+        ]);
+        return redirect()->to(url('admin/category'))->with('success', 'Kategori berhasil dihapus.');
+    }
+    public function categoryUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'categoryname' => 'required|string|max:255',
+        ]);
+        $category = Category::findOrFail($id);
+        $category->update([
+            'categoryname' => $request->categoryname,
+        ]);
+        return redirect()->to(url('admin/category'))->with('success', 'Kategori berhasil diperbarui.');
+    }
+    public function categoryDelete($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->to(url('admin/category'))->with('success', 'Kategori berhasil dihapus.');
     }
 }
