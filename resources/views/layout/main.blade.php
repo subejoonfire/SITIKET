@@ -1220,7 +1220,7 @@ background:#eee
         font-style: italic;
     }
  .active {
-        background-color: #0056b3;
+        background-color: #ffffff;
         color: white;
     }
 
