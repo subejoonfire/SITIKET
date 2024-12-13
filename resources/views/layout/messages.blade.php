@@ -1,30 +1,32 @@
-{{-- <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"> --}}
 @include('css/message/message')
 <div class="email-app mb-4">
     <main class="inbox">
-        <div class="message-tools">
-            <div class="btn-group">
-                <button type="button" class="btn btn-light active" id="conversation-btn" onclick="setActiveTab('conversation')">
-                    <span class="fa fa-comments"></span> Conversation
-                </button>
-                <button type="button" class="btn btn-light" id="attachments-btn" onclick="setActiveTab('attachments')">
-                    <span class="fa fa-paperclip"></span> Attachments
-                </button>
+        <form action="{{ url('user/message_store/'. $data->id) }}" method="post">
+            @csrf
+            <div class="message-tools">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light active" id="conversation-btn" onclick="setActiveTab('conversation')">
+                        <span class="fa fa-comments"></span> Conversation
+                    </button>
+                    <button type="button" class="btn btn-light" id="attachments-btn" onclick="setActiveTab('attachments')">
+                        <span class="fa fa-paperclip"></span> Attachments
+                    </button>
+                </div>
             </div>
-        </div>
-
-        <div class="message-input">
-            <div class="input-wrapper">
-                <textarea placeholder="Tulis Sesuatu disini ..."></textarea>
-                <label for="file-upload" class="attach-icon">
-                    <i class="fas fa-paperclip"></i>
-                </label>
-                <input type="file" id="file-upload" accept=".pdf" style="display: none;" onchange="uploadFile(event)">
+            <div class="message-input">
+                <div class="input-wrapper">
+                    <textarea name="message" placeholder="Tulis Sesuatu disini ..."></textarea>
+                    <label for="file-upload" class="attach-icon">
+                        <i class="fas fa-paperclip"></i>
+                    </label>
+                    <input type="file" id="file-upload" accept=".pdf" style="display: none;" onchange="uploadFile(event)">
+                </div>
+                <button type="submit" class="btn btn-info">Kirim</button>
             </div>
-            <button type="button" class="btn btn-info">Kirim</button>
-        </div>
+        </form>
         <div id="conversation" class="tab-content">
             <ul class="messages">
+                @foreach ($collection as $item)
                 <li class="message unread">
                     <div class="message-container">
                         <div class="profile-picture">
@@ -32,57 +34,30 @@
                         </div>
                         <div class="message-content">
                             <div class="header">
-                                <span class="from">Ferdi Electric Team</span>
+                                <span class="from">{{ $item->user_from->name }}</span>
                             </div>
                             <div class="title">
-                                Dear SAP,
+                                Dear {{ $item->user_to->name }},
                             </div>
                             <div class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                {!! nl2br(e($item->message)) !!}
                             </div>
                             <br>
                             <div class="FOOTER">
                                 <span class="signature">Regards,</span><br />
                             </div>
                             <div>
-                                <span class="name">Eclectic Support Team</span>
+                                <span class="name">{{ $item->user_from->name }}</span>
                             </div>
-                            <div class="fa fa-paper-clip"> Today, 3:47 PM</div>
+                            <div class="fa fa-paper-clip"> {{ $item->created_at->format('l, d F Y H:i') }}</div>
                         </div>
                     </div>
                 </li>
-
-                <li class="message unread">
-                    <div class="message-container">
-                        <div class="profile-picture">
-                            <img src="{{ url('/images/logo/gkt.jpg') }}" alt="Profile Picture" class="profile-img">
-                        </div>
-                        <div class="message-content">
-                            <div class="header">
-                                <span class="from">Rizky Budi</span>
-                            </div>
-                            <div class="title">
-                                Dear Electric Team,
-                            </div>
-                            <div class="description">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </div>
-                            <br>
-                            <div class="FOOTER">
-                                <span class="signature">Regards,</span><br />
-                            </div>
-                            <div>
-                                <span class="name">Jhonlin Support Team</span>
-                            </div>
-                            <div class="fa fa-paper-clip"> Today, 3:47 PM</div>
-                        </div>
-                    </div>
-                </li>
+                @endforeach
             </ul>
         </div>
         <div id="attachments" class="tab-content" style="display: none;">
             <div class="attachments">
-
                 <div class="attachment-item">
                     <a href="path_to_file_1.pdf" target="_blank">
                         <i class="fas fa-file-pdf" style="font-size: 30px; color: rgb(255, 0, 0);"></i>
@@ -100,13 +75,8 @@
 
     </main>
 </div>
-</div>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-
-</script>
-
 <script>
     function setActiveTab(tabName) {
         if (tabName === 'conversation') {
@@ -156,5 +126,3 @@
     }
 
 </script>
-</body>
-</html>

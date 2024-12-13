@@ -10,6 +10,7 @@ use App\Models\Department;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 
 class URoutesController extends Controller
 {
@@ -50,6 +51,7 @@ class URoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | Review',
             'data' => Ticket::where('tickets.id', $id)->first(),
+            'collection' => Message::where('idticket', $id)->orderBy('created_at', 'asc')->get(),
         ];
 
         return view('pages.user.review', $data);

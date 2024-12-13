@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserController extends Controller
@@ -42,5 +43,15 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Ticket tidak ditemukan.');
         }
         return redirect()->to('user')->with('success', 'Ticket berhasil dihapus!');
+    }
+    public function message_store(Request $request, $id)
+    {
+        $ticket = Ticket::find($id);
+        $message = new Message();
+        $message->message = $request->input('message');
+        $message->idticket = $id;
+        $message->iduser_from = auth()->user()->id;
+        $message->iduser_to = $ticket->iduser_pic;
+        $message->save();
     }
 }
