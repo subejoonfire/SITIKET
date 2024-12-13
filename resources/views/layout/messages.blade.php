@@ -39,7 +39,7 @@
         
         <div class="message-input">
             <textarea placeholder="Post something here..."></textarea>
-            <button type="button" class="btn btn-primary">Send</button>
+            <button type="button" class="btn btn-info">Send</button>
         </div>
 
         <div id="conversation" class="tab-content">
