@@ -22,56 +22,57 @@
         height: 50px;
         object-fit: cover;
     }
+
     .message-input {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 10px;
-    position: relative;
-}
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+        position: relative;
+    }
 
-.input-wrapper {
-    position: relative;
-    flex-grow: 1;
-}
+    .input-wrapper {
+        position: relative;
+        flex-grow: 1;
+    }
 
-textarea {
-    width: 100%;
-    height: 100px;
-    padding-right: 35px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: none;
-}
+    textarea {
+        width: 100%;
+        height: 100px;
+        padding-right: 35px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: none;
+    }
 
-.attach-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #0056b3;
-}
+    .attach-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #0056b3;
+    }
 
-.attach-icon i {
-    font-size: 20px;
-}
+    .attach-icon i {
+        font-size: 20px;
+    }
 
-button.send-btn {
-    padding: 10px 20px;
-    background-color: #0056b3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    button.send-btn {
+        padding: 10px 20px;
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-button.send-btn:hover {
-    background-color: #00409e;
-}
+    button.send-btn:hover {
+        background-color: #00409e;
+    }
 
-    </style>
+</style>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="email-app mb-4">
     <main class="inbox">
@@ -85,16 +86,10 @@ button.send-btn:hover {
                 </button>
             </div>
         </div>
-        
+
         <div class="message-input">
-            <div class="input-wrapper">
-                <textarea placeholder="Post something here..."></textarea>
-                <label for="file-upload" class="attach-icon">
-                    <i class="fas fa-paperclip"></i>
-                </label>
-                <input type="file" id="file-upload" accept=".pdf" style="display: none;" onchange="uploadFile(event)">
-            </div>
-            <button type="button" class="btn btn-primary send-btn">Send</button>
+            <textarea placeholder="Post something here..."></textarea>
+            <button type="button" class="btn btn-primary">Send</button>
         </div>
 
         <div id="conversation" class="tab-content">
@@ -118,7 +113,7 @@ button.send-btn:hover {
                             <div class="FOOTER">
                                 <span class="signature">Regards,</span><br />
                             </div>
-                            <div>  
+                            <div>
                                 <span class="name">Eclectic Support Team</span>
                             </div>
                             <div class="fa fa-paper-clip"> Today, 3:47 PM</div>
@@ -145,7 +140,7 @@ button.send-btn:hover {
                             <div class="FOOTER">
                                 <span class="signature">Regards,</span><br />
                             </div>
-                            <div>  
+                            <div>
                                 <span class="name">Jhonlin Support Team</span>
                             </div>
                             <div class="fa fa-paper-clip"> Today, 3:47 PM</div>
@@ -171,14 +166,14 @@ button.send-btn:hover {
                 </div>
             </div>
         </div>
-        
+
     </main>
 </div>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-	
+
 </script>
 
 <script>
@@ -201,6 +196,7 @@ button.send-btn:hover {
             window.open(this.href, '_blank');
         });
     });
+
     function setActiveTab(tabName) {
         if (tabName === 'conversation') {
             document.getElementById('conversation').style.display = 'block';
@@ -218,14 +214,16 @@ button.send-btn:hover {
     }
     document.querySelectorAll('.attachment-item a').forEach(link => {
         link.addEventListener('click', function(event) {
-            event.preventDefault(); 
+            event.preventDefault();
             window.open(this.href, '_blank');
         });
     });
+
     function uploadFile(event) {
         const fileName = event.target.files[0].name;
         console.log("File yang dipilih: " + fileName);
     }
+
 </script>
 </body>
 </html>
