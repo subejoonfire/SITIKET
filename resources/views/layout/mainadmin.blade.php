@@ -38,7 +38,16 @@
         border-radius: 25px;
     }
 
+    
+
     </style>
+
+<style>
+    .text-danger {
+        color: red;
+    }
+
+</style>
 
 
 </head>

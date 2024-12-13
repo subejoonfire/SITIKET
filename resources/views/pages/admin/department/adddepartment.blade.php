@@ -2,12 +2,7 @@
 
 @section('content')
 
-<style>
-    .text-danger {
-        color: red;
-    }
 
-</style>
 
 <div class="main-panel">
     <div class="content">
