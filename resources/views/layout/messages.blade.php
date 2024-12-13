@@ -1,11 +1,10 @@
 {{-- <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"> --}}
-   <style>/* Style for active buttons */
+<style>
     .active {
         background-color: #0056b3;
         color: white;
     }
 
-    /* Style for attachments */
     .attachments {
         display: flex;
         gap: 10px;
@@ -22,7 +21,57 @@
         width: 50px;
         height: 50px;
         object-fit: cover;
-    }</style>
+    }
+    .message-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    position: relative;
+}
+
+.input-wrapper {
+    position: relative;
+    flex-grow: 1;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding-right: 35px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
+.attach-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #0056b3;
+}
+
+.attach-icon i {
+    font-size: 20px;
+}
+
+button.send-btn {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.send-btn:hover {
+    background-color: #00409e;
+}
+
+    </style>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="email-app mb-4">
     <main class="inbox">
@@ -38,8 +87,14 @@
         </div>
         
         <div class="message-input">
-            <textarea placeholder="Post something here..."></textarea>
-            <button type="button" class="btn btn-info">Send</button>
+            <div class="input-wrapper">
+                <textarea placeholder="Post something here..."></textarea>
+                <label for="file-upload" class="attach-icon">
+                    <i class="fas fa-paperclip"></i>
+                </label>
+                <input type="file" id="file-upload" accept=".pdf" style="display: none;" onchange="uploadFile(event)">
+            </div>
+            <button type="button" class="btn btn-primary send-btn">Send</button>
         </div>
 
         <div id="conversation" class="tab-content">
@@ -99,19 +154,24 @@
                 </li>
             </ul>
         </div>
-
         <div id="attachments" class="tab-content" style="display: none;">
             <div class="attachments">
+
                 <div class="attachment-item">
-                    <img src="path_to_file_image.jpg" alt="File 1">
-                    <p>File1.pdf</p>
+                    <a href="path_to_file_1.pdf" target="_blank">
+                        <i class="fas fa-file-pdf" style="font-size: 30px; color: red;"></i>
+                    </a>
+                    <p><a href="path_to_file_1.pdf" target="_blank">File1.pdf</a></p>
                 </div>
                 <div class="attachment-item">
-                    <img src="path_to_file_image.jpg" alt="File 2">
-                    <p>File2.docx</p>
+                    <a href="path_to_image2.jpg" target="_blank">
+                        <i class="fas fa-image" style="font-size: 30px; color: green;"></i> <!-- Ikon Foto -->
+                    </a>
+                    <p><a href="path_to_image2.jpg" target="_blank">Image2.jpg</a></p>
                 </div>
             </div>
         </div>
+        
     </main>
 </div>
 </div>
@@ -134,6 +194,37 @@
             document.getElementById('attachments-btn').classList.add('active');
             document.getElementById('conversation-btn').classList.remove('active');
         }
+    }
+    document.querySelectorAll('.attachment-item a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.open(this.href, '_blank');
+        });
+    });
+    function setActiveTab(tabName) {
+        if (tabName === 'conversation') {
+            document.getElementById('conversation').style.display = 'block';
+            document.getElementById('attachments').style.display = 'none';
+            document.getElementById('conversation-btn').classList.add('active');
+            document.getElementById('attachments-btn').classList.remove('active');
+            document.querySelector('.message-input').style.display = 'flex';
+        } else {
+            document.getElementById('conversation').style.display = 'none';
+            document.getElementById('attachments').style.display = 'block';
+            document.getElementById('attachments-btn').classList.add('active');
+            document.getElementById('conversation-btn').classList.remove('active');
+            document.querySelector('.message-input').style.display = 'none';
+        }
+    }
+    document.querySelectorAll('.attachment-item a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            window.open(this.href, '_blank');
+        });
+    });
+    function uploadFile(event) {
+        const fileName = event.target.files[0].name;
+        console.log("File yang dipilih: " + fileName);
     }
 </script>
 </body>
