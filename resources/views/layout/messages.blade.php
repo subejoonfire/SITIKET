@@ -1,53 +1,22 @@
 @include('css/message/message')
-<style>
-    .tab-content .messages .file-gmail p {
-        font-family: 'lato', 'sans-serif';
-    }
-
-    .tab-content .messages .file-gmail {
-        display: flex;
-        align-items: center;
-        width: auto;
-        margin-top: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) */
-    }
-
-    .tab-content .messages .file-gmail .logo-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* background: green; */
-        width: 20%;
-    }
-
-    .tab-content .messages .file-gmail .filename-container {
-        width: auto;
-    }
-</style>
 <div class="email-app mb-4">
     <main class="inbox">
         @php
-            $user = '';
-            if (auth()->user()->level == '3') {
-                $user = 'pic';
-            } elseif (auth()->user()->level == '4') {
-                $user = 'user';
-            }
+        $user = '';
+        if (auth()->user()->level == '3') {
+        $user = 'pic';
+        } elseif (auth()->user()->level == '4') {
+        $user = 'user';
+        }
         @endphp
         <form action="{{ url("$user/message_store/" . $data->id) }}" method="post">
             @csrf
             <div class="message-tools">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-light active" id="conversation-btn"
-                        onclick="setActiveTab('conversation')">
+                    <button type="button" class="btn btn-light active" id="conversation-btn" onclick="setActiveTab('conversation')">
                         <span class="fa fa-comments"></span> Conversation
                     </button>
-                    <button type="button" class="btn btn-light" id="attachments-btn"
-                        onclick="setActiveTab('attachments')">
+                    <button type="button" class="btn btn-light" id="attachments-btn" onclick="setActiveTab('attachments')">
                         <span class="fa fa-paperclip"></span> Attachments
                     </button>
                 </div>
@@ -58,8 +27,9 @@
                     <label for="file-upload" class="attach-icon">
                         <i class="fas fa-paperclip"></i>
                     </label>
-                    <input type="file" id="file-upload" accept=".pdf" style="display: none;"
-                        onchange="uploadFile(event)">
+                    <input type="file" id="file-upload" accept=".pdf, .jpg, .jpeg, .png" style="display: none;" onchange="uploadFile(event)">
+                </div>
+                <div id="uploaded-file-container" style="margin-top: 10px; font-size: 14px; color: #666;">
                 </div>
                 <button type="submit" class="btn btn-info">Kirim</button>
             </div>
@@ -67,7 +37,7 @@
         <div id="conversation" class="tab-content">
             <ul class="messages">
                 @foreach ($collection as $item)
-                <li class="message unread">
+                <li class="message unread" style="cursor: default;">
                     <div class="message-container">
                         <div class="profile-picture">
                             <img src="{{ url('/back-end/assets/img/' . $item->user_from->image ?? 'default.jpg') }}" alt="Profile Picture" class="profile-img">
@@ -75,7 +45,6 @@
                         <div class="message-content">
                             <div class="header">
                             </div>
-<<<<<<<<< Temporary merge branch 1
                             <div class="title-container">
                                 <span class="from">{{ $item->user_from->name }} :</span>
                                 <br>
@@ -83,16 +52,6 @@
                             </div>
                             <div class="description">
                                 <p>
-=========
-                            <div class="message-content">
-                                <div class="header" style="font-size: 17px;">
-                                    <span class="from">{{ $item->user_from->name }}</span>
-                                </div>
-                                <div class="title">
-                                    Dear {{ $item->user_to->name }},
-                                </div>
-                                <div class="description" style="font-size: 14px;">
->>>>>>>>> Temporary merge branch 2
                                     {!! nl2br(e($item->message)) !!}
                                 </p>
                             </div>
@@ -105,43 +64,22 @@
                             <div class="date-container">
                                 <span> Reply : {{ $item->created_at->format('l, d F Y H:i') }}</span>
                             </div>
-                            <div class="file-container">
+                            <div class="file-container" style="cursor: pointer;">
                                 @php
                                 $data = \App\Models\Document::where('idmessage', $item->id)->get();
                                 @endphp
                                 @foreach ($data as $itemofitem)
                                 <div class="file-gmail">
-<<<<<<<<< Temporary merge branch 1
                                     <div class="logo-container">
                                         <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
-=========
-                                    <div style="margin-right: 8px;" class="logo-container">
-                                        @if (Str::endsWith($item->file_name, ['.jpg', '.jpeg', '.png', '.gif']))
-                                            <i class="fas fa-image" style="font-size: 18px; color: #4caf50; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
-                                        @elseif (Str::endsWith($item->file_name, ['.pdf']))
-                                            <i class="fas fa-file-pdf" style="font-size: 18px; color: #e53935; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
-                                        @else
-                                            <i class="fas fa-file-pdf" style="font-size: 18px; color: #3f51b5;"></i>
-                                        @endif
->>>>>>>>> Temporary merge branch 2
                                     </div>
                                     <div class="filename-container">
-                                        <p style="margin: 0; font-weight: bold; color: #333; font-weight: normal; font-family: 'Poppins', sans-serif;">
-                                            {{ $item->file_name ?? 'Kurdick OTW IMO' }}
+                                        <p>
+                                            {{ $itemofitem->documentname ?? 'Tidak ada nama file' }}
                                         </p>
                                     </div>
                                 </div>
-<<<<<<<<< Temporary merge branch 1
                                 @endforeach
-=========
-                                <div class="FOOTER">
-                                    <span class="signature">Regards,</span><br />
-                                </div>
-                                <div>
-                                    <span class="name">{{ $item->user_from->name }}</span>
-                                </div>
-                                <div class="fa fa-paper-clip" style="font-size: 14px;"> {{ $item->created_at->format('l, d F Y H:i') }}</div>
->>>>>>>>> Temporary merge branch 2
                             </div>
                         </div>
                     </div>
@@ -155,18 +93,17 @@
                     <a href="path_to_file_1.pdf" target="_blank">
                         <i class="fas fa-file-pdf" style="font-size: 30px; color: rgb(255, 0, 0);"></i>
                     </a>
-                    <p><a href="path_to_file_1.pdf" target="_blank">File1.pdf</a></p>
+                    <p>{{ basename('Tutorial Juara M Series.pdf') }}</p>
                 </div>
                 <div class="attachment-item">
                     <a href="path_to_image2.jpg" target="_blank">
                         <i class="fas fa-image" style="font-size: 30px; color: rgb(62, 84, 197);"></i>
-                        <!-- Ikon Foto -->
                     </a>
-                    <p><a href="path_to_image2.jpg" target="_blank">Image2.jpg</a></p>
+                    <p>{{ basename('Cuma_Evos.PNG') }}</p>
                 </div>
             </div>
         </div>
-
+        
     </main>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -214,8 +151,22 @@
         });
     });
 
+    // function uploadFile(event) {
+    //     const fileName = event.target.files[0].name;
+    //     console.log("File yang dipilih: " + fileName);
+    // }
+
     function uploadFile(event) {
-        const fileName = event.target.files[0].name;
-        console.log("File yang dipilih: " + fileName);
+        const fileInput = event.target;
+        const fileName = fileInput.files[0].name;
+
+        const uploadedFileContainer = document.getElementById('uploaded-file-container');
+        uploadedFileContainer.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-file" style="color: #333;"></i>
+            <span>${fileName}</span>
+        </div>
+    `;
     }
+
 </script>
