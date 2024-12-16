@@ -68,7 +68,7 @@
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>123456789</td>
+                                            <td>{{ $item->phone }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->modules->modulename ?? '' }}</td>
                                             <td>{{ $item->level == 1 ? 'Admin' : ($item->level == 2 ? 'Helpdesk' : ($item->level == 3 ? 'PIC' : 'User')) }}</td>
