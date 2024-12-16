@@ -1,53 +1,85 @@
 @include('css/message/message')
 <style>
     .tab-content .messages .file-gmail p {
-        font-family: 'lato', 'sans-serif';
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        color: #333;
+        font-weight: thin;
     }
 
     .tab-content .messages .file-gmail {
         display: flex;
-        align-items: center;
         width: auto;
-        margin-top: 10px;
+        margin: 5px 0px;
         border: 1px solid #ddd;
-        border-radius: 8px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) */
+        border-radius: 20px;
+        padding: 5px 0px;
+    }
+
+    .tab-content .messages span,
+    .tab-content .messages p {
+        font-size: 14px;
     }
 
     .tab-content .messages .file-gmail .logo-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        /* background: green; */
-        width: 20%;
+        width: 50px;
     }
 
     .tab-content .messages .file-gmail .filename-container {
+        display: flex;
+        margin-left: -15px;
+        justify-content: end;
         width: auto;
     }
+
+    .tab-content .messages .title-container {
+        font-size: 14px;
+    }
+
+    .tab-content .messages .date-container span {
+        font-size: 10px;
+    }
+
+    .tab-content .messages .title-container .from {
+        font-weight: bold;
+    }
+
+    #uploaded-file-container div {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: #f9f9f9;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #uploaded-file-container i {
+        font-size: 18px;
+    }
+
 </style>
 <div class="email-app mb-4">
     <main class="inbox">
         @php
-            $user = '';
-            if (auth()->user()->level == '3') {
-                $user = 'pic';
-            } elseif (auth()->user()->level == '4') {
-                $user = 'user';
-            }
+        $user = '';
+        if (auth()->user()->level == '3') {
+        $user = 'pic';
+        } elseif (auth()->user()->level == '4') {
+        $user = 'user';
+        }
         @endphp
         <form action="{{ url("$user/message_store/" . $data->id) }}" method="post">
             @csrf
             <div class="message-tools">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-light active" id="conversation-btn"
-                        onclick="setActiveTab('conversation')">
+                    <button type="button" class="btn btn-light active" id="conversation-btn" onclick="setActiveTab('conversation')">
                         <span class="fa fa-comments"></span> Conversation
                     </button>
-                    <button type="button" class="btn btn-light" id="attachments-btn"
-                        onclick="setActiveTab('attachments')">
+                    <button type="button" class="btn btn-light" id="attachments-btn" onclick="setActiveTab('attachments')">
                         <span class="fa fa-paperclip"></span> Attachments
                     </button>
                 </div>
@@ -58,8 +90,9 @@
                     <label for="file-upload" class="attach-icon">
                         <i class="fas fa-paperclip"></i>
                     </label>
-                    <input type="file" id="file-upload" accept=".pdf" style="display: none;"
-                        onchange="uploadFile(event)">
+                    <input type="file" id="file-upload" accept=".pdf, .jpg, .jpeg, .png" style="display: none;" onchange="uploadFile(event)">
+                </div>
+                <div id="uploaded-file-container" style="margin-top: 10px; font-size: 14px; color: #666;">
                 </div>
                 <button type="submit" class="btn btn-info">Kirim</button>
             </div>
@@ -74,13 +107,13 @@
                                     alt="Profile Picture" class="profile-img">
                             </div>
                             <div class="message-content">
-                                <div class="header" style="font-size: 17px;">
+                                <div class="header">
                                     <span class="from">{{ $item->user_from->name }}</span>
                                 </div>
                                 <div class="title">
                                     Dear {{ $item->user_to->name }},
                                 </div>
-                                <div class="description" style="font-size: 14px;">
+                                <div class="description">
                                     {!! nl2br(e($item->message)) !!}
                                 </div>
                                 <div class="file-gmail">
@@ -90,7 +123,7 @@
                                         @elseif (Str::endsWith($item->file_name, ['.pdf']))
                                             <i class="fas fa-file-pdf" style="font-size: 18px; color: #e53935; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
                                         @else
-                                            <i class="fas fa-file-pdf" style="font-size: 18px; color: #3f51b5;"></i>
+                                            <i class="fas fa-file" style="font-size: 18px; color: #3f51b5;"></i>
                                         @endif
                                     </div>
                                     <div class="filename-container">
@@ -105,7 +138,7 @@
                                 <div>
                                     <span class="name">{{ $item->user_from->name }}</span>
                                 </div>
-                                <div class="fa fa-paper-clip" style="font-size: 14px;"> {{ $item->created_at->format('l, d F Y H:i') }}</div>
+                                <div class="fa fa-paper-clip"> {{ $item->created_at->format('l, d F Y H:i') }}</div>
                             </div>
                         </div>
                     </li>
@@ -123,7 +156,6 @@
                 <div class="attachment-item">
                     <a href="path_to_image2.jpg" target="_blank">
                         <i class="fas fa-image" style="font-size: 30px; color: rgb(62, 84, 197);"></i>
-                        <!-- Ikon Foto -->
                     </a>
                     <p><a href="path_to_image2.jpg" target="_blank">Image2.jpg</a></p>
                 </div>
@@ -177,8 +209,22 @@
         });
     });
 
+    // function uploadFile(event) {
+    //     const fileName = event.target.files[0].name;
+    //     console.log("File yang dipilih: " + fileName);
+    // }
+
     function uploadFile(event) {
-        const fileName = event.target.files[0].name;
-        console.log("File yang dipilih: " + fileName);
+        const fileInput = event.target;
+        const fileName = fileInput.files[0].name;
+
+        const uploadedFileContainer = document.getElementById('uploaded-file-container');
+        uploadedFileContainer.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-file" style="color: #333;"></i>
+            <span>${fileName}</span>
+        </div>
+    `;
     }
+
 </script>
