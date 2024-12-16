@@ -129,13 +129,7 @@ class PRoutesController extends Controller
             'data' => Ticket::with(['categories'])->where('id', $id)->first(),
             'collection' => Message::with('documents')->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
             'documents' => Document::with('messages')->where('idmessage', $id)->get(),
-            // ->whereHas('tickets', function ($query) {
-            //     $query->where([
-            //         'tickets'
-            //     ]);
-            // }),
         ];
-        dd($data);
         if ($type == 'approved') {
             return view('pages.pic.ticket.review', $data);
         } elseif ($type == 'processed') {
