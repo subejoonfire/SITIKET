@@ -74,13 +74,13 @@
                                     alt="Profile Picture" class="profile-img">
                             </div>
                             <div class="message-content">
-                                <div class="header">
+                                <div class="header" style="font-size: 17px;">
                                     <span class="from">{{ $item->user_from->name }}</span>
                                 </div>
                                 <div class="title">
                                     Dear {{ $item->user_to->name }},
                                 </div>
-                                <div class="description">
+                                <div class="description" style="font-size: 14px;">
                                     {!! nl2br(e($item->message)) !!}
                                 </div>
                                 <div class="file-gmail">
@@ -90,7 +90,7 @@
                                         @elseif (Str::endsWith($item->file_name, ['.pdf']))
                                             <i class="fas fa-file-pdf" style="font-size: 18px; color: #e53935; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
                                         @else
-                                            <i class="fas fa-file" style="font-size: 18px; color: #3f51b5;"></i>
+                                            <i class="fas fa-file-pdf" style="font-size: 18px; color: #3f51b5;"></i>
                                         @endif
                                     </div>
                                     <div class="filename-container">
@@ -105,7 +105,7 @@
                                 <div>
                                     <span class="name">{{ $item->user_from->name }}</span>
                                 </div>
-                                <div class="fa fa-paper-clip"> {{ $item->created_at->format('l, d F Y H:i') }}</div>
+                                <div class="fa fa-paper-clip" style="font-size: 14px;"> {{ $item->created_at->format('l, d F Y H:i') }}</div>
                             </div>
                         </div>
                     </li>
