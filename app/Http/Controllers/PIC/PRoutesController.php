@@ -42,7 +42,7 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | TIKET',
-            'collection' => Ticket::with(['users', 'departments'])
+            'collection' => Ticket::with(['users'])
                 ->whereHas('users', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where('iduser_pic', auth()->user()->id);
@@ -56,7 +56,7 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DISETUJUI',
-            'collection' => Ticket::with(['users', 'departments'])
+            'collection' => Ticket::with(['users'])
                 ->whereHas('users', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where([
@@ -73,7 +73,7 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DIPROSES',
-            'collection' => Ticket::with(['users', 'departments'])
+            'collection' => Ticket::with(['users'])
                 ->whereHas('users', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where([
@@ -90,7 +90,7 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DITOLAK',
-            'collection' => Ticket::with(['users', 'departments'])
+            'collection' => Ticket::with(['users'])
                 ->whereHas('users', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where([
@@ -107,7 +107,7 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | SELESAI',
-            'collection' => Ticket::with(['users', 'departments'])
+            'collection' => Ticket::with(['users'])
                 ->whereHas('users', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where([
@@ -126,8 +126,9 @@ class PRoutesController extends Controller
             'title' => 'SITIKET | Review',
             'type' => $type,
             'data' => Ticket::with(['categories'])->where('id', $id)->first(),
-            'collection' => Message::where('idticket', $id)->orderBy('created_at', 'desc')->get(),
+            'collection' => Message::with('documents')->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
         ];
+
         if ($type == 'approved') {
             return view('pages.pic.ticket.review', $data);
         } elseif ($type == 'processed') {
