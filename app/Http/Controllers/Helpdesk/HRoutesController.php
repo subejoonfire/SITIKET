@@ -14,9 +14,8 @@ class HRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'incoming' => Ticket::whereNull('iddepartment')->count(),
-            'done' => Ticket::whereNotNull('iddepartment')->count(),
-            'collection' => Ticket::get()
+            'incoming' => Ticket::whereNull('iduser_pic')->count(),
+            'done' => Ticket::whereNotNull('iduser_pic')->count(),
         ];
         return view('pages.helpdesk.dashboard', $data);
     }
@@ -38,7 +37,7 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | RIWAYAT_VALIDASI',
-            'collection' => Ticket::whereNotNull('tickets.iddepartment')->get(),
+            'collection' => Ticket::whereNotNull('tickets.iduser_pic')->get(),
             'page' => 'beranda',
         ];
 
@@ -50,7 +49,7 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | HALAMAN_VALIDASI',
-            'collection' => Ticket::whereNull(['tickets.iddepartment', 'tickets.iduser_pic'])->get(),
+            'collection' => Ticket::whereNull(['tickets.iduser_pic', 'tickets.iduser_pic'])->get(),
             'page' => 'validation',
         ];
 
