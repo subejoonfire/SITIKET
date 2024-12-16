@@ -4,6 +4,7 @@ namespace App\Http\Controllers\PIC;
 
 use App\Models\Ticket;
 use App\Models\Message;
+use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -60,6 +61,10 @@ class PICController extends Controller
     }
     public function message_store(Request $request, $id)
     {
+        $request->validate([
+            'message' => 'required|string',
+            'documentname.*' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+        ]);
         $ticket = Ticket::find($id);
         $message = new Message();
         $message->message = $request->input('message');
@@ -67,6 +72,20 @@ class PICController extends Controller
         $message->iduser_from = auth()->user()->id;
         $message->iduser_to = $ticket->iduser;
         $message->save();
-        return redirect()->back();
+
+        if ($request->hasFile('documentname')) {
+            foreach ($request->file('documentname') as $file) {
+                $extension = $file->getClientOriginalExtension();
+                $uniqueFileName = 'doc_' . auth()->user()->id . '_' . time() . '_' . uniqid() . '.' . $extension;
+                $filePath = $file->storeAs('documents', $uniqueFileName, 'public');
+
+                $document = new Document();
+                $document->idmessage = $message->id;
+                $document->documentname = $file->getClientOriginalName();
+                $document->path_documentname = $filePath;
+                $document->save();
+            }
+        }
+        return redirect()->back()->with('success', 'Pesan berhasil dikirim!');
     }
 }
