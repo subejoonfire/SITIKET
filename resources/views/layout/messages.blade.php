@@ -13,7 +13,7 @@
         margin: 5px 0px;
         border: 1px solid #ddd;
         border-radius: 20px;
-        padding: 5px 0px;
+        padding: 5px 10px;
     }
 
     .tab-content .messages span,
@@ -24,8 +24,7 @@
     .tab-content .messages .file-gmail .logo-container {
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 50px;
+        width: 35px;
     }
 
     .tab-content .messages .file-gmail .filename-container {
@@ -40,7 +39,7 @@
     }
 
     .tab-content .messages .date-container span {
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .tab-content .messages .title-container .from {
@@ -59,6 +58,15 @@
 
     #uploaded-file-container i {
         font-size: 18px;
+    }
+
+    .tab-content .messages .file-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .tab-content .messages .file-container>div {
+        margin-right: 10px;
     }
 
 </style>
@@ -127,21 +135,22 @@
                             <div class="date-container">
                                 <span> Reply : {{ $item->created_at->format('l, d F Y H:i') }}</span>
                             </div>
-                            <div class="file-gmail">
-                                <div style="margin-right: 8px;" class="logo-container">
-                                    @if (Str::endsWith($item->file_name, ['.jpg', '.jpeg', '.png', '.gif']))
-                                    <i class="fas fa-image" style="font-size: 18px; color: #666; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
-                                    @elseif (Str::endsWith($item->file_name, ['.pdf']))
-                                    <i class="fas fa-file-pdf" style="font-size: 18px; color: #666; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
-                                    @else
-                                    <i class="fas fa-file" style="font-size: 18px; color: #666;"></i>
-                                    @endif
+                            <div class="file-container">
+                                @php
+                                $data = \App\Models\Document::where('idmessage', $item->id)->get();
+                                @endphp
+                                @foreach ($data as $itemofitem)
+                                <div class="file-gmail">
+                                    <div class="logo-container">
+                                        <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
+                                    </div>
+                                    <div class="filename-container">
+                                        <p>
+                                            {{ $itemofitem->documentname ?? 'Tidak ada nama file' }}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="filename-container">
-                                    <p>
-                                        {{ $item->file_name ?? 'Kurdick OTW IMO' }}
-                                    </p>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
