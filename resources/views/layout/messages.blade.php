@@ -219,11 +219,6 @@
         });
     });
 
-    // function uploadFile(event) {
-    //     const fileName = event.target.files[0].name;
-    //     console.log("File yang dipilih: " + fileName);
-    // }
-
     function uploadFile(event) {
         const fileInput = event.target;
         const fileName = fileInput.files[0].name;
