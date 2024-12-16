@@ -9,7 +9,7 @@
         $user = 'user';
         }
         @endphp
-        <form action="{{ url("$user/message_store/" . $data->id) }}" method="post">
+        <form action="{{ url("$user/message_store/" . $data->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="message-tools">
                 <div class="btn-group">
@@ -64,18 +64,15 @@
                             <div class="date-container">
                                 <span> Reply : {{ $item->created_at->format('l, d F Y H:i') }}</span>
                             </div>
-                            <div class="file-container" style="cursor: pointer;">
-                                @php
-                                $data = \App\Models\Document::where('idmessage', $item->id)->get();
-                                @endphp
-                                @foreach ($data as $itemofitem)
+                            <div class="file-container">
+                                @foreach($item->documents as $key => $value)
                                 <div class="file-gmail">
                                     <div class="logo-container">
                                         <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
                                     </div>
                                     <div class="filename-container">
                                         <p>
-                                            {{ $itemofitem->documentname ?? 'Tidak ada nama file' }}
+                                            {{ $value->documentname ?? 'Tidak ada nama file' }}
                                         </p>
                                     </div>
                                 </div>
@@ -150,11 +147,6 @@
             window.open(this.href, '_blank');
         });
     });
-
-    // function uploadFile(event) {
-    //     const fileName = event.target.files[0].name;
-    //     console.log("File yang dipilih: " + fileName);
-    // }
 
     function uploadFile(event) {
         const fileInput = event.target;
