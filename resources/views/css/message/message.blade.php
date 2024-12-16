@@ -1,26 +1,56 @@
 <style>
-    .active {
-        background-color: #0056b3;
-        color: white;
-    }
+  .active {
+    background-color: #0056b3;
+    color: white;
+}
 
-    .attachments {
-        display: flex;
-        gap: 10px;
-        margin-top: 20px;
-    }
+.attachments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
 
-    .attachment-item {
-        background-color: #f1f1f1;
-        padding: 10px;
-        border-radius: 5px;
-    }
+.attachment-item {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px 15px;
+    border-radius: 5px;
+    width: 250px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 200%; 
+}
 
-    .attachment-item img {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-    }
+.attachment-item:hover {
+    background-color: #e0e0e0;
+}
+
+.attachment-item i {
+    font-size: 14px !important; 
+    color: #666;
+    margin-right: 10px;
+}
+
+.attachment-item p {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.attachment-item img {
+    width: 30px; 
+    height: 30px; 
+    object-fit: cover;
+    border-radius: 5px;
+}
+
 
     .message-input {
         display: flex;
@@ -70,6 +100,76 @@
     button.send-btn:hover {
         background-color: #00409e;
     }
+
+    .tab-content .messages .file-gmail p {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        color: #333;
+        font-weight: thin;
+    }
+
+    .tab-content .messages .file-gmail {
+        display: flex;
+        width: auto;
+        margin: 5px 0px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        padding: 5px 10px;
+    }
+
+    .tab-content .messages span,
+    .tab-content .messages p {
+        font-size: 14px;
+    }
+
+    .tab-content .messages .file-gmail .logo-container {
+        display: flex;
+        align-items: center;
+        width: 35px;
+    }
+
+    .tab-content .messages .file-gmail .filename-container {
+        display: flex;
+        margin-left: -15px;
+        justify-content: end;
+        width: auto;
+    }
+
+    .tab-content .messages .title-container {
+        font-size: 14px;
+    }
+
+    .tab-content .messages .date-container span {
+        font-size: 11px;
+    }
+
+    .tab-content .messages .title-container .from {
+        font-weight: bold;
+    }
+
+    #uploaded-file-container div {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: #f9f9f9;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #uploaded-file-container i {
+        font-size: 18px;
+    }
+
+    .tab-content .messages .file-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .tab-content .messages .file-container>div {
+        margin-right: 10px;
+    }
+
 
 </style>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
