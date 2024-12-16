@@ -26,6 +26,7 @@
 
 .attachment-item:hover {
     background-color: #e0e0e0;
+    text-decoration: none;
 }
 
 .attachment-item i {
@@ -115,6 +116,7 @@
         border: 1px solid #ddd;
         border-radius: 20px;
         padding: 5px 10px;
+        
     }
 
     .tab-content .messages span,
@@ -170,6 +172,20 @@
         margin-right: 10px;
     }
 
+    .file-gmail {
+    display: flex; /* Untuk menjaga struktur */
+    align-items: center;
+    text-decoration: none; /* Menghilangkan garis bawah default */
+    color: black; /* Warna default */
+    transition: background-color 0.3s, color 0.3s; /* Efek transisi halus */
+    padding: 5px; /* Spasi dalam elemen */
+    border-radius: 5px; /* Sudut elemen sedikit melengkung */
+}
 
+.file-gmail:hover {
+    background-color: #d3d3d3; /* Warna abu-abu saat hover */
+    color: #333; /* Warna teks sedikit lebih gelap */
+    cursor: pointer; /* Menjadikan kursor sebagai pointer */
+}
 </style>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
