@@ -108,48 +108,53 @@
         <div id="conversation" class="tab-content">
             <ul class="messages">
                 @foreach ($collection as $item)
-                    <li class="message unread">
-                        <div class="message-container">
-                            <div class="profile-picture">
-                                <img src="{{ url('/back-end/assets/img/' . $item->user_from->image ?? 'default.jpg') }}"
-                                    alt="Profile Picture" class="profile-img">
+                <li class="message unread" style="cursor: default;">
+                    <div class="message-container">
+                        <div class="profile-picture">
+                            <img src="{{ url('/back-end/assets/img/' . $item->user_from->image ?? 'default.jpg') }}" alt="Profile Picture" class="profile-img">
+                        </div>
+                        <div class="message-content">
+                            <div class="header">
                             </div>
-                            <div class="message-content">
-                                <div class="header">
-                                    <span class="from">{{ $item->user_from->name }}</span>
-                                </div>
-                                <div class="title">
-                                    Dear {{ $item->user_to->name }},
-                                </div>
-                                <div class="description">
+                            <div class="title-container">
+                                <span class="from">{{ $item->user_from->name }} :</span>
+                                <br>
+                                <span class="dear">Dear {{ $item->user_to->name }},</span>
+                            </div>
+                            <div class="description">
+                                <p>
                                     {!! nl2br(e($item->message)) !!}
-                                </div>
+                                </p>
+                            </div>
+                            <div class="FOOTER">
+                                <span class="signature-container">Regards,</span>
+                            </div>
+                            <div>
+                                <span class="name">{{ $item->user_from->name }}</span>
+                            </div>
+                            <div class="date-container">
+                                <span> Reply : {{ $item->created_at->format('l, d F Y H:i') }}</span>
+                            </div>
+                            <div class="file-container" style="cursor: pointer;">
+                                @php
+                                $data = \App\Models\Document::where('idmessage', $item->id)->get();
+                                @endphp
+                                @foreach ($data as $itemofitem)
                                 <div class="file-gmail">
-                                    <div style="margin-right: 8px;" class="logo-container">
-                                        @if (Str::endsWith($item->file_name, ['.jpg', '.jpeg', '.png', '.gif']))
-                                            <i class="fas fa-image" style="font-size: 18px; color: #4caf50; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
-                                        @elseif (Str::endsWith($item->file_name, ['.pdf']))
-                                            <i class="fas fa-file-pdf" style="font-size: 18px; color: #e53935; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
-                                        @else
-                                            <i class="fas fa-file" style="font-size: 18px; color: #3f51b5;"></i>
-                                        @endif
+                                    <div class="logo-container">
+                                        <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
                                     </div>
                                     <div class="filename-container">
-                                        <p style="margin: 0; font-weight: bold; color: #333; font-weight: normal; font-family: 'Poppins', sans-serif;">
-                                            {{ $item->file_name ?? 'Kurdick OTW IMO' }}
+                                        <p>
+                                            {{ $itemofitem->documentname ?? 'Tidak ada nama file' }}
                                         </p>
                                     </div>
                                 </div>
-                                <div class="FOOTER">
-                                    <span class="signature">Regards,</span><br />
-                                </div>
-                                <div>
-                                    <span class="name">{{ $item->user_from->name }}</span>
-                                </div>
-                                <div class="fa fa-paper-clip"> {{ $item->created_at->format('l, d F Y H:i') }}</div>
+                                @endforeach
                             </div>
                         </div>
-                    </li>
+                    </div>
+                </li>
                 @endforeach
             </ul>
         </div>
