@@ -45,28 +45,4 @@ class UserController extends Controller
         }
         return redirect()->to('user')->with('success', 'Ticket berhasil dihapus!');
     }
-    public function message_store(Request $request, $id)
-    {
-        $ticket = Ticket::find($id);
-        $message = new Message();
-        $message->message = $request->input('message');
-        $message->idticket = $id;
-        $message->iduser_from = auth()->user()->id;
-        $message->iduser_to = $ticket->iduser_pic;
-        $message->save();
-        if ($request->hasFile('documentname')) {
-            foreach ($request->file('documentname') as $file) {
-                $extension = $file->getClientOriginalExtension();
-                $uniqueFileName = 'doc_' . auth()->user()->id . '_' . time() . '_' . uniqid() . '.' . $extension;
-                $filePath = $file->storeAs('documents', $uniqueFileName, 'public');
-
-                $document = new Document();
-                $document->idmessage = $message->id;
-                $document->documentname = $file->getClientOriginalName();
-                $document->path_documentname = $filePath;
-                $document->save();
-            }
-        }
-        return redirect()->back();
-    }
 }

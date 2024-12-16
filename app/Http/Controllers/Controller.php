@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ticket;
 use App\Models\User;
+use App\Models\Ticket;
+use App\Models\Message;
+use App\Models\Document;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -108,6 +110,31 @@ class Controller
         $user->phone = $request->phone;
         $user->save();
         return back()->with('success', 'Profil berhasil diperbarui!');
+    }
+    public function message_store(Message $message, Document $document, Request $request, $id)
+    {
+        $ticket = Ticket::find($id);
+        $message->message = $request->input('message');
+        $message->idticket = $id;
+        $message->iduser_from = auth()->user()->id;
+        if (auth()->user()->level == '4') {
+            $message->iduser_to = $ticket->iduser_pic;
+        } elseif (auth()->user()->level == '3') {
+            $message->iduser_to = $ticket->iduser;
+        }
+        $message->save();
+        if ($request->hasFile('documentname')) {
+            foreach ($request->file('documentname') as $file) {
+                $extension = $file->getClientOriginalExtension();
+                $uniqueFileName = 'doc_' . auth()->user()->id . '_' . time() . '_' . uniqid() . '.' . $extension;
+                $filePath = $file->storeAs('documents', $uniqueFileName, 'public');
+                $document->idmessage = $message->id;
+                $document->documentname = $file->getClientOriginalName();
+                $document->path_documentname = $filePath;
+                $document->save();
+            }
+        }
+        return redirect()->back();
     }
     public function logout()
     {

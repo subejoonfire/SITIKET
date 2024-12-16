@@ -9,7 +9,7 @@
         $user = 'user';
         }
         @endphp
-        <form action="{{ url("$user/message_store/" . $data->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('message_store', ['id' => $data->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="message-tools">
                 <div class="btn-group">
