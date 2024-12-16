@@ -12,6 +12,7 @@ class Document extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'idmessage',
+        'path_documentname',
         'documentname',
     ];
 

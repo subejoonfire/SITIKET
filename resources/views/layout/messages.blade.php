@@ -27,10 +27,9 @@
                     <label for="file-upload" class="attach-icon">
                         <i class="fas fa-paperclip"></i>
                     </label>
-                    <input type="file" id="file-upload" accept=".pdf, .jpg, .jpeg, .png" style="display: none;" onchange="uploadFile(event)">
+                    <input type="file" name="documentname[]" id="file-upload" accept=".pdf, .jpg, .jpeg, .png" style="display: none;" multiple onchange="uploadFiles(event)">
                 </div>
-                <div id="uploaded-file-container" style="margin-top: 10px; font-size: 14px; color: #666;">
-                </div>
+                <div id="uploaded-file-container" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
                 <button type="submit" class="btn btn-info">Kirim</button>
             </div>
         </form>
@@ -66,7 +65,7 @@
                             </div>
                             <div class="file-container">
                                 @foreach($item->documents as $key => $value)
-                                <div class="file-gmail">
+                                <a href="{{ url('storage/'. $value->path_documentname) }}" class="file-gmail">
                                     <div class="logo-container">
                                         <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
                                     </div>
@@ -75,7 +74,7 @@
                                             {{ $value->documentname ?? 'Tidak ada nama file' }}
                                         </p>
                                     </div>
-                                </div>
+                                </a>
                                 @endforeach
                             </div>
                         </div>
@@ -148,17 +147,21 @@
         });
     });
 
-    function uploadFile(event) {
+    function uploadFiles(event) {
         const fileInput = event.target;
-        const fileName = fileInput.files[0].name;
-
+        const files = fileInput.files;
         const uploadedFileContainer = document.getElementById('uploaded-file-container');
-        uploadedFileContainer.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <i class="fas fa-file" style="color: #333;"></i>
-            <span>${fileName}</span>
-        </div>
-    `;
+
+        uploadedFileContainer.innerHTML = ''; // Clear existing file display
+        for (let i = 0; i < files.length; i++) {
+            const fileName = files[i].name;
+            uploadedFileContainer.innerHTML += `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-file" style="color: #333;"></i>
+                <span>${fileName}</span>
+            </div>
+        `;
+        }
     }
 
 </script>
