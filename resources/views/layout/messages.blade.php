@@ -14,10 +14,10 @@
             <div class="message-tools">
                 <div class="btn-group">
                     <button type="button" class="btn btn-light active" id="conversation-btn" onclick="setActiveTab('conversation')">
-                        <span class="fa fa-comments"></span> Conversation
+                        <span class="fa fa-comments"></span> Percakapan
                     </button>
                     <button type="button" class="btn btn-light" id="attachments-btn" onclick="setActiveTab('attachments')">
-                        <span class="fa fa-paperclip"></span> Attachments
+                        <span class="fa fa-paperclip"></span> Dokumen
                     </button>
                 </div>
             </div>
