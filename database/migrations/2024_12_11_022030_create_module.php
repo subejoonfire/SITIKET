@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('modulename');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

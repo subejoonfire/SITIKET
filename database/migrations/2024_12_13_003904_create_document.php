@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('idmessage')->nullable()->default(NULL);
             $table->string('documentname');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

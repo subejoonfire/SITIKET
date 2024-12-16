@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('read')->default(false);
             $table->longText('message');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('detailissue');
             $table->string('priority')->nullable()->default(NULL);
             $table->timestamps();
+            $table->softDeletes();
             //
         });
     }
