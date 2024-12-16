@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('iddepartment')->nullable()->default(NULL);
+            // $table->unsignedBigInteger('iddepartment')->nullable()->default(NULL);
             $table->unsignedBigInteger('idmodule')->nullable()->default(NULL);
             $table->unsignedBigInteger('iduser')->nullable()->default(NULL);
             $table->unsignedBigInteger('iduser_pic')->nullable()->default(NULL);
