@@ -65,18 +65,18 @@
                             </div>
                             <div class="file-container">
                                 @foreach($item->documents as $key => $value)
-                                <a href="{{ url('storage/'. $value->path_documentname) }}" class="file-gmail">
-                                    <div class="logo-container">
-                                        <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
-                                    </div>
-                                    <div class="filename-container">
-                                        <p>
-                                            {{ $value->documentname ?? 'Tidak ada nama file' }}
-                                        </p>
-                                    </div>
-                                </a>
+                                    <a href="{{ url('storage/'. $value->path_documentname) }}" class="file-gmail">
+                                        <div class="logo-container">
+                                            <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
+                                        </div>
+                                        <div class="filename-container">
+                                            <p>
+                                                {{ Str::limit($value->documentname ?? 'Tidak ada nama file', 20) }}
+                                            </p>
+                                        </div>
+                                    </a>
                                 @endforeach
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </li>
