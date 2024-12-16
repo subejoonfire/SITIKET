@@ -1,3 +1,4 @@
+@if ($data->status != 'DIAJUKAN' && $data->status != 'TERKIRIM')
 @include('css/message/message')
 <div class="email-app mb-4">
     <main class="inbox">
@@ -159,3 +160,4 @@
     }
 
 </script>
+@endif
