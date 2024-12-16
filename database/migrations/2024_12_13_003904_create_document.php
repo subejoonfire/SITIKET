@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('idmessage')->nullable()->default(NULL);
             $table->string('documentname');
-            $table->string('path_documentname')->unique();
+            $table->string('path_documentname');
             $table->timestamps();
             $table->softDeletes();
         });
