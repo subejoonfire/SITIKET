@@ -5,7 +5,7 @@ namespace App\Http\Controllers\PIC;
 use App\Models\Ticket;
 use App\Models\Message;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PICController extends Controller

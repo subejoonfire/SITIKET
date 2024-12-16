@@ -118,7 +118,7 @@ class AdminController extends Controller
             'modulename' => $request->modulename,
         ]);
 
-        return redirect()->to(url('admin/module'))->with('success', 'Modul berhasil dihapus.');
+        return redirect()->to(url('admin/module'))->with('success', 'Modul berhasil ditambahkan');
     }
 
     public function moduleDelete($id)
@@ -149,7 +149,7 @@ class AdminController extends Controller
         Category::create([
             'categoryname' => $request->categoryname,
         ]);
-        return redirect()->to(url('admin/category'))->with('success', 'Kategori berhasil dihapus.');
+        return redirect()->to(url('admin/category'))->with('success', 'Kategori berhasil ditambahkan.');
     }
     public function categoryUpdate(Request $request, $id)
     {
