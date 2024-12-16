@@ -13,7 +13,7 @@
         margin: 5px 0px;
         border: 1px solid #ddd;
         border-radius: 20px;
-        padding: 5px 0px;
+        padding: 5px 10px;
     }
 
     .tab-content .messages span,
@@ -24,8 +24,7 @@
     .tab-content .messages .file-gmail .logo-container {
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 50px;
+        width: 35px;
     }
 
     .tab-content .messages .file-gmail .filename-container {
@@ -40,7 +39,7 @@
     }
 
     .tab-content .messages .date-container span {
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .tab-content .messages .title-container .from {
@@ -59,6 +58,15 @@
 
     #uploaded-file-container i {
         font-size: 18px;
+    }
+
+    .tab-content .messages .file-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .tab-content .messages .file-container>div {
+        margin-right: 10px;
     }
 
 </style>
