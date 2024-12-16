@@ -67,12 +67,23 @@
         <div id="conversation" class="tab-content">
             <ul class="messages">
                 @foreach ($collection as $item)
-                    <li class="message unread">
-                        <div class="message-container">
-                            <div class="profile-picture">
-                                <img src="{{ url('/back-end/assets/img/' . $item->user_from->image ?? 'default.jpg') }}"
-                                    alt="Profile Picture" class="profile-img">
+                <li class="message unread">
+                    <div class="message-container">
+                        <div class="profile-picture">
+                            <img src="{{ url('/back-end/assets/img/' . $item->user_from->image ?? 'default.jpg') }}" alt="Profile Picture" class="profile-img">
+                        </div>
+                        <div class="message-content">
+                            <div class="header">
                             </div>
+<<<<<<<<< Temporary merge branch 1
+                            <div class="title-container">
+                                <span class="from">{{ $item->user_from->name }} :</span>
+                                <br>
+                                <span class="dear">Dear {{ $item->user_to->name }},</span>
+                            </div>
+                            <div class="description">
+                                <p>
+=========
                             <div class="message-content">
                                 <div class="header" style="font-size: 17px;">
                                     <span class="from">{{ $item->user_from->name }}</span>
@@ -81,9 +92,29 @@
                                     Dear {{ $item->user_to->name }},
                                 </div>
                                 <div class="description" style="font-size: 14px;">
+>>>>>>>>> Temporary merge branch 2
                                     {!! nl2br(e($item->message)) !!}
-                                </div>
+                                </p>
+                            </div>
+                            <div class="FOOTER">
+                                <span class="signature-container">Regards,</span>
+                            </div>
+                            <div>
+                                <span class="name">{{ $item->user_from->name }}</span>
+                            </div>
+                            <div class="date-container">
+                                <span> Reply : {{ $item->created_at->format('l, d F Y H:i') }}</span>
+                            </div>
+                            <div class="file-container">
+                                @php
+                                $data = \App\Models\Document::where('idmessage', $item->id)->get();
+                                @endphp
+                                @foreach ($data as $itemofitem)
                                 <div class="file-gmail">
+<<<<<<<<< Temporary merge branch 1
+                                    <div class="logo-container">
+                                        <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
+=========
                                     <div style="margin-right: 8px;" class="logo-container">
                                         @if (Str::endsWith($item->file_name, ['.jpg', '.jpeg', '.png', '.gif']))
                                             <i class="fas fa-image" style="font-size: 18px; color: #4caf50; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
@@ -92,6 +123,7 @@
                                         @else
                                             <i class="fas fa-file-pdf" style="font-size: 18px; color: #3f51b5;"></i>
                                         @endif
+>>>>>>>>> Temporary merge branch 2
                                     </div>
                                     <div class="filename-container">
                                         <p style="margin: 0; font-weight: bold; color: #333; font-weight: normal; font-family: 'Poppins', sans-serif;">
@@ -99,6 +131,9 @@
                                         </p>
                                     </div>
                                 </div>
+<<<<<<<<< Temporary merge branch 1
+                                @endforeach
+=========
                                 <div class="FOOTER">
                                     <span class="signature">Regards,</span><br />
                                 </div>
@@ -106,9 +141,11 @@
                                     <span class="name">{{ $item->user_from->name }}</span>
                                 </div>
                                 <div class="fa fa-paper-clip" style="font-size: 14px;"> {{ $item->created_at->format('l, d F Y H:i') }}</div>
+>>>>>>>>> Temporary merge branch 2
                             </div>
                         </div>
-                    </li>
+                    </div>
+                </li>
                 @endforeach
             </ul>
         </div>
