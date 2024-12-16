@@ -17,7 +17,7 @@ class HRoutesController extends Controller
             'incoming' => Ticket::whereNull('iduser_pic')->count(),
             'done' => Ticket::whereNotNull('iduser_pic')->count(),
         ];
-        return view('pages.helpdesk.dashboard', $data);
+        return view('pages/helpdesk/dashboard', $data);
     }
 
     public function detail($id)
@@ -30,7 +30,7 @@ class HRoutesController extends Controller
             'pic' => User::where('level', 3)->get(),
         ];
 
-        return view('pages.helpdesk.detail', $data);
+        return view('pages/helpdesk/detail', $data);
     }
     public function history()
     {
@@ -42,7 +42,7 @@ class HRoutesController extends Controller
         ];
 
 
-        return view('pages.helpdesk.history', $data);
+        return view('pages/helpdesk/history', $data);
     }
     public function validation()
     {
@@ -54,7 +54,7 @@ class HRoutesController extends Controller
         ];
 
 
-        return view('pages.helpdesk.validation', $data);
+        return view('pages/helpdesk/validation', $data);
     }
 
     public function profile()
@@ -66,6 +66,6 @@ class HRoutesController extends Controller
         ];
 
 
-        return view('pages.helpdesk.profile', $data);
+        return view('pages/helpdesk/profile', $data);
     }
 }
