@@ -10,11 +10,15 @@
     .tab-content .messages .file-gmail {
         display: flex;
         width: auto;
-        margin-top: 10px;
+        margin: 5px 0px;
         border: 1px solid #ddd;
         border-radius: 20px;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding: 5px 0px;
+    }
+
+    .tab-content .messages span,
+    .tab-content .messages p {
+        font-size: 14px;
     }
 
     .tab-content .messages .file-gmail .logo-container {
@@ -29,6 +33,32 @@
         margin-left: -15px;
         justify-content: end;
         width: auto;
+    }
+
+    .tab-content .messages .title-container {
+        font-size: 14px;
+    }
+
+    .tab-content .messages .date-container span {
+        font-size: 10px;
+    }
+
+    .tab-content .messages .title-container .from {
+        font-weight: bold;
+    }
+
+    #uploaded-file-container div {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: #f9f9f9;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #uploaded-file-container i {
+        font-size: 18px;
     }
 
 </style>
@@ -60,7 +90,9 @@
                     <label for="file-upload" class="attach-icon">
                         <i class="fas fa-paperclip"></i>
                     </label>
-                    <input type="file" id="file-upload" accept=".pdf" style="display: none;" onchange="uploadFile(event)">
+                    <input type="file" id="file-upload" accept=".pdf, .jpg, .jpeg, .png" style="display: none;" onchange="uploadFile(event)">
+                </div>
+                <div id="uploaded-file-container" style="margin-top: 10px; font-size: 14px; color: #666;">
                 </div>
                 <button type="submit" class="btn btn-info">Kirim</button>
             </div>
@@ -75,22 +107,34 @@
                         </div>
                         <div class="message-content">
                             <div class="header">
-                                <span class="from">{{ $item->user_from->name }}</span>
                             </div>
-                            <div class="title">
-                                Dear {{ $item->user_to->name }},
+                            <div class="title-container">
+                                <span class="from">{{ $item->user_from->name }} :</span>
+                                <br>
+                                <span class="dear">Dear {{ $item->user_to->name }},</span>
                             </div>
                             <div class="description">
-                                {!! nl2br(e($item->message)) !!}
+                                <p>
+                                    {!! nl2br(e($item->message)) !!}
+                                </p>
+                            </div>
+                            <div class="FOOTER">
+                                <span class="signature-container">Regards,</span>
+                            </div>
+                            <div>
+                                <span class="name">{{ $item->user_from->name }}</span>
+                            </div>
+                            <div class="date-container">
+                                <span> Reply : {{ $item->created_at->format('l, d F Y H:i') }}</span>
                             </div>
                             <div class="file-gmail">
                                 <div style="margin-right: 8px;" class="logo-container">
                                     @if (Str::endsWith($item->file_name, ['.jpg', '.jpeg', '.png', '.gif']))
-                                    <i class="fas fa-image" style="font-size: 18px; color: #4caf50; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
+                                    <i class="fas fa-image" style="font-size: 18px; color: #666; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
                                     @elseif (Str::endsWith($item->file_name, ['.pdf']))
-                                    <i class="fas fa-file-pdf" style="font-size: 18px; color: #e53935; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
+                                    <i class="fas fa-file-pdf" style="font-size: 18px; color: #666; font-weight: normal; font-family: 'Poppins', sans-serif;"></i>
                                     @else
-                                    <i class="fas fa-file" style="font-size: 18px; color: #3f51b5;"></i>
+                                    <i class="fas fa-file" style="font-size: 18px; color: #666;"></i>
                                     @endif
                                 </div>
                                 <div class="filename-container">
@@ -99,13 +143,6 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="FOOTER">
-                                <span class="signature">Regards,</span><br />
-                            </div>
-                            <div>
-                                <span class="name">{{ $item->user_from->name }}</span>
-                            </div>
-                            <div class="fa fa-paper-clip"> {{ $item->created_at->format('l, d F Y H:i') }}</div>
                         </div>
                     </div>
                 </li>
@@ -176,9 +213,22 @@
         });
     });
 
+    // function uploadFile(event) {
+    //     const fileName = event.target.files[0].name;
+    //     console.log("File yang dipilih: " + fileName);
+    // }
+
     function uploadFile(event) {
-        const fileName = event.target.files[0].name;
-        console.log("File yang dipilih: " + fileName);
+        const fileInput = event.target;
+        const fileName = fileInput.files[0].name;
+
+        const uploadedFileContainer = document.getElementById('uploaded-file-container');
+        uploadedFileContainer.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-file" style="color: #333;"></i>
+            <span>${fileName}</span>
+        </div>
+    `;
     }
 
 </script>
