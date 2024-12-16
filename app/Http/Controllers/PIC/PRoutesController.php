@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PIC;
 use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Message;
+use App\Models\Document;
 use App\Models\Department;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
@@ -127,8 +128,14 @@ class PRoutesController extends Controller
             'type' => $type,
             'data' => Ticket::with(['categories'])->where('id', $id)->first(),
             'collection' => Message::with('documents')->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
+            'documents' => Document::with('messages')->where('idmessage', $id)->get(),
+            // ->whereHas('tickets', function ($query) {
+            //     $query->where([
+            //         'tickets'
+            //     ]);
+            // }),
         ];
-
+        dd($data);
         if ($type == 'approved') {
             return view('pages.pic.ticket.review', $data);
         } elseif ($type == 'processed') {

@@ -5,12 +5,13 @@ namespace App\Http\Controllers\User;
 use App\Models\User;
 use App\Models\Module;
 use App\Models\Ticket;
+use App\Models\Message;
 use App\Models\Category;
+use App\Models\Document;
 use App\Models\Department;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Message;
 
 class URoutesController extends Controller
 {
@@ -52,6 +53,7 @@ class URoutesController extends Controller
             'title' => 'SI-TIKET | Review',
             'data' => Ticket::where('tickets.id', $id)->first(),
             'collection' => Message::with('documents')->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
+            'documents' => Document::with('messages')->where('idmessage', $id)->get(),
         ];
         return view('pages.user.review', $data);
     }

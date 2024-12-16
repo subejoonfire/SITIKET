@@ -65,18 +65,18 @@
                             </div>
                             <div class="file-container">
                                 @foreach($item->documents as $key => $value)
-                                    <a href="{{ url('storage/'. $value->path_documentname) }}" class="file-gmail">
-                                        <div class="logo-container">
-                                            <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
-                                        </div>
-                                        <div class="filename-container">
-                                            <p>
-                                                {{ Str::limit($value->documentname ?? 'Tidak ada nama file', 20) }}
-                                            </p>
-                                        </div>
-                                    </a>
+                                <a href="{{ url('storage/'. $value->path_documentname) }}" class="file-gmail">
+                                    <div class="logo-container">
+                                        <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
+                                    </div>
+                                    <div class="filename-container">
+                                        <p>
+                                            {{ Str::limit($value->documentname ?? 'Tidak ada nama file', 20) }}
+                                        </p>
+                                    </div>
+                                </a>
                                 @endforeach
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -85,21 +85,15 @@
         </div>
         <div id="attachments" class="tab-content" style="display: none;">
             <div class="attachments">
-                <div class="attachment-item">
-                    <a href="path_to_file_1.pdf" target="_blank">
-                        <i class="fas fa-file-pdf" style="font-size: 30px; color: rgb(255, 0, 0);"></i>
-                    </a>
-                    <p>{{ basename('Tutorial Juara M Series.pdf') }}</p>
-                </div>
-                <div class="attachment-item">
-                    <a href="path_to_image2.jpg" target="_blank">
-                        <i class="fas fa-image" style="font-size: 30px; color: rgb(62, 84, 197);"></i>
-                    </a>
-                    <p>{{ basename('Cuma_Evos.PNG') }}</p>
-                </div>
+                @foreach ($documents as $item)
+                <a href="{{ url('storage/'. $item->path_documentname) }}" class="attachment-item">
+                    <i class="fas fa-file-pdf" style="font-size: 30px;"></i>
+                    <p style="text-decoration: none;">{{ Str::limit($item->documentname ?? 'Tidak ada nama file', 20) }}</p>
+                </a>
+                @endforeach
             </div>
         </div>
-        
+
     </main>
 </div>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
