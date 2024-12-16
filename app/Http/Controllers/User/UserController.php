@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Ticket;
+use App\Models\Message;
+use App\Models\Document;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Message;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserController extends Controller
@@ -53,6 +54,19 @@ class UserController extends Controller
         $message->iduser_from = auth()->user()->id;
         $message->iduser_to = $ticket->iduser_pic;
         $message->save();
+        if ($request->hasFile('documentname')) {
+            foreach ($request->file('documentname') as $file) {
+                $extension = $file->getClientOriginalExtension();
+                $uniqueFileName = 'doc_' . auth()->user()->id . '_' . time() . '_' . uniqid() . '.' . $extension;
+                $filePath = $file->storeAs('documents', $uniqueFileName, 'public');
+
+                $document = new Document();
+                $document->idmessage = $message->id;
+                $document->documentname = $file->getClientOriginalName();
+                $document->path_documentname = $filePath;
+                $document->save();
+            }
+        }
         return redirect()->back();
     }
 }
