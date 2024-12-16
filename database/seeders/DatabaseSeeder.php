@@ -140,7 +140,6 @@ class DatabaseSeeder extends Seeder
         DB::table('tickets')->insert([
             [
                 'id' => 1,
-                'iddepartment' => null,
                 'idmodule' => 1,
                 'iduser' => 5,
                 'iduser_pic' => 6,
