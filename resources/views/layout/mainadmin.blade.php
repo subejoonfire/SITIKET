@@ -39,22 +39,16 @@
             border-radius: 25px;
         }
 
-    </style>
-
-    <style>
         .text-danger {
             color: red;
         }
 
-    </style>
-    <style>
         .no-cursor {
             pointer-events: none;
             caret-color: transparent;
             background-color: #f5f5f5;
         }
 
-    </style>
     </style>
 
 

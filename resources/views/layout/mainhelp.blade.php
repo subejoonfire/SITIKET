@@ -115,8 +115,6 @@
             cursor: pointer
         }
 
-    </style>
-    <style>
         .no-cursor {
             pointer-events: none;
             caret-color: transparent;
