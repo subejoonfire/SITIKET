@@ -10,19 +10,38 @@
                         <p>Beranda</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->is('admin/tiket') || request()->is('admin/action/*') ? 'active' : '' }} dropdown">
-                    <a href="{{ url('admin/tiket') }}" class="nav-link dropdown-toggle" id="tiketDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item {{ request()->routeIs('admin/tiket') || request()->routeIs('admin.setuju') || request()->routeIs('admin.proses') || request()->routeIs('admin.selesai') || request()->routeIs('admin.tolak') ? 'active' : '' }}">
+                    <!-- Link Menu Tiket yang akan mengarah ke halaman utama tiket -->
+                    <a href="{{ url('admin/tiket') }}" class="{{ request()->routeIs('admin.tiket') || request()->routeIs('admin.setuju') || request()->routeIs('admin.proses') || request()->routeIs('admin.selesai') || request()->routeIs('admin.tolak') ? 'active' : '' }}">
                         <i class="fas fa-ticket-alt"></i>
                         <p>Tiket</p>
+                        <span class="badge badge-count">5</span>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="tiketDropdown">
-                        <li><a class="dropdown-item" href="{{ url('admin.processed') }}">Proses</a></li>
-                        <li><a class="dropdown-item" href="{{ url('admin.approved') }}">Disetujui</a></li>
-                        <li><a class="dropdown-item" href="{{ url('admin.declined') }}">Ditolak</a></li>
-                        <li><a class="dropdown-item" href="{{ url('admin.done') }}">Selesai</a></li>
-                    </ul>
-                </li>
-                 
+                    <div class="{{ request()->routeIs('admin/utama') || request()->routeIs('admin.setuju') || request()->routeIs('admin.proses') || request()->routeIs('admin.selesai') || request()->routeIs('admin.tolak') ? 'show' : '' }}" id="base">
+                        <ul class="nav nav-collapse">
+                            <li class="{{ request()->routeIs('admin/tiket/approved') ? 'active' : '' }}">
+                                <a href="{{ url('admin/tiket/approved/') }}">
+                                    <span class="sub-item">Disetujui</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('admin/tiket/processed') ? 'active' : '' }}">
+                                <a href="{{ url('admin/tiket/processed') }}">
+                                    <span class="sub-item">Proses</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('admin/tiket/declined') ? 'active' : '' }}">
+                                <a href="{{ url('admin/tiket/declined') }}">
+                                    <span class="sub-item">Ditolak</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('admin/tiket/done') ? 'active' : '' }}">
+                                <a href="{{ url('admin/tiket/done') }}">
+                                    <span class="sub-item">Selesai</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> 
                 <li class="nav-item {{ request()->is('admin/user') ? 'active' : '' }}">
                     <a href="{{ url('admin/user') }}">
                         <i class="fas fa-user-alt"></i>
