@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => admin::class], function () {
         Route::get('/', [ARoutesController::class, 'index'])->name('/');
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
+        Route::get('/tiket', [ARoutesController::class, 'tiket'])->name('tiket');
 
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
@@ -68,6 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::post('/store', [AdminController::class, 'userStore'])->name('store');
                 Route::get('/delete/{id}', [AdminController::class, 'userDelete'])->name('delete');
                 Route::post('/update/{id}', [AdminController::class, 'userUpdate'])->name('update');
+                Route::get('/admin/tiket', [AdminController::class, 'tiket'])->name('admin.tiket')->middleware('auth', 'role:admin');
             });
         });
         // Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
@@ -118,4 +120,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile/image', [Controller::class, 'image_update'])->name('profile/image');
     Route::post('message_store/{id}', [Controller::class, 'message_store'])->name('message_store/{id}');
 });
+
 Route::get('logout', [Controller::class, 'logout'])->name('logout');
