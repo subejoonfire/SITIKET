@@ -44,21 +44,37 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ url('admin/department/action/update/'. $id) }}">
+                            <form method="POST" action="{{ url('admin/department/action/update/') }}">
                                 @csrf
-                                <!-- @method('PUT')  -->
+                                <!-- @method('PUT') -->
                                 <div class="form-group">
-                                    <label for="category_name">Nama Departemen</label>
-                                    <input type="text" name="name" class="form-control" id="category_name" placeholder="Enter Category Name" value="{{ $name }}">
+                                    <!-- Unit -->
+                                    <label for="unit">Nama Perusahaan</label>
+                                    <input type="text" name="unit" class="form-control" id="unit" placeholder="Unit" value="PT. JHONLIN GROUP">
+                                    @error('unit') <small class="text-danger">{{ $message }}</small> @enderror
+                                </div>
+                        
+                                <div class="form-group">
+                                    <!-- Kode -->
+                                    <label for="code">Kode</label>
+                                    <input type="text" name="code" class="form-control" id="code" placeholder="Kode" value="HRD">
+                                    @error('code') <small class="text-danger">{{ $message }}</small> @enderror
+                                </div>
+                        
+                                <div class="form-group">
+                                    <!-- Nama Department -->
+                                    <label for="name">Nama Department</label>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama Department" value="Human Resource Developmenta">
                                     @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
-
+                        
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                     <a href="{{ url('admin/department') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </form>
                         </div>
+                        
 
                     </div>
 
