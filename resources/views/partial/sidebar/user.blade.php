@@ -1,4 +1,5 @@
 <!-- Sidebar -->
+@include('css/user/dashboard')
 <div class="sidebar">
     <div class="sidebar-background"></div>
     <div class="sidebar-wrapper scrollbar-inner">
@@ -18,15 +19,3 @@
     </div>
 </div>
 <!-- End Sidebar -->
-<style>
-    .badge-count {
-        background-color: #ff6161; 
-        color: white; 
-        font-size: 12px; 
-        border-radius: 50%; 
-        padding: 3px 7px; 
-        line-height: 1;
-        display: inline-block; 
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
-    }
-</style>
