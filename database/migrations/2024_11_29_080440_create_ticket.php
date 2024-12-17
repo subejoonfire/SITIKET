@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('iduser')->nullable()->default(NULL);
             $table->unsignedBigInteger('idmodule')->nullable()->default(NULL);
             $table->unsignedBigInteger('idpriority')->nullable()->default(NULL);
+            $table->unsignedBigInteger('idcategory')->nullable()->default(NULL);
             $table->string('ticketcode')->unique();
             $table->string('status')->default('TERKIRIM');
             $table->string('issue');
