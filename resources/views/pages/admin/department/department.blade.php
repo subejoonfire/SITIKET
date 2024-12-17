@@ -49,35 +49,58 @@
                         <div class="card-body">
                             <!-- Modal -->
 
-                            <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Departemen</th>
-                                            <th style="width: 10%">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($collection as $item)
-                                        <tr>
-                                            <td>{{ $item->id }}</td>
-                                            <td>{{ $item->departmentname }}</td>
-                                            <td>
-                                                <div class="form-button-action">
-                                                    <a href="{{ url('admin/department/edit/' . $item->id) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-                                                        <i class="fa fa-edit"></i>
-                                                    </a>
-                                                    <a href="#" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                            @php
+                            // Data Dummy untuk Departemen
+                            $departments = [
+                                ['id' => 1, 'unit' => 'PT. JHONLIN GROUP', 'code' => 'HRD', 'name' => 'Human Resource Development'],
+                                ['id' => 2, 'unit' => 'PT. JHONLIN GROUP', 'code' => 'GA', 'name' => 'GENERAL 2222'],
+                                ['id' => 3, 'unit' => 'PT. JHONLIN GROUP', 'code' => 'OPRN', 'name' => 'DEPT. OPERATION'],
+                                ['id' => 4, 'unit' => 'PT. JHONLIN GROUP', 'code' => 'FAT', 'name' => 'DEPT. FAT'],
+                                ['id' => 5, 'unit' => 'PT. JHONLIN MARINE LINES', 'code' => 'GA', 'name' => 'GENERAL JML'],
+                                ['id' => 6, 'unit' => 'PT. SAMUDERA TIMUR MAS', 'code' => 'OPRN', 'name' => 'DEPT. OPERATION'],
+                                ['id' => 7, 'unit' => 'PT. SAMUDERA TIMUR MAS', 'code' => 'DOCC', 'name' => 'DOC. CONTROL'],
+                                ['id' => 8, 'unit' => 'PT. SAMUDERA TIMUR MAS', 'code' => 'FAT', 'name' => 'DEPT. FAT'],
+                                ['id' => 9, 'unit' => 'PT. SAMUDERA TIMUR MAS', 'code' => 'HRGA', 'name' => 'HRGA'],
+                                ['id' => 10, 'unit' => 'PT. JHONLIN BARATAMA', 'code' => 'FAT', 'name' => 'FAT'],
+                                ['id' => 11, 'unit' => 'PT. JHONLIN BARATAMA', 'code' => 'HRGA', 'name' => 'HRGA'],
+                                ['id' => 12, 'unit' => 'PT. JHONLIN BARATAMA', 'code' => 'PLANT', 'name' => 'PLANT MAINTENANCE'],
+                            ];
+                        @endphp
+
+                        <div class="table-responsive">
+                            <table id="add-row" class="display table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Unit</th>
+                                        <th>Kode</th>
+                                        <th>Nama Department</th>
+                                        <th style="width: 15%" data-orderable="false">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($departments as $item)
+                                    <tr>
+                                        <td>{{ $item['id'] }}</td>
+                                        <td>{{ $item['unit'] }}</td>
+                                        <td>{{ $item['code'] }}</td>
+                                        <td>{{ $item['name'] }}</td>
+                                        <td>
+                                            <div class="form-button-action">
+                                                <a href="{{ url('admin/department/edit/')}}" class="btn btn-warning btn-sm" style="margin-right: 3px;">
+                                                    <i class="fa fa-edit"></i> Edit
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
+                                                    <i class="fa fa-trash"></i> Hapus
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
                         </div>
                     </div>
                 </div>
