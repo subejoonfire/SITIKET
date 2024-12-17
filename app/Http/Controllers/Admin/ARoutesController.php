@@ -105,7 +105,7 @@ class ARoutesController extends Controller
         return view('pages.admin.department.editdepartment', $data);
     }
 
-        public function company()
+    public function company()
     {
         $data = [
             'title' =>'SI-TIKET | PERUSAHAAN',
@@ -128,6 +128,30 @@ class ARoutesController extends Controller
             'title' => 'SI-TIKET | EDIT_COMPANY',
         ];
         return view('pages.admin.company.editcompany', $data);
+    }
+    public function priority()
+    {
+        $data = [
+            'title' =>'SI-TIKET | PRIORITAS',
+            // 'collection' => Company::all(),
+        ];
+        return view('pages.admin.priority.priority', $data);
+    }
+
+    public function addpriority()
+    {
+        $data = [
+            'title' => 'SI-TIKET | ADD_PRIORITAS',
+        ];
+        return view('pages.admin.priority.addcompany', $data);
+    }
+
+    public function editpriority()
+    {
+        $data = [
+            'title' => 'SI-TIKET | EDIT_PRIORITAS',
+        ];
+        return view('pages.admin.priority.editpriority', $data);
     }
 
 
