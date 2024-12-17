@@ -72,7 +72,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Unit</th>
+                                        <th>Nama Perusahaan</th>
                                         <th>Kode</th>
                                         <th>Nama Department</th>
                                         <th style="width: 15%" data-orderable="false">Aksi</th>

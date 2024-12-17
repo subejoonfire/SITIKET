@@ -18,7 +18,7 @@
                             <div class="card-body">
                                 <!-- Input Unit -->
                                 <div class="form-group">
-                                    <label for="unit">Unit</label>
+                                    <label for="unit">Nama Perusahaan</label>
                                     <input type="text" name="unit" class="form-control" id="unit" placeholder="Masukkan Unit" value="">
                                     @error('unit')
                                     <small class="text-danger">{{ $message }}</small>

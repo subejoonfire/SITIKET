@@ -49,7 +49,7 @@
                                 <!-- @method('PUT') -->
                                 <div class="form-group">
                                     <!-- Unit -->
-                                    <label for="unit">Unit</label>
+                                    <label for="unit">Nama Perusahaan</label>
                                     <input type="text" name="unit" class="form-control" id="unit" placeholder="Unit" value="PT. JHONLIN GROUP">
                                     @error('unit') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
