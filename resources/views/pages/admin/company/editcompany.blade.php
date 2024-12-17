@@ -8,7 +8,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Ubah Departemen</h4>
+                <h4 class="page-title">Ubah Perusahaan</h4>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -40,54 +40,46 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Ubah Departemen</h4>
+                                <h4 class="card-title">Ubah Perusahaan</h4>
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ url('admin/department/action/update/') }}">
+                            <form method="POST" action="{{ url('admin/company/action/update/') }}">
                                 @csrf
-                                <!-- @method('PUT') -->
+                                <!-- Input Kode -->
                                 <div class="form-group">
-                                    <!-- Unit -->
-                                    <label for="unit">Nama Perusahaan</label>
-                                    <select name="unit" class="form-control" id="unit">
-                                        <option value="" selected disabled>Pilih Perusahaan</option>
-                                        <option value="PT. JHONLIN GROUP">PT. JHONLIN GROUP</option>
-                                        <option value="PT. JHONLIN BARATAMA OLD">PT. JHONLIN BARATAMA OLD</option>
-                                        <option value="PT. DUA SAMUDRA PERKASA">PT. DUA SAMUDRA PERKASA</option>
-                                        <option value="PT. BARAMEGA CITRA MULIA PERSADA">PT. BARAMEGA CITRA MULIA PERSADA</option>
-                                        <option value="PT. JHONLIN MARINE LINES">PT. JHONLIN MARINE LINES</option>
-                                        <option value="PT. SAMUDERA TIMUR MAS">PT. SAMUDERA TIMUR MAS</option>
-                                        <option value="PT. JHONLIN BARATAMA">PT. JHONLIN BARATAMA</option>
-                                    </select>
-                                    @error('unit')
-                                    <small class="text-danger">{{ $message }}</small>
+                                    <label for="code">Kode</label>
+                                    <input type="text" name="code" class="form-control" id="code" placeholder="Kode" value="MNG001">
+                                    @error('code') 
+                                    <small class="text-danger">{{ $message }}</small> 
                                     @enderror
                                 </div>
-                                
                         
+                                <!-- Input Inisial -->
                                 <div class="form-group">
-                                    <!-- Kode -->
-                                    <label for="code">Kode</label>
-                                    <input type="text" name="code" class="form-control" id="code" placeholder="Kode" value="HRD">
-                                    @error('code') <small class="text-danger">{{ $message }}</small> @enderror
+                                    <label for="initial">Inisial</label>
+                                    <input type="text" name="initial" class="form-control" id="initial" placeholder="Inisial" value="PT. JG">
+                                    @error('initial') 
+                                    <small class="text-danger">{{ $message }}</small> 
+                                    @enderror
                                 </div>
                         
+                                <!-- Input Nama Perusahaan -->
                                 <div class="form-group">
-                                    <!-- Nama Department -->
-                                    <label for="name">Nama Department</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama Department" value="Human Resource Developmenta">
-                                    @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                                    <label for="name">Nama Perusahaan</label>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama Perusahaan" value="PT. JHONLIN GROUP">
+                                    @error('name') 
+                                    <small class="text-danger">{{ $message }}</small> 
+                                    @enderror
                                 </div>
                         
+                                <!-- Tombol Aksi -->
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
-                                    <a href="{{ url('admin/department') }}" class="btn btn-danger">Batal</a>
+                                    <a href="{{ url('admin/company') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </form>
                         </div>
-                        
-
                     </div>
 
                 </div>

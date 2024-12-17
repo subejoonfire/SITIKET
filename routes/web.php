@@ -81,6 +81,18 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/delete/{id}', [AdminController::class, 'departmentDelete'])->name('delete');
                 Route::post('/update/{id}', [AdminController::class, 'departmentUpdate'])->name('update');
             });
+
+
+        });
+        Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
+            Route::get('/', [ARoutesController::class, 'company'])->name('/');
+            Route::get('/add', [ARoutesController::class, 'addcompany'])->name('add');
+            Route::get('/edit', [ARoutesController::class, 'editcompany'])->name('edit');
+            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+                Route::post('/store', [AdminController::class, 'companyStore'])->name('store');
+                Route::get('/delete/{id}', [AdminController::class, 'companyDelete'])->name('delete');
+                Route::post('/update/{id}', [AdminController::class, 'companyUpdate'])->name('update');
+            });    
         });
         Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
             Route::get('/', [ARoutesController::class, 'category'])->name('/');
