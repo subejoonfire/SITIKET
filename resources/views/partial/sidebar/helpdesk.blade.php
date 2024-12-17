@@ -14,6 +14,7 @@
                     <a href="{{ url('helpdesk/validation') }}">
                         <i class="fas fa-clipboard-check"></i>
                         <p>Validasi</p>
+                        <span class="badge badge-count">5</span>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('history') ? 'active' : '' }}">
@@ -28,3 +29,15 @@
     </div>
 </div>
 <!-- End Sidebar -->
+<style>
+    .badge-count {
+        background-color: #ff6161; 
+        color: white; 
+        font-size: 12px; 
+        border-radius: 50%; 
+        padding: 3px 7px; 
+        line-height: 1;
+        display: inline-block; 
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+    }
+</style>

@@ -1,7 +1,26 @@
 @extends('layout.mainhelp')
 
 @section('content')
+<style>
+   .notification-badge {
+        position: absolute;
+        top: -5px; /* Geser ke atas */
+        right: -5px; /* Geser ke kanan */
+        font-size: 10px; /* Ukuran teks */
+        background-color: #ff6161; /* Warna merah */
+        color: white; /* Warna teks */
+        border-radius: 50%; /* Bentuk bulat */
+        padding: 4px 7px; /* Ukuran padding */
+        line-height: 1;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Efek bayangan */
+    }
 
+
+    .btn-review {
+        position: relative; 
+        display: inline-block; /
+    }
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -73,9 +92,13 @@
                                             <td>{{ $item->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
-                                                <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
-                                                    <i class="fas fa-eye"></i> Detail
-                                                </a>
+                                                <!-- Wrapper untuk Tombol dan Badge -->
+                                                <div class="btn-review">
+                                                    <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
+                                                        <i class="fas fa-eye"></i> Detail
+                                                    </a>
+                                                    <span class="notification-badge">2</span>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
