@@ -104,6 +104,33 @@ class ARoutesController extends Controller
         ];
         return view('pages.admin.department.editdepartment', $data);
     }
+
+        public function company()
+    {
+        $data = [
+            'title' =>'SI-TIKET | PERUSAHAAN',
+            // 'collection' => Company::all(),
+        ];
+        return view('pages.admin.company.company', $data);
+    }
+
+    public function addcompany()
+    {
+        $data = [
+            'title' => 'SI-TIKET | ADD_COMPANY',
+        ];
+        return view('pages.admin.company.addcompany', $data);
+    }
+
+    public function editcompany()
+    {
+        $data = [
+            'title' => 'SI-TIKET | EDIT_COMPANY',
+        ];
+        return view('pages.admin.company.editcompany', $data);
+    }
+
+
     public function module()
     {
         $data = [

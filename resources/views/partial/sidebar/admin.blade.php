@@ -42,6 +42,12 @@
                         <p>Departemen</p>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->is('admin/company') ? 'active' : '' }}">
+                    <a href="{{ url('admin/company') }}">
+                        <i class="fas fa-building"></i>
+                        <p>Perusahaan</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
