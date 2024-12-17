@@ -1292,6 +1292,14 @@ button.send-btn:hover {
 
    
     </style>
+    <style>
+    
+      .no-cursor {
+          pointer-events: none;
+          caret-color: transparent;
+          background-color: #f5f5f5;
+      }
+  </style>
 </head>
 <body>
     <div class="wrapper">
@@ -1319,15 +1327,80 @@ button.send-btn:hover {
 
             <!-- Navbar Header -->
             <nav class="navbar navbar-header navbar-expand-lg">
-                <div class="container-fluid">
-                    <div class="collapse" id="search-nav"></div>
-                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                        {{-- <li class="nav-item toggle-nav-search hidden-caret">
-                            <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
-                                <i class="fa fa-search"></i>
+				
+              <div class="container-fluid">
+                <div class="collapse" id="search-nav">
+                </div>
+                <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                  <li class="nav-item dropdown hidden-caret">
+                    <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fa fa-bell"></i>
+                      <span class="notification">3</span>
+                    </a>
+                    <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
+                      <li>
+                        <div class="dropdown-title">Kamu punya 4 pesan baru</div>
+                      </li>
+                  		<li>
+                        <div class="message-notif-scroll scrollbar-outer">
+                          <div class="notif-center">
+                            <a href="#">
+                              <div class="notif-img"> 
+                                <img src={{  url('back-end/assets/img/jm_denis.jpg')}} alt="Img Profile">
+                              </div>
+                              <div class="notif-content">
+                                <span class="subject">Jimmy Denis</span>
+                                <span class="block">
+                                  How are you ?
+                                </span>
+                                <span class="time">5 minutes ago</span> 
+                              </div>
                             </a>
-                        </li> --}}
-                        <li class="nav-item dropdown hidden-caret">
+                            <a href="#">
+                              <div class="notif-img"> 
+                                <img src={{  url('back-end/assets/img/chadengle.jpg')}} alt="Img Profile">
+                              </div>
+                              <div class="notif-content">
+                                <span class="subject">Chad</span>
+                                <span class="block">
+                                  Ok, Thanks !
+                                </span>
+                                <span class="time">12 minutes ago</span> 
+                              </div>
+                            </a>
+                            <a href="#">
+                              <div class="notif-img"> 
+                                <img src={{  url('back-end/assets/img/mlane.jpg')}} alt="Img Profile">
+                              </div>
+                              <div class="notif-content">
+                                <span class="subject">Jhon Doe</span>
+                                <span class="block">
+                                  Ready for the meeting today...
+                                </span>
+                                <span class="time">12 minutes ago</span> 
+                              </div>
+                            </a>
+                            <a href="#">
+                              <div class="notif-img"> 
+                                <img src={{  url('back-end/assets/img/talha.jpg')}} alt="Img Profile">
+                              </div>
+                              <div class="notif-content">
+                                <span class="subject">Talha</span>
+                                <span class="block">
+                                  Hi, Apa Kabar ?
+                                </span>
+                                <span class="time">17 minutes ago</span> 
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
+                      </li>
+                    </ul>
+                  </li>
+                              <li class="nav-item dropdown hidden-caret">
                             <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <div class="avatar-sm">
                                     <img src="{{ url('back-end/assets/img/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle">

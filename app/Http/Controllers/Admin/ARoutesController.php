@@ -102,13 +102,13 @@ class ARoutesController extends Controller
         return view('pages.admin.department.adddepartment', $data);
     }
 
-    public function editdepart($id)
+    public function editdepart()
     {
-        $query = Department::findOrFail($id);
+        // $query = Department::findOrFail();
         $data = [
             'title' => 'SI-TIKET | EDIT_DEPARTMENT',
-            'name' => $query->departmentname,
-            'id' => $query->id,
+            // 'name' => $query->departmentname,
+            // 'id' => $query->id,
         ];
         return view('pages.admin.department.editdepartment', $data);
     }
