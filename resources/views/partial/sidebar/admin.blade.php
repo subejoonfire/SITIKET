@@ -54,6 +54,12 @@
                         <p>Perusahaan</p>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->is('admin/priority') ? 'active' : '' }}">
+                    <a href="{{ url('admin/priority') }}">
+                        <i class="fas fa-clipboard"></i>
+                        <p>Priority</p>
+                    </a>
+                </li>
                 
             </ul>
         </div>
