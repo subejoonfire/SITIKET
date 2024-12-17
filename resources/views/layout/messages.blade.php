@@ -40,7 +40,7 @@
                 <li class="message unread" style="cursor: default;">
                     <div class="message-container">
                         <div class="profile-picture">
-                            <img src="{{ url('/back-end/assets/img/' . $item->user_from->image ?? 'default.jpg') }}" alt="Profile Picture" class="profile-img">
+                            <img src="{{ url('/storage/profiles/' . $item->user_from->image ?? 'default.jpg') }}" alt="Profile Picture" class="profile-img">
                         </div>
                         <div class="message-content">
                             <div class="header">

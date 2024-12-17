@@ -10,6 +10,7 @@ use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class Controller
@@ -71,17 +72,13 @@ class Controller
     public function image_update(Request $request)
     {
         $user = User::find(auth()->user()->id);
-        if ($request->hasFile('image') && isset($user->image)) {
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = time() . 'user' . auth()->user()->id . '.' . $file->getClientOriginalExtension();
-            unlink(public_path('back-end/assets/img/' . $user->image));
-            $file->move(public_path('back-end/assets/img/'), $fileName);
-            $user->image = $fileName;
-            $user->save();
-        } else if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $fileName = time() . 'user' . auth()->user()->id . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('back-end/assets/img/'), $fileName);
+            if ($user->image) {
+                Storage::delete('public/profiles/' . $user->image);
+            }
+            $file->storeAs('public/profiles', $fileName);
             $user->image = $fileName;
             $user->save();
         }
