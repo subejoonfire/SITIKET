@@ -51,6 +51,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
         Route::get('/tiket', [ARoutesController::class, 'tiket'])->name('tiket');
 
+        Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+            Route::get('approved/{id}', [ARoutesController::class, 'approved'])->name('approved');
+            Route::get('declined/{id}', [ARoutesController::class, 'declined'])->name('declined');
+            Route::get('processed/{id}', [ARoutesController::class, 'processed'])->name('processed');
+            Route::get('done/{id}', [ARoutesController::class, 'done'])->name('processed');
+        });
+
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
             Route::get('add', [ARoutesController::class, 'addmodule'])->name('addmodule');

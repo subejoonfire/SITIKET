@@ -10,12 +10,19 @@
                         <p>Beranda</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->is('admin/tiket') ? 'active' : '' }}">
-                    <a href="{{ url('admin/tiket') }}">
+                <li class="nav-item {{ request()->is('admin/tiket') || request()->is('admin/action/*') ? 'active' : '' }} dropdown">
+                    <a href="{{ url('admin/tiket') }}" class="nav-link dropdown-toggle" id="tiketDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-ticket-alt"></i>
                         <p>Tiket</p>
                     </a>
-                </li> 
+                    <ul class="dropdown-menu" aria-labelledby="tiketDropdown">
+                        <li><a class="dropdown-item" href="{{ url('admin.processed') }}">Proses</a></li>
+                        <li><a class="dropdown-item" href="{{ url('admin.approved') }}">Disetujui</a></li>
+                        <li><a class="dropdown-item" href="{{ url('admin.declined') }}">Ditolak</a></li>
+                        <li><a class="dropdown-item" href="{{ url('admin.done') }}">Selesai</a></li>
+                    </ul>
+                </li>
+                 
                 <li class="nav-item {{ request()->is('admin/user') ? 'active' : '' }}">
                     <a href="{{ url('admin/user') }}">
                         <i class="fas fa-user-alt"></i>
