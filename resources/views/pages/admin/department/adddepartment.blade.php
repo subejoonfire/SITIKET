@@ -19,11 +19,21 @@
                                 <!-- Input Unit -->
                                 <div class="form-group">
                                     <label for="unit">Nama Perusahaan</label>
-                                    <input type="text" name="unit" class="form-control" id="unit" placeholder="Masukkan Unit" value="">
+                                    <select name="unit" class="form-control" id="unit">
+                                        <option value="" selected disabled>Pilih Perusahaan</option>
+                                        <option value="PT. JHONLIN GROUP">PT. JHONLIN GROUP</option>
+                                        <option value="PT. JHONLIN BARATAMA OLD">PT. JHONLIN BARATAMA OLD</option>
+                                        <option value="PT. DUA SAMUDRA PERKASA">PT. DUA SAMUDRA PERKASA</option>
+                                        <option value="PT. BARAMEGA CITRA MULIA PERSADA">PT. BARAMEGA CITRA MULIA PERSADA</option>
+                                        <option value="PT. JHONLIN MARINE LINES">PT. JHONLIN MARINE LINES</option>
+                                        <option value="PT. SAMUDERA TIMUR MAS">PT. SAMUDERA TIMUR MAS</option>
+                                        <option value="PT. JHONLIN BARATAMA">PT. JHONLIN BARATAMA</option>
+                                    </select>
                                     @error('unit')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                
                             
                                 <!-- Input Kode -->
                                 <div class="form-group">

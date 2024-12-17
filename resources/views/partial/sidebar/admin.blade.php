@@ -10,6 +10,12 @@
                         <p>Beranda</p>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->is('admin/tiket') ? 'active' : '' }}">
+                    <a href="{{ url('admin/tiket') }}">
+                        <i class="fas fa-ticket-alt"></i>
+                        <p>Tiket</p>
+                    </a>
+                </li> 
                 <li class="nav-item {{ request()->is('admin/user') ? 'active' : '' }}">
                     <a href="{{ url('admin/user') }}">
                         <i class="fas fa-user-alt"></i>
@@ -28,12 +34,7 @@
                         <p>Kategori</p>
                     </a>
                 </li>                
-                <li class="nav-item {{ request()->is('admin/tiket') ? 'active' : '' }}">
-                    <a href="{{ url('admin/tiket') }}">
-                        <i class="fas fa-ticket-alt"></i>
-                        <p>Tiket</p>
-                    </a>
-                </li>                
+                           
                 {{-- <li class="nav-item {{ request()->is('admin/pic') ? 'active' : '' }}">
                     <a href="{{ url('admin/pic') }}">
                 <li class="nav-item {{ request()->is('admin/category') ? 'active' : '' }}">
@@ -44,10 +45,23 @@
                 </li> --}}
                 <li class="nav-item {{ request()->is('admin/department') ? 'active' : '' }}">
                     <a href="{{ url('admin/department') }}">
-                        <i class="fas fa-building"></i>
+                        <i class="fas fa-folder"></i>
                         <p>Departemen</p>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->is('admin/company') ? 'active' : '' }}">
+                    <a href="{{ url('admin/company') }}">
+                        <i class="fas fa-building"></i>
+                        <p>Perusahaan</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->is('admin/priority') ? 'active' : '' }}">
+                    <a href="{{ url('admin/priority') }}">
+                        <i class="fas fa-clipboard"></i>
+                        <p>Priority</p>
+                    </a>
+                </li>
+                
             </ul>
         </div>
     </div>
