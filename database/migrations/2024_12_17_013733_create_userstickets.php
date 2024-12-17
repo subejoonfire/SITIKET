@@ -11,19 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
+        Schema::create('userstickets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('iduser_pic')->nullable()->default(NULL);
             $table->unsignedBigInteger('iduser')->nullable()->default(NULL);
-            $table->unsignedBigInteger('idmodule')->nullable()->default(NULL);
-            $table->unsignedBigInteger('idpriority')->nullable()->default(NULL);
-            $table->string('ticketcode')->unique();
-            $table->string('status')->default('TERKIRIM');
-            $table->string('issue');
-            $table->text('detailissue');
-            $table->string('priority')->nullable()->default(NULL);
+            $table->unsignedBigInteger('idticket')->nullable()->default(NULL);
             $table->timestamps();
             $table->softDeletes();
-            //
         });
     }
 
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ticket');
+        Schema::dropIfExists('userstickets');
     }
 };
