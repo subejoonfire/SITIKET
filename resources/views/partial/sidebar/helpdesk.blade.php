@@ -1,4 +1,5 @@
 <!-- Sidebar -->
+@include('css/helpdesk/dashboard')
 <div class="sidebar">
     <div class="sidebar-background"></div>
     <div class="sidebar-wrapper scrollbar-inner">
@@ -14,6 +15,7 @@
                     <a href="{{ url('helpdesk/validation') }}">
                         <i class="fas fa-clipboard-check"></i>
                         <p>Validasi</p>
+                        <span class="badge badge-count">5</span>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('history') ? 'active' : '' }}">

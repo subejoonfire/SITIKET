@@ -1,7 +1,6 @@
 @extends('layout.mainhelp')
-
 @section('content')
-
+@include('css/helpdesk/dashboard')
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -73,9 +72,13 @@
                                             <td>{{ $item->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
-                                                <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
-                                                    <i class="fas fa-eye"></i> Detail
-                                                </a>
+                                                <!-- Wrapper untuk Tombol dan Badge -->
+                                                <div class="btn-review">
+                                                    <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
+                                                        <i class="fas fa-eye"></i> Detail
+                                                    </a>
+                                                    <span class="notification-badge">2</span>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -1,28 +1,7 @@
 @extends('layout.mainuser')
 
 @section('content')
-<style>
-    .notification-badge {
-        position: absolute;
-        top: -5px;
-        right: -5px;
-        background-color: #f44336;
-        color: #fff;
-        font-size: 12px;
-        font-weight: bold;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .form-button-action a {
-        position: relative;
-    }
-
-</style>
+@include('css/user/dashboard')
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -55,7 +34,6 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <!-- Alert Success, Error, dan Validation Errors -->
                     @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
@@ -114,10 +92,11 @@
                                             <td>{{ $item->idmodule ? $item->modules->modulename : 'Belum ada' }}</td>
                                             <td>{{ $item->status ?? 'Tidak ada' }}</td>
                                             <td>{{ \Illuminate\Support\Str::limit($item->issue ?? 'Tidak ada', 60) }}</td>
-                                            <td>
-                                                <a href="{{ url('user/review/' . $item->id) }}" class="btn btn-info btn-sm">
+                                            <td style="position: relative;">
+                                                <a href="{{ url('user/review/' . $item->id) }}" class="btn btn-info btn-sm" style="position: relative; display: inline-block;">
                                                     <i class="fas fa-eye"></i> Detail
                                                 </a>
+                                                <span class="badge badge-danger notification-badge">2</span>
                                                 @if ($item->status == 'TERKIRIM')
                                                 <a href="{{ url('user/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Remove">
                                                     <i class="fas fa-trash"></i> Delete

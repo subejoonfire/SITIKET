@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('content')
-
+@include('css/pic/dashboard')
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -93,9 +93,12 @@
                                             <td>{{ $item->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
-                                                <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-sm">
-                                                    <i class="fa fa-eye"></i> Review
-                                                </a>
+                                                <div class="btn-review">
+                                                    <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-eye"></i> Review
+                                                    </a>
+                                                    <span class="notification-badge">2</span>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
