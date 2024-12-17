@@ -60,6 +60,74 @@ class ARoutesController extends Controller
         ];
         return view('pages.admin.tiket.tiket', $data);
     }
+    public function approved()
+    {
+        $data = [
+            'title' => 'SI-TIKET | DISETUJUI',
+            // 'collection' => Ticket::with(['users'])
+            //     ->whereHas('users', function ($query) {
+            //         $query->whereNotNull('iduser_pic')
+            //             ->where([
+            //                 'iduser_pic' => auth()->user()->id,
+            //                 'status' => 'DISETUJUI'
+            //             ]);
+            //     })
+            //     ->get()
+        ];
+        return view('pages.admin.tiket.approved.index', $data);
+    }
+
+    public function processed()
+    {
+        $data = [
+            'title' => 'SI-TIKET | DIPROSES',
+            // 'collection' => Ticket::with(['users'])
+            //     ->whereHas('users', function ($query) {
+            //         $query->whereNotNull('iduser_pic')
+            //             ->where([
+            //                 'iduser_pic' => auth()->user()->id,
+            //                 'status' => 'DIPROSES'
+            //             ]);
+            //     })
+            //     ->get()
+        ];
+        return view('pages.admin.tiket.processed.index', $data);
+    }
+
+    public function declined()
+    {
+        $data = [
+            'title' => 'SI-TIKET | DITOLAK',
+            // 'collection' => Ticket::with(['users'])
+            //     ->whereHas('users', function ($query) {
+            //         $query->whereNotNull('iduser_pic')
+            //             ->where([
+            //                 'iduser_pic' => auth()->user()->id,
+            //                 'status' => 'DITOLAK'
+            //             ]);
+            //     })
+            //     ->get()
+        ];
+        return view('pages.admin.tiket.declined.index', $data);
+    }
+
+    public function done()
+    {
+        $data = [
+            'title' => 'SI-TIKET | SELESAI',
+            // 'collection' => Ticket::with(['users'])
+            //     ->whereHas('users', function ($query) {
+            //         $query->whereNotNull('iduser_pic')
+            //             ->where([
+            //                 'iduser_pic' => auth()->user()->id,
+            //                 'status' => 'SELESAI'
+            //             ]);
+            //     })
+            //     ->get()
+        ];
+        return view('pages.admin.tiket.done.index', $data);
+    }
+
     public function category()
     {
         $data = [

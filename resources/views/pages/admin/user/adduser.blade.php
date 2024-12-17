@@ -62,6 +62,13 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="perusahaan">Perusahaan</label>
+                                    <input type="perusahaan" name="perusahaan" class="form-control" id="perusahaan" placeholder="Masukan Perusahaan" value="{{ old('perusahaan') }}">
+                                    @error('perusahaan')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password">
                                     @error('password')
