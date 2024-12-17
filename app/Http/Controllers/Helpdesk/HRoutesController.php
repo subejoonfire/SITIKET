@@ -49,11 +49,10 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | HALAMAN_VALIDASI',
-            'collection' => Ticket::whereNull(['tickets.iduser_pic', 'tickets.iduser_pic'])->get(),
+            'collection' => Ticket::with(['users'])->get(),
             'page' => 'validation',
         ];
-
-
+        // dd($data['collection']);
         return view('pages/helpdesk/validation', $data);
     }
 
