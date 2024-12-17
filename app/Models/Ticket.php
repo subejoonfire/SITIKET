@@ -30,20 +30,28 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class, 'iduser');
     }
-    public function users_pic(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'iduser_pic');
-    }
-    public function departments(): BelongsTo
-    {
-        return $this->belongsTo(Department::class, 'iddepartment');
-    }
+    // public function users_pic(): BelongsTo
+    // {
+    //     return $this->belongsTo(User::class, 'iduser_pic');
+    // }
+    // public function departments(): BelongsTo
+    // {
+    //     return $this->belongsTo(Department::class, 'iddepartment');
+    // }
     public function categories(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'idcategory');
     }
+    public function priorities(): BelongsTo
+    {
+        return $this->belongsTo(Priority::class, 'idpriority');
+    }
     public function modules(): BelongsTo
     {
         return $this->belongsTo(Module::class, 'idmodule');
+    }
+    public function users_tickets(): BelongsTo
+    {
+        return $this->belongsTo(UsersTickets::class, 'id', 'idticket');
     }
 }
