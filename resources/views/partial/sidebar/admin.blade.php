@@ -15,7 +15,6 @@
                     <a href="{{ url('admin/tiket') }}" class="{{ request()->routeIs('admin.tiket') || request()->routeIs('admin.setuju') || request()->routeIs('admin.proses') || request()->routeIs('admin.selesai') || request()->routeIs('admin.tolak') ? 'active' : '' }}">
                         <i class="fas fa-ticket-alt"></i>
                         <p>Tiket</p>
-                        <span class="badge badge-count">5</span>
                     </a>
                     <div class="{{ request()->routeIs('admin/utama') || request()->routeIs('admin.setuju') || request()->routeIs('admin.proses') || request()->routeIs('admin.selesai') || request()->routeIs('admin.tolak') ? 'show' : '' }}" id="base">
                         <ul class="nav nav-collapse">
@@ -42,12 +41,46 @@
                         </ul>
                     </div>
                 </li> 
-                <li class="nav-item {{ request()->is('admin/user') ? 'active' : '' }}">
+                {{-- <li class="nav-item {{ request()->is('admin/user') ? 'active' : '' }}">
                     <a href="{{ url('admin/user') }}">
                         <i class="fas fa-user-alt"></i>
                         <p>Pengguna</p>
                     </a>
-                </li>
+                </li> --}}
+
+                <li class="nav-item {{ request()->routeIs('admin/user') || request()->routeIs('admin.admin') || request()->routeIs('admin.user') || request()->routeIs('admin.pic') || request()->routeIs('admin.helpdesk') ? 'active' : '' }}">
+                    <!-- Link Menu Tiket yang akan mengarah ke halaman utama tiket -->
+                    <a href="{{ url('admin/user') }}" class="{{ request()->routeIs('admin.user') || request()->routeIs('admin.admin') || request()->routeIs('admin.user') || request()->routeIs('admin.pic') || request()->routeIs('admin.helpdesk') ? 'active' : '' }}">
+                        <i class="fas fa-user"></i>
+                        <p>Pengguna</p>
+                    </a>
+                    <div class="{{ request()->routeIs('admin/utama') || request()->routeIs('admin.setuju') || request()->routeIs('admin.proses') || request()->routeIs('admin.selesai') || request()->routeIs('admin.tolak') ? 'show' : '' }}" id="base">
+                        <ul class="nav nav-collapse">
+                            <li class="{{ request()->routeIs('admin/admin') ? 'active' : '' }}">
+                                <a href="{{ url('admin/ladmin') }}">
+                                    <span class="sub-item">Admin</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('admin/user') ? 'active' : '' }}">
+                                <a href="{{ url('admin/luser') }}">
+                                    <span class="sub-item">User</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('admin/pic') ? 'active' : '' }}">
+                                <a href="{{ url('admin/lpic') }}">
+                                    <span class="sub-item">PIC</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('admin/helpdesk') ? 'active' : '' }}">
+                                <a href="{{ url('admin/lhelpdesk') }}">
+                                    <span class="sub-item">Helpdesk</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> 
+
+
                 <li class="nav-item {{ request()->is('admin/module') ? 'active' : '' }}">
                     <a href="{{ url('admin/module') }}">
                         <i class="fas fa-file-alt"></i>
