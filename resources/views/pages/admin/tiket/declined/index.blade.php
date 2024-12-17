@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.mainadmin')
 @section('content')
 
 <div class="main-panel">
@@ -78,7 +78,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($collection as $item)
+                                        {{-- @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->ticketcode }}</td>
@@ -93,7 +93,7 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                        @endforeach
+                                        @endforeach --}}
                                     </tbody>
                                 </table>
                             </div>

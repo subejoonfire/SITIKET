@@ -20,22 +20,22 @@
                     <div class="{{ request()->routeIs('admin/utama') || request()->routeIs('admin.setuju') || request()->routeIs('admin.proses') || request()->routeIs('admin.selesai') || request()->routeIs('admin.tolak') ? 'show' : '' }}" id="base">
                         <ul class="nav nav-collapse">
                             <li class="{{ request()->routeIs('admin/tiket/approved') ? 'active' : '' }}">
-                                <a href="{{ url('admin/tiket/approved/') }}">
+                                <a href="{{ url('admin/approved/') }}">
                                     <span class="sub-item">Disetujui</span>
                                 </a>
                             </li>
                             <li class="{{ request()->routeIs('admin/tiket/processed') ? 'active' : '' }}">
-                                <a href="{{ url('admin/tiket/processed') }}">
+                                <a href="{{ url('admin/processed') }}">
                                     <span class="sub-item">Proses</span>
                                 </a>
                             </li>
                             <li class="{{ request()->routeIs('admin/tiket/declined') ? 'active' : '' }}">
-                                <a href="{{ url('admin/tiket/declined') }}">
+                                <a href="{{ url('admin/declined') }}">
                                     <span class="sub-item">Ditolak</span>
                                 </a>
                             </li>
                             <li class="{{ request()->routeIs('admin/tiket/done') ? 'active' : '' }}">
-                                <a href="{{ url('admin/tiket/done') }}">
+                                <a href="{{ url('admin/done') }}">
                                     <span class="sub-item">Selesai</span>
                                 </a>
                             </li>

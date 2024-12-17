@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.mainadmin')
 @section('content')
 
 @include('css/pic/picreview')
