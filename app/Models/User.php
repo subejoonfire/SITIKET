@@ -7,6 +7,7 @@ use App\Models\Module;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -60,8 +61,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Module::class, 'idmodule');
     }
-    public function companies(): BelongsTo
+    public function companies(): HasMany
     {
-        return $this->belongsTo(Company::class, 'idcompany');
+        return $this->hasMany(Company::class, 'idcompany');
     }
 }
