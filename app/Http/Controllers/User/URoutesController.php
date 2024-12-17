@@ -22,7 +22,7 @@ class URoutesController extends Controller
             'collection' => Ticket::where('iduser', auth()->user()->id)->get(),
             'count' => Ticket::where('iduser', auth()->user()->id)->count(),
         ];
-        return view('pages.user.dashboard', $data);
+        return view('pages/user/dashboard', $data);
     }
 
     public function add()
@@ -34,7 +34,7 @@ class URoutesController extends Controller
             'category' => Category::all(),
         ];
 
-        return view('pages.user.addrequest', $data);
+        return view('pages/user/addrequest', $data);
     }
 
     public function profile()
@@ -44,7 +44,7 @@ class URoutesController extends Controller
             'title' => 'SI-TIKET | Profile'
         ];
 
-        return view('pages.user.profile', $data);
+        return view('pages/user/profile', $data);
     }
 
     public function review($id)
@@ -58,6 +58,6 @@ class URoutesController extends Controller
                     $query->where('messages.idticket', $id);
                 })->get(),
         ];
-        return view('pages.user.review', $data);
+        return view('pages/user/review', $data);
     }
 }

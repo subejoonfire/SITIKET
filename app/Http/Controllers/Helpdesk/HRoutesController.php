@@ -17,7 +17,7 @@ class HRoutesController extends Controller
             'incoming' => Ticket::whereNull('iduser_pic')->count(),
             'done' => Ticket::whereNotNull('iduser_pic')->count(),
         ];
-        return view('pages.helpdesk.dashboard', $data);
+        return view('pages/helpdesk/dashboard', $data);
     }
 
     public function detail($id)
@@ -25,12 +25,16 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'data' => Ticket::with(['categories'])->where('id', $id)->first(),
+            'data' => Ticket::with([
+                'categories',
+                'users_tickets.user_pic',
+            ])->where('id', $id)->first(),
             'module' => Module::all(),
             'pic' => User::where('level', 3)->get(),
         ];
+        // dd($data['data']);
 
-        return view('pages.helpdesk.detail', $data);
+        return view('pages/helpdesk/detail', $data);
     }
     public function history()
     {
@@ -42,19 +46,17 @@ class HRoutesController extends Controller
         ];
 
 
-        return view('pages.helpdesk.history', $data);
+        return view('pages/helpdesk/history', $data);
     }
     public function validation()
     {
 
         $data = [
             'title' => 'SI-TIKET | HALAMAN_VALIDASI',
-            'collection' => Ticket::whereNull(['tickets.iduser_pic', 'tickets.iduser_pic'])->get(),
+            'collection' => Ticket::with(['users'])->get(),
             'page' => 'validation',
         ];
-
-
-        return view('pages.helpdesk.validation', $data);
+        return view('pages/helpdesk/validation', $data);
     }
 
     public function profile()
@@ -66,6 +68,6 @@ class HRoutesController extends Controller
         ];
 
 
-        return view('pages.helpdesk.profile', $data);
+        return view('pages/helpdesk/profile', $data);
     }
 }

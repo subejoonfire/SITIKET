@@ -89,7 +89,31 @@
                                         </div>
                                         <div style="flex: 1;">
                                             <label for="iduser_pic">Pilih PIC</label>
-                                            <select name="iduser_pic" class="form-control" id="iduser_pic">
+                                            @if (count($data->users_tickets) > 0)
+                                            @foreach($data->users_tickets as $index => $row)
+                                            <select name="iduser_pic[]" class="form-control iduser_pic" id="iduser_pic {{ $index }}">
+                                                <option value="">Pilih PIC</option>
+                                                @foreach ($pic as $item)
+                                                <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}" {{ $row->iduser_pic == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            <br>
+                                            @error("iduser_pic.{$index}")
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                            @endforeach
+                                            <select name="iduser_pic[]" class="form-control iduser_pic" id="iduser_pic {{ $index }}">
+                                                <option value="">Pilih PIC</option>
+                                                @foreach ($pic as $item)
+                                                <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}">
+                                                    {{ $item->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            @else
+                                            <select name="iduser_pic[]" class="form-control" id="iduser_pic">
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
                                                 <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}" {{ old('iduser_pic', $data->iduser_pic ?? '') == $item->id ? 'selected' : '' }}>
@@ -100,6 +124,7 @@
                                             @error('iduser_pic')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
+                                            @endif
                                         </div>
                                         <div style="flex: 1;">
                                             <label for="priority">Prioritas</label>

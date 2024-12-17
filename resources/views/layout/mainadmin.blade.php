@@ -32,30 +32,24 @@
         .main-header {
             background-color: #70c55b !important;
         }
-        .btn-custom {
-        background-color: #70c55b;
-        color: white;
-        border-radius: 25px;
-    }
 
-    
+        .btn-custom {
+            background-color: #70c55b;
+            color: white;
+            border-radius: 25px;
+        }
+
+        .text-danger {
+            color: red;
+        }
+
+        .no-cursor {
+            pointer-events: none;
+            caret-color: transparent;
+            background-color: #f5f5f5;
+        }
 
     </style>
-
-<style>
-    .text-danger {
-        color: red;
-    }
-
-</style>
-<style>
-    
-    .no-cursor {
-        pointer-events: none;
-        caret-color: transparent;
-        background-color: #f5f5f5;
-    }
-</style>
 
 
 </head>
@@ -96,13 +90,13 @@
                         <li class="nav-item dropdown hidden-caret">
                             <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <div class="avatar-sm">
-                                    <img src="{{ url('back-end/assets/img/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle">
+                                    <img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-user animated fadeIn">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="{{ url('back-end/assets/img/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="image profile" class="avatar-img rounded"></div>
+                                        <div class="avatar-lg"><img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4>{{ auth()->user()->name }}</h4>
                                             <p class="text-muted">{{ auth()->user()->email}}</p>

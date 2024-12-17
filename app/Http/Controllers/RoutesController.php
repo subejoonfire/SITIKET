@@ -16,15 +16,15 @@ class RoutesController extends Controller
             'page' => 'beranda',
         ];
 
-        return view('pages.landing', $data);
+        return view('pages/landing', $data);
     }
     public function index()
     {
-        return view('pages.login');
+        return view('pages/login');
     }
     public function register()
     {
-        return view('pages.register');
+        return view('pages/register');
     }
 
     public function profile()
@@ -34,6 +34,6 @@ class RoutesController extends Controller
             'title' => 'SI-TIKET | PROFILE',
         ];
 
-        return view('pages.profile', $data);
+        return view('pages/profile', $data);
     }
 }

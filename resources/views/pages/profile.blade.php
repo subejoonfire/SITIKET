@@ -90,10 +90,10 @@ default => 'layout.default',
                 </div>
                 <div class="col-md-4">
                     <div class="card card-profile card-secondary">
-                        <div class="card-header" style="background-image: url('{{ asset('back-end/assets/img/blogpost.jpg') }}')">
+                        <div class="card-header" style="background-image: url('{{ asset('storage/profiles/blogpost.jpg') }}')">
                             <div class="profile-picture">
                                 <div class="avatar avatar-xl">
-                                    <img id="profile-img" src="{{ url('back-end/assets/img/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle" style="cursor: pointer;">
+                                    <img id="profile-img" src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle" style="cursor: pointer;">
                                 </div>
                             </div>
                         </div>

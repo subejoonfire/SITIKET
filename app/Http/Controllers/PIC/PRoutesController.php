@@ -22,7 +22,7 @@ class PRoutesController extends Controller
             'title' => 'SI-TIKET | PROFILE',
         ];
 
-        return view('pages.pic.profile', $data);
+        return view('pages/pic/profile', $data);
     }
 
     public function dashboard()
@@ -37,7 +37,7 @@ class PRoutesController extends Controller
             'done' => Ticket::where('status', 'SELESAI')->count(),
         ];
 
-        return view('pages.pic.dashboard', $data);
+        return view('pages/pic/dashboard', $data);
     }
     public function ticket()
     {
@@ -50,7 +50,7 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.pic.ticket.index', $data);
+        return view('pages/pic/ticket.index', $data);
     }
 
     public function approved()
@@ -67,7 +67,7 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.pic.ticket.approved.index', $data);
+        return view('pages/pic/ticket.approved.index', $data);
     }
 
     public function processed()
@@ -84,7 +84,7 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.pic.ticket.processed.index', $data);
+        return view('pages/pic/ticket.processed.index', $data);
     }
 
     public function declined()
@@ -101,7 +101,7 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.pic.ticket.declined.index', $data);
+        return view('pages/pic/ticket.declined.index', $data);
     }
 
     public function done()
@@ -118,7 +118,7 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages.pic.ticket.done.index', $data);
+        return view('pages/pic/ticket.done.index', $data);
     }
     public function review($type, $id)
     {
@@ -131,13 +131,13 @@ class PRoutesController extends Controller
             'documents' => Document::with('messages')->where('idmessage', $id)->get(),
         ];
         if ($type == 'approved') {
-            return view('pages.pic.ticket.review', $data);
+            return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'processed') {
-            return view('pages.pic.ticket.review', $data);
+            return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'index') {
-            return view('pages.pic.ticket.review', $data);
+            return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'done') {
-            return view('pages.pic.ticket.review', $data);
+            return view('pages/pic/ticket/review', $data);
         }
         return redirect()->back()->with('error', 'Halaman yang anda cari tidak ditemukan');
     }

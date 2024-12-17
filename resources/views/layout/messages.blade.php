@@ -40,7 +40,7 @@
                 <li class="message unread" style="cursor: default;">
                     <div class="message-container">
                         <div class="profile-picture">
-                            <img src="{{ url('/back-end/assets/img/' . $item->user_from->image ?? 'default.jpg') }}" alt="Profile Picture" class="profile-img">
+                            <img src="{{ url('/storage/profiles/' . $item->user_from->image ?? 'default.jpg') }}" alt="Profile Picture" class="profile-img">
                         </div>
                         <div class="message-content">
                             <div class="header">
@@ -65,14 +65,14 @@
                                 <span> Reply : {{ $item->created_at->format('l, d F Y H:i') }}</span>
                             </div>
                             <div class="file-container">
-                                @foreach($item->documents as $key => $value)
-                                <a href="{{ url('storage/'. $value->path_documentname) }}" class="file-gmail">
+                                @foreach($item->documents as $document)
+                                <a href="{{ url('storage/'. $document->path_documentname) }}" class="file-gmail">
                                     <div class="logo-container">
                                         <i class="fas fa-file" style="font-size: 15px; color: #666;"></i>
                                     </div>
                                     <div class="filename-container">
                                         <p>
-                                            {{ Str::limit($value->documentname ?? 'Tidak ada nama file', 20) }}
+                                            {{ Str::limit($document->documentname ?? 'Tidak ada nama file', 20) }}
                                         </p>
                                     </div>
                                 </a>
