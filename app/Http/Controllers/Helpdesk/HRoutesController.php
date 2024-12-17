@@ -32,8 +32,6 @@ class HRoutesController extends Controller
             'module' => Module::all(),
             'pic' => User::where('level', 3)->get(),
         ];
-        // dd($data['data']);
-
         return view('pages/helpdesk/detail', $data);
     }
     public function history()
