@@ -40,7 +40,7 @@
                                 ['code' => 'JB00', 'initial' => 'PTJB', 'name' => 'PT. JHONLIN BARATAMA'],
                             ];
                             @endphp
-                             <div class="table-responsive">
+                            <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
@@ -48,7 +48,7 @@
                                             <th>Kode</th>
                                             <th>Initial</th>
                                             <th>Nama Perusahaan</th>
-                                            <th style="width: 15%">Aksi</th>
+                                            <th style="width: 15%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

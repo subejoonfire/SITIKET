@@ -45,7 +45,7 @@
                 </li> --}}
                 <li class="nav-item {{ request()->is('admin/department') ? 'active' : '' }}">
                     <a href="{{ url('admin/department') }}">
-                        <i class="fas fa-folder"></i>
+                        <i class="fas fa-users"></i>
                         <p>Departemen</p>
                     </a>
                 </li>
@@ -58,7 +58,7 @@
                 <li class="nav-item {{ request()->is('admin/priority') ? 'active' : '' }}">
                     <a href="{{ url('admin/priority') }}">
                         <i class="fas fa-clipboard"></i>
-                        <p>Priority</p>
+                        <p>Prioritas</p>
                     </a>
                 </li>
                 

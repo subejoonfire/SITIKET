@@ -94,6 +94,16 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::post('/update/{id}', [AdminController::class, 'companyUpdate'])->name('update');
             });    
         });
+        Route::group(['prefix' => 'priority', 'as' => 'priority.'], function () {
+            Route::get('/', [ARoutesController::class, 'priority'])->name('/');
+            Route::get('/add', [ARoutesController::class, 'addpriority'])->name('add');
+            Route::get('/edit', [ARoutesController::class, 'editpriority'])->name('edit');
+            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+                Route::post('/store', [AdminController::class, 'priorityStore'])->name('store');
+                Route::get('/delete/{id}', [AdminController::class, 'priorityDelete'])->name('delete');
+                Route::post('/update/{id}', [AdminController::class, 'priorityUpdate'])->name('update');
+            });    
+        });
         Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
             Route::get('/', [ARoutesController::class, 'category'])->name('/');
             Route::get('/add', [ARoutesController::class, 'addcategory'])->name('add');
