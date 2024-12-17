@@ -25,10 +25,14 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'data' => Ticket::with(['categories'])->where('id', $id)->first(),
+            'data' => Ticket::with([
+                'categories',
+                'users_tickets.user_pic',
+            ])->where('id', $id)->first(),
             'module' => Module::all(),
             'pic' => User::where('level', 3)->get(),
         ];
+        // dd($data['data']);
 
         return view('pages/helpdesk/detail', $data);
     }
@@ -52,7 +56,6 @@ class HRoutesController extends Controller
             'collection' => Ticket::with(['users'])->get(),
             'page' => 'validation',
         ];
-        // dd($data['collection']);
         return view('pages/helpdesk/validation', $data);
     }
 

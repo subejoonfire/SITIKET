@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Department;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,7 +18,7 @@ class Ticket extends Model
         'iddepartment',
         'idmodule',
         'idcategory',
-        'iduser_pic',
+        // 'iduser_pic',
         'issue',
         'detailissue',
         'priority',
@@ -50,8 +51,8 @@ class Ticket extends Model
     {
         return $this->belongsTo(Module::class, 'idmodule');
     }
-    public function users_tickets(): BelongsTo
+    public function users_tickets(): HasMany
     {
-        return $this->belongsTo(UsersTickets::class, 'id', 'idticket');
+        return $this->hasMany(UsersTickets::class, 'idticket');
     }
 }
