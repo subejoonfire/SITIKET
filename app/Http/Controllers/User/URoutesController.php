@@ -52,8 +52,11 @@ class URoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | Review',
             'data' => Ticket::where('tickets.id', $id)->first(),
-            'collection' => Message::with('documents')->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
-            'documents' => Document::with('messages')->where('idmessage', $id)->get(),
+            'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
+            'documents' => Document::with('messages')
+                ->whereHas('messages', function ($query) use ($id) {
+                    $query->where('messages.idticket', $id);
+                })->get(),
         ];
         return view('pages.user.review', $data);
     }
