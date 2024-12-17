@@ -1,6 +1,25 @@
 @extends('layout.main')
 @section('content')
+<style>
+    .notification-badge {
+        position: absolute;
+        top: -5px; 
+        right: -5px; 
+        font-size: 10px; 
+        background-color: #ff6161; 
+        color: white; 
+        border-radius: 50%; 
+        padding: 4px 7px;
+        line-height: 1;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+    }
 
+
+    .btn-review {
+        position: relative; 
+        display: inline-block; /
+    }
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -93,9 +112,12 @@
                                             <td>{{ $item->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
-                                                <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-sm">
-                                                    <i class="fa fa-eye"></i> Review
-                                                </a>
+                                                <div class="btn-review">
+                                                    <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-eye"></i> Review
+                                                    </a>
+                                                    <span class="notification-badge">2</span>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach

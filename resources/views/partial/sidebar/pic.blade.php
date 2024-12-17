@@ -1,4 +1,16 @@
 <!-- Sidebar -->
+<style>
+    .badge-count {
+        background-color: #ff6161; 
+        color: white; 
+        font-size: 12px; 
+        border-radius: 50%; 
+        padding: 3px 7px; 
+        line-height: 1;
+        display: inline-block; 
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+    }
+</style>
 <div class="sidebar">
 
     <div class="sidebar-background"></div>
@@ -17,6 +29,7 @@
                     <a href="{{ url('pic/ticket') }}" class="{{ request()->routeIs('pic.ticket') || request()->routeIs('pic.setuju') || request()->routeIs('pic.proses') || request()->routeIs('pic.selesai') || request()->routeIs('pic.tolak') ? 'active' : '' }}">
                         <i class="fas fa-ticket-alt"></i>
                         <p>Tiket</p>
+                        <span class="badge badge-count">5</span>
                     </a>
                     <div class="{{ request()->routeIs('pic/utama') || request()->routeIs('pic.setuju') || request()->routeIs('pic.proses') || request()->routeIs('pic.selesai') || request()->routeIs('pic.tolak') ? 'show' : '' }}" id="base">
                         <ul class="nav nav-collapse">
