@@ -28,6 +28,12 @@
                         <p>Kategori</p>
                     </a>
                 </li>                
+                <li class="nav-item {{ request()->is('admin/tiket') ? 'active' : '' }}">
+                    <a href="{{ url('admin/tiket') }}">
+                        <i class="fas fa-ticket-alt"></i>
+                        <p>Tiket</p>
+                    </a>
+                </li>                
                 {{-- <li class="nav-item {{ request()->is('admin/pic') ? 'active' : '' }}">
                     <a href="{{ url('admin/pic') }}">
                 <li class="nav-item {{ request()->is('admin/category') ? 'active' : '' }}">

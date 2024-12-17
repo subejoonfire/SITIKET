@@ -52,6 +52,14 @@ class ARoutesController extends Controller
 
         return view('pages/admin/user/edituser', $data);
     }
+    public function tiket()
+    {
+        $data = [
+            'title' => 'SI-TIKET | Ticket',
+            'collection' => Category::all(),
+        ];
+        return view('pages.admin.tiket.tiket', $data);
+    }
     public function category()
     {
         $data = [
