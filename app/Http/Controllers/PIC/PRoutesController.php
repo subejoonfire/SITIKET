@@ -43,8 +43,10 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | TIKET',
-            'collection' => Ticket::with(['users'])
-                ->whereHas('users', function ($query) {
+            'collection' => Ticket::with([
+                'users_tickets.user',
+            ])
+                ->whereHas('users_tickets', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where('iduser_pic', auth()->user()->id);
                 })
