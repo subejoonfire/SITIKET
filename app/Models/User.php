@@ -60,4 +60,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Module::class, 'idmodule');
     }
+    public function companies(): BelongsTo
+    {
+        return $this->belongsTo(Company::class, 'idcompany');
+    }
 }
