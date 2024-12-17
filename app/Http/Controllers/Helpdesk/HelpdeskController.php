@@ -14,9 +14,13 @@ class HelpdeskController extends Controller
     {
         $ticket = Ticket::find($id);
         if (!$ticket) {
-            return redirect()->to('helpdesk/validation')->with('error', 'Ticket tidak ditemukan');
+            return redirect()->back('helpdesk/validation')->with('error', 'Ticket tidak ditemukan');
         }
-
+        if (count($request->iduser_pic) !== count(array_unique($request->iduser_pic))) {
+            return redirect()->back()
+                ->withErrors(['iduser_pic' => 'PIC tidak boleh duplikat.'])
+                ->withInput();
+        }
         $request->validate([
             'idmodule' => 'required|exists:modules,id',
             'priority' => 'required|string',
@@ -38,6 +42,6 @@ class HelpdeskController extends Controller
         $ticket->status = 'DIAJUKAN';
         $ticket->save();
 
-        return redirect()->to('helpdesk/validation')->with('success', 'Ticket berhasil diperbarui');
+        return redirect()->back()->with('success', 'Ticket berhasil diperbarui');
     }
 }
