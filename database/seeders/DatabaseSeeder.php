@@ -139,6 +139,7 @@ class DatabaseSeeder extends Seeder
         DB::table('tickets')->insert([
             [
                 'id' => 1,
+                'iduser' => 5,
                 'idmodule' => 1,
                 'idcategory' => 1,
                 'ticketcode' => 'TKT5202412130',
