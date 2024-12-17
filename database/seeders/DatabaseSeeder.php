@@ -108,7 +108,6 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
-        // Seed departments table
         $departments = [
             'GA',
             'HR',
@@ -141,8 +140,6 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 1,
                 'idmodule' => 1,
-                'iduser' => 5,
-                'iduser_pic' => 6,
                 'idcategory' => 1,
                 'ticketcode' => 'TKT5202412130',
                 'status' => 'DIAJUKAN',
