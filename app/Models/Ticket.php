@@ -26,10 +26,10 @@ class Ticket extends Model
         'trouble'
     ];
 
-    // public function users(): BelongsTo
-    // {
-    //     return $this->belongsTo(User::class, 'iduser');
-    // }
+    public function users(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'iduser');
+    }
     // public function users_pic(): BelongsTo
     // {
     //     return $this->belongsTo(User::class, 'iduser_pic');
@@ -50,7 +50,7 @@ class Ticket extends Model
     {
         return $this->belongsTo(Module::class, 'idmodule');
     }
-    public function userstickets(): BelongsTo
+    public function users_tickets(): BelongsTo
     {
         return $this->belongsTo(UsersTickets::class, 'id', 'idticket');
     }
