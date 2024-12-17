@@ -151,7 +151,7 @@ class ARoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | ADD_PRIORITAS',
         ];
-        return view('pages.admin.priority.addcompany', $data);
+        return view('pages.admin.priority.addpriority', $data);
     }
 
     public function editpriority()
