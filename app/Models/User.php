@@ -4,11 +4,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Module;
+use App\Models\Company;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -53,16 +54,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function departments(): BelongsTo
-    {
-        return $this->belongsTo(Department::class, 'iddepartment');
-    }
+    // public function departments(): BelongsTo
+    // {
+    //     return $this->belongsTo(Department::class, 'iddepartment');
+    // }
     public function modules(): BelongsTo
     {
         return $this->belongsTo(Module::class, 'idmodule');
     }
-    public function companies(): HasMany
+    public function companies(): BelongsTo
     {
-        return $this->hasMany(Company::class, 'idcompany');
+        return $this->belongsTo(Company::class, 'idcompany');
     }
 }
