@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Module;
 use App\Models\Ticket;
+use App\Models\Company;
 use App\Models\Category;
 use App\Models\Priority;
 use App\Models\Department;
@@ -55,22 +56,23 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'level' => 'required|integer|max:5',
             'phone' => 'required|string|max:16',
-            'idmodule' => 'required|integer',
+            'idcompany' => 'integer',
             'email' => 'required|email|unique:users,email,' . $request->id,
         ]);
         $user = User::findOrFail($id);
-        if (empty($request->password)) {
-            $user->idmodule = $validated['idmodule'];
+        if (empty($request->password) && empty($request->idmodule)) {
             $user->name = $validated['name'];
             $user->level = $validated['level'];
             $user->phone = $validated['phone'];
             $user->email = $validated['email'];
+            $user->idcompany = $validated['idcompany'];
         } else {
             $user->idmodule = $validated['idmodule'];
             $user->name = $validated['name'];
             $user->level = $validated['level'];
             $user->phone = $validated['phone'];
             $user->email = $validated['email'];
+            $user->idcompany = $validated['idcompany'];
             $user->password = bcrypt($request->password);
         }
         $user->save();
@@ -80,11 +82,13 @@ class AdminController extends Controller
     public function departmentStore(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'departmentname' => 'required|string|max:255',
+            'idcompany' => 'nullable|integer',
         ]);
 
         Department::create([
-            'departmentname' => $request->name,
+            'departmentname' => $request->departmentname,
+            'idcompany' => $request->idcompany,
         ]);
 
         return redirect()->to(url('admin/department'))->with('success', 'Departemen berhasil ditambahkan.');
@@ -92,10 +96,13 @@ class AdminController extends Controller
 
     public function departmentDelete($id)
     {
-        $department = Department::findOrFail($id);
-        $department->delete();
-
-        return redirect()->back()->with('success', 'Departemen berhasil dihapus.');
+        try {
+            $department = Department::findOrFail($id);
+            $department->delete();
+            return redirect()->back()->with('success', 'Departemen berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Departemen gagal dihapus.');
+        }
     }
 
     public function departmentUpdate(Request $request, $id)
@@ -200,5 +207,37 @@ class AdminController extends Controller
         $priority->delete();
 
         return redirect()->to(url('admin/priority'))->with('success', 'Prioritas berhasil dihapus.');
+    }
+    public function companyStore(Request $request)
+    {
+        $request->validate([
+            'companyname' => 'required|string|max:255',
+            'companycode' => 'required|string|max:255',
+        ]);
+        Company::create([
+            'companyname' => $request->companyname,
+            'companycode' => $request->companycode,
+        ]);
+        return redirect()->to(url('admin/company'))->with('success', 'Perusahaan berhasil ditambahkan.');
+    }
+    public function companyUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'companyname' => 'required|string|max:255',
+            'companycode' => 'required|string|max:255',
+        ]);
+        $company = Company::findOrFail($id);
+        $company->update([
+            'companyname' => $request->companyname,
+            'companycode' => $request->companycode,
+        ]);
+        return redirect()->to(url('admin/company'))->with('success', 'Perusahaan berhasil diperbarui.');
+    }
+    public function companyDelete($id)
+    {
+        $company = Company::findOrFail($id);
+        $company->delete();
+
+        return redirect()->to(url('admin/company'))->with('success', 'Perusahaan berhasil dihapus.');
     }
 }
