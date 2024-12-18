@@ -1,8 +1,5 @@
 @extends('layout.mainhelp')
-
 @section('content')
-
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -91,7 +88,7 @@
                                             <label for="iduser_pic">Pilih PIC</label>
                                             @if (count($data->users_tickets) > 0)
                                             @foreach($data->users_tickets as $index => $row)
-                                            <select name="iduser_pic[]" class="form-control iduser_pic" id="iduser_pic {{ $index }}">
+                                            <select name="iduser_pic[]" class="form-control iduser_pic" id="iduser_pic_{{ $index }}">
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
                                                 <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}" {{ $row->iduser_pic == $item->id ? 'selected' : '' }}>
@@ -104,7 +101,7 @@
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                             @endforeach
-                                            <select name="iduser_pic[]" class="form-control iduser_pic" id="iduser_pic {{ $index }}">
+                                            <select name="iduser_pic[]" class="form-control iduser_pic" id="iduser_pic_{{ $index }}">
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
                                                 <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}">
@@ -188,22 +185,19 @@
 </div>
 
 @endsection
-@if ($data->iduser_pic == NULL)
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const moduleSelect = document.getElementById('idmodule');
-        const picSelect = document.getElementById('iduser_pic');
+        const picSelects = document.querySelectorAll('.iduser_pic');
 
         const updatePicOptions = () => {
             const selectedmodule = moduleSelect.value;
-            picSelect.disabled = !selectedmodule;
-
-            Array.from(picSelect.options).forEach(option => {
-                const optionmodule = option.getAttribute('data-module');
-                option.style.display = (!selectedmodule || optionmodule === selectedmodule) ? '' : 'none';
+            picSelects.forEach(select => {
+                Array.from(select.options).forEach(option => {
+                    const moduleId = option.getAttribute('data-module');
+                    option.style.display = (selectedmodule && moduleId == selectedmodule) ? '' : 'none';
+                });
             });
-
-            picSelect.value = '';
         };
 
         moduleSelect.addEventListener('change', updatePicOptions);
@@ -211,4 +205,3 @@
     });
 
 </script>
-@endif

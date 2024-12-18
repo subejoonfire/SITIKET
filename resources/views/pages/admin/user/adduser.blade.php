@@ -2,7 +2,36 @@
 
 @section('content')
 
-
+<style>
+         .checkbox-group {
+            display: grid;
+            grid-auto-flow: column; /* Isi ke bawah dulu */
+            grid-template-rows: repeat(5, auto); /* Maksimal 5 baris */
+            grid-template-columns: repeat(4, 1fr); /* Maksimal 4 kolom */
+            gap: 10px; /* Jarak antar elemen */
+            margin-left: 15px;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 5px; /* Jarak antara checkbox dan teks */
+        }
+        @media (max-width: 768px) {
+            .checkbox-group {
+                grid-auto-flow: row; /* Berubah jadi mengisi ke kanan dulu di layar kecil */
+                grid-template-rows: none;
+                grid-template-columns: repeat(2, 1fr); /* Maksimal 2 kolom di layar kecil */
+            }
+        }
+        @media (max-width: 480px) {
+            .checkbox-group {
+                grid-template-columns: 1fr; /* Satu kolom di layar sangat kecil */
+            }
+        }
+</style>
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -68,6 +97,77 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                <label for="kode_perusahaan">Kode Perusahaan</label>
+                                <div class="checkbox-group">
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP001">
+                                        KP001 - Perusahaan A
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP002">
+                                        KP002 - Perusahaan B
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP003">
+                                        KP003 - Perusahaan C
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP004">
+                                        KP004 - Perusahaan D
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP005">
+                                        KP005 - Perusahaan E
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP006">
+                                        KP006 - Perusahaan F
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP007">
+                                        KP007 - Perusahaan G
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP008">
+                                        KP008 - Perusahaan H
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP009">
+                                        KP009 - Perusahaan I
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP010">
+                                        KP010 - Perusahaan J
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP011">
+                                        KP011 - Perusahaan K
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP012">
+                                        KP012 - Perusahaan L
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP013">
+                                        KP013 - Perusahaan M
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP014">
+                                        KP014 - Perusahaan N
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP015">
+                                        KP015 - Perusahaan O
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" name="kode_perusahaan[]" value="KP016">
+                                        KP016 - Perusahaan P
+                                    </label>                         
+                                </div>
+                                
+                            </div>
+                                
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password">

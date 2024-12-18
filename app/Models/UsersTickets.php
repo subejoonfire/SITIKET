@@ -17,9 +17,9 @@ class UsersTickets extends Model
         'idticket',
     ];
 
-    public function user(): HasMany
+    public function user(): BelongsTo
     {
-        return $this->hasMany(User::class, 'iduser');
+        return $this->belongsTo(User::class, 'iduser');
     }
     public function user_pic(): BelongsTo
     {

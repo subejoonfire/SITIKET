@@ -14,8 +14,8 @@ class HRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'incoming' => Ticket::whereNull('iduser_pic')->count(),
-            'done' => Ticket::whereNotNull('iduser_pic')->count(),
+            'incoming' => Ticket::with(['users_tickets'])->whereNull('iduser_pic')->count(),
+            'done' => Ticket::with(['users_tickets'])->whereNotNull('iduser_pic')->count(),
         ];
         return view('pages/helpdesk/dashboard', $data);
     }
@@ -32,8 +32,6 @@ class HRoutesController extends Controller
             'module' => Module::all(),
             'pic' => User::where('level', 3)->get(),
         ];
-        // dd($data['data']);
-
         return view('pages/helpdesk/detail', $data);
     }
     public function history()
@@ -41,7 +39,7 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | RIWAYAT_VALIDASI',
-            'collection' => Ticket::whereNotNull('tickets.iduser_pic')->get(),
+            'collection' => Ticket::with(['users_tickets'])->whereNotNull('iduser_pic')->get(),
             'page' => 'beranda',
         ];
 
@@ -53,7 +51,7 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | HALAMAN_VALIDASI',
-            'collection' => Ticket::with(['users'])->get(),
+            'collection' => Ticket::with(['users_tickets'])->whereNull('iduser_pic')->get(),
             'page' => 'validation',
         ];
         return view('pages/helpdesk/validation', $data);
