@@ -27,7 +27,7 @@
                     <label for="file-upload" class="attach-icon">
                         <i class="fas fa-paperclip"></i>
                     </label>
-                    <input type="file" name="documentname[]" id="file-upload" accept=".pdf, .jpg, .jpeg, .png" style="display: none;" multiple onchange="uploadFiles(event)">
+                    <input type="file" name="documentname[]" id="file-upload" accept=".pdf, .jpg, .jpeg, .png" style="display: none;" onchange="uploadFiles(event)">
                 </div>
                 <div id="uploaded-file-container" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
                 <button type="submit" class="btn btn-info">Kirim</button>
@@ -39,7 +39,7 @@
                 <li class="message unread" style="cursor: default;">
                     <div class="message-container">
                         <div class="profile-picture">
-                            <img src="{{ url('/storage/profiles/' . $item->user_from->image ?? 'default.jpg') }}" alt="Profile Picture" class="profile-img">
+                            <img src="{{ url('/storage/profiles/' . ($item->user_from->image == '' ? 'default.jpg' : $item->user_from->image)) }}" alt="Profile Picture" class="profile-img">
                         </div>
                         <div class="message-content">
                             <div class="header">

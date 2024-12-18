@@ -1363,11 +1363,18 @@
                         <li class="nav-item dropdown hidden-caret">
                             <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
-                                <span class="notification">3</span>
+                                @if ($notification != 0)
+                                <span class="notification">{{ $notification }}</span>
+                                @endif
                             </a>
                             <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
+                                @if ($notification != 0)
                                 <li>
-                                    <div class="dropdown-title">Kamu punya 4 pesan baru</div>
+                                    <div class="dropdown-title">Kamu punya {{ $notification }} pesan baru</div>
+                                </li>
+                                @endif
+                                <li>
+                                    <div class="dropdown-title">Tidak ada pesan terbaru</div>
                                 </li>
                                 <li>
                                     <div class="message-notif-scroll scrollbar-outer">

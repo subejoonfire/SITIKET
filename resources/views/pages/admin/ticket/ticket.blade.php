@@ -88,7 +88,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->modules->modulename }}</td>
+                                            <td>{{ $item->modules->modulename ?? 'Tidak tersedia' }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>

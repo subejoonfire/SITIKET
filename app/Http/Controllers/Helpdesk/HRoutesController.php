@@ -7,6 +7,7 @@ use App\Models\Module;
 use App\Models\Ticket;
 use App\Models\Department;
 use App\Http\Controllers\Controller;
+use App\Models\Priority;
 
 class HRoutesController extends Controller
 {
@@ -14,8 +15,8 @@ class HRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'incoming' => Ticket::with(['users_tickets'])->whereNull('iduser_pic')->count(),
-            'done' => Ticket::with(['users_tickets'])->whereNotNull('iduser_pic')->count(),
+            'incoming' => Ticket::with(['users_tickets'])->whereDoesntHave('users_tickets')->count(),
+            'done' => Ticket::with(['users_tickets'])->whereHas('users_tickets')->count(),
         ];
         return view('pages/helpdesk/dashboard', $data);
     }
@@ -30,6 +31,7 @@ class HRoutesController extends Controller
                 'users_tickets.user_pic',
             ])->where('id', $id)->first(),
             'module' => Module::all(),
+            'priority' => Priority::all(),
             'pic' => User::where('level', 3)->get(),
         ];
         return view('pages/helpdesk/detail', $data);
@@ -39,7 +41,11 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | RIWAYAT_VALIDASI',
-            'collection' => Ticket::with(['users_tickets'])
+            'collection' => Ticket::with([
+                'users_tickets',
+                'users',
+                'modules'
+            ])
                 ->whereHas('users_tickets')->get(),
             'page' => 'beranda',
         ];
@@ -52,7 +58,11 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | HALAMAN_VALIDASI',
-            'collection' => Ticket::with(['users_tickets'])
+            'collection' => Ticket::with([
+                'users_tickets',
+                'users',
+                'modules'
+            ])
                 ->whereDoesntHave('users_tickets')->get(),
             'page' => 'validation',
         ];

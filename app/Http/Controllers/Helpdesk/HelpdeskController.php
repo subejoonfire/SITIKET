@@ -23,7 +23,7 @@ class HelpdeskController extends Controller
         }
         $request->validate([
             'idmodule' => 'required|exists:modules,id',
-            'priority' => 'required|string',
+            // 'idpriority' => 'required|string',
             'iduser_pic.*' => 'nullable|exists:users,id',
         ]);
 
@@ -38,7 +38,7 @@ class HelpdeskController extends Controller
             $users_tickets->save();
         }
         $ticket->idmodule = $request->idmodule;
-        $ticket->priority = $request->priority;
+        $ticket->idpriority = $request->idpriority;
         $ticket->status = 'DIAJUKAN';
         $ticket->save();
 
