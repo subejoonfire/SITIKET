@@ -125,13 +125,15 @@
                                         </div>
                                         <div style="flex: 1;">
                                             <label for="priority">Prioritas</label>
-                                            <select name="priority" class="form-control" id="priority">
+                                            <select name="idpriority" class="form-control" id="priority">
                                                 <option value="">Pilih Prioritas</option>
-                                                <option value="Bisa Menunggu" {{ old('priority', $data->priority ?? '') == 'Bisa Menunggu' ? 'selected' : '' }}>Bisa Menunggu</option>
-                                                <option value="Sedang" {{ old('priority', $data->priority ?? '') == 'Sedang' ? 'selected' : '' }}>Sedang</option>
-                                                <option value="Mendesak" {{ old('priority', $data->priority ?? '') == 'Mendesak' ? 'selected' : '' }}>Mendesak</option>
+                                                @foreach ($priority as $item)
+                                                <option value="{{ $item->id }}" {{ old('id', $data->idpriority ?? '') == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->priorityname }}
+                                                </option>
+                                                @endforeach
                                             </select>
-                                            @error('priority')
+                                            @error('idpriority')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
@@ -184,6 +186,22 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="fileview">File Diupload</label>
+                                    <div class="d-flex align-items-center" style="border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
+                                        @if($data->attachment != NULL)
+                                        <a href="{{ url('storage/'. $data->attachment) }}" download class="btn btn-primary mr-2">
+                                            Unduh
+                                        </a>
+                                        <span style="flex-grow: 1; color: #000; font-weight:">
+                                            Unduh File
+                                        </span>
+                                        @else
+                                        <div class="form-control text-muted">Tidak ada file terkait.</div>
+                                        @endif
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                     <a href="{{ url('helpdesk/validation') }}" class="btn btn-danger">Batal</a>

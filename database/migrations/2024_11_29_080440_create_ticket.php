@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('ticketcode')->unique();
             $table->string('status')->default('TERKIRIM');
             $table->string('issue');
+            $table->string('attachment')->nullable()->default(NULL);
             $table->text('detailissue');
-            $table->string('priority')->nullable()->default(NULL);
             $table->timestamps();
             $table->softDeletes();
             //

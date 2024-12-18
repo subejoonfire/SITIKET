@@ -14,6 +14,7 @@ class PRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | PROFILE',
+            'notification' => $this->notification,
         ];
 
         return view('pages/pic/profile', $data);
@@ -24,6 +25,7 @@ class PRoutesController extends Controller
 
         $data = [
             'title' => 'BERANDA | SI-TICKET',
+            'notification' => $this->notification,
             'page' => 'beranda',
             'approved' => Ticket::where('status', 'DISETUJUI')->count(),
             'declined' => Ticket::where('status', 'DITOLAK')->count(),
@@ -37,8 +39,11 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | TIKET',
+            'notification' => $this->notification,
             'collection' => Ticket::with([
-                'users_tickets.user',
+                'users',
+                'messages',
+                'modules',
             ])
                 ->whereHas('users_tickets', function ($query) {
                     $query->where('iduser_pic', auth()->user()->id);
@@ -52,8 +57,11 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DISETUJUI',
+            'notification' => $this->notification,
             'collection' => Ticket::with([
-                'users_tickets.user',
+                'users',
+                'messages',
+                'modules',
             ])
                 ->whereHas('users_tickets', function ($query) {
                     $query->where([
@@ -70,8 +78,11 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DIPROSES',
+            'notification' => $this->notification,
             'collection' => Ticket::with([
-                'users_tickets.user',
+                'users',
+                'messages',
+                'modules',
             ])
                 ->whereHas('users_tickets', function ($query) {
                     $query->where([
@@ -88,8 +99,11 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DITOLAK',
+            'notification' => $this->notification,
             'collection' => Ticket::with([
-                'users_tickets.user',
+                'users',
+                'messages',
+                'modules',
             ])
                 ->whereHas('users_tickets', function ($query) {
                     $query->where([
@@ -106,8 +120,11 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | SELESAI',
+            'notification' => $this->notification,
             'collection' => Ticket::with([
-                'users_tickets.user',
+                'users',
+                'messages',
+                'modules',
             ])
                 ->whereHas('users_tickets', function ($query) {
                     $query->where([
@@ -122,12 +139,16 @@ class PRoutesController extends Controller
     public function review($type, $id)
     {
 
+        Message::where('idticket', $id)->update(['read_pic' => true]);
         $data = [
             'title' => 'SITIKET | Review',
+            'notification' => $this->notification,
             'type' => $type,
-            'data' => Ticket::with(['categories'])->where('id', $id)->first(),
-            'collection' => Message::with('documents')->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
-            'documents' => Document::with('messages')->where('idmessage', $id)->get(),
+            'data' => Ticket::with(['categories', 'users'])->where('id', $id)->first(),
+            'collection' => Message::with(['documents'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
+            'documents' => Document::with('messages')->whereHas('messages', function ($query) use ($id) {
+                $query->where('messages.idticket', $id);
+            })->get(),
         ];
         if ($type == 'approved') {
             return view('pages/pic/ticket/review', $data);
@@ -138,6 +159,7 @@ class PRoutesController extends Controller
         } elseif ($type == 'done') {
             return view('pages/pic/ticket/review', $data);
         }
+
         return redirect()->back()->with('error', 'Halaman yang anda cari tidak ditemukan');
     }
 }

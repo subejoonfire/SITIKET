@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ url('user/action/store') }}">
+                            <form method="POST" action="{{ url('user/action/store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="idcategory">Kategori</label>
@@ -69,14 +69,13 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="uploadfile">Upload File</label>
-                                        <input type="file" name="uploadfile" class="form-control" id="uploadfile" accept="*">
-                                        @error('uploadfile')
+                                        <label for="attachment">Upload File</label>
+                                        <input type="file" name="attachment" class="form-control" id="attachment" accept="*">
+                                        @error('attachment')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
-                                                                
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="idmodule">Modul</label>
@@ -93,14 +92,16 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="priority">Prioritas</label>
-                                        <select name="priority" class="form-control" id="priority">
+                                        <label for="idpriority">Prioritas</label>
+                                        <select name="idpriority" class="form-control" id="idpriority">
                                             <option value="">Pilih Prioritas</option>
-                                            <option value="Bisa Menunggu" {{ old('priority', $data->priority ?? '') == 'Bisa Menunggu' ? 'selected' : '' }}>Bisa Menunggu</option>
-                                            <option value="Sedang" {{ old('priority', $data->priority ?? '') == 'Sedang' ? 'selected' : '' }}>Sedang</option>
-                                            <option value="Mendesak" {{ old('priority', $data->priority ?? '') == 'Mendesak' ? 'selected' : '' }}>Mendesak</option>
+                                            @foreach ($priority as $item)
+                                            <option value="{{ $item->id }}" {{ old('id', $data->idpriority ?? '') == $item->id ? 'selected' : '' }}>
+                                                {{ $item->priorityname }}
+                                            </option>
+                                            @endforeach
                                         </select>
-                                        @error('priority')
+                                        @error('idpriority')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>

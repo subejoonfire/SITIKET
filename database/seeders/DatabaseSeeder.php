@@ -118,7 +118,6 @@ class DatabaseSeeder extends Seeder
                 'status' => 'DIAJUKAN',
                 'issue' => 'dsaf',
                 'detailissue' => 'adsf',
-                'priority' => 'Bisa Menunggu',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

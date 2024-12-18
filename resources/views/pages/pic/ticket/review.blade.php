@@ -93,7 +93,7 @@
                                     <div class="col-md-12">
                                         <label for="category">Kategori</label>
                                         <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
-                                        @error('issue')
+                                        @error('category')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
@@ -110,6 +110,21 @@
                                         @error('detailissue')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="fileview">File Diupload</label>
+                                        <div class="d-flex align-items-center" style="border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
+                                            @if($data->attachment != NULL)
+                                            <a href="{{ url('storage/'. $data->attachment) }}" download class="btn btn-primary mr-2">
+                                                Unduh
+                                            </a>
+                                            <span style="flex-grow: 1; color: #000; font-weight:">
+                                                Unduh File
+                                            </span>
+                                            @else
+                                            <div class="form-control text-muted">Tidak ada file terkait.</div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 @if ($type == 'index')

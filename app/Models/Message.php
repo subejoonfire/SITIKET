@@ -16,6 +16,8 @@ class Message extends Model
         'iduser_from',
         'iduser_to',
         'message',
+        'read_pic',
+        'read_user',
     ];
     public function documents(): HasMany
     {

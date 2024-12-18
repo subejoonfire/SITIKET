@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
-use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +14,25 @@ use Illuminate\Support\Facades\Validator;
 
 class Controller
 {
+    public $notification;
+    public function __construct()
+    {
+        $notifications = Ticket::with([
+            'messages',
+        ])->get();
+        if (auth()->check()) {
+            if (auth()->user()->level == 3) {
+                foreach ($notifications as $item) {
+                    $this->notification += $item->messages->where('iduser_to', auth()->user()->id)->where('read_pic', false)->count();
+                }
+            }
+            if (auth()->user()->level == 4) {
+                foreach ($notifications as $item) {
+                    $this->notification += $item->messages->where('iduser_to', auth()->user()->id)->where('read_user', false)->count();
+                }
+            }
+        }
+    }
     public function login(Request $request)
     {
         $request->validate([
@@ -110,12 +128,12 @@ class Controller
     }
     public function message_store(Message $message, Document $document, Request $request, $id)
     {
-        $ticket = Ticket::find($id);
+        $ticket = Ticket::with(['users_tickets.user_pic'])->find($id);
         $message->message = $request->input('message');
         $message->idticket = $id;
         $message->iduser_from = auth()->user()->id;
         if (auth()->user()->level == '4') {
-            $message->iduser_to = $ticket->iduser_pic;
+            $message->iduser_to = $ticket->users_tickets->pluck('user_pic.id')->first();
         } elseif (auth()->user()->level == '3') {
             $message->iduser_to = $ticket->iduser;
         }
