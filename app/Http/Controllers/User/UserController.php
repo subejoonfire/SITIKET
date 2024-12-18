@@ -17,19 +17,28 @@ class UserController extends Controller
         $request->validate([
             'issue' => 'required|string|max:255',
             'idmodule' => 'integer|max:5',
-            'priority' => 'string|max:255',
+            'idpriority' => 'nullable|integer',
             'idcategory' => 'required|integer|max:10',
             'detailissue' => 'required|string',
+            'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
         $count = Ticket::where('iduser', auth()->user()->id)->count();
+        $attachmentPath = null;
+        if ($request->hasFile('attachment')) {
+            $file = $request->file('attachment');
+            $extension = $file->getClientOriginalExtension();
+            $uniqueFileName = 'attach_' . auth()->user()->id . '_' . time() . '_' . uniqid() . '.' . $extension;
+            $attachmentPath = $file->storeAs('attachments', $uniqueFileName, 'public');
+        }
         Ticket::create([
             'ticketcode' => 'TKT' . auth()->user()->id . date('Ymd') . $count,
             'iduser' => auth()->user()->id,
             'idmodule' => $request->input('idmodule'),
             'issue' => $request->input('issue'),
-            'priority' => $request->input('priority'),
+            'idpriority' => $request->input('idpriority'),
             'idcategory' => $request->input('idcategory'),
             'detailissue' => $request->input('detailissue'),
+            'attachment' => $attachmentPath,
             'status' => 'TERKIRIM',
         ]);
         return redirect()->to('user')->with('success', 'Request berhasil dikirim!');
