@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('idticket')->nullable()->default(NULL);
             $table->unsignedBigInteger('iduser_from')->nullable()->default(NULL);
             $table->unsignedBigInteger('iduser_to')->nullable()->default(NULL);
-            $table->boolean('read')->default(false);
+            $table->boolean('read_user')->default(false);
+            $table->boolean('read_pic')->default(false);
             $table->longText('message');
             $table->timestamps();
             $table->softDeletes();
