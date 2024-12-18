@@ -8,7 +8,6 @@
             <div class="page-header">
                 <h4 class="page-title">Admin</h4>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     @if (session('success'))
@@ -48,8 +47,6 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- Modal -->
-
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
@@ -65,16 +62,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($user as $item)
+                                        @foreach ($user as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>123456789</td>
+                                            <td>{{ $item->phone }}</td>
                                             <td>{{ $item->email }}</td>
-                                            <td>kolom perusahaan</td>
+                                            <td>{{ $item->companies->companyname ?? 'Tidak ada perusahaan' }}</td>
                                             <td>{{ $item->modules->modulename ?? '' }}</td>
                                             <td>{{ $item->level == 1 ? 'Admin' : ($item->level == 2 ? 'Helpdesk' : ($item->level == 3 ? 'PIC' : 'User')) }}</td>
-                                            <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td>
+                                            {{-- <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td> --}}
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ url('admin/user/edit', ['id' => $item->id]) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
@@ -86,7 +83,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
