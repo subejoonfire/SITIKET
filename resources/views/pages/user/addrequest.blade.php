@@ -60,13 +60,23 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="issue">Subjek</label>
-                                    <input type="text" name="issue" class="form-control" id="issue" placeholder="Masukan Subjek">
-                                    @error('issue')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="issue">Subjek</label>
+                                        <input type="text" name="issue" class="form-control" id="issue" placeholder="Masukan Subjek">
+                                        @error('issue')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="uploadfile">Upload File</label>
+                                        <input type="file" name="uploadfile" class="form-control" id="uploadfile" accept="*">
+                                        @error('uploadfile')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
                                 </div>
+                                                                
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="idmodule">Modul</label>
@@ -104,7 +114,7 @@
                                 </div>
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
-                                    <a href="{{ url('user/dashboard') }}" class="btn btn-danger">Batal</a>
+                                    <a href="{{ url('user') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </form>
                         </div>

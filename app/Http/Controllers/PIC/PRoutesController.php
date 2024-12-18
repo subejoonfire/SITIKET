@@ -41,8 +41,7 @@ class PRoutesController extends Controller
                 'users_tickets.user',
             ])
                 ->whereHas('users_tickets', function ($query) {
-                    $query->whereNotNull('iduser_pic')
-                        ->where('iduser_pic', auth()->user()->id);
+                    $query->where('iduser_pic', auth()->user()->id);
                 })
                 ->get()
         ];
@@ -57,11 +56,10 @@ class PRoutesController extends Controller
                 'users_tickets.user',
             ])
                 ->whereHas('users_tickets', function ($query) {
-                    $query->whereNotNull('iduser_pic')
-                        ->where([
-                            'iduser_pic' => auth()->user()->id,
-                            'status' => 'DISETUJUI'
-                        ]);
+                    $query->where([
+                        'iduser_pic' => auth()->user()->id,
+                        'status' => 'DISETUJUI'
+                    ]);
                 })
                 ->get()
         ];
@@ -76,11 +74,10 @@ class PRoutesController extends Controller
                 'users_tickets.user',
             ])
                 ->whereHas('users_tickets', function ($query) {
-                    $query->whereNotNull('iduser_pic')
-                        ->where([
-                            'iduser_pic' => auth()->user()->id,
-                            'status' => 'DIPROSES'
-                        ]);
+                    $query->where([
+                        'iduser_pic' => auth()->user()->id,
+                        'status' => 'DIPROSES'
+                    ]);
                 })
                 ->get()
         ];
@@ -95,11 +92,10 @@ class PRoutesController extends Controller
                 'users_tickets.user',
             ])
                 ->whereHas('users_tickets', function ($query) {
-                    $query->whereNotNull('iduser_pic')
-                        ->where([
-                            'iduser_pic' => auth()->user()->id,
-                            'status' => 'DITOLAK'
-                        ]);
+                    $query->where([
+                        'iduser_pic' => auth()->user()->id,
+                        'status' => 'DITOLAK'
+                    ]);
                 })
                 ->get()
         ];
@@ -114,11 +110,10 @@ class PRoutesController extends Controller
                 'users_tickets.user',
             ])
                 ->whereHas('users_tickets', function ($query) {
-                    $query->whereNotNull('iduser_pic')
-                        ->where([
-                            'iduser_pic' => auth()->user()->id,
-                            'status' => 'SELESAI'
-                        ]);
+                    $query->where([
+                        'iduser_pic' => auth()->user()->id,
+                        'status' => 'SELESAI'
+                    ]);
                 })
                 ->get()
         ];
