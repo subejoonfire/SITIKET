@@ -56,7 +56,6 @@ class HRoutesController extends Controller
                 ->whereDoesntHave('users_tickets')->get(),
             'page' => 'validation',
         ];
-        dd($data);
         return view('pages/helpdesk/validation', $data);
     }
 
