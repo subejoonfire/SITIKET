@@ -49,19 +49,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => admin::class], function () {
         Route::get('/', [ARoutesController::class, 'index'])->name('/');
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
-        Route::get('/tiket', [ARoutesController::class, 'tiket'])->name('tiket');
-
-        Route::get('approved', [ARoutesController::class, 'approved'])->name('approved');
-        Route::get('declined', [ARoutesController::class, 'declined'])->name('declined');
-        Route::get('processed', [ARoutesController::class, 'processed'])->name('processed');
-        Route::get('done', [ARoutesController::class, 'done'])->name('processed');
+        Route::group(['prefix' => 'ticket', 'as' => 'ticket.'], function () {
+            Route::get('/', [ARoutesController::class, 'ticket'])->name('/');
+            Route::get('review/{id}', [ARoutesController::class, 'ticket_review'])->name('review');
+            Route::get('approved', [ARoutesController::class, 'ticket_approved'])->name('approved');
+            Route::get('declined', [ARoutesController::class, 'ticket_declined'])->name('declined');
+            Route::get('processed', [ARoutesController::class, 'ticket_processed'])->name('processed');
+            Route::get('done', [ARoutesController::class, 'ticket_done'])->name('processed');
+        });
 
         Route::get('luser', [ARoutesController::class, 'luser'])->name('luser');
         Route::get('lpic', [ARoutesController::class, 'lpic'])->name('lpic');
         Route::get('ladmin', [ARoutesController::class, 'ladmin'])->name('ladmin');
         Route::get('lhelpdesk', [ARoutesController::class, 'lhelpdesk'])->name('lhelpdesk');
-
-
 
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
