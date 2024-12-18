@@ -6,7 +6,7 @@
     <div class="content">
         <div class="page-inner">
             <div class="page-header">
-                <h4 class="page-title">Helpdesk</h4>
+                <h4 class="page-title">PIC</h4>
             </div>
 
             <div class="row">
@@ -39,7 +39,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title">Helpdesk</h4>
+                                <h4 class="card-title">PIC</h4>
                                 <a href="{{ url('admin/user/add') }}" class="btn btn-custom ml-auto">
                                     <i class="fa fa-plus"></i>
                                     Tambah

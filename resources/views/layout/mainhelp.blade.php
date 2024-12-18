@@ -53,6 +53,8 @@
         #phone,
         #subjek,
         #kategori,
+        #company,
+        #kode_perusahaan,
         #tanggal_diajukan {
             background-color: #ffffff !important;
             color: #000000 !important;
