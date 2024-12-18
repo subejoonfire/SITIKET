@@ -49,6 +49,22 @@
             background-color: #f5f5f5;
         }
 
+        .dropdown-menu {
+            display: none;
+            /* Hide dropdown by default */
+            opacity: 0;
+            /* Start with opacity 0 */
+            transition: opacity 0.3s ease;
+            /* Smooth transition */
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+            /* Show dropdown on hover */
+            opacity: 1;
+            /* Fade in */
+        }
+
     </style>
 
 
@@ -209,6 +225,27 @@
                     , action
                 ]);
                 $('#addRowModal').modal('hide');
+            });
+        });
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const dropdown = item.querySelector('.dropdown-menu');
+                if (dropdown) {
+                    dropdown.style.display = 'block';
+                    setTimeout(() => {
+                        dropdown.style.opacity = '1';
+                    }, 10); // Allow time for display to take effect
+                }
+            });
+
+            item.addEventListener('mouseleave', () => {
+                const dropdown = item.querySelector('.dropdown-menu');
+                if (dropdown) {
+                    dropdown.style.opacity = '0';
+                    setTimeout(() => {
+                        dropdown.style.display = 'none';
+                    }, 300); // Match the transition duration
+                }
             });
         });
 

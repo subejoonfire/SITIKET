@@ -112,37 +112,11 @@
                                         @enderror
                                     </div>
                                 </div>
-                                @if ($type == 'index')
-                                <div class="form-group">
-                                    @if ($data->status == 'DIAJUKAN')
-                                    <a href="#" class="btn btn-success">Setuju</a>
-                                    <a href="#" class="btn btn-danger">Tolak</a>
-                                    @endif
-                                    <a href="{{ url('admin/tiket') }}" class="btn btn-primary">Kembali</a>
-                                </div>
-                                @elseif ($data->status == 'DISETUJUI')
-                                <div class="card-action">
-                                    <a href="#" class="btn btn-success">Proses</a>
-                                    <a href="#" class="btn btn-danger">Tolak</a>
-                                    <a href="{{ url('admin/tiket') }}" class="btn btn-primary">Kembali</a>
-                                </div>
-                                @elseif ($data->status == 'DIPROSES')
-                                <div class="card-action">
-                                    <a href="#" class="btn btn-success">Selesai</a>
-                                    <a href="#}" class="btn btn-danger">Tolak</a>
-                                    <a href="{{ url('admin/tiket') }}" class="btn btn-primary">Kembali</a>
-                                </div>
-                                @elseif ($data->status == 'SELESAI')
-                                <div class="card-action">
-                                    <a href="{{ url('admin/tiket') }}" class="btn btn-primary">Kembali</a>
-                                </div>
-                                @endif
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            @include('layout/messages')
         </div>
     </div>
 </div>

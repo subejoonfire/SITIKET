@@ -12,10 +12,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Department extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['departmentname'];
+    protected $fillable = ['departmentname', 'idcompany'];
 
     public function users(): BelongsTo
     {
         return $this->belongsTo(User::class, 'iduser');
+    }
+    public function companies(): BelongsTo
+    {
+        return $this->belongsTo(Company::class, 'idcompany');
     }
 }

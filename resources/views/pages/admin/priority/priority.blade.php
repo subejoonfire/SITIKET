@@ -12,12 +12,12 @@
             <div class="row">
                 <div class="col-md-12">
                     @if (session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     @endif
 
                     <div class="card">
@@ -31,14 +31,6 @@
                         </div>
 
                         <div class="card-body">
-                            @php
-                                $priorities = [
-                                    ['id' => 1, 'priority' => 'Bisa Menunggu'],
-                                    ['id' => 2, 'priority' => 'Sedang'],
-                                    ['id' => 3, 'priority' => 'Mendesak'],
-                                ];
-                            @endphp
-
                             <div class="table-responsive">
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
@@ -49,28 +41,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($priorities as $index => $item)
-                                            <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $item['priority'] }}</td>
-                                                <td>
-                                                    <div class="form-button-action">
-                                                        <a href="{{ url('admin/priority/edit/') }}" 
-                                                           class="btn btn-warning btn-sm" style="margin-right: 3px;">
-                                                            <i class="fa fa-edit"></i> Edit
-                                                        </a>
-                                                        <a href="#" 
-                                                           class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
-                                                            <i class="fa fa-trash"></i> Hapus
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        @foreach ($collection as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->priorityname }}</td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <a href="{{ url('admin/priority/edit/'. $item->id) }}" class="btn btn-warning btn-sm" style="margin-right: 3px;">
+                                                        <i class="fa fa-edit"></i> Edit
+                                                    </a>
+                                                    <a href="{{ url('admin/priority/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
+                                                        <i class="fa fa-trash"></i> Hapus
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>

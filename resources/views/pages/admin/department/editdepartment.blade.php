@@ -46,50 +46,34 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('admin/department/action/update/') }}">
                                 @csrf
-                                <!-- @method('PUT') -->
-                                <div class="form-group">
-                                    <!-- Unit -->
-                                    <label for="unit">Nama Perusahaan</label>
-                                    <select name="unit" class="form-control" id="unit">
-                                        <option value="" selected disabled>Pilih Perusahaan</option>
-                                        <option value="PT. JHONLIN GROUP">PT. JHONLIN GROUP</option>
-                                        <option value="PT. JHONLIN BARATAMA OLD">PT. JHONLIN BARATAMA OLD</option>
-                                        <option value="PT. DUA SAMUDRA PERKASA">PT. DUA SAMUDRA PERKASA</option>
-                                        <option value="PT. BARAMEGA CITRA MULIA PERSADA">PT. BARAMEGA CITRA MULIA PERSADA</option>
-                                        <option value="PT. JHONLIN MARINE LINES">PT. JHONLIN MARINE LINES</option>
-                                        <option value="PT. SAMUDERA TIMUR MAS">PT. SAMUDERA TIMUR MAS</option>
-                                        <option value="PT. JHONLIN BARATAMA">PT. JHONLIN BARATAMA</option>
-                                    </select>
-                                    @error('unit')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="departmentname">Nama Department</label>
+                                        <input type="text" name="departmentname" class="form-control" id="departmentname" placeholder="Masukkan Nama Department" value="{{ $data->departmentname }}">
+                                        @error('departmentname')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="idcompany">Nama Perusahaan</label>
+                                        <select name="idcompany" class="form-control" id="idcompany">
+                                            <option value="" selected>Pilih Perusahaan</option>
+                                            @foreach ($companies as $item)
+                                            <option value="{{ $item->id }}" {{ $item->id == $data->idcompany ? 'Selected' : '' }}>{{ $item->companyname }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('idcompany')
+                                        <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
                                 </div>
-                                
-                        
-                                <div class="form-group">
-                                    <!-- Kode -->
-                                    <label for="code">Kode</label>
-                                    <input type="text" name="code" class="form-control" id="code" placeholder="Kode" value="HRD">
-                                    @error('code') <small class="text-danger">{{ $message }}</small> @enderror
-                                </div>
-                        
-                                <div class="form-group">
-                                    <!-- Nama Department -->
-                                    <label for="name">Nama Department</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama Department" value="Human Resource Developmenta">
-                                    @error('name') <small class="text-danger">{{ $message }}</small> @enderror
-                                </div>
-                        
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                     <a href="{{ url('admin/department') }}" class="btn btn-danger">Batal</a>
                                 </div>
                             </form>
                         </div>
-                        
-
                     </div>
-
                 </div>
             </div>
         </div>

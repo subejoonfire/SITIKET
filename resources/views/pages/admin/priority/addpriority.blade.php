@@ -17,12 +17,11 @@
                                 <div class="card-title">Form Tambah Prioritas</div>
                             </div>
                             <div class="card-body">
-                                <!-- Input Nama Prioritas -->
                                 <div class="form-group">
-                                    <label for="priority">Prioritas</label>
-                                    <input type="text" name="priority" class="form-control" id="priority" placeholder="Masukkan Prioritas" value="{{ old('priority') }}">
-                                    @error('priority')
-                                        <small class="text-danger">{{ $message }}</small>
+                                    <label for="priorityname">Prioritas</label>
+                                    <input type="text" name="priorityname" class="form-control" id="priorityname" placeholder="Masukkan Prioritas" value="{{ old('priorityname') }}">
+                                    @error('priorityname')
+                                    <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>

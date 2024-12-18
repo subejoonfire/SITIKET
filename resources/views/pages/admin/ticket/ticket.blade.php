@@ -81,27 +81,26 @@
                                             <th>Tanggal Diajukan</th>
                                             <th style="width: 10%" data-orderable="false">Aksi</th>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Dummy Data -->
-                                            @foreach(range(1, 5) as $index) <!-- Loop 5 times for dummy data -->
-                                            <tr>
-                                                <td>{{ $index }}</td>
-                                                <td>TK-{{ str_pad($index, 4, '0', STR_PAD_LEFT) }}</td> <!-- Example ticket code -->
-                                                <td>Nama Pelapor {{ $index }}</td> <!-- Example name -->
-                                                <td>Module {{ $index }}</td> <!-- Example module -->
-                                                <td>{{ ['Open', 'In Progress', 'Closed'][rand(0, 2)] }}</td> <!-- Random status -->
-                                                <td>Masalah {{ $index }}</td> <!-- Example issue -->
-                                                <td>{{ \Carbon\Carbon::now()->subDays(rand(1, 5))->format('l, d F Y H:i') }}</td> <!-- Random date -->
-                                                <td>
-                                                    <a href="{{ url('admin/tiket/review/') }}" class="btn btn-info btn-sm">
-                                                        <i class="fa fa-eye"></i> Detail
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($collection as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->ticketcode }}</td>
+                                            <td>{{ $item->users->name }}</td>
+                                            <td>{{ $item->modules->modulename }}</td>
+                                            <td>{{ $item->status }}</td>
+                                            <td>{{ $item->issue }}</td>
+                                            <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
+                                            <td>
+                                                <div class="btn-review">
+                                                    <a href="{{ url('admin/ticket/review/' . $item->id)}}" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-eye"></i> Review
                                                     </a>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                        
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

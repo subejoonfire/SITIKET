@@ -108,34 +108,6 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
-        $departments = [
-            'GA',
-            'HR',
-            'HSE',
-            'LOG',
-            'ENGINEERING',
-            'CDR',
-            'PLANT',
-            'PCR',
-            'WAREHOUSE',
-            'MPLANT',
-            'FPLANT',
-            'DREDGING',
-            'PROJECT',
-            'HRGA',
-            'ACCOUNTING',
-            'LOGISTIC',
-            'SHE',
-            'JSS',
-            'COAL',
-            'LEGAL',
-            'FUEL',
-            'MARKETING',
-            'OPR',
-            'BOD',
-            'SCFUEL',
-            'MPLANT'
-        ];
         DB::table('tickets')->insert([
             [
                 'id' => 1,
@@ -151,13 +123,6 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
-        foreach ($departments as $department) {
-            DB::table('departments')->insert([
-                'departmentname' => $department,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
         DB::table('modules')->insert([
             [
                 'id' => 1,

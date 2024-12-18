@@ -11,29 +11,29 @@
             <div class="row">
                 <div class="col-md-12">
                     @if (session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     @endif
                     @if (session('error'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {{ session('error') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     @endif
                     @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                     @endif
 
                     <div class="card">
@@ -43,14 +43,14 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ url('admin/priority/action/update/') }}">
+                            <form method="POST" action="{{ url('admin/priority/action/update/'. $data->id) }}">
                                 @csrf
                                 <!-- Input Nama Prioritas -->
                                 <div class="form-group">
-                                    <label for="priority">Prioritas</label>
-                                    <input type="text" name="priority" class="form-control" id="priority" placeholder="Masukkan Prioritas" value="{{ old('priority', 'Bisa Menunggu') }}">
-                                    @error('priority') 
-                                    <small class="text-danger">{{ $message }}</small> 
+                                    <label for="priorityname">Prioritas</label>
+                                    <input type="text" name="priorityname" class="form-control" id="priorityname" placeholder="Masukkan Prioritas" value="{{ $data->priorityname }}">
+                                    @error('priorityname')
+                                    <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
 

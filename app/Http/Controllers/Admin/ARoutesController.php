@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Module;
+use App\Models\Ticket;
+use App\Models\Company;
 use App\Models\Category;
+use App\Models\Priority;
 use App\Models\Department;
 use App\Http\Controllers\Controller;
 
@@ -46,86 +49,63 @@ class ARoutesController extends Controller
         }
         $data = [
             'title' => 'SI-TIKET | USER',
-            'collection' => Module::all(),
+            'modules' => Module::all(),
+            'companies' => Company::all(),
             'user' => $user,
         ];
 
         return view('pages/admin/user/edituser', $data);
     }
-    public function tiket()
+    public function ticket()
     {
         $data = [
             'title' => 'SI-TIKET | Ticket',
-            'collection' => Category::all(),
+            'collection' => Ticket::all(),
         ];
-        return view('pages.admin.tiket.tiket', $data);
+        return view('pages.admin.ticket.ticket', $data);
     }
-    public function approved()
+    public function ticket_review($id)
+    {
+        $data = [
+            'title' => 'SI-TIKET | Ticket',
+            'data' => Ticket::with(['users', 'modules', 'categories'])->where('id', $id)->first(),
+        ];
+        return view('pages.admin.ticket.review', $data);
+    }
+    public function ticket_approved()
     {
         $data = [
             'title' => 'SI-TIKET | DISETUJUI',
-            // 'collection' => Ticket::with(['users'])
-            //     ->whereHas('users', function ($query) {
-            //         $query->whereNotNull('iduser_pic')
-            //             ->where([
-            //                 'iduser_pic' => auth()->user()->id,
-            //                 'status' => 'DISETUJUI'
-            //             ]);
-            //     })
-            //     ->get()
+            'collection' => Ticket::where('status', 'DISETUJUI')->get(),
         ];
-        return view('pages.admin.tiket.approved.index', $data);
+        return view('pages.admin.ticket.approved', $data);
     }
 
-    public function processed()
+    public function ticket_processed()
     {
         $data = [
             'title' => 'SI-TIKET | DIPROSES',
-            // 'collection' => Ticket::with(['users'])
-            //     ->whereHas('users', function ($query) {
-            //         $query->whereNotNull('iduser_pic')
-            //             ->where([
-            //                 'iduser_pic' => auth()->user()->id,
-            //                 'status' => 'DIPROSES'
-            //             ]);
-            //     })
-            //     ->get()
+            'collection' => Ticket::where('status', 'DIPROSES')->get(),
         ];
-        return view('pages.admin.tiket.processed.index', $data);
+        return view('pages.admin.ticket.processed', $data);
     }
 
-    public function declined()
+    public function ticket_declined()
     {
         $data = [
             'title' => 'SI-TIKET | DITOLAK',
-            // 'collection' => Ticket::with(['users'])
-            //     ->whereHas('users', function ($query) {
-            //         $query->whereNotNull('iduser_pic')
-            //             ->where([
-            //                 'iduser_pic' => auth()->user()->id,
-            //                 'status' => 'DITOLAK'
-            //             ]);
-            //     })
-            //     ->get()
+            'collection' => Ticket::where('status', 'DITOLAK')->get(),
         ];
-        return view('pages.admin.tiket.declined.index', $data);
+        return view('pages.admin.ticket.declined', $data);
     }
 
-    public function done()
+    public function ticket_done()
     {
         $data = [
             'title' => 'SI-TIKET | SELESAI',
-            // 'collection' => Ticket::with(['users'])
-            //     ->whereHas('users', function ($query) {
-            //         $query->whereNotNull('iduser_pic')
-            //             ->where([
-            //                 'iduser_pic' => auth()->user()->id,
-            //                 'status' => 'SELESAI'
-            //             ]);
-            //     })
-            //     ->get()
+            'collection' => Ticket::where('status', 'SELESAI')->get(),
         ];
-        return view('pages.admin.tiket.done.index', $data);
+        return view('pages.admin.ticket.done', $data);
     }
 
     public function category()
@@ -158,7 +138,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DEPARTMENT',
-            'collection' => Department::all(),
+            'collection' => Department::with(['companies'])->get(),
         ];
         return view('pages/admin/department/department', $data);
     }
@@ -166,17 +146,17 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | ADD_DEPARTMENT',
+            'companies' => Company::all(),
         ];
         return view('pages/admin/department/adddepartment', $data);
     }
 
-    public function editdepart()
+    public function editdepart($id)
     {
-        // $query = Department::findOrFail();
         $data = [
             'title' => 'SI-TIKET | EDIT_DEPARTMENT',
-            // 'name' => $query->departmentname,
-            // 'id' => $query->id,
+            'data' => Department::find($id),
+            'companies' => Company::all(),
         ];
         return view('pages/admin/department/editdepartment', $data);
     }
@@ -184,8 +164,8 @@ class ARoutesController extends Controller
     public function company()
     {
         $data = [
-            'title' =>'SI-TIKET | PERUSAHAAN',
-            // 'collection' => Company::all(),
+            'title' => 'SI-TIKET | PERUSAHAAN',
+            'collection' => Company::all(),
         ];
         return view('pages.admin.company.company', $data);
     }
@@ -198,18 +178,19 @@ class ARoutesController extends Controller
         return view('pages.admin.company.addcompany', $data);
     }
 
-    public function editcompany()
+    public function editcompany($id)
     {
         $data = [
             'title' => 'SI-TIKET | EDIT_COMPANY',
+            'data' => Company::find($id),
         ];
         return view('pages.admin.company.editcompany', $data);
     }
     public function priority()
     {
         $data = [
-            'title' =>'SI-TIKET | PRIORITAS',
-            // 'collection' => Company::all(),
+            'title' => 'SI-TIKET | PRIORITAS',
+            'collection' => Priority::all(),
         ];
         return view('pages.admin.priority.priority', $data);
     }
@@ -222,10 +203,11 @@ class ARoutesController extends Controller
         return view('pages.admin.priority.addpriority', $data);
     }
 
-    public function editpriority()
+    public function editpriority($id)
     {
         $data = [
             'title' => 'SI-TIKET | EDIT_PRIORITAS',
+            'data' => Priority::find($id),
         ];
         return view('pages.admin.priority.editpriority', $data);
     }
@@ -264,15 +246,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | USER-ADMIN',
-            // 'collection' => Ticket::with(['users'])
-            //     ->whereHas('users', function ($query) {
-            //         $query->whereNotNull('iduser_pic')
-            //             ->where([
-            //                 'iduser_pic' => auth()->user()->id,
-            //                 'status' => 'DITOLAK'
-            //             ]);
-            //     })
-            //     ->get()
+            'user' => User::with('companies')->where('level', 1)->get(),
         ];
         return view('pages.admin.user.level.admin', $data);
     }
@@ -280,15 +254,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Level_USER',
-            // 'collection' => Ticket::with(['users'])
-            //     ->whereHas('users', function ($query) {
-            //         $query->whereNotNull('iduser_pic')
-            //             ->where([
-            //                 'iduser_pic' => auth()->user()->id,
-            //                 'status' => 'DITOLAK'
-            //             ]);
-            //     })
-            //     ->get()
+            'user' => User::with('companies')->where('level', 4)->get(),
         ];
         return view('pages.admin.user.level.user', $data);
     }
@@ -297,15 +263,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Level_USER',
-            // 'collection' => Ticket::with(['users'])
-            //     ->whereHas('users', function ($query) {
-            //         $query->whereNotNull('iduser_pic')
-            //             ->where([
-            //                 'iduser_pic' => auth()->user()->id,
-            //                 'status' => 'DITOLAK'
-            //             ]);
-            //     })
-            //     ->get()
+            'user' => User::with('companies')->where('level', 3)->get(),
         ];
         return view('pages.admin.user.level.pic', $data);
     }
@@ -314,15 +272,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Level_USER',
-            // 'collection' => Ticket::with(['users'])
-            //     ->whereHas('users', function ($query) {
-            //         $query->whereNotNull('iduser_pic')
-            //             ->where([
-            //                 'iduser_pic' => auth()->user()->id,
-            //                 'status' => 'DITOLAK'
-            //             ]);
-            //     })
-            //     ->get()
+            'user' => User::with('companies')->where('level', 2)->get(),
         ];
         return view('pages.admin.user.level.helpdesk', $data);
     }
