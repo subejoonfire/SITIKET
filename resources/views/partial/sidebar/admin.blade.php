@@ -47,22 +47,22 @@
                     <div class="collapse {{ request()->is('admin/user*') ? 'show' : '' }}" id="userSubmenu">
                         <ul class="nav nav-collapse">
                             <li class="{{ request()->is('admin/user/admin') ? 'active' : '' }}">
-                                <a href="{{ url('admin/user/admin') }}">
+                                <a href="{{ url('admin/ladmin') }}">
                                     <span class="sub-item">Admin</span>
                                 </a>
                             </li>
                             <li class="{{ request()->is('admin/user/user') ? 'active' : '' }}">
-                                <a href="{{ url('admin/user/user') }}">
+                                <a href="{{ url('admin/luser') }}">
                                     <span class="sub-item">User</span>
                                 </a>
                             </li>
                             <li class="{{ request()->is('admin/user/pic') ? 'active' : '' }}">
-                                <a href="{{ url('admin/user/pic') }}">
+                                <a href="{{ url('admin/lpic') }}">
                                     <span class="sub-item">PIC</span>
                                 </a>
                             </li>
                             <li class="{{ request()->is('admin/user/helpdesk') ? 'active' : '' }}">
-                                <a href="{{ url('admin/user/helpdesk') }}">
+                                <a href="{{ url('admin/lhelpdesk') }}">
                                     <span class="sub-item">Helpdesk</span>
                                 </a>
                             </li>
