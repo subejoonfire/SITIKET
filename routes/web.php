@@ -55,6 +55,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('declined', [ARoutesController::class, 'declined'])->name('declined');
         Route::get('processed', [ARoutesController::class, 'processed'])->name('processed');
         Route::get('done', [ARoutesController::class, 'done'])->name('processed');
+
+        Route::get('luser', [ARoutesController::class, 'luser'])->name('luser');
+        Route::get('lpic', [ARoutesController::class, 'lpic'])->name('lpic');
+        Route::get('ladmin', [ARoutesController::class, 'ladmin'])->name('ladmin');
+        Route::get('lhelpdesk', [ARoutesController::class, 'lhelpdesk'])->name('lhelpdesk');
+      
       
 
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {

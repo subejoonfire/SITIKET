@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers\PIC;
 
-use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
-use App\Models\Department;
-use App\Models\UserTicket;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
 
 class PRoutesController extends Controller
 {
@@ -43,8 +37,10 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | TIKET',
-            'collection' => Ticket::with(['users'])
-                ->whereHas('users', function ($query) {
+            'collection' => Ticket::with([
+                'users_tickets.user',
+            ])
+                ->whereHas('users_tickets', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where('iduser_pic', auth()->user()->id);
                 })
@@ -57,8 +53,10 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DISETUJUI',
-            'collection' => Ticket::with(['users'])
-                ->whereHas('users', function ($query) {
+            'collection' => Ticket::with([
+                'users_tickets.user',
+            ])
+                ->whereHas('users_tickets', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where([
                             'iduser_pic' => auth()->user()->id,
@@ -74,8 +72,10 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DIPROSES',
-            'collection' => Ticket::with(['users'])
-                ->whereHas('users', function ($query) {
+            'collection' => Ticket::with([
+                'users_tickets.user',
+            ])
+                ->whereHas('users_tickets', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where([
                             'iduser_pic' => auth()->user()->id,
@@ -91,8 +91,10 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DITOLAK',
-            'collection' => Ticket::with(['users'])
-                ->whereHas('users', function ($query) {
+            'collection' => Ticket::with([
+                'users_tickets.user',
+            ])
+                ->whereHas('users_tickets', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where([
                             'iduser_pic' => auth()->user()->id,
@@ -108,8 +110,10 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | SELESAI',
-            'collection' => Ticket::with(['users'])
-                ->whereHas('users', function ($query) {
+            'collection' => Ticket::with([
+                'users_tickets.user',
+            ])
+                ->whereHas('users_tickets', function ($query) {
                     $query->whereNotNull('iduser_pic')
                         ->where([
                             'iduser_pic' => auth()->user()->id,

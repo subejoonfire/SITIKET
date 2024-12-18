@@ -259,4 +259,71 @@ class ARoutesController extends Controller
 
         return view('pages/admin/module/editmodule', $data);
     }
+
+    public function ladmin()
+    {
+        $data = [
+            'title' => 'SI-TIKET | USER-ADMIN',
+            // 'collection' => Ticket::with(['users'])
+            //     ->whereHas('users', function ($query) {
+            //         $query->whereNotNull('iduser_pic')
+            //             ->where([
+            //                 'iduser_pic' => auth()->user()->id,
+            //                 'status' => 'DITOLAK'
+            //             ]);
+            //     })
+            //     ->get()
+        ];
+        return view('pages.admin.user.level.admin', $data);
+    }
+    public function luser()
+    {
+        $data = [
+            'title' => 'SI-TIKET | Level_USER',
+            // 'collection' => Ticket::with(['users'])
+            //     ->whereHas('users', function ($query) {
+            //         $query->whereNotNull('iduser_pic')
+            //             ->where([
+            //                 'iduser_pic' => auth()->user()->id,
+            //                 'status' => 'DITOLAK'
+            //             ]);
+            //     })
+            //     ->get()
+        ];
+        return view('pages.admin.user.level.user', $data);
+    }
+
+    public function lpic()
+    {
+        $data = [
+            'title' => 'SI-TIKET | Level_USER',
+            // 'collection' => Ticket::with(['users'])
+            //     ->whereHas('users', function ($query) {
+            //         $query->whereNotNull('iduser_pic')
+            //             ->where([
+            //                 'iduser_pic' => auth()->user()->id,
+            //                 'status' => 'DITOLAK'
+            //             ]);
+            //     })
+            //     ->get()
+        ];
+        return view('pages.admin.user.level.pic', $data);
+    }
+
+    public function lhelpdesk()
+    {
+        $data = [
+            'title' => 'SI-TIKET | Level_USER',
+            // 'collection' => Ticket::with(['users'])
+            //     ->whereHas('users', function ($query) {
+            //         $query->whereNotNull('iduser_pic')
+            //             ->where([
+            //                 'iduser_pic' => auth()->user()->id,
+            //                 'status' => 'DITOLAK'
+            //             ]);
+            //     })
+            //     ->get()
+        ];
+        return view('pages.admin.user.level.helpdesk', $data);
+    }
 }

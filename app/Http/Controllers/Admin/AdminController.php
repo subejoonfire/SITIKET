@@ -59,11 +59,13 @@ class AdminController extends Controller
         ]);
         $user = User::findOrFail($id);
         if (empty($request->password)) {
+            $user->idmodule = $validated['idmodule'];
             $user->name = $validated['name'];
             $user->level = $validated['level'];
             $user->phone = $validated['phone'];
             $user->email = $validated['email'];
         } else {
+            $user->idmodule = $validated['idmodule'];
             $user->name = $validated['name'];
             $user->level = $validated['level'];
             $user->phone = $validated['phone'];
