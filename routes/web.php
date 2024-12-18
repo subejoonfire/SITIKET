@@ -60,8 +60,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('lpic', [ARoutesController::class, 'lpic'])->name('lpic');
         Route::get('ladmin', [ARoutesController::class, 'ladmin'])->name('ladmin');
         Route::get('lhelpdesk', [ARoutesController::class, 'lhelpdesk'])->name('lhelpdesk');
-      
-      
+
+
 
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
@@ -87,34 +87,32 @@ Route::group(['middleware' => 'auth'], function () {
         Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
             Route::get('/', [ARoutesController::class, 'depart'])->name('/');
             Route::get('/add', [ARoutesController::class, 'adddepart'])->name('add');
-            Route::get('/edit', [ARoutesController::class, 'editdepart'])->name('edit');
+            Route::get('/edit/{id}', [ARoutesController::class, 'editdepart'])->name('edit');
             Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
                 Route::post('/store', [AdminController::class, 'departmentStore'])->name('store');
                 Route::get('/delete/{id}', [AdminController::class, 'departmentDelete'])->name('delete');
                 Route::post('/update/{id}', [AdminController::class, 'departmentUpdate'])->name('update');
             });
-
-
         });
         Route::group(['prefix' => 'company', 'as' => 'company.'], function () {
             Route::get('/', [ARoutesController::class, 'company'])->name('/');
             Route::get('/add', [ARoutesController::class, 'addcompany'])->name('add');
-            Route::get('/edit', [ARoutesController::class, 'editcompany'])->name('edit');
+            Route::get('/edit/{id}', [ARoutesController::class, 'editcompany'])->name('edit');
             Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
                 Route::post('/store', [AdminController::class, 'companyStore'])->name('store');
                 Route::get('/delete/{id}', [AdminController::class, 'companyDelete'])->name('delete');
                 Route::post('/update/{id}', [AdminController::class, 'companyUpdate'])->name('update');
-            });    
+            });
         });
         Route::group(['prefix' => 'priority', 'as' => 'priority.'], function () {
             Route::get('/', [ARoutesController::class, 'priority'])->name('/');
             Route::get('/add', [ARoutesController::class, 'addpriority'])->name('add');
-            Route::get('/edit', [ARoutesController::class, 'editpriority'])->name('edit');
+            Route::get('/edit/{id}', [ARoutesController::class, 'editpriority'])->name('edit');
             Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
                 Route::post('/store', [AdminController::class, 'priorityStore'])->name('store');
                 Route::get('/delete/{id}', [AdminController::class, 'priorityDelete'])->name('delete');
                 Route::post('/update/{id}', [AdminController::class, 'priorityUpdate'])->name('update');
-            });    
+            });
         });
         Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
             Route::get('/', [ARoutesController::class, 'category'])->name('/');
