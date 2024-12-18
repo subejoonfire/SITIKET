@@ -44,36 +44,22 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ url('admin/company/action/update/') }}">
+                            <form method="POST" action="{{ url('admin/company/action/update/'. $data->id) }}">
                                 @csrf
-                                <!-- Input Kode -->
                                 <div class="form-group">
-                                    <label for="code">Kode</label>
-                                    <input type="text" name="code" class="form-control" id="code" placeholder="Kode" value="MNG001">
-                                    @error('code') 
-                                    <small class="text-danger">{{ $message }}</small> 
+                                    <label for="companycode">Kode</label>
+                                    <input type="text" name="companycode" class="form-control" id="companycode" placeholder="Masukkan Kode" value="{{ $data->companycode }}">
+                                    @error('companycode')
+                                    <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                        
-                                <!-- Input Inisial -->
                                 <div class="form-group">
-                                    <label for="initial">Inisial</label>
-                                    <input type="text" name="initial" class="form-control" id="initial" placeholder="Inisial" value="PT. JG">
-                                    @error('initial') 
-                                    <small class="text-danger">{{ $message }}</small> 
+                                    <label for="companyname">Nama Perusahaan</label>
+                                    <input type="text" name="companyname" class="form-control" id="companyname" placeholder="Masukkan Nama Perusahaan" value="{{ $data->companyname }}">
+                                    @error('companyname')
+                                    <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                        
-                                <!-- Input Nama Perusahaan -->
-                                <div class="form-group">
-                                    <label for="name">Nama Perusahaan</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Nama Perusahaan" value="PT. JHONLIN GROUP">
-                                    @error('name') 
-                                    <small class="text-danger">{{ $message }}</small> 
-                                    @enderror
-                                </div>
-                        
-                                <!-- Tombol Aksi -->
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                     <a href="{{ url('admin/company') }}" class="btn btn-danger">Batal</a>

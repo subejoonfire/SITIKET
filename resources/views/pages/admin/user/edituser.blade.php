@@ -64,9 +64,13 @@
                                     @error('email') <small class="text-danger">{{ $message }}</small> @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="perusahaan">Perusahaan</label>
-                                    <input type="perusahaan" name="perusahaan" class="form-control" id="perusahaan" placeholder="Masukan Perusahaan" value="{{ old('perusahaan') }}">
-                                    @error('perusahaan')
+                                    <label for="idcompany">Perusahaan</label>
+                                    <select class="form-control" id="level" name="idcompany">
+                                        <option selected disabled hidden>Pilih Perusahaan</option>
+                                        @foreach ($companies as $company)
+                                        <option value="{{ $company->id }}" {{ $user->idcompany == $company->id ? 'selected' : '' }}>{{ $company->companyname }}</option>
+                                        @endforeach
+                                    </select> @error('idcompany')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
@@ -89,7 +93,7 @@
                                     <label for="idmodule">Pilih Modul</label>
                                     <select class="form-control" id="idmodule" name="idmodule">
                                         <option selected disabled hidden>Pilih Modul</option>
-                                        @foreach ($collection as $module)
+                                        @foreach ($modules as $module)
                                         <option value="{{ $module->id }}" {{ $user->idmodule == $module->id ? 'selected' : '' }}>{{ $module->modulename }}</option>
                                         @endforeach
                                     </select>
