@@ -1,4 +1,3 @@
-<!-- Sidebar -->
 @include('css/pic/dashboard')
 <div class="sidebar">
     <div class="sidebar-background"></div>
@@ -12,11 +11,12 @@
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('pic/utama') || request()->routeIs('pic.setuju') || request()->routeIs('pic.proses') || request()->routeIs('pic.selesai') || request()->routeIs('pic.tolak') ? 'active' : '' }}">
-                    <!-- Link Menu Tiket yang akan mengarah ke halaman utama tiket -->
                     <a href="{{ url('pic/ticket') }}" class="{{ request()->routeIs('pic.ticket') || request()->routeIs('pic.setuju') || request()->routeIs('pic.proses') || request()->routeIs('pic.selesai') || request()->routeIs('pic.tolak') ? 'active' : '' }}">
                         <i class="fas fa-ticket-alt"></i>
                         <p>Tiket</p>
-                        <span class="badge badge-count">5</span>
+                        @if ($notification != 0)
+                        <span class="badge badge-count">{{ $notification }}</span>
+                        @endif
                     </a>
                     <div class="{{ request()->routeIs('pic/utama') || request()->routeIs('pic.setuju') || request()->routeIs('pic.proses') || request()->routeIs('pic.selesai') || request()->routeIs('pic.tolak') ? 'show' : '' }}" id="base">
                         <ul class="nav nav-collapse">
