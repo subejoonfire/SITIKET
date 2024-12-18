@@ -93,7 +93,7 @@
                                     <div class="col-md-12">
                                         <label for="category">Kategori</label>
                                         <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
-                                        @error('issue')
+                                        @error('category')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
@@ -111,7 +111,22 @@
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                </div>
+                                    <div class="col-md-12">
+                                        <label for="fileview">File Diupload</label>
+                                        <div class="d-flex align-items-center" style="border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
+                                            @if(file_exists(public_path('storage/1.pdf')))
+                                                <a href="{{ asset('storage/1.pdf') }}" download class="btn btn-primary mr-2">
+                                                    Unduh
+                                                </a>
+                                                <span style="flex-grow: 1; color: #000; font-weight:">
+                                                    file sap download.pdf
+                                                </span>
+                                            @else
+                                                <div class="form-control text-muted">Tidak ada file terkait.</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>                                
                                 @if ($type == 'index')
                                 <div class="form-group">
                                     @if ($data->status == 'DIAJUKAN')

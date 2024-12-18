@@ -185,6 +185,22 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="fileview">File Diupload</label>
+                                    <div class="d-flex align-items-center" style="border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
+                                        @if(file_exists(public_path('storage/1.pdf')))
+                                            <a href="{{ asset('storage/1.pdf') }}" download class="btn btn-primary mr-2">
+                                                Unduh
+                                            </a>
+                                            <span style="flex-grow: 1; color: #000; font-weight:">
+                                                file sap download.pdf
+                                            </span>
+                                        @else
+                                            <div class="form-control text-muted">Tidak ada file terkait.</div>
+                                        @endif
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                     <a href="{{ url('helpdesk/validation') }}" class="btn btn-danger">Batal</a>
                                 </div>
