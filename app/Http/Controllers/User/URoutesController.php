@@ -12,6 +12,7 @@ use App\Models\Department;
 use App\Models\UserTicket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Priority;
 
 class URoutesController extends Controller
 {
@@ -31,6 +32,7 @@ class URoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | ADD',
             'module' => Module::all(),
+            'priority' => Priority::all(),
             'category' => Category::all(),
         ];
 
@@ -51,13 +53,14 @@ class URoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Review',
-            'data' => Ticket::where('tickets.id', $id)->first(),
+            'data' => Ticket::with('priorities')->where('tickets.id', $id)->first(),
             'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
             'documents' => Document::with('messages')
                 ->whereHas('messages', function ($query) use ($id) {
                     $query->where('messages.idticket', $id);
                 })->get(),
         ];
+        // dd($data['data']);
         return view('pages/user/review', $data);
     }
 }

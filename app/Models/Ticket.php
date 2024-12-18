@@ -15,13 +15,12 @@ class Ticket extends Model
     protected $fillable = [
         'ticketcode',
         'iduser',
-        'iddepartment',
         'idmodule',
         'idcategory',
-        // 'iduser_pic',
+        'idpriority',
+        'attachment',
         'issue',
         'detailissue',
-        'priority',
         'category',
         'status',
         'trouble'
@@ -54,5 +53,9 @@ class Ticket extends Model
     public function users_tickets(): HasMany
     {
         return $this->hasMany(UsersTickets::class, 'idticket');
+    }
+    public function messages(): HasMany
+    {
+        return $this->hasMany(Message::class, 'idticket', 'id');
     }
 }
