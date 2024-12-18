@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Module;
 use App\Models\Ticket;
+use App\Models\Category;
+use App\Models\Priority;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\UserDepartment;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 
 class AdminController extends Controller
 {
@@ -170,5 +171,34 @@ class AdminController extends Controller
         $category->delete();
 
         return redirect()->to(url('admin/category'))->with('success', 'Kategori berhasil dihapus.');
+    }
+
+    public function priorityStore(Request $request)
+    {
+        $request->validate([
+            'priorityname' => 'required|string|max:255',
+        ]);
+        Priority::create([
+            'priorityname' => $request->priorityname,
+        ]);
+        return redirect()->to(url('admin/priority'))->with('success', 'Prioritas berhasil ditambahkan.');
+    }
+    public function priorityUpdate(Request $request, $id)
+    {
+        $request->validate([
+            'priorityname' => 'required|string|max:255',
+        ]);
+        $priority = Priority::findOrFail($id);
+        $priority->update([
+            'priorityname' => $request->priorityname,
+        ]);
+        return redirect()->to(url('admin/priority'))->with('success', 'Prioritas berhasil diperbarui.');
+    }
+    public function priorityDelete($id)
+    {
+        $priority = Priority::findOrFail($id);
+        $priority->delete();
+
+        return redirect()->to(url('admin/priority'))->with('success', 'Prioritas berhasil dihapus.');
     }
 }

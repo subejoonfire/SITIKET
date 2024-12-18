@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('priorities', function (Blueprint $table) {
             $table->id();
-            $table->string('prioriyname');
+            $table->string('priorityname');
             $table->timestamps();
             $table->softDeletes();
         });
