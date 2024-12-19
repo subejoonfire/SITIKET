@@ -111,7 +111,10 @@ default => 'layout.default',
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                 </div>
                             </form>
-
+                            <form action="{{ url('profile/image/delete') }}" method="post" class="mt-3">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-block">Hapus Foto</button>
+                            </form>
                         </div>
                     </div>
                 </div>
