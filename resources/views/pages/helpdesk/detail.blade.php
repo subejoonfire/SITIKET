@@ -224,23 +224,3 @@
 </div>
 
 @endsection
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const moduleSelect = document.getElementById('idmodule');
-        const picSelects = document.querySelectorAll('.iduser_pic');
-
-        const updatePicOptions = () => {
-            const selectedmodule = moduleSelect.value;
-            picSelects.forEach(select => {
-                Array.from(select.options).forEach(option => {
-                    const moduleId = option.getAttribute('data-module');
-                    option.style.display = (selectedmodule && moduleId == selectedmodule) ? 'none';
-                });
-            });
-        };
-
-        moduleSelect.addEventListener('change', updatePicOptions);
-        updatePicOptions();
-    });
-
-</script>
