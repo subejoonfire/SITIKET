@@ -97,7 +97,7 @@
                                                 <div class="form-button-action">
                                                     <a href="{{ url('pic/ticket/review/done/'. $item->id)}}" class="btn btn-info btn-lg rounded-pill d-flex align-items-center px-3 py-2" data-original-title="Change Status">
                                                         <i class="fa fa-eye me-3"></i>
-                                                        <span>Review</span>
+                                                        <span>Detail</span>
                                                     </a>
                                                 </div>
                                             </td>

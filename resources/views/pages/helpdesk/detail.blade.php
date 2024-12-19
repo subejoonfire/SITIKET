@@ -166,6 +166,13 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="department">Departemen</label>
+                                    <input type="text" name="department" class="form-control" id="department" value="{{ $data->issue }}">
+                                    @error('department')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="subjek">Subjek</label>
                                     <input type="text" name="subjek" class="form-control" id="subjek" value="{{ $data->issue }}">
                                     @error('subjek')

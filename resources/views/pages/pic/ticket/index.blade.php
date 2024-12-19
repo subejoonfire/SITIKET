@@ -95,7 +95,7 @@
                                             <td>
                                                 <div class="btn-review">
                                                     <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-sm">
-                                                        <i class="fa fa-eye"></i> Review
+                                                        <i class="fa fa-eye"></i> Detail
                                                     </a>
                                                     @if ($item->messages->where('iduser_to', auth()->user()->id)->where('read_pic', false)->count() > 0)
                                                     <span class="notification-badge">
