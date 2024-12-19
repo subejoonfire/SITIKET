@@ -66,7 +66,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->ticketcode }}</td>
-                                            <td>{{ $item->users->name }}</td>
+                                            <td>{{ $item->users->name }} ({{ $item->users->companies->companycode ?? '' }}) </td>
                                             <td>{{ $item->idmodule ? $item->modules->modulename : 'Menunggu' }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>{{ $item->issue }}</td>
@@ -77,7 +77,6 @@
                                                     <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
                                                         <i class="fas fa-eye"></i> Detail
                                                     </a>
-                                                    <span class="notification-badge">2</span>
                                                 </div>
                                             </td>
                                         </tr>

@@ -15,7 +15,6 @@
                     <a href="{{ url('helpdesk/validation') }}">
                         <i class="fas fa-clipboard-check"></i>
                         <p>Validasi</p>
-                        <span class="badge badge-count">5</span>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('history') ? 'active' : '' }}">
@@ -24,7 +23,7 @@
                         <p>Riwayat Validasi</p>
                     </a>
                 </li>
-    
+
             </ul>
         </div>
     </div>

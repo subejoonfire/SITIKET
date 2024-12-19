@@ -60,7 +60,7 @@ class HRoutesController extends Controller
             'title' => 'SI-TIKET | HALAMAN_VALIDASI',
             'collection' => Ticket::with([
                 'users_tickets',
-                'users',
+                'users.companies',
                 'modules'
             ])
                 ->whereDoesntHave('users_tickets')->get(),
