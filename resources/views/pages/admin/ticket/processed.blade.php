@@ -47,7 +47,7 @@
                                             <td>
                                                 <div class="btn-review">
                                                     <a href="{{ url('admin/ticket/review/' . $item->id)}}" class="btn btn-info btn-sm">
-                                                        <i class="fa fa-eye"></i> Review
+                                                        <i class="fa fa-eye"></i> Detail
                                                     </a>
                                                 </div>
                                             </td>

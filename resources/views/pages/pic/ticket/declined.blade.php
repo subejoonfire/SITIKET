@@ -89,7 +89,7 @@
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
                                                 <a href="{{ url('pic/ticket/review/declined/'. $item->id)}}" class="btn btn-info btn-sm">
-                                                    <i class="fa fa-eye"></i> Review
+                                                    <i class="fa fa-eye"></i> Detail
                                                 </a>
                                             </td>
                                         </tr>

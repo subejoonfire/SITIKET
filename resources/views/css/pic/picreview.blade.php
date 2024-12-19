@@ -15,6 +15,9 @@
     #subjek,
     #category,
     #detailissue,
+    #perusahaan,
+    #kode_perusahaan,
+    #department,
     #issue {
         background-color: #ffffff !important;
         color: #000000 !important;

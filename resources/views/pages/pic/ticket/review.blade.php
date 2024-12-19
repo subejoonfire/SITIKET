@@ -39,7 +39,6 @@
                     <form method="POST" action="{{ url('#') }}">
                         <div class="card">
                             <div class="card-body">
-                                <!-- Username, Email, No Handphone -->
                                 <div class="form-group row">
                                     <div class="col-md-4">
                                         <label for="username">Username</label>
@@ -86,29 +85,54 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="perusahaan">Perusahaan</label>
+                                            <input type="text" name="perusahaan" class="form-control" id="perusahaan" value="{{ $data->company }}">
+                                            @error('perusahaan')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="kode_perusahaan">Kode Perusahaan</label>
+                                            <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->kode_perusahaan }}">
+                                            @error('kode_perusahaan')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="department">Departemen</label>
+                                            <input type="text" name="department" class="form-control" id="department" value="{{ $data->department }}">
+                                            @error('department')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>                     
                                 <div class="form-group row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mb-3">
                                         <label for="category">Kategori</label>
                                         <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
                                         @error('category')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mb-3">
                                         <label for="issue">Subjek</label>
                                         <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->issue }}">
                                         @error('issue')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mb-3">
                                         <label for="detailissue">Keluhan</label>
                                         <textarea name="detailissue" class="form-control" id="detailissue" rows="3" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
                                         @error('detailissue')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mb-3">
                                         <label for="fileview">File Diupload</label>
                                         <div class="d-flex align-items-center" style="border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
                                             @if($data->attachment != NULL)

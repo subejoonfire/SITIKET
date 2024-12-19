@@ -54,6 +54,7 @@
         #subjek,
         #kategori,
         #company,
+        #department,
         #kode_perusahaan,
         #tanggal_diajukan {
             background-color: #ffffff !important;
