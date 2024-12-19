@@ -137,7 +137,7 @@
                             </div>
                             <div class="card-action">
                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                <a href="{{ url('admin/add') }}" class="btn btn-danger">Batal</a>
+                                <a href="{{ url('admin/user') }}" class="btn btn-danger">Batal</a>
                             </div>
                         </div>
                     </form>
