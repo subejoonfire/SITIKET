@@ -53,7 +53,6 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Department</th>
-                                            <th>Nama Perusahaan</th>
                                             <th style="width: 15%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -62,7 +61,6 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->departmentname }}</td>
-                                            <td>{{ $item->companies->companyname ?? 'Tidak ada perusahaan' }}</td>
                                             <td>
                                                 <div class="form-button-action">
                                                     <a href="{{ url('admin/department/edit/' . $item->id) }}" class="btn btn-warning btn-sm" style="margin-right: 3px;">

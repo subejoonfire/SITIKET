@@ -18,8 +18,4 @@ class Department extends Model
     {
         return $this->belongsTo(User::class, 'iduser');
     }
-    public function companies(): BelongsTo
-    {
-        return $this->belongsTo(Company::class, 'idcompany');
-    }
 }
