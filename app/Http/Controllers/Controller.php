@@ -18,10 +18,10 @@ class Controller
     public function __construct()
     {
         $this->notificationData = [];
-        $notifications = Ticket::with([
-            'messages.user_from',
-        ])->get();
-        if (auth()->check()) {
+        if (auth()->check() && auth()->user()->level != 1) {
+            $notifications = Ticket::with([
+                'messages.user_from',
+            ])->get();
             if (auth()->user()->level == 3) {
                 foreach ($notifications as $item) {
                     $this->notification += $item->messages->where('iduser_to', auth()->user()->id)->where('read_pic', false)->count();
