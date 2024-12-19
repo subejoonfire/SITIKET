@@ -23,18 +23,6 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="idcompany">Nama Perusahaan</label>
-                                    <select name="idcompany" class="form-control" id="idcompany">
-                                        <option value="" selected>Pilih Perusahaan</option>
-                                        @foreach ($companies as $item)
-                                        <option value="{{ $item->id }}">{{ $item->companyname }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('idcompany')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
                             </div>
                             <div class="card-action">
                                 <button type="submit" class="btn btn-success">Simpan</button>
