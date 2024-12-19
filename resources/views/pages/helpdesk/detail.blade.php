@@ -227,7 +227,7 @@
             picSelects.forEach(select => {
                 Array.from(select.options).forEach(option => {
                     const moduleId = option.getAttribute('data-module');
-                    option.style.display = (selectedmodule && moduleId == selectedmodule) ? '' : 'none';
+                    option.style.display = (selectedmodule && moduleId == selectedmodule) ? 'none';
                 });
             });
         };
