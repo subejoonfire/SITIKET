@@ -66,9 +66,6 @@ class URoutesController extends Controller
         $check_pic = UsersTickets::where('idticket', $id)->get();
         $unique_pics = $check_pic->pluck('iduser_pic')->unique();
         $many = $unique_pics->count() > 1 ? true : false;
-        foreach ($check_pic as $item) {
-            # code...
-        }
         $data = [
             'title' => 'SI-TIKET | Review',
             'many' => $many,
