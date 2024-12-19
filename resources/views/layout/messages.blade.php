@@ -47,7 +47,11 @@
                             <div class="title-container">
                                 <span class="from">{{ $item->user_from->name }} :</span>
                                 <br>
+                                @if ($many == true && $item->user_from->level == 4)
+                                <span class="dear">Dear PIC's,</span>
+                                @else
                                 <span class="dear">Dear {{ $item->user_to->name }},</span>
+                                @endif
                             </div>
                             <div class="description">
                                 <p>

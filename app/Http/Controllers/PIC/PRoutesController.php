@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
 use App\Models\Priority;
+use App\Models\UsersTickets;
 use App\Http\Controllers\Controller;
 
 class PRoutesController extends Controller
@@ -53,7 +54,7 @@ class PRoutesController extends Controller
                 ->get()
         ];
         // dd($data['notificationData']);
-        return view('pages/pic/ticket.index', $data);
+        return view('pages/pic/ticket/index', $data);
     }
 
     public function approved()
@@ -75,7 +76,7 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages/pic/ticket.approved.index', $data);
+        return view('pages/pic/ticket/approved', $data);
     }
 
     public function processed()
@@ -97,7 +98,7 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages/pic/ticket.processed.index', $data);
+        return view('pages/pic/ticket/processed', $data);
     }
 
     public function declined()
@@ -119,7 +120,7 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages/pic/ticket.declined.index', $data);
+        return view('pages/pic/ticket/declined', $data);
     }
 
     public function done()
@@ -141,14 +142,18 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
-        return view('pages/pic/ticket.done.index', $data);
+        return view('pages/pic/ticket/done', $data);
     }
     public function review($type, $id)
     {
 
         Message::where('idticket', $id)->update(['read_pic' => true]);
+        $check_pic = UsersTickets::where('idticket', $id)->get();
+        $unique_pics = $check_pic->pluck('iduser_pic')->unique();
+        $many = $unique_pics->count() > 1 ? true : false;
         $data = [
             'title' => 'SITIKET | Review',
+            'many' => $many,
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
             'type' => $type,

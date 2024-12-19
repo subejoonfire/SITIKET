@@ -8,11 +8,12 @@ use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Category;
 use App\Models\Document;
+use App\Models\Priority;
 use App\Models\Department;
 use App\Models\UserTicket;
+use App\Models\UsersTickets;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Priority;
 
 class URoutesController extends Controller
 {
@@ -62,8 +63,15 @@ class URoutesController extends Controller
             $row->read_user = true;
             $row->save();
         }
+        $check_pic = UsersTickets::where('idticket', $id)->get();
+        $unique_pics = $check_pic->pluck('iduser_pic')->unique();
+        $many = $unique_pics->count() > 1 ? true : false;
+        foreach ($check_pic as $item) {
+            # code...
+        }
         $data = [
             'title' => 'SI-TIKET | Review',
+            'many' => $many,
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
             'data' => Ticket::with(['priorities', 'users_tickets.user_pic'])->where('tickets.id', $id)->first(),
