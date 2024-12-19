@@ -28,7 +28,7 @@ class HRoutesController extends Controller
             'title' => 'SI-TIKET | Dashboard',
             'data' => Ticket::with([
                 'categories',
-                'users_tickets.companies',
+                'users.companies',
             ])->where('id', $id)->first(),
             'module' => Module::all(),
             'priority' => Priority::all(),

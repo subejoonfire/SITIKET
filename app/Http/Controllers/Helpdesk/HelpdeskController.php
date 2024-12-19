@@ -14,23 +14,20 @@ class HelpdeskController extends Controller
     {
         $ticket = Ticket::find($id);
         if (!$ticket) {
-            return redirect()->back('helpdesk/validation')->with('error', 'Ticket tidak ditemukan');
-        }
-        if (count($request->iduser_pic) !== count(array_unique($request->iduser_pic))) {
-            return redirect()->back()
-                ->withErrors(['iduser_pic' => 'PIC tidak boleh duplikat.'])
-                ->withInput();
+            return redirect()->back()->with('error', 'Ticket tidak ditemukan');
         }
         $request->validate([
             'idmodule' => 'required|exists:modules,id',
-            // 'idpriority' => 'required|string',
             'iduser_pic.*' => 'nullable|exists:users,id',
         ]);
-
+        $filtered_iduser_pic = array_filter($request->iduser_pic, function ($value) {
+            return !is_null($value) && $value !== '';
+        });
+        if (count($filtered_iduser_pic) !== count(array_unique($filtered_iduser_pic))) {
+            return redirect()->back()->withErrors(['iduser_pic' => 'PIC tidak boleh duplikat.'])->withInput();
+        }
         UsersTickets::where('idticket', $id)->delete();
-
-        foreach ($request->iduser_pic as $iduser_pic) {
-            if (is_null($iduser_pic) || $iduser_pic === '') continue;
+        foreach ($filtered_iduser_pic as $iduser_pic) {
             $users_tickets = new UsersTickets();
             $users_tickets->idticket = $id;
             $users_tickets->iduser = $ticket->iduser;
@@ -41,7 +38,6 @@ class HelpdeskController extends Controller
         $ticket->idpriority = $request->idpriority;
         $ticket->status = 'DIAJUKAN';
         $ticket->save();
-
         return redirect()->back()->with('success', 'Ticket berhasil diperbarui');
     }
 }
