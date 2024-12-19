@@ -25,6 +25,7 @@ class User extends Authenticatable
         'name',
         'image',
         'phone',
+        'idcompany',
         'iddepartment',
         'idmodule',
         'level',
@@ -54,10 +55,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    // public function departments(): BelongsTo
-    // {
-    //     return $this->belongsTo(Department::class, 'iddepartment');
-    // }
+    public function departments(): BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'iddepartment');
+    }
     public function modules(): BelongsTo
     {
         return $this->belongsTo(Module::class, 'idmodule');

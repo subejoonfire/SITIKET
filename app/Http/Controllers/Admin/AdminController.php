@@ -18,13 +18,15 @@ class AdminController extends Controller
     public function userStore(Request $request)
     {
         $validated = $request->validate([
+            'iddepartment' => 'nullable|integer',
+            'idcompany' => 'nullable|integer',
+            'idmodule' => 'nullable|integer',
             'name' => 'required|string|max:255',
             'level' => 'required|integer|max:5',
             'phone' => 'required|string|max:14',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
         ]);
-
         if ($validated['level'] == 3) {
             $validated = array_merge($validated, $request->validate([
                 'idmodule' => 'required|max:5',
@@ -32,6 +34,8 @@ class AdminController extends Controller
         }
 
         User::create([
+            'iddepartment' => $validated['iddepartment'],
+            'idcompany' => $validated['idcompany'],
             'idmodule' => $validated['level'] == 3 ? $validated['idmodule'] : null,
             'name' => $validated['name'],
             'phone' => $validated['phone'],
@@ -53,26 +57,31 @@ class AdminController extends Controller
     public function userUpdate(Request $request, $id)
     {
         $validated = $request->validate([
+            'idcompany' => 'nullable|integer',
+            'iddepartment' => 'nullable|integer',
+            'idmodule' => 'nullable|integer',
             'name' => 'required|string|max:255',
             'level' => 'required|integer|max:5',
             'phone' => 'required|string|max:16',
-            'idcompany' => 'integer',
             'email' => 'required|email|unique:users,email,' . $request->id,
         ]);
         $user = User::findOrFail($id);
-        if (empty($request->password) && empty($request->idmodule)) {
+        if (empty($request->password)) {
+            $user->idcompany = $validated['idcompany'] ?? NULL;
+            $user->iddepartment = $validated['iddepartment'] ?? NULL;
+            $user->idmodule = $validated['idmodule'] ?? NULL;
             $user->name = $validated['name'];
             $user->level = $validated['level'];
             $user->phone = $validated['phone'];
             $user->email = $validated['email'];
-            $user->idcompany = $validated['idcompany'];
         } else {
-            $user->idmodule = $validated['idmodule'];
+            $user->idcompany = $validated['idcompany'] ?? NULL;
+            $user->iddepartment = $validated['iddepartment'] ?? NULL;
+            $user->idmodule = $validated['idmodule'] ?? NULL;
             $user->name = $validated['name'];
             $user->level = $validated['level'];
             $user->phone = $validated['phone'];
             $user->email = $validated['email'];
-            $user->idcompany = $validated['idcompany'];
             $user->password = bcrypt($request->password);
         }
         $user->save();

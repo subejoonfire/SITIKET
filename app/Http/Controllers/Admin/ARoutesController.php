@@ -27,8 +27,9 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | USER',
-            'user' => User::all(),
+            'collection' => User::with(['modules', 'companies', 'departments'])->get(),
         ];
+        // dd($data['collection']);
         return view('pages/admin/user/user', $data);
     }
 
@@ -36,7 +37,9 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Tambah_User',
-            'collection' => Module::all(),
+            'modules' => Module::all(),
+            'departments' => Department::all(),
+            'companies' => Company::all(),
         ];
         return view('pages/admin/user/adduser', $data);
     }
@@ -50,8 +53,9 @@ class ARoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | USER',
             'modules' => Module::all(),
+            'departments' => Department::all(),
             'companies' => Company::all(),
-            'user' => $user,
+            'data' => $user,
         ];
 
         return view('pages/admin/user/edituser', $data);
@@ -68,7 +72,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Ticket',
-            'data' => Ticket::with(['users', 'modules', 'categories'])->where('id', $id)->first(),
+            'data' => Ticket::with(['users', 'modules', 'categories', 'priorities'])->where('id', $id)->first(),
         ];
         return view('pages.admin.ticket.review', $data);
     }
@@ -138,7 +142,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DEPARTMENT',
-            'collection' => Department::with(['companies'])->get(),
+            'collection' => Department::get(),
         ];
         return view('pages/admin/department/department', $data);
     }
