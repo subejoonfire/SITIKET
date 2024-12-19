@@ -103,17 +103,14 @@ default => 'layout.default',
                             </div>
                             <form action="{{ url('profile/image') }}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <div class="view-profile">
-                                    <button type="button" class="btn btn-info btn-block" onclick="document.getElementById('foto').click();">Pilih Foto</button>
+                                <div class="view-profile text-center">
+                                    <button type="button" class="btn btn-info" onclick="document.getElementById('foto').click();">Pilih Foto</button>
+                                    <a href="{{ url('profile/image/delete') }}" class="btn btn-danger">Hapus Foto</a>
                                 </div>
                                 <input type="file" id="foto" name="image" style="display: none;" accept="image/*" onchange="previewImage(event)">
                                 <div id="save-button-container" class="text-center mt-3" style="display: none;">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                 </div>
-                            </form>
-                            <form action="{{ url('profile/image/delete') }}" method="post" class="mt-3">
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-block">Hapus Foto</button>
                             </form>
                         </div>
                     </div>

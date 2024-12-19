@@ -160,6 +160,12 @@ class Controller
         }
         return redirect()->back();
     }
+    public function delete_update()
+    {
+        Storage::delete('public/profiles/' . auth()->user()->image);
+        User::find(auth()->user()->id)->update(['image' => null]);
+        return redirect()->back();
+    }
     public function logout()
     {
         Auth::logout();

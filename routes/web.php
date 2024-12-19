@@ -150,6 +150,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile', [RoutesController::class, 'profile'])->name('profile');
     Route::post('update/profile', [RoutesController::class, 'profile_update'])->name('update/profile');
     Route::post('/profile/image', [Controller::class, 'image_update'])->name('profile/image');
+    Route::get('/profile/image/delete', [Controller::class, 'delete_update'])->name('profile/image/delete');
     Route::post('message_store/{id}', [Controller::class, 'message_store'])->name('message_store/{id}');
 });
 
