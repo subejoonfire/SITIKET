@@ -89,27 +89,27 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label for="perusahaan">Perusahaan</label>
-                                            <input type="text" name="perusahaan" class="form-control" id="perusahaan" value="{{ $data->company }}">
+                                            <input type="text" name="perusahaan" class="form-control" id="perusahaan" value="{{ $data->users->companies->companyname ?? 'Tidak ada'}}">
                                             @error('perusahaan')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div class="col-md-4">
                                             <label for="kode_perusahaan">Kode Perusahaan</label>
-                                            <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->kode_perusahaan }}">
+                                            <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->users->companies->companycode ?? 'Tidak ada'}}">
                                             @error('kode_perusahaan')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div class="col-md-4">
                                             <label for="department">Departemen</label>
-                                            <input type="text" name="department" class="form-control" id="department" value="{{ $data->department }}">
+                                            <input type="text" name="department" class="form-control" id="department" value="{{ $data->users->departments->departmentname ?? 'Tidak ada'}}">
                                             @error('department')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                     </div>
-                                </div>                     
+                                </div>
                                 <div class="form-group row">
                                     <div class="col-md-12 mb-3">
                                         <label for="category">Kategori</label>
