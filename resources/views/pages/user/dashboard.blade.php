@@ -95,7 +95,12 @@
                                                 <a href="{{ url('user/review/' . $item->id) }}" class="btn btn-info btn-sm" style="position: relative; display: inline-block;">
                                                     <i class="fas fa-eye"></i> Detail
                                                 </a>
-                                                <span class="badge badge-danger notification-badge">2</span>
+                                                @if ($item->messages->where('iduser_to', auth()->user()->id)->where('read_user', false)->count() > 0)
+                                                <span class="notification-badge">
+                                                    {{ $item->messages->where('iduser_to', auth()->user()->id)->where('read_user', false)->count() }}
+                                                </span>
+                                                @else
+                                                @endif
                                                 @if ($item->status == 'TERKIRIM')
                                                 <a href="{{ url('user/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Remove">
                                                     <i class="fas fa-trash"></i> Delete

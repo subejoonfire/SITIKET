@@ -1372,61 +1372,28 @@
                                 <li>
                                     <div class="dropdown-title">Kamu punya {{ $notification }} pesan baru</div>
                                 </li>
-                                @endif
+                                @else
                                 <li>
                                     <div class="dropdown-title">Tidak ada pesan terbaru</div>
                                 </li>
+                                @endif
                                 <li>
                                     <div class="message-notif-scroll scrollbar-outer">
                                         <div class="notif-center">
-                                            <a href="#">
+                                            @foreach ($notificationData as $item)
+                                            <a href="{{ url('pic/ticket/review/index/'. $item->idticket) }}">
                                                 <div class="notif-img">
-                                                    <img src={{  url('back-end/assets/img/jm_denis.jpg')}} alt="Img Profile">
+                                                    <img src={{  url('storage/profiles/' . ($item->user_from->image == '' ? 'default.jpg' : $item->user_from->image) )}} alt="Img Profile">
                                                 </div>
                                                 <div class="notif-content">
-                                                    <span class="subject">Jimmy Denis</span>
+                                                    <span class="subject">{{ $item->user_from->name }}</span>
                                                     <span class="block">
-                                                        How are you ?
+                                                        {{ $item->message }}
                                                     </span>
-                                                    <span class="time">5 minutes ago</span>
+                                                    <span class="time">{{ $item->created_at->diffForHumans() }}</span>
                                                 </div>
                                             </a>
-                                            <a href="#">
-                                                <div class="notif-img">
-                                                    <img src={{  url('back-end/assets/img/chadengle.jpg')}} alt="Img Profile">
-                                                </div>
-                                                <div class="notif-content">
-                                                    <span class="subject">Chad</span>
-                                                    <span class="block">
-                                                        Ok, Thanks !
-                                                    </span>
-                                                    <span class="time">12 minutes ago</span>
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="notif-img">
-                                                    <img src={{  url('back-end/assets/img/mlane.jpg')}} alt="Img Profile">
-                                                </div>
-                                                <div class="notif-content">
-                                                    <span class="subject">Jhon Doe</span>
-                                                    <span class="block">
-                                                        Ready for the meeting today...
-                                                    </span>
-                                                    <span class="time">12 minutes ago</span>
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="notif-img">
-                                                    <img src={{  url('back-end/assets/img/talha.jpg')}} alt="Img Profile">
-                                                </div>
-                                                <div class="notif-content">
-                                                    <span class="subject">Talha</span>
-                                                    <span class="block">
-                                                        Hi, Apa Kabar ?
-                                                    </span>
-                                                    <span class="time">17 minutes ago</span>
-                                                </div>
-                                            </a>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </li>
