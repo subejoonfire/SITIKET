@@ -38,9 +38,6 @@
                     @endif
                     <form method="POST" action="{{ url('#') }}">
                         <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Change Status</h4>
-                            </div>
                             <div class="card-body">
                                 <!-- Username, Email, No Handphone -->
                                 <div class="form-group row">
