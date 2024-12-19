@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="priority">Priority</label>
-                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priority }}">
+                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priorities->priorityname ?? 'Tidak ditemukan' }}">
                                         @error('priority')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
