@@ -20,6 +20,8 @@ class URoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Dashboard',
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'collection' => Ticket::where('iduser', auth()->user()->id)->get(),
             'count' => Ticket::where('iduser', auth()->user()->id)->count(),
         ];
@@ -31,6 +33,8 @@ class URoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | ADD',
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'module' => Module::all(),
             'priority' => Priority::all(),
             'category' => Category::all(),
@@ -43,7 +47,9 @@ class URoutesController extends Controller
     {
 
         $data = [
-            'title' => 'SI-TIKET | Profile'
+            'title' => 'SI-TIKET | Profile',
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
         ];
 
         return view('pages/user/profile', $data);
@@ -51,16 +57,22 @@ class URoutesController extends Controller
 
     public function review($id)
     {
+        $message = Message::where('idticket', $id)->get();
+        foreach ($message as $row) {
+            $row->read_user = true;
+            $row->save();
+        }
         $data = [
             'title' => 'SI-TIKET | Review',
-            'data' => Ticket::with('priorities')->where('tickets.id', $id)->first(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+            'data' => Ticket::with(['priorities', 'users_tickets.user_pic'])->where('tickets.id', $id)->first(),
             'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
             'documents' => Document::with('messages')
                 ->whereHas('messages', function ($query) use ($id) {
                     $query->where('messages.idticket', $id);
                 })->get(),
         ];
-        // dd($data['data']);
         return view('pages/user/review', $data);
     }
 }

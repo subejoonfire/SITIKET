@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PIC;
 use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
+use App\Models\Priority;
 use App\Http\Controllers\Controller;
 
 class PRoutesController extends Controller
@@ -14,7 +15,6 @@ class PRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | PROFILE',
-            'notification' => $this->notification,
         ];
 
         return view('pages/pic/profile', $data);
@@ -26,6 +26,7 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'BERANDA | SI-TICKET',
             'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'page' => 'beranda',
             'approved' => Ticket::where('status', 'DISETUJUI')->count(),
             'declined' => Ticket::where('status', 'DITOLAK')->count(),
@@ -40,6 +41,7 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | TIKET',
             'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'collection' => Ticket::with([
                 'users',
                 'messages',
@@ -50,6 +52,7 @@ class PRoutesController extends Controller
                 })
                 ->get()
         ];
+        // dd($data['notificationData']);
         return view('pages/pic/ticket.index', $data);
     }
 
@@ -58,6 +61,7 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | DISETUJUI',
             'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'collection' => Ticket::with([
                 'users',
                 'messages',
@@ -79,6 +83,7 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | DIPROSES',
             'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'collection' => Ticket::with([
                 'users',
                 'messages',
@@ -100,6 +105,7 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | DITOLAK',
             'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'collection' => Ticket::with([
                 'users',
                 'messages',
@@ -121,6 +127,7 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SI-TIKET | SELESAI',
             'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'collection' => Ticket::with([
                 'users',
                 'messages',
@@ -143,8 +150,9 @@ class PRoutesController extends Controller
         $data = [
             'title' => 'SITIKET | Review',
             'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'type' => $type,
-            'data' => Ticket::with(['categories', 'users'])->where('id', $id)->first(),
+            'data' => Ticket::with(['categories', 'users', 'priorities'])->where('id', $id)->first(),
             'collection' => Message::with(['documents'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
             'documents' => Document::with('messages')->whereHas('messages', function ($query) use ($id) {
                 $query->where('messages.idticket', $id);

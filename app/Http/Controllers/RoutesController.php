@@ -31,6 +31,8 @@ class RoutesController extends Controller
     {
 
         $data = [
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
             'title' => 'SI-TIKET | PROFILE',
         ];
 
