@@ -52,7 +52,7 @@ default => 'layout.default',
                                     <div class="col-md-12">
                                         <div class="form-group form-group-default">
                                             <label>Kode Perusahaan</label>
-                                            <input type="text" class="form-control no-cursor" placeholder="Kode Perusahaan" value="HRGA-JG" name="kode">
+                                            <input type="text" class="form-control no-cursor" placeholder="Kode Perusahaan" value="{{ auth()->user()->companies->companycode ?? 'Tidak ada perusahaan terkait' }}" name="kode">
                                         </div>
                                     </div>
                                 </div>
