@@ -58,6 +58,7 @@
                                             <th>Username</th>
                                             <th>No HP</th>
                                             <th>Email</th>
+                                            <th>Departemen</th>
                                             <th>Perusahaan</th>
                                             <th>Modul</th>
                                             <th>Level</th>
@@ -65,13 +66,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($user as $item)
+                                        @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $item->id }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->phone }}</td>
                                             <td>{{ $item->email }}</td>
-                                            <td>{{ $item->companies->companycode ?? '' }}</td>
+                                            <td>{{ $item->departments->departmentname ?? '' }}</td>
+                                            <td>{{ $item->companies->companyname ?? '' }}</td>
                                             <td>{{ $item->modules->modulename ?? '' }}</td>
                                             <td>{{ $item->level == 1 ? 'Admin' : ($item->level == 2 ? 'Helpdesk' : ($item->level == 3 ? 'PIC' : 'User')) }}</td>
                                             {{-- <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td> --}}
