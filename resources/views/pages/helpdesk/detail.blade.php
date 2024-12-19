@@ -139,7 +139,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div style="display: flex; gap: 10px; justify-content: space-between;">
                                         <div style="flex: 1;">
@@ -149,22 +148,23 @@
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
+                                        <div style="flex: 1;">
+                                            <label for="company">Perusahaan</label>
+                                            <input type="text" name="company" class="form-control" id="company" value="{{ $data->issue }}">
+                                            @error('company')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <label for="kode_perusahaan">Kode Perusahaan</label>
+                                            <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->issue }}">
+                                            @error('kode_perusahaan')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="company">Perusahaan</label>
-                                    <input type="text" name="company" class="form-control" id="company" value="{{ $data->issue }}">
-                                    @error('company')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="kode_perusahaan">Kode Perusahaan</label>
-                                    <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->issue }}">
-                                    @error('kode_perusahaan')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
+                                
                                 <div class="form-group">
                                     <label for="subjek">Subjek</label>
                                     <input type="text" name="subjek" class="form-control" id="subjek" value="{{ $data->issue }}">
