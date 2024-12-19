@@ -83,12 +83,10 @@ class AdminController extends Controller
     {
         $request->validate([
             'departmentname' => 'required|string|max:255',
-            'idcompany' => 'nullable|integer',
         ]);
 
         Department::create([
             'departmentname' => $request->departmentname,
-            'idcompany' => $request->idcompany,
         ]);
 
         return redirect()->to(url('admin/department'))->with('success', 'Departemen berhasil ditambahkan.');
