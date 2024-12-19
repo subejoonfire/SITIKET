@@ -150,21 +150,21 @@
                                         </div>
                                         <div style="flex: 1;">
                                             <label for="company">Perusahaan</label>
-                                            <input type="text" name="company" class="form-control" id="company" value="{{ $data->issue }}">
+                                            <input type="text" name="company" class="form-control" id="company" value="{{ $data->users->companies->companyname }}">
                                             @error('company')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div style="flex: 1;">
                                             <label for="kode_perusahaan">Kode Perusahaan</label>
-                                            <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->issue }}">
+                                            <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->users->companies->companycode }}">
                                             @error('kode_perusahaan')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="subjek">Subjek</label>
                                     <input type="text" name="subjek" class="form-control" id="subjek" value="{{ $data->issue }}">
