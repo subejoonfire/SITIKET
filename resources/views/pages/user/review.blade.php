@@ -90,8 +90,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="PIC">PIC</label>
-                                        <input type="text" name="PIC" class="form-control" id="PIC" value="{{ $data->user_pic->name  ?? 'Belum ada' }}" placeholder="Masukkan Tanggal">
-                                        @error('PIC')
+                                        <input type="text" name="PIC" class="form-control" id="PIC" value="{{ $data->users_tickets->isNotEmpty() ? $data->users_tickets->map(fn($item) => $item->user_pic->name)->implode(', ') : 'Tidak ada PIC' }}" placeholder="Masukkan Tanggal"> @error('PIC')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
@@ -116,7 +115,7 @@
                                             Unduh
                                         </a>
                                         <span style="flex-grow: 1; color: #000; font-weight:">
-                                            file sap download.pdf
+                                            Unduh file
                                         </span>
                                         @else
                                         <div class="form-control text-muted">Tidak ada file terkait.</div>
@@ -128,7 +127,9 @@
                     </form>
                 </div>
             </div>
+            @if ($data->users_tickets->isNotEmpty() && $data->users_tickets->first()->user_pic)
             @include('layout/messages')
+            @endif
         </div>
     </div>
 </div>

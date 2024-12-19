@@ -114,7 +114,7 @@ class Controller
     }
     public function profile_update(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:15',
@@ -137,6 +137,9 @@ class Controller
     }
     public function message_store(Message $message, Document $document, Request $request, $id)
     {
+        $request->validate([
+            'message' => 'required',
+        ]);
         $ticket = Ticket::with(['users_tickets.user_pic'])->find($id);
         $message->message = $request->input('message');
         $message->idticket = $id;
