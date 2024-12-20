@@ -68,21 +68,13 @@
             max-height: 300px;
             overflow-y: auto;
             resize: none;
-            /* Nonaktifkan resize manual */
             background-color: #ffffff !important;
-            /* Pastikan latar belakang putih */
             color: #000000 !important;
-            /* Pastikan warna teks gelap */
             cursor: text;
-            /* Tetap tampilkan kursor teks */
-            border: 2px solid #000000;
-            /* Border standar */
+            border: 2px solid #D1D1D1;
             font-family: inherit;
-            /* Selaraskan font */
             font-size: inherit;
-            /* Selaraskan ukuran font */
             padding: 8px;
-            /* Tambahkan padding untuk kenyamanan */
         }
 
         #idmodule {
