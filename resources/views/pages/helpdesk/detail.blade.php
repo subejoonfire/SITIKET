@@ -181,11 +181,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
-                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
+                                    <textarea 
+                                        name="keluhan" 
+                                        class="form-control" 
+                                        id="keluhan" 
+                                        placeholder="Enter Complaint Description" 
+                                        readonly>{{ $data->detailissue }}</textarea>
                                     @error('keluhan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="fileview">File Diupload</label>
                                     <div class="d-flex align-items-center" style="border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
@@ -215,5 +221,16 @@
     </div>
 </div>
 </div>
-
+<script>
+    function autoResize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const textarea = document.getElementById("keluhan");
+        if (textarea) {
+            autoResize(textarea);
+        }
+    });
+</script>
 @endsection
