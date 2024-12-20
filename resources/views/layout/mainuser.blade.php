@@ -361,6 +361,37 @@
             background-color: #f5f5f5;
         }
 
+        .message-notif-scroll {
+    max-height: 500px; /* Batasi tinggi maksimum kontainer notifikasi */
+    overflow-y: auto; /* Aktifkan scroll vertikal */
+    overflow-x: hidden; /* Sembunyikan scroll horizontal */
+    padding: 10px; /* Opsional: Tambahkan padding untuk estetika */
+    border: 1px solid #ccc; /* Opsional: Tambahkan border */
+}
+
+.message-notif-scroll .notif-content {
+    max-height: 150px; /* Batasi tinggi maksimum konten pesan */
+    overflow-y: auto; /* Aktifkan scroll pada konten pesan */
+    overflow-x: hidden; /* Sembunyikan scroll horizontal */
+    word-wrap: break-word; /* Pecah teks jika terlalu panjang */
+    padding: 5px; /* Opsional: Tambahkan padding untuk konten */
+    display: block; /* Pastikan elemen tampil sebagai blok */
+}
+.scrollbar-outer::-webkit-scrollbar {
+    width: 6px; /* Lebar scrollbar */
+}
+
+.scrollbar-outer::-webkit-scrollbar-thumb {
+    background: #888; /* Warna scrollbar */
+    border-radius: 4px; /* Membulatkan sudut scrollbar */
+}
+
+.scrollbar-outer::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Warna saat di-hover */
+}
+
+
+
     </style>
 
 
@@ -421,7 +452,7 @@
                                             @foreach ($notificationData as $item)
                                             <a href="{{ url('user/review/'. $item->idticket) }}">
                                                 <div class="notif-img">
-                                                    <img src={{  url('storage/profiles/' . ($item->user_from->image == '' ? 'default.jpg' : $item->user_from->image) )}} alt="Img Profile">
+                                                    <img src="{{ url('storage/profiles/' . ($item->user_from->image == '' ? 'default.jpg' : $item->user_from->image)) }}" alt="Img Profile">
                                                 </div>
                                                 <div class="notif-content">
                                                     <span class="subject">{{ $item->user_from->name }}</span>
@@ -433,7 +464,7 @@
                                             </a>
                                             @endforeach
                                         </div>
-                                    </div>
+                                    </div>                                   
                                 </li>
                                 <li>
                                     <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
@@ -565,6 +596,19 @@
                 $('#addRowModal').modal('hide');
             });
         });
+
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const scrollContainer = document.querySelector('.message-notif-scroll');
+    
+    // Opsional: Tambahkan auto-scroll ke bawah saat pesan baru ditambahkan
+    scrollContainer.scrollTop = scrollContainer.scrollHeight;
+
+    // Tambahkan efek scroll smooth
+    scrollContainer.style.scrollBehavior = "smooth";
+});
 
     </script>
 </body>
