@@ -362,35 +362,24 @@
         }
 
         .message-notif-scroll {
-    max-height: 500px; /* Batasi tinggi maksimum kontainer notifikasi */
-    overflow-y: auto; /* Aktifkan scroll vertikal */
-    overflow-x: hidden; /* Sembunyikan scroll horizontal */
-    padding: 10px; /* Opsional: Tambahkan padding untuk estetika */
-    border: 1px solid #ccc; /* Opsional: Tambahkan border */
+    max-height: 400px; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px; 
 }
 
-.message-notif-scroll .notif-content {
-    max-height: 150px; /* Batasi tinggi maksimum konten pesan */
-    overflow-y: auto; /* Aktifkan scroll pada konten pesan */
-    overflow-x: hidden; /* Sembunyikan scroll horizontal */
-    word-wrap: break-word; /* Pecah teks jika terlalu panjang */
-    padding: 5px; /* Opsional: Tambahkan padding untuk konten */
-    display: block; /* Pastikan elemen tampil sebagai blok */
-}
 .scrollbar-outer::-webkit-scrollbar {
-    width: 6px; /* Lebar scrollbar */
+    width: 8px; 
 }
 
 .scrollbar-outer::-webkit-scrollbar-thumb {
-    background: #888; /* Warna scrollbar */
-    border-radius: 4px; /* Membulatkan sudut scrollbar */
+    background: #888; 
+    border-radius: 4px; 
 }
 
 .scrollbar-outer::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Warna saat di-hover */
+    background: #555; 
 }
-
-
 
     </style>
 
@@ -457,17 +446,17 @@
                                                 <div class="notif-content">
                                                     <span class="subject">{{ $item->user_from->name }}</span>
                                                     <span class="block">
-                                                        {{ $item->message }}
+                                                        {{ Str::limit($item->message, 20) }}
                                                     </span>
                                                     <span class="time">{{ $item->created_at->diffForHumans() }}</span>
                                                 </div>
                                             </a>
                                             @endforeach
                                         </div>
-                                    </div>                                   
+                                    </div>                                    
                                 </li>
                                 <li>
-                                    <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
+                                    {{-- <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a> --}}
                                 </li>
                             </ul>
                         </li>
@@ -596,19 +585,6 @@
                 $('#addRowModal').modal('hide');
             });
         });
-
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const scrollContainer = document.querySelector('.message-notif-scroll');
-    
-    // Opsional: Tambahkan auto-scroll ke bawah saat pesan baru ditambahkan
-    scrollContainer.scrollTop = scrollContainer.scrollHeight;
-
-    // Tambahkan efek scroll smooth
-    scrollContainer.style.scrollBehavior = "smooth";
-});
 
     </script>
 </body>

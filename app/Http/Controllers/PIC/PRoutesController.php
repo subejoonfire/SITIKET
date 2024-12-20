@@ -157,8 +157,8 @@ class PRoutesController extends Controller
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
             'type' => $type,
-            'data' => Ticket::with(['categories', 'users.companies', 'users.departments', 'priorities',])->where('id', $id)->first(),
-            'collection' => Message::with(['documents'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
+            'data' => Ticket::with(['categories', 'users.companies', 'users.departments', 'priorities'])->where('id', $id)->first(),
+            'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
             'documents' => Document::with('messages')->whereHas('messages', function ($query) use ($id) {
                 $query->where('messages.idticket', $id);
             })->get(),
