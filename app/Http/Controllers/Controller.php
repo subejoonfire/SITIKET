@@ -71,6 +71,7 @@ class Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
+            'phone' => 'required|integer|max:18',
             'password' => 'required|string|min:8|confirmed',
         ], [
             'name.required' => 'Username tidak boleh kosong.',
@@ -90,6 +91,7 @@ class Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password),
             'level' => 4,
         ]);
