@@ -421,19 +421,19 @@
                                             @foreach ($notificationData as $item)
                                             <a href="{{ url('user/review/'. $item->idticket) }}">
                                                 <div class="notif-img">
-                                                    <img src={{  url('storage/profiles/' . ($item->user_from->image == '' ? 'default.jpg' : $item->user_from->image) )}} alt="Img Profile">
+                                                    <img src="{{ url('storage/profiles/' . ($item->user_from->image == '' ? 'default.jpg' : $item->user_from->image)) }}" alt="Img Profile">
                                                 </div>
                                                 <div class="notif-content">
                                                     <span class="subject">{{ $item->user_from->name }}</span>
                                                     <span class="block">
-                                                        {{ $item->message }}
+                                                        {{ Str::limit($item->message, 20) }}
                                                     </span>
                                                     <span class="time">{{ $item->created_at->diffForHumans() }}</span>
                                                 </div>
                                             </a>
                                             @endforeach
                                         </div>
-                                    </div>
+                                    </div>                                    
                                 </li>
                                 <li>
                                     <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>

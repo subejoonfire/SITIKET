@@ -1388,7 +1388,7 @@
                                                 <div class="notif-content">
                                                     <span class="subject">{{ $item->user_from->name }}</span>
                                                     <span class="block">
-                                                        {{ $item->message }}
+                                                        {{ Str::limit($item->message, 20) }}
                                                     </span>
                                                     <span class="time">{{ $item->created_at->diffForHumans() }}</span>
                                                 </div>
