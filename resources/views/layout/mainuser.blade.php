@@ -361,7 +361,26 @@
             background-color: #f5f5f5;
         }
 
-        
+        .message-notif-scroll {
+    max-height: 400px; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px; 
+}
+
+.scrollbar-outer::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.scrollbar-outer::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 4px; 
+}
+
+.scrollbar-outer::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
     </style>
 
 
@@ -437,7 +456,7 @@
                                     </div>                                    
                                 </li>
                                 <li>
-                                    <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a>
+                                    {{-- <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a> --}}
                                 </li>
                             </ul>
                         </li>
