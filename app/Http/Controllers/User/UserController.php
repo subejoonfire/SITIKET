@@ -16,9 +16,9 @@ class UserController extends Controller
     {
         $request->validate([
             'issue' => 'required|string|max:255',
-            'idmodule' => 'integer|max:5',
+            'idmodule' => 'integer|integer',
             'idpriority' => 'nullable|integer',
-            'idcategory' => 'required|integer|max:10',
+            'idcategory' => 'required|integer',
             'detailissue' => 'required|string',
             'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);

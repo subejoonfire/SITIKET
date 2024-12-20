@@ -167,7 +167,7 @@
 
                                 <div class="form-group">
                                     <label for="department">Departemen</label>
-                                    <input type="text" name="department" class="form-control" id="department" value="{{ $data->issue }}">
+                                    <input type="text" name="department" class="form-control" id="department" value="{{ $data->users->departments->departmentname }}">
                                     @error('department')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror

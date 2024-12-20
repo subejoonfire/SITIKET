@@ -29,6 +29,7 @@ class HRoutesController extends Controller
             'data' => Ticket::with([
                 'categories',
                 'users.companies',
+                'users.departments',
             ])->where('id', $id)->first(),
             'module' => Module::all(),
             'priority' => Priority::all(),
