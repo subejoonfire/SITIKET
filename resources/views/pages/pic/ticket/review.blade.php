@@ -127,11 +127,12 @@
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label for="detailissue">Keluhan</label>
-                                        <textarea name="detailissue" class="form-control" id="detailissue" rows="3" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
+                                        <textarea name="detailissue" class="form-control" id="detailissue" rows="3" placeholder="Enter Complaint Description" readonly>{{ $data->detailissue }}</textarea>
                                         @error('detailissue')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
+                                    
                                     <div class="col-md-12 mb-3">
                                         <label for="fileview">File Diupload</label>
                                         <div class="d-flex align-items-center" style="border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
@@ -182,5 +183,16 @@
         </div>
     </div>
 </div>
-
+<script>
+    function autoResize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const textarea = document.getElementById("detailissue");
+        if (textarea) {
+            autoResize(textarea);
+        }
+    });
+</script>
 @endsection

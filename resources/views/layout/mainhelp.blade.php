@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{ $title ?? 'SI-TIKET' }}</title>
@@ -12,16 +13,15 @@
         WebFont.load({
             google: {
                 "families": ["Open+Sans:300,400,600,700"]
-            }
-            , custom: {
-                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"]
-                , "urls": ["{{ url('back-end/assets/css/fonts.css') }}"]
-            }
-            , active: function() {
+            },
+            custom: {
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"],
+                "urls": ["{{ url('back-end/assets/css/fonts.css') }}"]
+            },
+            active: function() {
                 sessionStorage.fonts = true;
             }
         });
-
     </script>
 
     <!-- CSS Files -->
@@ -38,7 +38,6 @@
             color: white;
             border-radius: 25px;
         }
-
     </style>
 
 
@@ -47,7 +46,7 @@
             color: red;
         }
 
-        #keluhan,
+        /* #keluhan, */
         #email,
         #username,
         #phone,
@@ -65,6 +64,27 @@
             pointer-events: none;
         }
 
+        textarea#keluhan {
+            max-height: 300px;
+            overflow-y: auto;
+            resize: none;
+            /* Nonaktifkan resize manual */
+            background-color: #ffffff !important;
+            /* Pastikan latar belakang putih */
+            color: #000000 !important;
+            /* Pastikan warna teks gelap */
+            cursor: text;
+            /* Tetap tampilkan kursor teks */
+            border: 2px solid #000000;
+            /* Border standar */
+            font-family: inherit;
+            /* Selaraskan font */
+            font-size: inherit;
+            /* Selaraskan ukuran font */
+            padding: 8px;
+            /* Tambahkan padding untuk kenyamanan */
+        }
+
         #idmodule {
             background-color: #ffffff !important;
             color: #000000 !important;
@@ -80,6 +100,7 @@
             padding: 8px;
             cursor: pointer;
         }
+
 
         #iduser_pic:focus {
             border-color: #70c55b !important;
@@ -136,9 +157,9 @@
             caret-color: transparent;
             background-color: #f5f5f5;
         }
-
     </style>
 </head>
+
 <body>
     <div class="wrapper">
         <!-- Main Header -->
@@ -149,7 +170,8 @@
                     <span class="navbar-brand" style="color: white;">SI-TIKET</span>
                 </a>
 
-                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
                         <i class="fa fa-bars"></i>
                     </span>
@@ -171,18 +193,22 @@
                     </div>
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                         <li class="nav-item dropdown hidden-caret">
-                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"
+                                aria-expanded="false">
                                 <div class="avatar-sm">
-                                    <img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle">
+                                    <img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}"
+                                        alt="..." class="avatar-img rounded-circle">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-user animated fadeIn">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="image profile" class="avatar-img rounded"></div>
+                                        <div class="avatar-lg"><img
+                                                src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}"
+                                                alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4>{{ auth()->user()->name }}</h4>
-                                            <p class="text-muted">{{ auth()->user()->email}}</p>
+                                            <p class="text-muted">{{ auth()->user()->email }}</p>
                                         </div>
                                     </div>
                                 </li>
@@ -260,19 +286,23 @@
         $(document).ready(function() {
             $('#basic-datatables').DataTable({});
             $('#multi-filter-select').DataTable({
-                "pageLength": 5
-                , initComplete: function() {
+                "pageLength": 5,
+                initComplete: function() {
                     this.api().columns().every(function() {
                         var column = this;
-                        var select = $('<select class="form-control"><option value=""></option></select>')
+                        var select = $(
+                                '<select class="form-control"><option value=""></option></select>'
+                                )
                             .appendTo($(column.footer()).empty())
                             .on('change', function() {
                                 var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                                column.search(val ? '^' + val + '$' : '', true, false).draw();
+                                column.search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
                             });
 
                         column.data().unique().sort().each(function(d, j) {
-                            select.append('<option value="' + d + '">' + d + '</option>');
+                            select.append('<option value="' + d + '">' + d +
+                                '</option>');
                         });
                     });
                 }
@@ -282,19 +312,17 @@
                 "pageLength": 5
             });
 
-            var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+            var action =
+                '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 
             $('#addRowButton').click(function() {
                 $('#add-row').dataTable().fnAddData([
-                    $("#addName").val()
-                    , $("#addPosition").val()
-                    , $("#addOffice").val()
-                    , action
+                    $("#addName").val(), $("#addPosition").val(), $("#addOffice").val(), action
                 ]);
                 $('#addRowModal').modal('hide');
             });
         });
-
     </script>
 </body>
+
 </html>
