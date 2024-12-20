@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @vite([])
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{ $title ?? 'SI-TIKET' }}</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
@@ -362,24 +363,24 @@
         }
 
         .message-notif-scroll {
-    max-height: 400px; 
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 10px; 
-}
+            max-height: 400px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 10px;
+        }
 
-.scrollbar-outer::-webkit-scrollbar {
-    width: 8px; 
-}
+        .scrollbar-outer::-webkit-scrollbar {
+            width: 8px;
+        }
 
-.scrollbar-outer::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius: 4px; 
-}
+        .scrollbar-outer::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
 
-.scrollbar-outer::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-}
+        .scrollbar-outer::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
 
     </style>
 
@@ -453,7 +454,7 @@
                                             </a>
                                             @endforeach
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </li>
                                 <li>
                                     {{-- <a class="see-all" href="javascript:void(0);">See all notifications<i class="fa fa-angle-right"></i> </a> --}}
