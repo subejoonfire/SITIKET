@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $request->validate([
             'issue' => 'required|string|max:255',
-            'idmodule' => 'integer|max:5',
+            'idmodule' => 'integer|integer',
             'idpriority' => 'nullable|integer',
             'idcategory' => 'required|integer|max:10',
             'detailissue' => 'required|string',
