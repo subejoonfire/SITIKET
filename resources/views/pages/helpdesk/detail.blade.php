@@ -173,13 +173,6 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="subjek">Subjek</label>
-                                    <input type="text" name="subjek" class="form-control" id="subjek" value="{{ $data->issue }}">
-                                    @error('subjek')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
                                     <label for="kategori">Kategori</label>
                                     <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="{{ $data->categories->categoryname }}">
                                     @error('kategori')
