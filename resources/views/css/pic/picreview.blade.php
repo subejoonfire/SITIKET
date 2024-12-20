@@ -14,7 +14,7 @@
     #module,
     #subjek,
     #category,
-    #detailissue,
+/* #detailissue, */
     #perusahaan,
     #kode_perusahaan,
     #department,
@@ -26,5 +26,18 @@
         font-weight: normal !important;
         pointer-events: none;
     }
+    textarea#detailissue {
+            max-height: 300px;
+            overflow-y: auto;
+            resize: none;
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            cursor: text;
+            border: 2px solid #D1D1D1;
+            font-family: inherit;
+            font-size: inherit;
+            padding: 8px;
+        }
+
 
 </style>
