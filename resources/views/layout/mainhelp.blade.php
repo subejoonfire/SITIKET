@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    @vite([])
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{ $title ?? 'SI-TIKET' }}</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
@@ -13,15 +14,16 @@
         WebFont.load({
             google: {
                 "families": ["Open+Sans:300,400,600,700"]
-            },
-            custom: {
-                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"],
-                "urls": ["{{ url('back-end/assets/css/fonts.css') }}"]
-            },
-            active: function() {
+            }
+            , custom: {
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"]
+                , "urls": ["{{ url('back-end/assets/css/fonts.css') }}"]
+            }
+            , active: function() {
                 sessionStorage.fonts = true;
             }
         });
+
     </script>
 
     <!-- CSS Files -->
@@ -38,6 +40,7 @@
             color: white;
             border-radius: 25px;
         }
+
     </style>
 
 
@@ -157,6 +160,7 @@
             caret-color: transparent;
             background-color: #f5f5f5;
         }
+
     </style>
 </head>
 
@@ -170,8 +174,7 @@
                     <span class="navbar-brand" style="color: white;">SI-TIKET</span>
                 </a>
 
-                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
-                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
                         <i class="fa fa-bars"></i>
                     </span>
@@ -193,19 +196,15 @@
                     </div>
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                         <li class="nav-item dropdown hidden-caret">
-                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"
-                                aria-expanded="false">
+                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <div class="avatar-sm">
-                                    <img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}"
-                                        alt="..." class="avatar-img rounded-circle">
+                                    <img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-user animated fadeIn">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img
-                                                src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}"
-                                                alt="image profile" class="avatar-img rounded"></div>
+                                        <div class="avatar-lg"><img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4>{{ auth()->user()->name }}</h4>
                                             <p class="text-muted">{{ auth()->user()->email }}</p>
@@ -286,18 +285,18 @@
         $(document).ready(function() {
             $('#basic-datatables').DataTable({});
             $('#multi-filter-select').DataTable({
-                "pageLength": 5,
-                initComplete: function() {
+                "pageLength": 5
+                , initComplete: function() {
                     this.api().columns().every(function() {
                         var column = this;
                         var select = $(
                                 '<select class="form-control"><option value=""></option></select>'
-                                )
+                            )
                             .appendTo($(column.footer()).empty())
                             .on('change', function() {
                                 var val = $.fn.dataTable.util.escapeRegex($(this).val());
                                 column.search(val ? '^' + val + '$' : '', true, false)
-                                .draw();
+                                    .draw();
                             });
 
                         column.data().unique().sort().each(function(d, j) {
@@ -322,6 +321,7 @@
                 $('#addRowModal').modal('hide');
             });
         });
+
     </script>
 </body>
 
