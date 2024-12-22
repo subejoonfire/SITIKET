@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    @vite([])
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{ $title ?? 'SI-TIKET' }}</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
