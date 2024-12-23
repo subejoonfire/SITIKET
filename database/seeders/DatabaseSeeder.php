@@ -377,6 +377,15 @@ class DatabaseSeeder extends Seeder
                 'iddepartment' => 5,
                 'idcompany' => 2,
             ],
+            [
+                'name' => 'PIC Testing',
+                'email' => 'PIC1@gmail.com',
+                'password' => bcrypt('Jhonlin@123'),
+                'phone' => '08265432198',
+                'level' => 3,
+                'iddepartment' => 5,
+                'idcompany' => 2,
+            ],
         ]);
     }
 }
