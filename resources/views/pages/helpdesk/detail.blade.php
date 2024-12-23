@@ -34,6 +34,7 @@
                     </div>
                     @endif
                     <form method="POST" action="{{ url('helpdesk/action/update/'. $data->id) }}">
+                        @csrf
                         <div class="card">
                             <div class="card-header">
                                 <div class="d-flex align-items-center">
@@ -89,7 +90,7 @@
                                         </div>
                                         <div style="flex: 1;">
                                             <label for="priority">Prioritas</label>
-                                            <select name="idpriority" class="form-control" id="priority">
+                                            <select name="idpriority" class="form-control" id="priority-pic">
                                                 <option value="">Pilih Prioritas</option>
                                                 @foreach ($priority as $item)
                                                 <option value="{{ $item->id }}" {{ old('id', $data->idpriority ?? '') == $item->id ? 'selected' : '' }}>
@@ -167,7 +168,6 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <label for="fileview">File Diupload</label>
                                     <div class="d-flex align-items-center">
@@ -183,7 +183,6 @@
                                         @endif
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                     <a href="{{ url('helpdesk/validation') }}" class="btn btn-danger">Batal</a>

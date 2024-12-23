@@ -26,6 +26,7 @@
                                             <th>Module</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
+                                            <th>Status</th>
                                             <th>Tanggal Diajukan</th>
                                             <th style="width: 10%" data-orderable="false">Aksi</th>
                                         </tr>
@@ -39,9 +40,10 @@
                                             <td>{{ $item->tickets->modules->modulename ?? 'Tidak tersedia' }}</td>
                                             <td>{{ $item->status == 1 ? 'Sudah di Proses' : 'Belum di Proses' }}</td>
                                             <td>{{ $item->tickets->issue }}</td>
+                                            <td>{{ $item->status == 1 ? 'SELESAI' : 'MENUNGGU' }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
-                                                <a href="{{ url('pic/ticket/review/followup/'. $item->idticket)}}" class="btn btn-info btn-sm">
+                                                <a href="{{ url('pic/followup/detail/'. $item->idticket)}}" class="btn btn-info btn-sm">
                                                     <i class="fa fa-eye"></i> Detail
                                                 </a>
                                             </td>
