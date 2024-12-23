@@ -1,5 +1,4 @@
 <!-- Sidebar -->
-@include('css/helpdesk/dashboard')
 <div class="sidebar">
     <div class="sidebar-background"></div>
     <div class="sidebar-wrapper scrollbar-inner">
@@ -23,7 +22,12 @@
                         <p>Riwayat Validasi</p>
                     </a>
                 </li>
-
+                <li class="nav-item {{ request()->routeIs('followup') ? 'active' : '' }}">
+                    <a href="{{ url('helpdesk/followup') }}">
+                        <i class="fas fa-inbox"></i>
+                        <p>Tindak Lanjut</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

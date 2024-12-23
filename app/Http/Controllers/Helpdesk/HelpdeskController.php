@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Helpdesk;
 
-use App\Http\Controllers\Controller;
-use App\Models\Ticket;
-use App\Models\UsersTickets;
 use Carbon\Carbon;
+use App\Models\Ticket;
+use App\Models\Followup;
+use App\Models\UsersTickets;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HelpdeskController extends Controller
 {
@@ -39,5 +40,10 @@ class HelpdeskController extends Controller
         $ticket->status = 'DIAJUKAN';
         $ticket->save();
         return redirect()->back()->with('success', 'Ticket berhasil diperbarui');
+    }
+    public function followup_delete($id)
+    {
+        Followup::find($id)->delete();
+        return redirect()->back()->with('success', 'Ticket berhasil dihapus');
     }
 }

@@ -1,4 +1,3 @@
-@include('css/pic/dashboard')
 <div class="sidebar">
     <div class="sidebar-background"></div>
     <div class="sidebar-wrapper scrollbar-inner">
@@ -8,6 +7,12 @@
                     <a href="{{ url('pic') }}">
                         <i class="fas fa-home"></i>
                         <p>Beranda</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('pic/followup') }}">
+                        <i class="fas fa-inbox"></i>
+                        <p>Tindak Lanjut</p>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('pic/utama') || request()->routeIs('pic.setuju') || request()->routeIs('pic.proses') || request()->routeIs('pic.selesai') || request()->routeIs('pic.tolak') ? 'active' : '' }}">
@@ -44,7 +49,6 @@
                     </div>
                 </li>
             </ul>
-
         </div>
     </div>
 </div>

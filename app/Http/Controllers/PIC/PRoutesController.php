@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PIC;
 use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
+use App\Models\Followup;
 use App\Models\Priority;
 use App\Models\UsersTickets;
 use App\Http\Controllers\Controller;
@@ -171,8 +172,20 @@ class PRoutesController extends Controller
             return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'done') {
             return view('pages/pic/ticket/review', $data);
+        } elseif ($type == 'followup') {
+            return view('pages/pic/ticket/review', $data);
         }
 
         return redirect()->back()->with('error', 'Halaman yang anda cari tidak ditemukan');
+    }
+    public function followup()
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'collection' => Followup::with('tickets', 'users')->get(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/pic/followup/index', $data);
     }
 }

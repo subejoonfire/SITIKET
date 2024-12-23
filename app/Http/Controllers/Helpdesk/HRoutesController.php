@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Helpdesk;
 use App\Models\User;
 use App\Models\Module;
 use App\Models\Ticket;
+use App\Models\Followup;
+use App\Models\Priority;
 use App\Models\Department;
 use App\Http\Controllers\Controller;
-use App\Models\Priority;
 
 class HRoutesController extends Controller
 {
@@ -80,5 +81,16 @@ class HRoutesController extends Controller
 
 
         return view('pages/helpdesk/profile', $data);
+    }
+
+    public function followup()
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'collection' => Followup::with('tickets', 'users')->get(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/helpdesk/followup/index', $data);
     }
 }

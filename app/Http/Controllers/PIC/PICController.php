@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Followup;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PICController extends Controller
@@ -58,5 +59,16 @@ class PICController extends Controller
             return redirect()->to('pic/ticket')->with('error', 'Ticket tidak ditemukan.');
         }
         return redirect()->to('pic/ticket/done')->with('success', 'Tiket berhasil di setujui.');
+    }
+    public function followup_store($id)
+    {
+        if (!Followup::where('idticket', $id)->exists()) {
+            Followup::create([
+                'idticket' => $id,
+                'iduser_pic' => auth()->user()->id,
+            ]);
+            return redirect()->back()->with('success', 'Tiket berhasil di ajukan untuk ditindak lanjuti');
+        }
+        return redirect()->back()->with('error', 'Tiket sudah diajukan');
     }
 }
