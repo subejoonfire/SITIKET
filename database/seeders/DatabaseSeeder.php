@@ -289,7 +289,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'name' => 'Admin',
-                'email' => 'admin@gmail.com',
+                'email' => 'admin@example.com',
                 'password' => bcrypt('Jhonlin@123'),
                 'phone' => '08232323111',
                 'level' => 1,
@@ -383,6 +383,15 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('Jhonlin@123'),
                 'phone' => '08265432198',
                 'level' => 3,
+                'iddepartment' => 5,
+                'idcompany' => 2,
+            ],
+            [
+                'name' => 'PIC Testing',
+                'email' => 'user@gmail.com',
+                'password' => bcrypt('Jhonlin@123'),
+                'phone' => '08265432198',
+                'level' => 4,
                 'iddepartment' => 5,
                 'idcompany' => 2,
             ],
