@@ -1,6 +1,5 @@
 @extends('layout.mainhelp')
 @section('content')
-@include('css/helpdesk/dashboard')
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

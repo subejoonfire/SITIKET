@@ -1,4 +1,3 @@
-@include('css/message/message')
 <div class="email-app mb-4">
     <main class="inbox">
         @php

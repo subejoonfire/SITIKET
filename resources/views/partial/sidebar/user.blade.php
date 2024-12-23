@@ -1,5 +1,4 @@
 <!-- Sidebar -->
-@include('css/user/dashboard')
 <div class="sidebar">
     <div class="sidebar-background"></div>
     <div class="sidebar-wrapper scrollbar-inner">

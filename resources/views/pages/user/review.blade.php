@@ -1,10 +1,5 @@
 @extends('layout.mainuser')
-
 @section('content')
-
-@include('css/user/userreview')
-
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -48,47 +43,56 @@
                             <div class="card-body">
                                 @csrf
                                 <div class="form-group row">
-                                    <!-- Baris 1 -->
-                                    <div class="col-md-4">
-                                        <label for="ticketcode">Kode Tiket</label>
-                                        <input type="text" name="ticketcode" class="form-control" id="ticketcode" value="{{ $data->ticketcode }}">
-                                        @error('ticketcode')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                    <div class="col">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="priority">Prioritas</label>
-                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priorities->priorityname ?? 'Belum ada' }}">
-                                        @error('priority')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                    <div class="col">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="module">Modul</label>
-                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->modules->modulename ?? 'Belum ada' }}">
-                                        @error('module')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                    <div class="col">
+                                        <label for="phone">No Handphone</label>
+                                        <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
                                     </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <!-- Baris 2 -->
-                                    <div class="col-md-4">
+                                    <div class="col">
+                                        <label for="perusahaan">Perusahaan</label>
+                                        <input type="text" name="perusahaan" class="form-control" id="perusahaan" value="{{ $data->users->companies->companyname ?? 'Tidak ada'}}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="kode_perusahaan">Kode Perusahaan</label>
+                                        <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->users->companies->companycode ?? 'Tidak ada'}}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="department">Departemen</label>
+                                        <input type="text" name="department" class="form-control" id="department" value="{{ $data->users->departments->departmentname ?? 'Tidak ada'}}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="module">Module</label>
+                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->modules->modulename }}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="priority">Priority</label>
+                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priorities->priorityname ?? 'Prioritas tidak diatur' }}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="category">Kategori</label>
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
+                                    </div>
+                                    <div class="col">
                                         <label for="status">Status</label>
                                         <span class="form-control" id="status">{{ $data->status }}</span>
-                                        @error('status')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
                                     </div>
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col">
                                         <label for="tanggal_diajukan">Tanggal Diajukan</label>
                                         <input type="text" name="tanggal_diajukan" class="form-control" id="tanggal_diajukan" value="{{ $data->created_at->format('l, d F Y H:i') }}" placeholder="Masukkan Tanggal">
                                         @error('tanggal_diajukan')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col">
                                         <label for="PIC">PIC</label>
                                         <input type="text" name="PIC" class="form-control" id="PIC" value="{{ $data->users_tickets->isNotEmpty() ? $data->users_tickets->map(fn($item) => $item->user_pic->name)->implode(', ') : 'Tidak ada PIC' }}" placeholder="Masukkan Tanggal"> @error('PIC')
                                         <small class="text-danger">{{ $message }}</small>
@@ -98,18 +102,14 @@
                                 <div class="form-group">
                                     <label for="subjek">Subjek</label>
                                     <span class="form-control" id="subjek">{{ $data->issue }}</span>
-                                    @error('subjek')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="issue">Issue</label>
                                     <textarea name="issue" class="form-control" id="issue" rows="4">{{ $data->detailissue }}</textarea>
-                                    @error('issue')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
                                 </div>
                                 <div class="col-md-12">
                                     <label for="fileview">File Diupload</label>
-                                    <div class="d-flex align-items-center" style="border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
+                                    <div class="d-flex align-items-center">
                                         @if($data->attachment != NULL)
                                         <a href="{{ url('storage/'. $data->attachment) }}" download class="btn btn-primary mr-2">
                                             Unduh

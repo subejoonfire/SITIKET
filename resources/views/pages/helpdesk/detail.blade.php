@@ -41,31 +41,34 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                @csrf
-                                <div class="form-group">
-                                    <div style="display: flex; gap: 10px; justify-content: space-between;">
-                                        <!-- User -->
-                                        <div style="flex: 1;">
-                                            <label for="username">User</label>
-                                            <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
-                                            @error('username')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div style="flex: 1;">
-                                            <label for="email">Email</label>
-                                            <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
-                                            @error('email')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div style="flex: 1;">
-                                            <label for="phone">No Handphone</label>
-                                            <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
-                                            @error('phone')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="phone">No Handphone</label>
+                                        <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="perusahaan">Perusahaan</label>
+                                        <input type="text" name="perusahaan" class="form-control" id="perusahaan" value="{{ $data->users->companies->companyname ?? 'Tidak ada'}}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="kode_perusahaan">Kode Perusahaan</label>
+                                        <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->users->companies->companycode ?? 'Tidak ada'}}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="department">Departemen</label>
+                                        <input type="text" name="department" class="form-control" id="department" value="{{ $data->users->departments->departmentname ?? 'Tidak ada'}}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="category">Kategori</label>
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -81,6 +84,20 @@
                                                 @endforeach
                                             </select>
                                             @error('idmodule')
+                                            <small class="text-danger">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <label for="priority">Prioritas</label>
+                                            <select name="idpriority" class="form-control" id="priority">
+                                                <option value="">Pilih Prioritas</option>
+                                                @foreach ($priority as $item)
+                                                <option value="{{ $item->id }}" {{ old('id', $data->idpriority ?? '') == $item->id ? 'selected' : '' }}>
+                                                    {{ $item->priorityname }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            @error('idpriority')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
@@ -123,20 +140,6 @@
                                             @enderror
                                             @endif
                                         </div>
-                                        <div style="flex: 1;">
-                                            <label for="priority">Prioritas</label>
-                                            <select name="idpriority" class="form-control" id="priority">
-                                                <option value="">Pilih Prioritas</option>
-                                                @foreach ($priority as $item)
-                                                <option value="{{ $item->id }}" {{ old('id', $data->idpriority ?? '') == $item->id ? 'selected' : '' }}>
-                                                    {{ $item->priorityname }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                            @error('idpriority')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -148,29 +151,7 @@
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>
-                                        <div style="flex: 1;">
-                                            <label for="company">Perusahaan</label>
-                                            <input type="text" name="company" class="form-control" id="company" value="{{ $data->users->companies->companyname ?? "Tidak ditemukan" }}">
-                                            @error('company')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div style="flex: 1;">
-                                            <label for="kode_perusahaan">Kode Perusahaan</label>
-                                            <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->users->companies->companycode ?? "Tidak ditemukan" }}">
-                                            @error('kode_perusahaan')
-                                            <small class="text-danger">{{ $message }}</small>
-                                            @enderror
-                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="department">Departemen</label>
-                                    <input type="text" name="department" class="form-control" id="department" value="{{ $data->users->departments->departmentname }}">
-                                    @error('department')
-                                    <small class="text-danger">{{ $message }}</small>
-                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="kategori">Kategori</label>
@@ -181,20 +162,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
-                                    <textarea 
-                                        name="keluhan" 
-                                        class="form-control" 
-                                        id="keluhan" 
-                                        placeholder="Enter Complaint Description" 
-                                        readonly>{{ $data->detailissue }}</textarea>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description" readonly>{{ $data->detailissue }}</textarea>
                                     @error('keluhan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="fileview">File Diupload</label>
-                                    <div class="d-flex align-items-center" style="border: 1px solid #ddd; border-radius: 5px; padding: 5px;">
+                                    <div class="d-flex align-items-center">
                                         @if($data->attachment != NULL)
                                         <a href="{{ url('storage/'. $data->attachment) }}" download class="btn btn-primary mr-2">
                                             Unduh
@@ -226,11 +202,12 @@
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
     }
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const textarea = document.getElementById("keluhan");
         if (textarea) {
             autoResize(textarea);
         }
     });
+
 </script>
 @endsection

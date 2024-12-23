@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ url('back-end/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('back-end/assets/css/azzara.min.css') }}">
     <link rel="stylesheet" href="{{ url('back-end/assets/css/demo.css') }}">
+    <link rel="stylesheet" href="{{ url('back-end/assets/css/pic.css') }}">
     <style>
         .main-header {
             background-color: #70c55b !important;

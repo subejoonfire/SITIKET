@@ -6,6 +6,7 @@
     <title>{{ $title ?? 'SI-TIKET' }}</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" type="image/jpeg" href="{{ asset('JG.png') }}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Fonts and icons -->
     <script src="{{ url('back-end/assets/js/plugin/webfont/webfont.min.js') }}"></script>
@@ -24,143 +25,10 @@
         });
 
     </script>
-
-    <!-- CSS Files -->
     <link rel="stylesheet" href="{{ url('back-end/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('back-end/assets/css/azzara.min.css') }}">
     <link rel="stylesheet" href="{{ url('back-end/assets/css/demo.css') }}">
-    <style>
-        .main-header {
-            background-color: #70c55b !important;
-        }
-
-        .btn-custom {
-            background-color: #70c55b;
-            color: white;
-            border-radius: 25px;
-        }
-
-    </style>
-
-
-    <style>
-        .text-danger {
-            color: red;
-        }
-
-        /* #keluhan, */
-        #email,
-        #username,
-        #phone,
-        #subjek,
-        #kategori,
-        #company,
-        #department,
-        #kode_perusahaan,
-        #tanggal_diajukan {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            border: 1px solid #D1D1D1 !important;
-            padding: 8px;
-            font-weight: normal !important;
-            pointer-events: none;
-        }
-
-        textarea#keluhan {
-            max-height: 300px;
-            overflow-y: auto;
-            resize: none;
-            /* Nonaktifkan resize manual */
-            background-color: #ffffff !important;
-            /* Pastikan latar belakang putih */
-            color: #000000 !important;
-            /* Pastikan warna teks gelap */
-            cursor: text;
-            /* Tetap tampilkan kursor teks */
-            border: 2px solid #000000;
-            /* Border standar */
-            font-family: inherit;
-            /* Selaraskan font */
-            font-size: inherit;
-            /* Selaraskan ukuran font */
-            padding: 8px;
-            /* Tambahkan padding untuk kenyamanan */
-        }
-
-        #idmodule {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            border: 2px solid #4CAF50 !important;
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        #iduser_pic {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            border: 2px solid #4CAF50 !important;
-            padding: 8px;
-            cursor: pointer;
-        }
-
-
-        #iduser_pic:focus {
-            border-color: #70c55b !important;
-            box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
-        }
-
-        .iduser_pic {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            border: 2px solid #4CAF50 !important;
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        .iduser_pic:focus {
-            border-color: #70c55b !important;
-            box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
-        }
-
-        #priority {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            border: 2px solid #4CAF50 !important;
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        #priority:focus {
-            border-color: #70c55b !important;
-            box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
-        }
-
-        #idmodule:focus {
-            border-color: #70c55b !important;
-            box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
-        }
-
-        #subjek {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            padding: 8px;
-            cursor: pointer
-        }
-
-        #kategori {
-            background-color: #ffffff !important;
-            color: #000000 !important;
-            padding: 8px;
-            cursor: pointer
-        }
-
-        .no-cursor {
-            pointer-events: none;
-            caret-color: transparent;
-            background-color: #f5f5f5;
-        }
-
-    </style>
+    <link rel="stylesheet" href="{{ url('back-end/assets/css/helpdesk.css') }}">
 </head>
 
 <body>

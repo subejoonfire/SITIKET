@@ -1,7 +1,5 @@
 @extends('layout.mainuser')
-
 @section('content')
-@include('css/user/dashboard')
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

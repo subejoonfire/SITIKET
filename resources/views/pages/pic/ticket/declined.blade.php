@@ -1,6 +1,5 @@
 @extends('layout.main')
 @section('content')
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

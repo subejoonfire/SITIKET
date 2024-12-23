@@ -1,6 +1,5 @@
 @extends('layout.main')
 @section('content')
-@include('css/pic/dashboard')
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">

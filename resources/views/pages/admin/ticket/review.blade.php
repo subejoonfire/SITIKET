@@ -1,8 +1,5 @@
 @extends('layout.mainadmin')
 @section('content')
-
-@include('css/pic/picreview')
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
