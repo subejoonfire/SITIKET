@@ -71,7 +71,7 @@ class Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required|integer|max:18',
+            'phone' => 'required|string|max:18',
             'password' => 'required|string|min:8|confirmed',
         ], [
             'name.required' => 'Username tidak boleh kosong.',
