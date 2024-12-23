@@ -93,4 +93,41 @@ class HRoutesController extends Controller
         ];
         return view('pages/helpdesk/followup/index', $data);
     }
+
+    public function followup_waiting()
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'collection' => Followup::with('tickets', 'users')->where('status', 0)->get(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/helpdesk/followup/waiting', $data);
+    }
+    public function followup_done()
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'collection' => Followup::with('tickets', 'users')->where('status', 1)->get(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/helpdesk/followup/done', $data);
+    }
+    public function helpdesk_followupdetail($id)
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'data' => Ticket::with([
+                'categories',
+                'users.companies',
+                'users.departments',
+                'followups',
+            ])->where('id', $id)->first(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        dd($data);
+        return view('pages/helpdesk/followup/detail', $data);
+    }
 }
