@@ -158,7 +158,7 @@ class PRoutesController extends Controller
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
             'type' => $type,
-            'data' => Ticket::with(['categories', 'users.companies', 'users.departments', 'priorities'])->where('id', $id)->first(),
+            'data' => Ticket::with(['categories', 'followups', 'users.companies', 'users.departments', 'priorities'])->where('id', $id)->first(),
             'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
             'documents' => Document::with('messages')->whereHas('messages', function ($query) use ($id) {
                 $query->where('messages.idticket', $id);
@@ -187,5 +187,40 @@ class PRoutesController extends Controller
             'notificationData' => $this->notificationData,
         ];
         return view('pages/pic/followup/index', $data);
+    }
+    public function followup_waiting()
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'collection' => Followup::with('tickets', 'users')->where('status', 0)->get(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/pic/followup/waiting', $data);
+    }
+    public function followup_done()
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'collection' => Followup::with('tickets', 'users')->where('status', 1)->get(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/pic/followup/done', $data);
+    }
+    public function followupdetail($id)
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'data' => Ticket::with([
+                'categories',
+                'users.companies',
+                'users.departments',
+                'followups',
+            ])->where('id', $id)->first(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/pic/followup/detail', $data);
     }
 }
