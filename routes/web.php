@@ -39,9 +39,12 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('review/{type}/{id}', [PRoutesController::class, 'review'])->name('review');
         });
         Route::group(['prefix' => 'followup', 'as' => 'followup.'], function () {
-            Route::get('/', [PRoutesController::class, 'followup'])->name('followup');
+            Route::get('/', [PRoutesController::class, 'followup'])->name('/');
+            Route::get('waiting', [PRoutesController::class, 'followup_waiting'])->name('waiting');
+            Route::get('done', [PRoutesController::class, 'followup_done'])->name('done');
+            Route::get('/detail/{id}', [PRoutesController::class, 'followupdetail'])->name('/detail');
             Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
-                Route::get('/store/{id}', [PICController::class, 'followup_store'])->name('store');
+                Route::post('/store/{id}', [PICController::class, 'followup_store'])->name('store');
                 Route::get('/delete/{id}', [PICController::class, 'followup_delete'])->name('delete');
             });
         });
@@ -56,6 +59,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => admin::class], function () {
         Route::get('/', [ARoutesController::class, 'index'])->name('/');
         Route::get('/profile', [ARoutesController::class, 'profile'])->name('profile');
+
+        Route::get('luser', [ARoutesController::class, 'luser'])->name('luser');
+        Route::get('lpic', [ARoutesController::class, 'lpic'])->name('lpic');
+        Route::get('ladmin', [ARoutesController::class, 'ladmin'])->name('ladmin');
+        Route::get('lhelpdesk', [ARoutesController::class, 'lhelpdesk'])->name('lhelpdesk');
+
         Route::group(['prefix' => 'ticket', 'as' => 'ticket.'], function () {
             Route::get('/', [ARoutesController::class, 'ticket'])->name('/');
             Route::get('review/{id}', [ARoutesController::class, 'ticket_review'])->name('review');
@@ -64,12 +73,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('processed', [ARoutesController::class, 'ticket_processed'])->name('processed');
             Route::get('done', [ARoutesController::class, 'ticket_done'])->name('processed');
         });
-
-        Route::get('luser', [ARoutesController::class, 'luser'])->name('luser');
-        Route::get('lpic', [ARoutesController::class, 'lpic'])->name('lpic');
-        Route::get('ladmin', [ARoutesController::class, 'ladmin'])->name('ladmin');
-        Route::get('lhelpdesk', [ARoutesController::class, 'lhelpdesk'])->name('lhelpdesk');
-
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
             Route::get('add', [ARoutesController::class, 'addmodule'])->name('addmodule');
@@ -137,17 +140,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/history', [HRoutesController::class, 'history'])->name('history');
         Route::get('/validation', [HRoutesController::class, 'validation'])->name('validation');
         Route::get('/detail/{id}', [HRoutesController::class, 'detail'])->name('detail');
-        Route::group(['prefix' => 'followup', 'as' => 'followup.'], function () {
-            Route::get('/', [HRoutesController::class, 'followup'])->name('followup');
-            Route::get('/detail/{id}', [HRoutesController::class, 'followup_detai;'])->name('detai;');
-            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
-                Route::get('/delete/{id}', [HelpdeskController::class, 'followup_delete'])->name('delete');
-            });
-        });
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [HelpdeskController::class, 'helpdeskStore'])->name('store');
             Route::get('/delete/{id}', [HelpdeskController::class, 'helpdeskDelete'])->name('delete');
             Route::post('/update/{id}', [HelpdeskController::class, 'helpdeskUpdate'])->name('update');
+        });
+        Route::group(['prefix' => 'followup', 'as' => 'followup.'], function () {
+            Route::get('/', [HRoutesController::class, 'followup'])->name('/');
+            Route::get('waiting', [HRoutesController::class, 'followup_waiting'])->name('waiting');
+            Route::get('done', [HRoutesController::class, 'followup_done'])->name('done');
+            Route::get('/detail{id}', [HRoutesController::class, 'helpdesk_followupdetail'])->name('detail');
         });
     });
     Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => user::class], function () {
