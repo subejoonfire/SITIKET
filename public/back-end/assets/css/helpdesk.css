@@ -91,6 +91,7 @@
     font-family: inherit;
     font-size: inherit;
     padding: 8px;
+    pointer-events: none;
 }
 
 textarea#keluhan {
@@ -149,7 +150,7 @@ textarea#keluhan {
     box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
 }
 
-#priority {
+#priority-pic {
     background-color: #ffffff !important;
     color: #000000 !important;
     border: 2px solid #4CAF50 !important;
@@ -157,7 +158,7 @@ textarea#keluhan {
     cursor: pointer;
 }
 
-#priority:focus {
+#priority-pic:focus {
     border-color: #70c55b !important;
     box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
 }

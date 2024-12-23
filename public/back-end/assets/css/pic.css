@@ -1360,7 +1360,7 @@ button.send-btn:hover {
     overflow-y: auto;
     resize: none;
     background-color: #ffffff !important;
-    cursor: text;
+    pointer-events: none;
     border: 2px solid #D1D1D1;
     font-family: inherit;
     font-size: inherit;
