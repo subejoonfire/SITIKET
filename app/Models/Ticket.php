@@ -58,4 +58,8 @@ class Ticket extends Model
     {
         return $this->hasMany(Message::class, 'idticket', 'id');
     }
+    public function followups(): HasMany
+    {
+        return $this->hasMany(Followup::class, 'idticket');
+    }
 }

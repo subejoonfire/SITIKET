@@ -13,6 +13,7 @@ class Followup extends Model
     protected $fillable = [
         'idticket',
         'iduser_pic',
+        'followup_issue',
         'status',
     ];
 

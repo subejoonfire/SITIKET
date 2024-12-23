@@ -60,11 +60,12 @@ class PICController extends Controller
         }
         return redirect()->to('pic/ticket/done')->with('success', 'Tiket berhasil di setujui.');
     }
-    public function followup_store($id)
+    public function followup_store($id, Request $request)
     {
         if (!Followup::where('idticket', $id)->exists()) {
             Followup::create([
                 'idticket' => $id,
+                'followup_issue' => $request->followup_issue,
                 'iduser_pic' => auth()->user()->id,
             ]);
             return redirect()->back()->with('success', 'Tiket berhasil di ajukan untuk ditindak lanjuti');

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('iduser_pic')->nullable()->default(NULL);
             $table->unsignedBigInteger('idticket')->nullable()->default(NULL);
             $table->boolean('status')->default(false);
+            $table->string('followup_issue');
             $table->timestamps();
             $table->softDeletes();
         });
