@@ -38,6 +38,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('done', [PRoutesController::class, 'done'])->name('processed');
             Route::get('review/{type}/{id}', [PRoutesController::class, 'review'])->name('review');
         });
+        Route::group(['prefix' => 'followup', 'as' => 'followup.'], function () {
+            Route::get('/', [PRoutesController::class, 'followup'])->name('followup');
+            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+                Route::get('/store/{id}', [PICController::class, 'followup_store'])->name('store');
+                Route::get('/delete/{id}', [PICController::class, 'followup_delete'])->name('delete');
+            });
+        });
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::get('approved/{id}', [PICController::class, 'approved'])->name('approved');
             Route::get('declined/{id}', [PICController::class, 'declined'])->name('declined');
@@ -81,7 +88,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::post('/store', [AdminController::class, 'userStore'])->name('store');
                 Route::get('/delete/{id}', [AdminController::class, 'userDelete'])->name('delete');
                 Route::post('/update/{id}', [AdminController::class, 'userUpdate'])->name('update');
-                Route::get('/admin/tiket', [AdminController::class, 'tiket'])->name('admin.tiket')->middleware('auth', 'role:admin');
+                Route::get('/admin/tiket', [AdminController::class, 'tiket'])->name('admin.tiket');
             });
         });
         Route::group(['prefix' => 'department', 'as' => 'department.'], function () {
@@ -130,6 +137,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/history', [HRoutesController::class, 'history'])->name('history');
         Route::get('/validation', [HRoutesController::class, 'validation'])->name('validation');
         Route::get('/detail/{id}', [HRoutesController::class, 'detail'])->name('detail');
+        Route::group(['prefix' => 'followup', 'as' => 'followup.'], function () {
+            Route::get('/', [HRoutesController::class, 'followup'])->name('followup');
+            Route::get('/detail/{id}', [HRoutesController::class, 'followup_detai;'])->name('detai;');
+            Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
+                Route::get('/delete/{id}', [HelpdeskController::class, 'followup_delete'])->name('delete');
+            });
+        });
         Route::group(['prefix' => 'action', 'as' => 'action.'], function () {
             Route::post('/store', [HelpdeskController::class, 'helpdeskStore'])->name('store');
             Route::get('/delete/{id}', [HelpdeskController::class, 'helpdeskDelete'])->name('delete');
