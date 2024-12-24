@@ -4,10 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{ $title ?? 'SI-TIKET' }}</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" type="image/jpeg" href="JG.png">
+    <link rel="icon" type="image/jpeg" href="{{ asset('JG.png') }}">
 
     <!-- Fonts and icons -->
-    <script src="back-end/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
         WebFont.load({
             google: {
@@ -15,7 +15,7 @@
             }
             , custom: {
                 "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"]
-                , "urls": ["back-end/assets/css/fonts.css"]
+                , "urls": ["{{ asset('back-end/assets/css/fonts.css') }}"]
             }
             , active: function() {
                 sessionStorage.fonts = true;
@@ -25,10 +25,10 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="back-end/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="back-end/assets/css/azzara.min.css">
-    <link rel="stylesheet" href="back-end/assets/css/demo.css">
-    <link rel="stylesheet" href="back-end/assets/css/pic.css">
+    <link rel="stylesheet" href="{{ asset('back-end/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('back-end/assets/css/azzara.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('back-end/assets/css/demo.css') }}">
+    <link rel="stylesheet" href="{{ asset('back-end/assets/css/pic.css') }}">
     <style>
         .main-header {
             background-color: #70c55b !important;
@@ -74,7 +74,7 @@
         <div class="main-header" data-background-color>
             <!-- Logo Header -->
             <div class="logo-header">
-                <a href="/" class="logo">
+                <a href="{{ url('/') }}" class="logo">
                     <span class="navbar-brand" style="color: white;">SI-TIKET</span>
                 </a>
 
@@ -100,13 +100,13 @@
                         <li class="nav-item dropdown hidden-caret">
                             <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <div class="avatar-sm">
-                                    <img src="storage/profiles/{{ auth()->user()->image ?? 'default.jpg' }}" alt="..." class="avatar-img rounded-circle">
+                                    <img src="{{ asset('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-user animated fadeIn">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="storage/profiles/{{ auth()->user()->image ?? 'default.jpg' }}" alt="image profile" class="avatar-img rounded"></div>
+                                        <div class="avatar-lg"><img src="{{ asset('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4>{{ auth()->user()->name }}</h4>
                                             <p class="text-muted">{{ auth()->user()->email}}</p>
@@ -115,9 +115,9 @@
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="profile">My Profile</a>
-                                    <div class="dropdown-divider </div>
-                                    <a class=" dropdown-item" href="logout">Logout</a>
+                                    <a class="dropdown-item" href="{{ url('profile') }}">My Profile</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
                                 </li>
                             </ul>
                         </li>
@@ -134,54 +134,54 @@
     </div>
 
     <!-- JS Files -->
-    <script src="back-end/assets/js/core/jquery.3.2.1.min.js"></script>
-    <script src="back-end/assets/js/core/popper.min.js"></script>
-    <script src="back-end/assets/js/core/bootstrap.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/core/jquery.3.2.1.min.js') }}"></script>
+    <script src="{{ asset('back-end/assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('back-end/assets/js/core/bootstrap.min.js') }}"></script>
 
     <!-- jQuery UI -->
-    <script src="back-end/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="back-end/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
 
     <!-- jQuery Scrollbar -->
-    <script src="back-end/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
     <!-- Moment JS -->
-    <script src="back-end/assets/js/plugin/moment/moment.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/moment/moment.min.js') }}"></script>
 
     <!-- Chart JS -->
-    <script src="back-end/assets/js/plugin/chart.js/chart.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/chart.js/chart.min.js') }}"></script>
 
     <!-- jQuery Sparkline -->
-    <script src="back-end/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
 
     <!-- Chart Circle -->
-    <script src="back-end/assets/js/plugin/chart-circle/circles.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
 
     <!-- Datatables -->
-    <script src="back-end/assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="back-end/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
     <!-- Bootstrap Toggle -->
-    <script src="back-end/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script>
 
     <!-- jQuery Vector Maps -->
-    <script src="back-end/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-    <script src="back-end/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js') }}"></script>
 
     <!-- Google Maps Plugin -->
-    <script src="back-end/assets/js/plugin/gmaps/gmaps.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/gmaps/gmaps.js') }}"></script>
 
     <!-- Sweet Alert -->
-    <script src="back-end/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
     <!-- Azzara JS -->
-    <script src="back-end/assets/js/ready.min.js"></script>
+    <script src="{{ asset('back-end/assets/js/ready.min.js') }}"></script>
 
     <!-- Azzara DEMO methods -->
-    <script src="back-end/assets/js/setting-demo.js"></script>
-    <script src="back-end/assets/js/demo.js"></script>
+    <script src="{{ asset('back-end/assets/js/setting-demo.js') }}"></script>
+    <script src="{{ asset('back-end/assets/js/demo.js') }}"></script>
 
     <script>
         $(document).ready(function() {
@@ -221,6 +221,7 @@
                 $('#addRowModal').modal('hide');
             });
         });
+
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('mouseenter', () => {
                 const dropdown = item.querySelector('.dropdown-menu');
@@ -232,7 +233,7 @@
                 }
             });
 
-            item.addEventListener('mouseleave ', () => {
+            item.addEventListener('mouseleave', () => {
                 const dropdown = item.querySelector('.dropdown-menu');
                 if (dropdown) {
                     dropdown.style.opacity = '0';
