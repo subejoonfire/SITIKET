@@ -32,7 +32,7 @@
                                     <img src="{{ asset('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle">
                                 </div>
                             </a>
-                            <ul class="dropdown-menu dropdown-user animated fadeIn">
+                            <ul class="dropdown-menu dropdown-user animated bg-light fadeIn">
                                 <li>
                                     <div class="user-box">
                                         <div class="avatar-lg"><img src="{{ asset('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="image profile" class="avatar-img rounded"></div>
