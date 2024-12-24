@@ -149,7 +149,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/', [HRoutesController::class, 'followup'])->name('/');
             Route::get('waiting', [HRoutesController::class, 'followup_waiting'])->name('waiting');
             Route::get('done', [HRoutesController::class, 'followup_done'])->name('done');
-            Route::get('/detail{id}', [HRoutesController::class, 'helpdesk_followupdetail'])->name('detail');
+            Route::get('done/{id}', [HRoutesController::class, 'followup_doneaction'])->name('done');
+            Route::get('/detail/{type}/{id}', [HRoutesController::class, 'helpdesk_followupdetail'])->name('detail');
         });
     });
     Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => user::class], function () {

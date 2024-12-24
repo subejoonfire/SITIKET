@@ -40,7 +40,7 @@
                                             <td>{{ $item->tickets->issue }}</td>
                                             <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
-                                                <a href="{{ url('pic/followup/detail/'. $item->idticket)}}" class="btn btn-info btn-sm">
+                                                <a href="{{ url('helpdesk/followup/detail/index/'. $item->idticket)}}" class="btn btn-info btn-sm">
                                                     <i class="fa fa-eye"></i> Detail
                                                 </a>
                                             </td>

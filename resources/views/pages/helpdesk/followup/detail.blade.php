@@ -75,13 +75,17 @@
                                     </div>
                                     <div class="col">
                                         <label for="status">Status</label>
-                                        <input type="text" name="status" class="form-control" id="status" value="{{ $data->followups->first()->status == 1 ? 'SELESAI' : 'MENUNGGU' }}">
+                                        <input type="text" name="status" class="form-control" id="category" value="{{ $data->followups->first()->status == 1 ? 'SELESAI' : 'MENUNGGU' }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-md-12 mb-3">
+                                    <div class="col">
                                         <label for="created_at">Tanggal Diajukan</label>
                                         <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->created_at->format('l, d F Y H:i') }}">
+                                    </div>
+                                    <div class="col">
+                                        <label for="created_at">Kode Ticket</label>
+                                        <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->ticketcode }}">
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label for="issue">Subjek</label>
@@ -110,6 +114,20 @@
                                             @endif
                                         </div>
                                     </div>
+                                    @if ($type != 'done' && $data->followups->first()->status == 0)
+                                    <div class="form-group row">
+                                        <div class="col">
+                                            <a href="{{ url('helpdesk/detail/' . $data->id) }}" class="btn btn-secondary mr-2">
+                                                Tindak Lanjuti
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="{{ url('helpdesk/followup/done/' . $data->id) }}" class="btn btn-success mr-2">
+                                                Selesai
+                                            </a>
+                                        </div>
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

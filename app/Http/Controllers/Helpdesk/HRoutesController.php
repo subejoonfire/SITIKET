@@ -114,7 +114,7 @@ class HRoutesController extends Controller
         ];
         return view('pages/helpdesk/followup/done', $data);
     }
-    public function helpdesk_followupdetail($id)
+    public function helpdesk_followupdetail($type, $id)
     {
         $data = [
             'title' => 'SITIKET | Tindak Lanjut',
@@ -126,8 +126,20 @@ class HRoutesController extends Controller
             ])->where('id', $id)->first(),
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
+            'type' => $type,
         ];
-        dd($data);
         return view('pages/helpdesk/followup/detail', $data);
+    }
+    public function followup_doneaction($id)
+    {
+        $followup = Followup::where('idticket', $id)->first();
+
+        if ($followup) {
+            $followup->update(['status' => true]);
+            return redirect()->to(url('helpdesk/followup/done'))->with('success', 'Tindak lanjut berhasil dilakukan');
+        } else {
+            return redirect()->back()->with('error', 'Tindak lanjut sudah selesai');
+        }
+        return redirect()->back()->with('error', 'Data tindak lanjut tidak ditemukan');
     }
 }
