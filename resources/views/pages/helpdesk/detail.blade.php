@@ -44,6 +44,10 @@
                             <div class="card-body">
                                 <div class="form-group row">
                                     <div class="col">
+                                        <label for="category">Kode Ticket</label>
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->ticketcode }}">
+                                    </div>
+                                    <div class="col">
                                         <label for="username">Username</label>
                                         <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
                                     </div>
