@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="{{ url('JG.png') }}">
+    <link rel="icon" type="image/jpeg" href="JG.png">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +21,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="{{ url('templates/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ url('templates/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+    <link href="templates/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="templates/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ url('templates/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="templates/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ url('templates/css/style.css') }}" rel="stylesheet">
+    <link href="templates/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -92,13 +92,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ url('templates/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ url('templates/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ url('templates/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ url('templates/lib/lightbox/js/lightbox.min.js') }}"></script>
+    <script src="templates/lib/easing/easing.min.js"></script>
+    <script src="templates/lib/waypoints/waypoints.min.js"></script>
+    <script src="templates/lib/owlcarousel/owl.carousel.min.js">
+        </script <script src="templates/lib/lightbox/js/lightbox.min.js">
+
+    </script>
 
     <!-- Template Javascript -->
-    <script src="{{ url('templates/js/main.js') }}"></script>
+    <script src="templates/js/main.js"></script>
 
     <script>
         // Select all navigation links

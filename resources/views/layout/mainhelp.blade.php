@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>{{ $title ?? 'SI-TIKET' }}</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" type="image/jpeg" href="{{ asset('JG.png') }}">
+    <link rel="icon" type="image/jpeg" href="back-end/assets/JG.png">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Fonts and icons -->
-    <script src="{{ url('back-end/assets/js/plugin/webfont/webfont.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/webfont/webfont.min.js"></script>
     <script>
         WebFont.load({
             google: {
@@ -17,7 +17,7 @@
             }
             , custom: {
                 "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"]
-                , "urls": ["{{ url('back-end/assets/css/fonts.css') }}"]
+                , "urls": ["back-end/assets/css/fonts.css"]
             }
             , active: function() {
                 sessionStorage.fonts = true;
@@ -25,10 +25,10 @@
         });
 
     </script>
-    <link rel="stylesheet" href="{{ url('back-end/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('back-end/assets/css/azzara.min.css') }}">
-    <link rel="stylesheet" href="{{ url('back-end/assets/css/demo.css') }}">
-    <link rel="stylesheet" href="{{ url('back-end/assets/css/helpdesk.css') }}">
+    <link rel="stylesheet" href="back-end/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="back-end/assets/css/azzara.min.css">
+    <link rel="stylesheet" href="back-end/assets/css/demo.css">
+    <link rel="stylesheet" href="back-end/assets/css/helpdesk.css">
 </head>
 
 <body>
@@ -57,7 +57,6 @@
 
             <!-- Navbar Header -->
             <nav class="navbar navbar-header navbar-expand-lg">
-
                 <div class="container-fluid">
                     <div class="collapse" id="search-nav">
                     </div>
@@ -65,13 +64,13 @@
                         <li class="nav-item dropdown hidden-caret">
                             <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                                 <div class="avatar-sm">
-                                    <img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="..." class="avatar-img rounded-circle">
+                                    <img src="storage/profiles/{{ auth()->user()->image ?? 'default.jpg' }}" alt="..." class="avatar-img rounded-circle">
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-user animated fadeIn">
                                 <li>
                                     <div class="user-box">
-                                        <div class="avatar-lg"><img src="{{ url('storage/profiles/' . (auth()->user()->image ?? 'default.jpg')) }}" alt="image profile" class="avatar-img rounded"></div>
+                                        <div class="avatar-lg"><img src="storage/profiles/{{ auth()->user()->image ?? 'default.jpg' }}" alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
                                             <h4>{{ auth()->user()->name }}</h4>
                                             <p class="text-muted">{{ auth()->user()->email }}</p>
@@ -80,9 +79,9 @@
                                 </li>
                                 <li>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ url('profile') }}">My Profile</a>
+                                    <a class="dropdown-item" href="profile">My Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ url('logout') }}">Logout</a>
+                                    <a class="dropdown-item" href="logout">Logout</a>
                                 </li>
                             </ul>
                         </li>
@@ -99,54 +98,54 @@
     </div>
 
     <!-- JS Files -->
-    <script src="{{ url('back-end/assets/js/core/jquery.3.2.1.min.js') }}"></script>
-    <script src="{{ url('back-end/assets/js/core/popper.min.js') }}"></script>
-    <script src="{{ url('back-end/assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="back-end/assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="back-end/assets/js/core/popper.min.js"></script>
+    <script src="back-end/assets/js/core/bootstrap.min.js"></script>
 
     <!-- jQuery UI -->
-    <script src="{{ url('back-end/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
-    <script src="{{ url('back-end/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min .js"></script>
+    <script src="back-end/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
     <!-- jQuery Scrollbar -->
-    <script src="{{ url('back-end/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
     <!-- Moment JS -->
-    <script src="{{ url('back-end/assets/js/plugin/moment/moment.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/moment/moment.min.js"></script>
 
     <!-- Chart JS -->
-    <script src="{{ url('back-end/assets/js/plugin/chart.js/chart.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/chart.js/chart.min.js"></script>
 
     <!-- jQuery Sparkline -->
-    <script src="{{ url('back-end/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
     <!-- Chart Circle -->
-    <script src="{{ url('back-end/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/chart-circle/circles.min.js"></script>
 
     <!-- Datatables -->
-    <script src="{{ url('back-end/assets/js/plugin/datatables/datatables.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/datatables/datatables.min.js"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{{ url('back-end/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
     <!-- Bootstrap Toggle -->
-    <script src="{{ url('back-end/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 
     <!-- jQuery Vector Maps -->
-    <script src="{{ url('back-end/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ url('back-end/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js') }}"></script>
+    <script src="back-end/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+    <script src="back-end/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
 
     <!-- Google Maps Plugin -->
-    <script src="{{ url('back-end/assets/js/plugin/gmaps/gmaps.js') }}"></script>
+    <script src="back-end/assets/js/plugin/gmaps/gmaps.js"></script>
 
     <!-- Sweet Alert -->
-    <script src="{{ url('back-end/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="back-end/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
     <!-- Azzara JS -->
-    <script src="{{ url('back-end/assets/js/ready.min.js') }}"></script>
+    <script src="back-end/assets/js/ready.min.js"></script>
 
     <!-- Azzara DEMO methods -->
-    <script src="{{ url('back-end/assets/js/setting-demo.js') }}"></script>
-    <script src="{{ url('back-end/assets/js/demo.js') }}"></script>
+    <script src="back-end/assets/js/setting-demo.js"></script>
+    <script src="back-end/assets/js/demo.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -156,19 +155,15 @@
                 , initComplete: function() {
                     this.api().columns().every(function() {
                         var column = this;
-                        var select = $(
-                                '<select class="form-control"><option value=""></option></select>'
-                            )
+                        var select = $('<select class="form-control"><option value=""></option></select>')
                             .appendTo($(column.footer()).empty())
                             .on('change', function() {
                                 var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                                column.search(val ? '^' + val + '$' : '', true, false)
-                                    .draw();
+                                column.search(val ? '^' + val + '$' : '', true, false).draw();
                             });
 
                         column.data().unique().sort().each(function(d, j) {
-                            select.append('<option value="' + d + '">' + d +
-                                '</option>');
+                            select.append('<option value="' + d + '">' + d + '</option>');
                         });
                     });
                 }
@@ -178,12 +173,14 @@
                 "pageLength": 5
             });
 
-            var action =
-                '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+            var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 
             $('#addRowButton').click(function() {
                 $('#add-row').dataTable().fnAddData([
-                    $("#addName").val(), $("#addPosition").val(), $("#addOffice").val(), action
+                    $("#addName").val()
+                    , $("#addPosition").val()
+                    , $("#addOffice").val()
+                    , action
                 ]);
                 $('#addRowModal').modal('hide');
             });
