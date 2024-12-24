@@ -1,21 +1,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>{{ $title ?? 'SI-TIKET' }}</title>
 <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-<link rel="icon" type="image/jpeg" href="{{ asset('back-end/assets/JG.png') }}">
-<link rel="stylesheet" href="{{ asset('back-end/assets/css/message.css') }}">
-<link rel="stylesheet" href="{{ asset('back-end/assets/css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ asset('back-end/assets/css/azzara.min.css') }}">
-<link rel="stylesheet" href="{{ asset('back-end/assets/css/demo.css') }}">
-<link rel="stylesheet" href="{{ asset('back-end/assets/css/pic.css') }}">
-<link rel="stylesheet" href="{{ asset('back-end/assets/css/helpdesk.css') }}">
-<link href="{{ asset('templates/css/style.css') }}" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="https://sitiket-development.up.railway.app/back-end/assets/JG.png">
+<link rel="stylesheet" href="https://sitiket-development.up.railway.app/back-end/assets/css/message.css">
+<link rel="stylesheet" href="https://sitiket-development.up.railway.app/back-end/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://sitiket-development.up.railway.app/back-end/assets/css/azzara.min.css">
+<link rel="stylesheet" href="https://sitiket-development.up.railway.app/back-end/assets/css/demo.css">
+<link rel="stylesheet" href="https://sitiket-development.up.railway.app/back-end/assets/css/pic.css">
+<link rel="stylesheet" href="https://sitiket-development.up.railway.app/back-end/assets/css/helpdesk.css">
+<link href="https://sitiket-development.up.railway.app/templates/css/style.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-<script src="{{ asset('back-end/assets/js/plugin/webfont/webfont.min.js') }}"></script>
+<script src="https://sitiket-development.up.railway.app/back-end/assets/js/plugin/webfont/webfont.min.js"></script>
 <script>
     WebFont.load({
         google: {
@@ -23,7 +23,7 @@
         }
         , custom: {
             "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"]
-            , "urls": ["{{ asset('back-end/assets/css/fonts.css') }}"]
+            , "urls": ["https://sitiket-development.up.railway.app/back-end/assets/css/fonts.css"]
         }
         , active: function() {
             sessionStorage.fonts = true;
