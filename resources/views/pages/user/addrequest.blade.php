@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="detailissue">Keluhan</label>
-                                    <textarea type="text" name="detailissue" class="form-control" id="detailissue" placeholder="Masukan Keluhan" cols="30" rows="10"></textarea>
+                                    <textarea type="text" name="detailissue" class="form-control" id="destailissue" placeholder="Masukan Keluhan" cols="30" rows="10"></textarea>
                                     @error('detailissue')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
