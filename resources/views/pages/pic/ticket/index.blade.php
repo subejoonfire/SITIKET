@@ -12,63 +12,11 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Semua Tiket</h4>
-                                {{-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-                                    <i class="fa fa-plus"></i>
-                                   
-                                </button> --}}
                             </div>
                         </div>
                         <div class="card-body">
-                            <!-- Modal -->
-                            <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header no-bd">
-                                            <h5 class="modal-title">
-                                                <span class="fw-mediumbold">
-                                                    New</span>
-                                                <span class="fw-light">
-                                                    Row
-                                                </span>
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p class="small">Create a new row using this form, make sure you fill them all</p>
-                                            <form>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Name</label>
-                                                            <input id="addName" type="text" class="form-control" placeholder="fill name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pr-0">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Position</label>
-                                                            <input id="addPosition" type="text" class="form-control" placeholder="fill position">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group form-group-default">
-                                                            <label>Office</label>
-                                                            <input id="addOffice" type="text" class="form-control" placeholder="fill office">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer no-bd">
-                                            <button type="button" id="addRowButton" class="btn btn-primary">Add</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="table-responsive">
-                                <table id="add-row" class="display table table-striped table-hover">
+                                <table id="table-bid" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -115,7 +63,39 @@
             </div>
         </div>
     </div>
-
 </div>
+<script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
+<script>
+    var pusher = new Pusher("fkvo02hvlofirqbq1wkf", {
+        cluster: ""
+        , enabledTransports: ['ws']
+        , forceTLS: false
+        , wsHost: "127.0.0.1"
+        , wsPort: "8080"
+    });
+    var channel = pusher.subscribe("pic-channel");
+    channel.bind("App\\Events\\TicketEvent", (data) => {
+        let tableBid = document.getElementById('table-bid').getElementsByTagName('tbody')[0];
+        var row = tableBid.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        var cell7 = row.insertCell(6);
+        var cell8 = row.insertCell(7);
+        cell1.innerHTML = tableBid.rows.length;
+        cell2.innerHTML = data.ticketcode; // Accessing the data directly
+        cell3.innerHTML = data.name;
+        cell4.innerHTML = data.module;
+        cell5.innerHTML = data.status;
+        cell6.innerHTML = data.issue;
+        cell7.innerHTML = new Date(data.created_at).toLocaleString();
+        cell8.innerHTML = '<div class="btn-review"><a href="your_detail_url_here" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> Detail</a></div>';
+        console.log(data)
+    });
+
+</script>
 
 @endsection
