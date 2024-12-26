@@ -3,7 +3,7 @@
 <script src="{{ url('back-end/assets/js/core/bootstrap.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
-<script src="{{ url('back-end/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+{{-- <script src="{{ url('back-end/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script> --}}
 <script src="{{ url('back-end/assets/js/plugin/moment/moment.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/plugin/chart.js/chart.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
@@ -18,6 +18,8 @@
 <script src="{{ url('back-end/assets/js/ready.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/setting-demo.js') }}"></script>
 <script src="{{ url('back-end/assets/js/demo.js') }}"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <script>
     function initializeDataTable(selector, options) {
         $(selector).DataTable(options);
@@ -75,5 +77,64 @@
             }
         });
     });
+
+    function setActiveTab(tabName) {
+        if (tabName === 'conversation') {
+            document.getElementById('conversation').style.display = 'block';
+            document.getElementById('attachments').style.display = 'none';
+            document.getElementById('conversation-btn').classList.add('active');
+            document.getElementById('attachments-btn').classList.remove('active');
+        } else {
+            document.getElementById('conversation').style.display = 'none';
+            document.getElementById('attachments').style.display = 'block';
+            document.getElementById('attachments-btn').classList.add('active');
+            document.getElementById('conversation-btn').classList.remove('active');
+        }
+    }
+    document.querySelectorAll('.attachment-item a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.open(this.href, '_blank');
+        });
+    });
+
+    function setActiveTab(tabName) {
+        if (tabName === 'conversation') {
+            document.getElementById('conversation').style.display = 'block';
+            document.getElementById('attachments').style.display = 'none';
+            document.getElementById('conversation-btn').classList.add('active');
+            document.getElementById('attachments-btn').classList.remove('active');
+            document.querySelector('.message-input').style.display = 'flex';
+        } else {
+            document.getElementById('conversation').style.display = 'none';
+            document.getElementById('attachments').style.display = 'block';
+            document.getElementById('attachments-btn').classList.add('active');
+            document.getElementById('conversation-btn').classList.remove('active');
+            document.querySelector('.message-input').style.display = 'none';
+        }
+    }
+    document.querySelectorAll('.attachment-item a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.open(this.href, '_blank');
+        });
+    });
+
+    function uploadFiles(event) {
+        const fileInput = event.target;
+        const files = fileInput.files;
+        const uploadedFileContainer = document.getElementById('uploaded-file-container');
+
+        uploadedFileContainer.innerHTML = ''; // Clear existing file display
+        for (let i = 0; i < files.length; i++) {
+            const fileName = files[i].name;
+            uploadedFileContainer.innerHTML += `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-file" style="color: #333;"></i>
+                <span>${fileName}</span>
+            </div>
+        `;
+        }
+    }
 
 </script>
