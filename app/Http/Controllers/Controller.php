@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
 use Illuminate\Http\Request;
+use App\Events\NotificationEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -142,16 +143,20 @@ class Controller
         $request->validate([
             'message' => 'required',
         ]);
+
         $ticket = Ticket::with(['users_tickets.user_pic'])->find($id);
         $message->message = $request->input('message');
         $message->idticket = $id;
         $message->iduser_from = auth()->user()->id;
+
         if (auth()->user()->level == '4') {
             $message->iduser_to = $ticket->users_tickets->pluck('user_pic.id')->first();
         } elseif (auth()->user()->level == '3') {
             $message->iduser_to = $ticket->iduser;
         }
+
         $message->save();
+
         if ($request->hasFile('documentname')) {
             foreach ($request->file('documentname') as $file) {
                 $extension = $file->getClientOriginalExtension();
@@ -163,6 +168,9 @@ class Controller
                 $document->save();
             }
         }
+        NotificationEvent::dispatch($message);
+        // event(new NotificationEvent($message));
+
         return redirect()->back();
     }
     public function delete_update()
