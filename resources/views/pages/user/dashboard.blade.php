@@ -101,7 +101,7 @@
                                                 @endif
                                                 @if ($item->status == 'TERKIRIM')
                                                 <a href="{{ url('user/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Remove">
-                                                    <i class="fas fa-trash"></i> Delete
+                                                    <i class="fas fa-trash"></i> Hapus
                                                 </a>
                                                 @endif
                                             </td>
