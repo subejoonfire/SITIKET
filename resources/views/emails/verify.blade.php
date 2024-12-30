@@ -66,10 +66,10 @@
             <h1>Selamat datang di SITIKET!</h1>
         </div>
         <div class="content">
-            <p>Halo {{ $user->name }},</p>
+            <p>Halo {{ $data['name'] }},</p>
             <p>Terima kasih telah mendaftar di SITIKET! Untuk mengaktifkan akun Anda, silakan klik tombol di bawah ini untuk memverifikasi alamat email Anda.</p>
 
-            <a href="{{ $link }}" class="button">Verifikasi Email Saya</a>
+            <a href="{{ $data['link'] }}" class="button">Verifikasi Email Saya</a>
 
             <p>Jika Anda tidak mendaftar di SITIKET, Anda bisa mengabaikan email ini.</p>
         </div>

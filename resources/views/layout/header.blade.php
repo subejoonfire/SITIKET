@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://sitiket-production.up.railway.app/back-end/assets/css/demo.css">
 <link rel="stylesheet" href="https://sitiket-production.up.railway.app/back-end/assets/css/pic.css">
 <link rel="stylesheet" href="https://sitiket-production.up.railway.app/back-end/assets/css/helpdesk.css">
+<link rel="stylesheet" href="https://sitiket-production.up.railway.app/back-end/assets/css/user.css">
 <link href="https://sitiket-production.up.railway.app/templates/css/style.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">

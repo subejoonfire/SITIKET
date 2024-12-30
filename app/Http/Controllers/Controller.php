@@ -6,8 +6,11 @@ use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
+use App\Mail\MessageMail;
 use Illuminate\Support\Str;
+use App\Models\UsersTickets;
 use Illuminate\Http\Request;
+use App\Mail\VerificationMail;
 use App\Events\NotificationEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -56,10 +59,7 @@ class Controller
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if (Auth::user()->email_verified_at == null) {
-                $data = [
-                    'user' => Auth::user(),
-                ];
-                return view('emails/send_verify');
+                return redirect()->to('verification.notice');
             }
             if (Auth::user()->level == 1) {
                 return redirect()->to(url('admin'));
@@ -75,7 +75,7 @@ class Controller
             'login' => 'Email atau password salah.',
         ]);
     }
-    public function registerr(Request $request)
+    public function registerAction(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -137,12 +137,13 @@ class Controller
     public function verify()
     {
         try {
-            $user = auth()->user();
-            $verificationLink = url('verifyme/' . urlencode($user->password) . '/' . $user->id);
-            Mail::send('emails.verify', ['link' => $verificationLink, 'user' => $user], function ($message) use ($user) {
-                $message->to($user->email)
-                    ->subject('Verifikasi Akun SITIKET');
-            });
+            // $user = auth()->user();
+            // $verificationLink = url('verifyme/' . urlencode($user->password) . '/' . $user->id);
+            // Mail::send('emails.verify', ['link' => $verificationLink, 'user' => $user], function ($message) use ($user) {
+            //     $message->to($user->email)
+            //         ->subject('Verifikasi Akun SITIKET');
+            // });
+            Mail::to(auth()->user()->email)->queue(new VerificationMail(auth()->user()->password, auth()->user()->id));
             return redirect()->back()->with('success', 'Email verifikasi telah dikirim. Silakan cek inbox Anda!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat mengirim email verifikasi. Silakan coba lagi!');
@@ -196,6 +197,7 @@ class Controller
         ]);
 
         $ticket = Ticket::with(['users_tickets.user_pic'])->find($id);
+
         $message->message = $request->input('message');
         $message->idticket = $id;
         $message->iduser_from = auth()->user()->id;
@@ -206,21 +208,35 @@ class Controller
             $message->iduser_to = $ticket->iduser;
         }
 
-        $message->save();
-
-        if ($request->hasFile('documentname')) {
-            foreach ($request->file('documentname') as $file) {
-                $extension = $file->getClientOriginalExtension();
-                $uniqueFileName = 'doc_' . auth()->user()->id . '_' . time() . '_' . uniqid() . '.' . $extension;
-                $filePath = $file->storeAs('documents', $uniqueFileName, 'public');
-                $document->idmessage = $message->id;
-                $document->documentname = $file->getClientOriginalName();
-                $document->path_documentname = $filePath;
-                $document->save();
-            }
+        $recipientEmails = [];
+        if (auth()->user()->level == '4') {
+            $checkPic = UsersTickets::where('idticket', $id)->get();
+            $uniquePics = $checkPic->pluck('user_pic.email')->unique();
+            $recipientEmails = $uniquePics->toArray();
+        } elseif (auth()->user()->level == '3') {
+            $recipientEmails[] = $ticket->users->email;
         }
-        NotificationEvent::dispatch($message);
-        return redirect()->back();
+        try {
+            foreach ($recipientEmails as $email) {
+                Mail::to($email)->queue(new MessageMail($message->message, $message->iduser_from, $message->iduser_to, $ticket));
+            }
+            $message->save();
+            if ($request->hasFile('documentname')) {
+                foreach ($request->file('documentname') as $file) {
+                    $extension = $file->getClientOriginalExtension();
+                    $uniqueFileName = 'doc_' . auth()->user()->id . '_' . time() . '_' . uniqid() . '.' . $extension;
+                    $filePath = $file->storeAs('documents', $uniqueFileName, 'public');
+                    $document->idmessage = $message->id;
+                    $document->documentname = $file->getClientOriginalName();
+                    $document->path_documentname = $filePath;
+                    $document->save();
+                }
+            }
+
+            return redirect()->back()->with('success', 'Pesan berhasil dikirim dan disimpan.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal mengirim email atau menyimpan pesan: ' . $e->getMessage());
+        }
     }
     public function delete_update()
     {

@@ -27,8 +27,8 @@ Route::get('/', [RoutesController::class, 'landing']);
 Route::group(['middleware' => logged::class], function () {
     Route::get('/login', [RoutesController::class, 'index'])->name('login');
     Route::get('/register', [RoutesController::class, 'register'])->name('register');
-    Route::post('/login', [Controller::class, 'login'])->name('login');
-    Route::post('/register', [Controller::class, 'registerr'])->name('register');
+    Route::post('/loginAction', [Controller::class, 'login'])->name('loginAction');
+    Route::post('/registerAction', [Controller::class, 'registerAction'])->name('registerAction');
 });
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::get('approved', [PRoutesController::class, 'approved'])->name('approved');
             Route::get('declined', [PRoutesController::class, 'declined'])->name('declined');
             Route::get('processed', [PRoutesController::class, 'processed'])->name('processed');
-            Route::get('done', [PRoutesController::class, 'done'])->name('processed');
+            Route::get('done', [PRoutesController::class, 'done'])->name('done');
             Route::get('review/{type}/{id}', [PRoutesController::class, 'review'])->name('review');
         });
         Route::group(['prefix' => 'followup', 'as' => 'followup.'], function () {
@@ -56,7 +56,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::get('approved/{id}', [PICController::class, 'approved'])->name('approved');
             Route::get('declined/{id}', [PICController::class, 'declined'])->name('declined');
             Route::get('processed/{id}', [PICController::class, 'processed'])->name('processed');
-            Route::get('done/{id}', [PICController::class, 'done'])->name('processed');
+            Route::get('done/{id}', [PICController::class, 'done'])->name('done');
         });
         Route::post('message_store/{id}', [PICController::class, 'message_store'])->name('message_store/{id}');
     });
@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::get('approved', [ARoutesController::class, 'ticket_approved'])->name('approved');
             Route::get('declined', [ARoutesController::class, 'ticket_declined'])->name('declined');
             Route::get('processed', [ARoutesController::class, 'ticket_processed'])->name('processed');
-            Route::get('done', [ARoutesController::class, 'ticket_done'])->name('processed');
+            Route::get('done', [ARoutesController::class, 'ticket_done'])->name('done');
         });
         Route::group(['prefix' => 'module', 'as' => 'module.'], function () {
             Route::get('/', [ARoutesController::class, 'module'])->name('index');
@@ -153,7 +153,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::get('/', [HRoutesController::class, 'followup'])->name('/');
             Route::get('waiting', [HRoutesController::class, 'followup_waiting'])->name('waiting');
             Route::get('done', [HRoutesController::class, 'followup_done'])->name('done');
-            Route::get('done/{id}', [HRoutesController::class, 'followup_doneaction'])->name('done');
+            Route::get('done/{id}', [HRoutesController::class, 'followup_doneaction'])->name('done/{id}');
             Route::get('/detail/{type}/{id}', [HRoutesController::class, 'helpdesk_followupdetail'])->name('detail');
         });
     });
@@ -180,7 +180,7 @@ Route::group(['middleware' => notverified::class], function () {
     Route::get('verify', [Controller::class, 'verify'])->name('verify');
     Route::get('verifyme/{hash}/{id}', [Controller::class, 'verifyme'])
         ->where('hash', '.*')
-        ->name('verify');
+        ->name('verifyme');
     Route::get('verification.notice', [RoutesController::class, 'send_verify'])->name('verification.notice');
 });
 
