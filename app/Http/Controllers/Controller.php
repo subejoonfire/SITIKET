@@ -75,7 +75,7 @@ class Controller
             'login' => 'Email atau password salah.',
         ]);
     }
-    public function registerr(Request $request)
+    public function registerAction(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
