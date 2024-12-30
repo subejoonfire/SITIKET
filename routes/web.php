@@ -1,22 +1,26 @@
 <?php
 
-use App\Http\Middleware\user;
+use App\Mail\TestEmail;
 
+use App\Http\Middleware\pic;
+use App\Http\Middleware\user;
 use App\Http\Middleware\admin;
 use App\Http\Middleware\logged;
 use App\Http\Middleware\helpdesk;
-use App\Http\Middleware\pic;
+use App\Http\Middleware\verified;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoutesController;
+use App\Http\Controllers\PIC\PICController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\PIC\PRoutesController;
 use App\Http\Controllers\User\URoutesController;
 use App\Http\Controllers\Admin\ARoutesController;
 use App\Http\Controllers\Helpdesk\HRoutesController;
 use App\Http\Controllers\Helpdesk\HelpdeskController;
-use App\Http\Controllers\PIC\PRoutesController;
-use App\Http\Controllers\PIC\PICController;
+use App\Http\Middleware\notverified;
 
 Route::get('/', [RoutesController::class, 'landing']);
 
@@ -27,7 +31,7 @@ Route::group(['middleware' => logged::class], function () {
     Route::post('/register', [Controller::class, 'registerr'])->name('register');
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::group(['prefix' => 'pic', 'as' => 'pic.', 'middleware' => pic::class], function () {
         Route::get('/', [PRoutesController::class, 'dashboard'])->name('/');
         Route::group(['prefix' => 'ticket', 'as' => 'ticket.'], function () {
@@ -169,6 +173,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile/image', [Controller::class, 'image_update'])->name('profile/image');
     Route::get('/profile/image/delete', [Controller::class, 'delete_update'])->name('profile/image/delete');
     Route::post('message_store/{id}', [Controller::class, 'message_store'])->name('message_store/{id}');
+});
+
+Route::group(['middleware' => notverified::class], function () {
+    Route::get('send_verify', [Controller::class, 'send_verify'])->name('send_verify');
+    Route::get('verify', [Controller::class, 'verify'])->name('verify');
+    Route::get('verifyme/{hash}/{id}', [Controller::class, 'verifyme'])
+        ->where('hash', '.*')
+        ->name('verify');
+    Route::get('verification.notice', [RoutesController::class, 'send_verify'])->name('verification.notice');
 });
 
 Route::get('logout', [Controller::class, 'logout'])->name('logout');
