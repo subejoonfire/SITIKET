@@ -3,7 +3,7 @@
 <script src="{{ url('back-end/assets/js/core/bootstrap.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
-{{-- <script src="{{ url('back-end/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script> --}}
+<script src="{{ url('back-end/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/plugin/moment/moment.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/plugin/chart.js/chart.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
@@ -18,15 +18,10 @@
 <script src="{{ url('back-end/assets/js/ready.min.js') }}"></script>
 <script src="{{ url('back-end/assets/js/setting-demo.js') }}"></script>
 <script src="{{ url('back-end/assets/js/demo.js') }}"></script>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <script>
-    function initializeDataTable(selector, options) {
-        $(selector).DataTable(options);
-    }
     $(document).ready(function() {
-        initializeDataTable('#basic-datatables', {});
-        initializeDataTable('#multi-filter-select', {
+        $('#basic-datatables').DataTable({});
+        $('#multi-filter-select').DataTable({
             "pageLength": 5
             , initComplete: function() {
                 this.api().columns().every(function() {
@@ -37,16 +32,20 @@
                             var val = $.fn.dataTable.util.escapeRegex($(this).val());
                             column.search(val ? '^' + val + '$' : '', true, false).draw();
                         });
-                    column.data().unique().sort().each(function(d) {
+
+                    column.data().unique().sort().each(function(d, j) {
                         select.append('<option value="' + d + '">' + d + '</option>');
                     });
                 });
             }
         });
-        initializeDataTable('#add-row', {
+
+        $('#add-row').DataTable({
             "pageLength": 5
         });
-        var action = '<td><div class="form-button-action"><button type="button" data-toggle="tooltip" class="btn btn-link btn-primary btn-lg" title="Edit Task"><i class="fa fa-edit"></i></button><button type="button" data-toggle="tooltip" class="btn btn-link btn-danger" title="Remove"><i class="fa fa-times"></i></button></div></td>';
+
+        var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
         $('#addRowButton').click(function() {
             $('#add-row').dataTable().fnAddData([
                 $("#addName").val()
