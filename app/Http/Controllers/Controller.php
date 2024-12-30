@@ -6,10 +6,12 @@ use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Events\NotificationEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -53,6 +55,12 @@ class Controller
             'password.required' => 'Password tidak boleh kosong.',
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            if (Auth::user()->email_verified_at == null) {
+                $data = [
+                    'user' => Auth::user(),
+                ];
+                return view('emails/send_verify');
+            }
             if (Auth::user()->level == 1) {
                 return redirect()->to(url('admin'));
             } elseif (Auth::user()->level == 2) {
@@ -89,7 +97,7 @@ class Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -97,8 +105,51 @@ class Controller
             'level' => 4,
         ]);
 
-        return redirect()->to('login')->with('success', 'Registrasi berhasil! Silakan login.');
+        return redirect()->to('login')->with('success', 'Akun berhasil dibuat silahkan login untuk verifikasi.');
     }
+    public function verifyEmail()
+    {
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->to('login')->with('error', 'Anda harus login untuk mengakses halaman ini.');
+        }
+
+        $data = [
+            'link' => url('verify/' . $user->password . '/' . $user->id),
+        ];
+        return view('emails.verify', $data);
+    }
+
+    public function verifyme($hash, $id)
+    {
+        $user = User::where([
+            'password' => $hash,
+            'id' => $id,
+        ])->first();
+        if ($user) {
+            $user->email_verified_at = now();
+            $user->save();
+            return redirect()->to('login')->with('success', 'Akun berhasil diverifikasi! Silahkan masuk');
+        }
+        return redirect()->to('login')->with('error', 'Akun gagal diverifikasi!');
+    }
+    public function verify()
+    {
+        try {
+            $user = auth()->user();
+            $verificationLink = url('verifyme/' . urlencode($user->password) . '/' . $user->id);
+            Mail::send('emails.verify', ['link' => $verificationLink, 'user' => $user], function ($message) use ($user) {
+                $message->to($user->email)
+                    ->subject('Verifikasi Akun SITIKET');
+            });
+            return redirect()->back()->with('success', 'Email verifikasi telah dikirim. Silakan cek inbox Anda!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat mengirim email verifikasi. Silakan coba lagi!');
+        }
+    }
+
+
     public function image_update(Request $request)
     {
         $user = User::find(auth()->user()->id);
@@ -169,8 +220,6 @@ class Controller
             }
         }
         NotificationEvent::dispatch($message);
-        // event(new NotificationEvent($message));
-
         return redirect()->back();
     }
     public function delete_update()
