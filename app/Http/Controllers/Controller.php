@@ -12,6 +12,7 @@ use App\Models\UsersTickets;
 use Illuminate\Http\Request;
 use App\Mail\VerificationMail;
 use App\Events\NotificationEvent;
+use App\Jobs\SendWhatsappMessage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -220,6 +221,7 @@ class Controller
             foreach ($recipientEmails as $email) {
                 Mail::to($email)->queue(new MessageMail($message->message, $message->iduser_from, $message->iduser_to, $ticket));
             }
+            SendWhatsappMessage::dispatch(User::find($message->iduser_to)->nohp);
             $message->save();
             if ($request->hasFile('documentname')) {
                 foreach ($request->file('documentname') as $file) {
