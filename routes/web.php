@@ -23,6 +23,7 @@ use App\Http\Controllers\Helpdesk\HelpdeskController;
 use App\Http\Middleware\notverified;
 
 Route::get('/', [RoutesController::class, 'landing']);
+Route::get('send_whatsapp', [Controller::class, 'send_whatsapp'])->name('send_whatsapp');
 
 Route::group(['middleware' => logged::class], function () {
     Route::get('/login', [RoutesController::class, 'index'])->name('login');
@@ -168,20 +169,19 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         });
         Route::post('message_store/{id}', [UserController::class, 'message_store'])->name('message_store/{id}');
     });
+    Route::group(['middleware' => notverified::class], function () {
+        Route::get('send_verify', [Controller::class, 'send_verify'])->name('send_verify');
+        Route::get('verify', [Controller::class, 'verify'])->name('verify');
+        Route::get('verifyme/{hash}/{id}', [Controller::class, 'verifyme'])
+            ->where('hash', '.*')
+            ->name('verifyme');
+        Route::get('verification/notice', [RoutesController::class, 'send_verify'])->name('verification/notice');
+    });
     Route::get('/profile', [RoutesController::class, 'profile'])->name('profile');
     Route::post('update/profile', [RoutesController::class, 'profile_update'])->name('update/profile');
     Route::post('/profile/image', [Controller::class, 'image_update'])->name('profile/image');
     Route::get('/profile/image/delete', [Controller::class, 'delete_update'])->name('profile/image/delete');
     Route::post('message_store/{id}', [Controller::class, 'message_store'])->name('message_store/{id}');
-});
-
-Route::group(['middleware' => notverified::class], function () {
-    Route::get('send_verify', [Controller::class, 'send_verify'])->name('send_verify');
-    Route::get('verify', [Controller::class, 'verify'])->name('verify');
-    Route::get('verifyme/{hash}/{id}', [Controller::class, 'verifyme'])
-        ->where('hash', '.*')
-        ->name('verifyme');
-    Route::get('verification.notice', [RoutesController::class, 'send_verify'])->name('verification.notice');
 });
 
 Route::get('logout', [Controller::class, 'logout'])->name('logout');
