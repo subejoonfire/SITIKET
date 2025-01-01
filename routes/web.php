@@ -23,7 +23,6 @@ use App\Http\Controllers\Helpdesk\HelpdeskController;
 use App\Http\Middleware\notverified;
 
 Route::get('/', [RoutesController::class, 'landing']);
-Route::get('send_whatsapp', [Controller::class, 'send_whatsapp'])->name('send_whatsapp');
 
 Route::group(['middleware' => logged::class], function () {
     Route::get('/login', [RoutesController::class, 'index'])->name('login');
@@ -175,7 +174,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('verifyme/{hash}/{id}', [Controller::class, 'verifyme'])
             ->where('hash', '.*')
             ->name('verifyme');
-        Route::get('verification/notice', [RoutesController::class, 'send_verify'])->name('verification/notice');
+        Route::get('verification.notice', [RoutesController::class, 'send_verify'])->name('verification.notice');
     });
     Route::get('/profile', [RoutesController::class, 'profile'])->name('profile');
     Route::post('update/profile', [RoutesController::class, 'profile_update'])->name('update/profile');
