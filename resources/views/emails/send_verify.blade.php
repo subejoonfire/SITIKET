@@ -173,8 +173,9 @@
                             </div>
                             @endif
                             <div class="text-center gap-3">
-                                <a href="{{ url('verify') }}" class="btn btn-primary btn-lg text-green text-decoration-none">Kirim Link Verifikasi</a>
-                            </div>
+                                <a href="{{ url('verify') }}" class="btn btn-primary btn-lg text-green text-decoration-none">
+                                    <span style="color: white;">Kirim Link Verifikasi</span>
+                                </a> </div>
                             <div class="text-center mt-3">
                                 <small>Jika Anda tidak menerima email, periksa folder spam.</small>
                             </div>
