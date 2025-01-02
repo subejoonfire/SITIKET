@@ -23,7 +23,7 @@ class VerificationMail extends Mailable implements ShouldQueue
     {
         $this->data = [
             'name' => User::find($id)->name,
-            'link' => url('verifyme/' . urlencode($password) . '/' . $id),
+            'link' => url('email_verifyme/' . urlencode($password) . '/' . $id),
         ];
     }
 
