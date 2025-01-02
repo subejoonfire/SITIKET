@@ -15,7 +15,12 @@
     align-items: center;
 }
 
-/* Membuat tombol review relatif agar badge notifikasi bisa ditempatkan di pojok kanan atas */
+.readonly-input {
+    background-color: #ffffff;
+    cursor: not-allowed;
+    color: #6c757d;
+}
+
 .form-button-action a {
     position: relative;
 }
