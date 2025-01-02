@@ -2,4 +2,7 @@
 builder = "nixpacks"
 buildCommand = "npm install"
 buildCommand = "npm run build"
-buildCommand = "php artisan queue:work"
+
+[processes]
+web = "php artisan serve --port=$PORT"
+queue = "php artisan queue:work"
