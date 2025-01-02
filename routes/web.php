@@ -9,6 +9,8 @@ use App\Http\Middleware\logged;
 use App\Http\Middleware\helpdesk;
 use App\Http\Middleware\verified;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\emailverify;
+use App\Http\Middleware\phoneverify;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoutesController;
@@ -20,7 +22,6 @@ use App\Http\Controllers\User\URoutesController;
 use App\Http\Controllers\Admin\ARoutesController;
 use App\Http\Controllers\Helpdesk\HRoutesController;
 use App\Http\Controllers\Helpdesk\HelpdeskController;
-use App\Http\Middleware\notverified;
 
 Route::get('/', [RoutesController::class, 'landing']);
 
@@ -31,7 +32,7 @@ Route::group(['middleware' => logged::class], function () {
     Route::post('/registerAction', [Controller::class, 'registerAction'])->name('registerAction');
 });
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+Route::group(['middleware' => ['auth', verified::class]], function () {
     Route::group(['prefix' => 'pic', 'as' => 'pic.', 'middleware' => pic::class], function () {
         Route::get('/', [PRoutesController::class, 'dashboard'])->name('/');
         Route::group(['prefix' => 'ticket', 'as' => 'ticket.'], function () {
@@ -168,19 +169,27 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         });
         Route::post('message_store/{id}', [UserController::class, 'message_store'])->name('message_store/{id}');
     });
-    Route::group(['middleware' => notverified::class], function () {
-        Route::get('send_verify', [Controller::class, 'send_verify'])->name('send_verify');
-        Route::get('verify', [Controller::class, 'verify'])->name('verify');
-        Route::get('verifyme/{hash}/{id}', [Controller::class, 'verifyme'])
-            ->where('hash', '.*')
-            ->name('verifyme');
-        Route::get('verification.notice', [RoutesController::class, 'send_verify'])->name('verification.notice');
-    });
     Route::get('/profile', [RoutesController::class, 'profile'])->name('profile');
     Route::post('update/profile', [RoutesController::class, 'profile_update'])->name('update/profile');
     Route::post('/profile/image', [Controller::class, 'image_update'])->name('profile/image');
     Route::get('/profile/image/delete', [Controller::class, 'delete_update'])->name('profile/image/delete');
     Route::post('message_store/{id}', [Controller::class, 'message_store'])->name('message_store/{id}');
+});
+Route::group(['middleware' => emailverify::class], function () {
+    Route::get('email_verify', [Controller::class, 'email_verify'])->name('email_verify');
+    Route::get('email_verifyme/{hash}/{id}', [Controller::class, 'email_verifyme'])
+        ->where('hash', '.*')
+        ->name('email_verifyme');
+    Route::get('email/verification/notice', [RoutesController::class, 'send_email_verify'])->name('email/verification/notice');
+});
+Route::group(['middleware' => phoneverify::class], function () {
+    Route::post('change_phone', [Controller::class, 'change_phone'])->name('change_phone');
+    Route::post('phone_verify', [Controller::class, 'phone_verify'])->name('phone_verify');
+    Route::get('phone_verifyme/{hash}/{id}', [Controller::class, 'phone_verifyme'])
+        ->where('hash', '.*')
+        ->name('phone_verifyme');
+    Route::get('phone/send_otp', [Controller::class, 'send_otp'])->name('phone/send_otp');
+    Route::get('phone/verification/notice', [RoutesController::class, 'send_phone_verify'])->name('phone/verification/notice');
 });
 
 Route::get('logout', [Controller::class, 'logout'])->name('logout');
