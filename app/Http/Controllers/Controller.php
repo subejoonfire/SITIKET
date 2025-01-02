@@ -26,18 +26,18 @@ class Controller
     {
         $this->notificationData = [];
         $filter = [];
-        if (auth()->user()->level == 3) {
-            $filter = ['read_pic' => false];
-        } elseif (auth()->user()->level == 4) {
-            $filter = ['read_user' => false];
-        }
-        $notifications = Ticket::with([
-            'messages.user_from',
-        ])->where([
-            $filter,
-            'iduser_to' => auth()->user()->id,
-        ])->get();
-        if (auth()->check() && auth()->user()->level != 1 && auth()->user()->level != 2) {
+        if (auth()->check() && auth()->user()->level == 3 && auth()->user()->level == 4) {
+            if (auth()->user()->level == 3) {
+                $filter = ['read_pic' => false];
+            } elseif (auth()->user()->level == 4) {
+                $filter = ['read_user' => false];
+            }
+            $notifications = Ticket::with([
+                'messages.user_from',
+            ])->where([
+                $filter,
+                'iduser_to' => auth()->user()->id,
+            ])->get();
             if (auth()->user()->level == 3) {
                 foreach ($notifications as $item) {
                     $this->notification += $item->messages->count();
