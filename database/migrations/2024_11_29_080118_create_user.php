@@ -18,10 +18,12 @@ return new class extends Migration
             $table->unsignedBigInteger('idmodule')->nullable()->default(NULL);
             $table->string('name');
             $table->string('image')->nullable()->default(NULL);
-            $table->string('phone')->nullable();
             $table->integer('level');
+            $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
+            $table->integer('phone_verification_token')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

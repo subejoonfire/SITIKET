@@ -27,12 +27,19 @@ class RoutesController extends Controller
     {
         return view('pages/register');
     }
-    public function send_verify()
+    public function send_email_verify()
     {
         $data = [
             'user' => Auth::user()
         ];
         return view('emails/send_verify', $data);
+    }
+    public function send_phone_verify()
+    {
+        $data = [
+            'user' => Auth::user()
+        ];
+        return view('phones/send_verify', $data);
     }
     public function profile()
     {

@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Esteban&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&family=Rokkitt:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend+Giga:wght@100..900&family=Parkinsans:wght@300..800&family=Pridi:wght@200;300;400;500;600;700&family=Righteous&family=Rokkitt:ital,wght@0,100..900;1,100..900&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <title>Login | Page</title>
+    <title>Verifikasi | Page</title>
     <style>
         /* Gaya dasar */
         body {
@@ -173,8 +173,9 @@
                             </div>
                             @endif
                             <div class="text-center gap-3">
-                                <a href="{{ url('verify') }}" class="btn btn-primary btn-lg text-green text-decoration-none">Kirim Link Verifikasi</a>
-                            </div>
+                                <a href="{{ url('email_verify') }}" class="btn btn-primary btn-lg text-green text-decoration-none">
+                                    <span style="color: white;">Kirim Link Verifikasi</span>
+                                </a> </div>
                             <div class="text-center mt-3">
                                 <small>Jika Anda tidak menerima email, periksa folder spam.</small>
                             </div>

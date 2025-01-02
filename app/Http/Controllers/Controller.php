@@ -12,6 +12,7 @@ use App\Models\UsersTickets;
 use Illuminate\Http\Request;
 use App\Mail\VerificationMail;
 use App\Events\NotificationEvent;
+use App\Jobs\SendWhatsappMessage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -24,23 +25,31 @@ class Controller
     public function __construct()
     {
         $this->notificationData = [];
-        if (auth()->check() && auth()->user()->level != 1) {
+        $filter = [];
+        if (auth()->check() && auth()->user()->level == 3 && auth()->user()->level == 4) {
+            if (auth()->user()->level == 3) {
+                $filter = ['read_pic' => false];
+            } elseif (auth()->user()->level == 4) {
+                $filter = ['read_user' => false];
+            }
             $notifications = Ticket::with([
                 'messages.user_from',
+            ])->where([
+                $filter,
+                'iduser_to' => auth()->user()->id,
             ])->get();
             if (auth()->user()->level == 3) {
                 foreach ($notifications as $item) {
-                    $this->notification += $item->messages->where('iduser_to', auth()->user()->id)->where('read_pic', false)->count();
-                    $messages = $item->messages->where('iduser_to', auth()->user()->id)->where('read_pic', false);
+                    $this->notification += $item->messages->count();
+                    $messages = $item->messages;
                     foreach ($messages as $message) {
                         $this->notificationData[] = $message;
                     }
                 }
-            }
-            if (auth()->user()->level == 4) {
+            } elseif (auth()->user()->level == 4) {
                 foreach ($notifications as $item) {
-                    $this->notification += $item->messages->where('iduser_to', auth()->user()->id)->where('read_user', false)->count();
-                    $messages = $item->messages->where('iduser_to', auth()->user()->id)->where('read_user', false);
+                    $this->notification += $item->messages->count();
+                    $messages = $item->messages;
                     foreach ($messages as $message) {
                         $this->notificationData[] = $message;
                     }
@@ -59,7 +68,9 @@ class Controller
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if (Auth::user()->email_verified_at == null) {
-                return redirect()->to('verification.notice');
+                return redirect()->to('email/verification/notice');
+            } elseif (Auth::user()->mobile_verified_at == null) {
+                return redirect()->to('phone/verification/notice');
             }
             if (Auth::user()->level == 1) {
                 return redirect()->to(url('admin'));
@@ -107,21 +118,7 @@ class Controller
 
         return redirect()->to('login')->with('success', 'Akun berhasil dibuat silahkan login untuk verifikasi.');
     }
-    public function verifyEmail()
-    {
-        $user = auth()->user();
-
-        if (!$user) {
-            return redirect()->to('login')->with('error', 'Anda harus login untuk mengakses halaman ini.');
-        }
-
-        $data = [
-            'link' => url('verify/' . $user->password . '/' . $user->id),
-        ];
-        return view('emails.verify', $data);
-    }
-
-    public function verifyme($hash, $id)
+    public function email_verifyme($hash, $id)
     {
         $user = User::where([
             'password' => $hash,
@@ -134,23 +131,42 @@ class Controller
         }
         return redirect()->to('login')->with('error', 'Akun gagal diverifikasi!');
     }
-    public function verify()
+    public function email_verify()
     {
         try {
-            // $user = auth()->user();
-            // $verificationLink = url('verifyme/' . urlencode($user->password) . '/' . $user->id);
-            // Mail::send('emails.verify', ['link' => $verificationLink, 'user' => $user], function ($message) use ($user) {
-            //     $message->to($user->email)
-            //         ->subject('Verifikasi Akun SITIKET');
-            // });
             Mail::to(auth()->user()->email)->queue(new VerificationMail(auth()->user()->password, auth()->user()->id));
             return redirect()->back()->with('success', 'Email verifikasi telah dikirim. Silakan cek inbox Anda!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat mengirim email verifikasi. Silakan coba lagi!');
         }
     }
-
-
+    public function phone_verify(Request $request)
+    {
+        if ($request->otp == auth()->user()->phone_verification_token) {
+            $user = User::find(auth()->user()->id);
+            $user->phone_verified_at = now();
+            $user->save();
+            if (auth()->user()->level == 1) {
+                return redirect()->to(url('admin'));
+            } elseif (auth()->user()->level == 2) {
+                return redirect()->to(url('helpdesk'));
+            } elseif (auth()->user()->level == 3) {
+                return redirect()->to(url('pic'));
+            } elseif (auth()->user()->level == 4) {
+                return redirect()->to(url('user'));
+            }
+        }
+        return redirect()->back()->with('error', 'Kode OTP yang dimasukkan salah!');
+    }
+    public function send_otp()
+    {
+        $otp = rand(100000, 999999);
+        $user = User::find(auth()->user()->id);
+        $user->phone_verification_token = $otp;
+        SendWhatsappMessage::dispatch(auth()->user()->phone, 'otp_notification', $otp);
+        $user->save();
+        return redirect()->to(url('phone/verification/notice'));
+    }
     public function image_update(Request $request)
     {
         $user = User::find(auth()->user()->id);
@@ -172,7 +188,6 @@ class Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:15',
             'old_password' => 'nullable|string|max:255',
             'new_password' => 'nullable|string|min:8|confirmed',
         ]);
@@ -186,7 +201,6 @@ class Controller
         }
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->phone = $request->phone;
         $user->save();
         return back()->with('success', 'Profil berhasil diperbarui!');
     }
@@ -220,6 +234,7 @@ class Controller
             foreach ($recipientEmails as $email) {
                 Mail::to($email)->queue(new MessageMail($message->message, $message->iduser_from, $message->iduser_to, $ticket));
             }
+            SendWhatsappMessage::dispatch(User::find($message->iduser_to)->phone, 'message_notification');
             $message->save();
             if ($request->hasFile('documentname')) {
                 foreach ($request->file('documentname') as $file) {
@@ -236,6 +251,14 @@ class Controller
             return redirect()->back()->with('success', 'Pesan berhasil dikirim dan disimpan.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal mengirim email atau menyimpan pesan: ' . $e->getMessage());
+        }
+    }
+    public function change_phone(Request $request)
+    {
+        if (User::where('id', auth()->user()->id)->update(['phone' => $request->phone])) {
+            return redirect()->back()->with('success', 'Nomor berhasil diganti');
+        } else {
+            return redirect()->back()->with('error', 'Nomor gagal diganti');
         }
     }
     public function delete_update()
