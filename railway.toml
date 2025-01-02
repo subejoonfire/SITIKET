@@ -3,5 +3,5 @@ builder = "nixpacks"
 buildCommand = "npm install && npm run build"
 
 [deploy]
-startCommand = "npm run dev & php artisan queue:work"
+startCommand = "php artisan queue:work"
 restartPolicyType = "never"
