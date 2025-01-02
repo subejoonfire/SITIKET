@@ -134,7 +134,7 @@ class Controller
     public function email_verify()
     {
         try {
-            Mail::to(auth()->user()->email)->queue(new VerificationMail(auth()->user()->password, auth()->user()->id));
+            Mail::to(auth()->user()->email)->send(new VerificationMail(auth()->user()->password, auth()->user()->id));
             return redirect()->back()->with('success', 'Email verifikasi telah dikirim. Silakan cek inbox Anda!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat mengirim email verifikasi. Silakan coba lagi!');
