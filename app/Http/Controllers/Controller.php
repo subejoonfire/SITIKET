@@ -46,8 +46,7 @@ class Controller
                         $this->notificationData[] = $message;
                     }
                 }
-            }
-            if (auth()->user()->level == 4) {
+            } elseif (auth()->user()->level == 4) {
                 foreach ($notifications as $item) {
                     $this->notification += $item->messages->count();
                     $messages = $item->messages;
