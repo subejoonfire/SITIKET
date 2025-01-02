@@ -134,7 +134,7 @@ class Controller
     public function email_verify()
     {
         try {
-            Mail::to(auth()->user()->email)->queue(new VerificationMail(auth()->user()->password, auth()->user()->id));
+            Mail::to(auth()->user()->email)->send(new VerificationMail(auth()->user()->password, auth()->user()->id));
             return redirect()->back()->with('success', 'Email verifikasi telah dikirim. Silakan cek inbox Anda!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat mengirim email verifikasi. Silakan coba lagi!');
@@ -163,7 +163,8 @@ class Controller
         $otp = rand(100000, 999999);
         $user = User::find(auth()->user()->id);
         $user->phone_verification_token = $otp;
-        SendWhatsappMessage::queue(auth()->user()->phone, 'otp_notification', $otp);
+        // SendWhatsappMessage::dispatch(auth()->user()->phone, 'otp_notification', $otp);
+        $this->sendMessage(auth()->user()->phone, 'Berikut adalah kode OTP anda ' . $otp);
         $user->save();
         return redirect()->to(url('phone/verification/notice'));
     }
@@ -232,9 +233,10 @@ class Controller
         }
         try {
             foreach ($recipientEmails as $email) {
-                Mail::to($email)->queue(new MessageMail($message->message, $message->iduser_from, $message->iduser_to, $ticket));
+                Mail::to($email)->send(new MessageMail($message->message, $message->iduser_from, $message->iduser_to, $ticket));
             }
-            SendWhatsappMessage::queue(User::find($message->iduser_to)->phone, 'message_notification');
+            // SendWhatsappMessage::dispatch(User::find($message->iduser_to)->phone, 'message_notification');
+            $this->sendMessage($message->iduser->phone, 'message_notification');
             $message->save();
             if ($request->hasFile('documentname')) {
                 foreach ($request->file('documentname') as $file) {
@@ -271,5 +273,34 @@ class Controller
     {
         Auth::logout();
         return redirect('/login');
+    }
+    private function sendMessage($phoneNumber, $message)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, [
+            CURLOPT_URL => 'https://api.fonnte.com/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => [
+                'target' => $phoneNumber,
+                'message' => $message,
+            ],
+            CURLOPT_HTTPHEADER => [
+                'Authorization: ' . env('TOKEN_FONNTE'),
+            ],
+        ]);
+
+        $response = curl_exec($curl);
+
+        if (curl_errno($curl)) {
+            $error_msg = curl_error($curl);
+        }
+
+        curl_close($curl);
     }
 }
