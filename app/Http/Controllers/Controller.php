@@ -134,7 +134,7 @@ class Controller
     public function email_verify()
     {
         try {
-            Mail::to(auth()->user()->email)->send(new VerificationMail(auth()->user()->password, auth()->user()->id));
+            Mail::to(auth()->user()->email)->queue(new VerificationMail(auth()->user()->password, auth()->user()->id));
             return redirect()->back()->with('success', 'Email verifikasi telah dikirim. Silakan cek inbox Anda!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat mengirim email verifikasi. Silakan coba lagi!');
@@ -163,7 +163,7 @@ class Controller
         $otp = rand(100000, 999999);
         $user = User::find(auth()->user()->id);
         $user->phone_verification_token = $otp;
-        SendWhatsappMessage::dispatch(auth()->user()->phone, 'otp_notification', $otp);
+        SendWhatsappMessage::queue(auth()->user()->phone, 'otp_notification', $otp);
         $user->save();
         return redirect()->to(url('phone/verification/notice'));
     }
@@ -234,7 +234,7 @@ class Controller
             foreach ($recipientEmails as $email) {
                 Mail::to($email)->queue(new MessageMail($message->message, $message->iduser_from, $message->iduser_to, $ticket));
             }
-            SendWhatsappMessage::dispatch(User::find($message->iduser_to)->phone, 'message_notification');
+            SendWhatsappMessage::queue(User::find($message->iduser_to)->phone, 'message_notification');
             $message->save();
             if ($request->hasFile('documentname')) {
                 foreach ($request->file('documentname') as $file) {
