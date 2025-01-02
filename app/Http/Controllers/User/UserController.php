@@ -22,7 +22,7 @@ class UserController extends Controller
             'detailissue' => 'required|string',
             'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
-        $count = Ticket::where('iduser', auth()->user()->id)->count();
+        $rand = rand(1000, 9999);
         $attachmentPath = null;
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
@@ -31,7 +31,7 @@ class UserController extends Controller
             $attachmentPath = $file->storeAs('attachments', $uniqueFileName, 'public');
         }
         Ticket::create([
-            'ticketcode' => 'TKT' . auth()->user()->id . date('Ymd') . $count,
+            'ticketcode' => 'TKT' . auth()->user()->id . date('Ymd') . $rand,
             'iduser' => auth()->user()->id,
             'idmodule' => $request->input('idmodule'),
             'issue' => $request->input('issue'),
