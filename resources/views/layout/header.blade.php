@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="{{ asset('back-end/assets/css/pic.css') }}">
 <link rel="stylesheet" href="{{ asset('back-end/assets/css/user.css') }}">
 <link rel="stylesheet" href="{{ asset('back-end/assets/css/helpdesk.css') }}">
-<link href="{{ asset('templates/css/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('templates/css/style.css') }}">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
