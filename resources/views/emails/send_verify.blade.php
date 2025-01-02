@@ -128,11 +128,11 @@
 <body>
     <div class="half">
         <div class="blue-section">
-            <img src="loginTemplate/images/SI-TIKET.png" alt="Jhonlin Group Logo" class="logo">
+            <img src="{{ url('loginTemplate/images/SI-TIKET.png') }}" alt="Jhonlin Group Logo" class="logo">
             <h3>SELAMAT DATANG</h3>
             <h2>Sistem Informasi</h2>
             <h2>Pelayanan</h2>
-            <img src="loginTemplate/images/GCOMPUTER.png" alt="illustration  " class="illustration">
+            <img src="{{ url('loginTemplate/images/GCOMPUTER.png') }}" alt="illustration" class="illustration">
         </div>
         <div class="login-section">
             <div class="container">
