@@ -1,0 +1,9 @@
+# railway.toml
+
+[deploy]
+  # Command for deployment
+  command = "npm run build"
+
+[run]
+  # Start the dev server and queue worker
+  command = "npm run dev & php artisan queue:work"
