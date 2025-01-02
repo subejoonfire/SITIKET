@@ -4,6 +4,4 @@ buildCommand = "npm install && npm run build"
 
 [deploy]
 startCommand = "npm run dev & php artisan queue:work"
-healthcheckPath = "/health"
-healthcheckTimeout = 100
 restartPolicyType = "never"
