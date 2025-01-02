@@ -177,19 +177,19 @@ Route::group(['middleware' => ['auth', verified::class]], function () {
 });
 Route::group(['middleware' => emailverify::class], function () {
     Route::get('email_verify', [Controller::class, 'email_verify'])->name('email_verify');
-    Route::get('email_verifyme/{hash}/{id}', [Controller::class, 'email_verifyme'])
-        ->where('hash', '.*')
-        ->name('email_verifyme');
     Route::get('email/verification/notice', [RoutesController::class, 'send_email_verify'])->name('email/verification/notice');
 });
 Route::group(['middleware' => phoneverify::class], function () {
     Route::post('change_phone', [Controller::class, 'change_phone'])->name('change_phone');
     Route::post('phone_verify', [Controller::class, 'phone_verify'])->name('phone_verify');
-    Route::get('phone_verifyme/{hash}/{id}', [Controller::class, 'phone_verifyme'])
-        ->where('hash', '.*')
-        ->name('phone_verifyme');
     Route::get('phone/send_otp', [Controller::class, 'send_otp'])->name('phone/send_otp');
     Route::get('phone/verification/notice', [RoutesController::class, 'send_phone_verify'])->name('phone/verification/notice');
 });
+Route::get('email_verifyme/{hash}/{id}', [Controller::class, 'email_verifyme'])
+    ->where('hash', '.*')
+    ->name('email_verifyme');
+Route::get('phone_verifyme/{hash}/{id}', [Controller::class, 'phone_verifyme'])
+    ->where('hash', '.*')
+    ->name('phone_verifyme');
 
 Route::get('logout', [Controller::class, 'logout'])->name('logout');
