@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_tickets', function (Blueprint $table) {
+        Schema::create('pics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('iduser')->nullable()->default(NULL);
-            $table->unsignedBigInteger('idticket')->nullable()->default(NULL);
-            $table->boolean('validated')->default(0);
-            $table->timestamps();
+            $table->unsignedBigInteger('iduserticket')->nullable()->default(NULL);
+            $table->unsignedBigInteger('iduser_pic')->nullable()->default(NULL);
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('userstickets');
+        Schema::dropIfExists('pics');
     }
 };

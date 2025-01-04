@@ -11,18 +11,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class UsersTickets extends Model
 {
     use HasFactory, SoftDeletes;
+    protected $primaryKey = 'users_tickets_id';
     protected $fillable = [
         'iduser',
-        'iduser_pic',
         'idticket',
+        'validated',
     ];
 
-    public function user(): BelongsTo
+    public function users(): BelongsTo
     {
         return $this->belongsTo(User::class, 'iduser');
     }
-    public function user_pic(): BelongsTo
+    public function tickets(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'iduser_pic');
+        return $this->belongsTo(Ticket::class, 'idticket');
+    }
+    public function pics(): HasMany
+    {
+        return $this->hasMany(Pics::class, 'iduserticket', 'id');
     }
 }

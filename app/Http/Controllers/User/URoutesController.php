@@ -23,9 +23,10 @@ class URoutesController extends Controller
             'title' => 'SI-TIKET | Dashboard',
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
-            'collection' => Ticket::where('iduser', auth()->user()->id)->get(),
+            'collection' => UsersTickets::with('tickets.messages')->where('iduser', auth()->user()->id)->get(),
             'count' => Ticket::where('iduser', auth()->user()->id)->count(),
         ];
+        // dd($data['collection']);
         return view('pages/user/dashboard', $data);
     }
 
@@ -58,20 +59,21 @@ class URoutesController extends Controller
 
     public function review($id)
     {
-        $message = Message::where('idticket', $id)->get();
+        $message = Message::where([
+            'idticket' => $id,
+            'read_user' => 0,
+        ])->get();
         foreach ($message as $row) {
             $row->read_user = true;
             $row->save();
         }
-        $check_pic = UsersTickets::where('idticket', $id)->get();
-        $unique_pics = $check_pic->pluck('iduser_pic')->unique();
-        $many = $unique_pics->count() > 1 ? true : false;
         $data = [
             'title' => 'SI-TIKET | Review',
-            'many' => $many,
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
-            'data' => Ticket::with(['priorities', 'users_tickets.user_pic'])->where('tickets.id', $id)->first(),
+            'data' => UsersTickets::with(['tickets.priorities', 'pics.users'])
+                ->where('idticket', $id)
+                ->first(),
             'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
             'documents' => Document::with('messages')
                 ->whereHas('messages', function ($query) use ($id) {

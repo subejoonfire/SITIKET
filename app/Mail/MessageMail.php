@@ -26,7 +26,7 @@ class MessageMail extends Mailable implements ShouldQueue
             'user_from' => User::find($iduser_from)->name,
             'user_to' => User::find($iduser_to)->name,
             'message' => $message,
-            'ticketcode' => $ticket->ticketcode,
+            'ticketcode' => $ticket->tickets->ticketcode,
         ];
     }
 
