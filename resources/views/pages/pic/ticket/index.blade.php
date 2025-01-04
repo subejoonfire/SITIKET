@@ -33,20 +33,20 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->ticketcode }}</td>
+                                            <td>{{ $item->tickets->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->modules->modulename }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>{{ $item->issue }}</td>
-                                            <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
+                                            <td>{{ $item->tickets->modules->modulename }}</td>
+                                            <td>{{ $item->tickets->status }}</td>
+                                            <td>{{ $item->tickets->issue }}</td>
+                                            <td>{{ $item->tickets->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
                                                 <div class="btn-review">
-                                                    <a href="{{ url('pic/ticket/review/index/'. $item->id)}}" class="btn btn-info btn-sm">
+                                                    <a href="{{ url('pic/ticket/review/index/'. $item->tickets->id)}}" class="btn btn-info btn-sm">
                                                         <i class="fa fa-eye"></i> Detail
                                                     </a>
-                                                    @if ($item->messages->where('iduser_to', auth()->user()->id)->where('read_pic', false)->count() > 0)
+                                                    @if ($item->tickets->messages->where('iduser_to', auth()->user()->id)->where('read_pic', false)->count() > 0)
                                                     <span class="notification-badge">
-                                                        {{ $item->messages->where('iduser_to', auth()->user()->id)->where('read_pic', false)->count() }}
+                                                        {{ $item->tickets->messages->where('iduser_to', auth()->user()->id)->where('read_pic', false)->count() }}
                                                     </span>
                                                     @else
                                                     @endif

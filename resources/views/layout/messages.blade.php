@@ -8,7 +8,7 @@
         $user = 'user';
         }
         @endphp
-        <form action="{{ url('message_store', ['id' => $data->id]) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('message_store', ['id' => $data->tickets->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="message-tools">
                 <div class="btn-group">
@@ -46,8 +46,8 @@
                             <div class="title-container">
                                 <span class="from">{{ $item->user_from->name }} :</span>
                                 <br>
-                                @if ($many == true && $item->user_from->level == 4)
-                                <span class="dear">Dear PIC's,</span>
+                                @if ($item->user_to->level == 3)
+                                <span class="dear">Dear {{ $data->pics->map(fn($item) => $item->users->name)->implode(', ') }}</span>
                                 @else
                                 <span class="dear">Dear {{ $item->user_to->name }},</span>
                                 @endif

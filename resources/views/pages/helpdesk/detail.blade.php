@@ -45,7 +45,7 @@
                                 <div class="form-group row">
                                     <div class="col">
                                         <label for="category">Kode Ticket</label>
-                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->ticketcode }}">
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->tickets->ticketcode }}">
                                     </div>
                                     <div class="col">
                                         <label for="username">Username</label>
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="col">
                                         <label for="category">Kategori</label>
-                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->tickets->categories->categoryname }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -83,7 +83,7 @@
                                             <select name="idmodule" class="form-control" id="idmodule">
                                                 <option value="">Pilih Module</option>
                                                 @foreach ($module as $item)
-                                                <option value="{{ $item->id }}" {{ old('id', $data->idmodule ?? '') == $item->id ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" {{ old('id', $data->tickets->idmodule ?? '') == $item->id ? 'selected' : '' }}>
                                                     {{ $item->modulename }}
                                                 </option>
                                                 @endforeach
@@ -97,7 +97,7 @@
                                             <select name="idpriority" class="form-control" id="priority-pic">
                                                 <option value="">Pilih Prioritas</option>
                                                 @foreach ($priority as $item)
-                                                <option value="{{ $item->id }}" {{ old('id', $data->idpriority ?? '') == $item->id ? 'selected' : '' }}>
+                                                <option value="{{ $item->id }}" {{ old('id', $data->tickets->idpriority ?? '') == $item->id ? 'selected' : '' }}>
                                                     {{ $item->priorityname }}
                                                 </option>
                                                 @endforeach
@@ -108,8 +108,8 @@
                                         </div>
                                         <div style="flex: 1;">
                                             <label for="iduser_pic">Pilih PIC</label>
-                                            @if (count($data->users_tickets) > 0)
-                                            @foreach($data->users_tickets as $index => $row)
+                                            @if (count($data->pics) > 0)
+                                            @foreach($data->pics as $index => $row)
                                             <select name="iduser_pic[]" class="form-control iduser_pic" id="iduser_pic_{{ $index }}">
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
@@ -160,14 +160,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="kategori">Kategori</label>
-                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="{{ $data->categories->categoryname }}">
+                                    <input type="text" name="subjek" class="form-control" id="kategori" placeholder="Masukan Kategori" value="{{ $data->tickets->categories->categoryname }}">
                                     @error('kategori')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="keluhan">Keluhan</label>
-                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description" readonly>{{ $data->detailissue }}</textarea>
+                                    <textarea name="keluhan" class="form-control" id="keluhan" placeholder="Enter Complaint Description" readonly>{{ $data->tickets->detailissue }}</textarea>
                                     @error('keluhan')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -175,8 +175,8 @@
                                 <div class="form-group">
                                     <label for="fileview">File Diupload</label>
                                     <div class="d-flex align-items-center">
-                                        @if($data->attachment != NULL)
-                                        <a href="{{ url('storage/'. $data->attachment) }}" download class="btn btn-primary mr-2">
+                                        @if($data->tickets->attachment != NULL)
+                                        <a href="{{ url('storage/'. $data->tickets->attachment) }}" download class="btn btn-primary mr-2">
                                             Unduh
                                         </a>
                                         <span style="flex-grow: 1; color: #000; font-weight:">

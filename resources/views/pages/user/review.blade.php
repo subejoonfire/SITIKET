@@ -69,19 +69,19 @@
                                     </div>
                                     <div class="col">
                                         <label for="module">Module</label>
-                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->modules->modulename }}">
+                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->tickets->modules->modulename }}">
                                     </div>
                                     <div class="col">
                                         <label for="priority">Priority</label>
-                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priorities->priorityname ?? 'Prioritas tidak diatur' }}">
+                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->tickets->priorities->priorityname ?? 'Prioritas tidak diatur' }}">
                                     </div>
                                     <div class="col">
                                         <label for="category">Kategori</label>
-                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->tickets->categories->categoryname }}">
                                     </div>
                                     <div class="col">
                                         <label for="status">Status</label>
-                                        <span class="form-control" id="status">{{ $data->status }}</span>
+                                        <span class="form-control" id="status">{{ $data->tickets->status }}</span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -94,24 +94,24 @@
                                     </div>
                                     <div class="col">
                                         <label for="PIC">PIC</label>
-                                        <input type="text" name="PIC" class="form-control" id="PIC" value="{{ $data->users_tickets->isNotEmpty() ? $data->users_tickets->map(fn($item) => $item->user_pic->name)->implode(', ') : 'Tidak ada PIC' }}" placeholder="Masukkan Tanggal"> @error('PIC')
+                                        <input type="text" name="PIC" class="form-control" id="PIC" value="{{ $data->pics->isNotEmpty() ? $data->pics->map(fn($item) => $item->users->name)->implode(', ') : 'Tidak ada PIC' }}" placeholder="Masukkan Tanggal"> @error('PIC')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="subjek">Subjek</label>
-                                    <span class="form-control" id="subjek">{{ $data->issue }}</span>
+                                    <span class="form-control" id="subjek">{{ $data->tickets->issue ?? 'Tidak ada issue' }}</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="issue">Issue</label>
-                                    <textarea name="issue" class="form-control" id="issue" rows="4">{{ $data->detailissue }}</textarea>
+                                    <textarea name="issue" class="form-control" id="issue" rows="4">{{ $data->tickets->detailissue ?? 'Tidak ada detail' }}</textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="fileview">File Diupload</label>
                                     <div class="d-flex align-items-center">
-                                        @if($data->attachment != NULL)
-                                        <a href="{{ url('storage/'. $data->attachment) }}" download class="btn btn-primary mr-2">
+                                        @if($data->tickets->attachment != NULL)
+                                        <a href="{{ url('storage/'. $data->tickets->attachment) }}" download class="btn btn-primary mr-2">
                                             Unduh
                                         </a>
                                         <span style="flex-grow: 1; color: #000; font-weight:">
@@ -127,7 +127,7 @@
                     </form>
                 </div>
             </div>
-            @if ($data->users_tickets->isNotEmpty() && $data->users_tickets->first()->user_pic)
+            @if ($data->pics->isNotEmpty())
             @include('layout/messages')
             @endif
         </div>
