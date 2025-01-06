@@ -36,7 +36,7 @@ class HRoutesController extends Controller
             ])->where('idticket', $id)->first(),
             'module' => Module::all(),
             'priority' => Priority::all(),
-            'pic' => User::where('level', 3)->get(),
+            'pic' => User::with('modules')->where('level', 3)->get(),
         ];
         return view('pages/helpdesk/detail', $data);
     }
