@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <link rel="stylesheet" href="loginTemplate/fonts/icomoon/style.css">
-    <link rel="stylesheet" href="loginTemplate/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="loginTemplate/css/bootstrap.min.css">
-    <link rel="stylesheet" href="loginTemplate/css/style.css">
+    <link rel="stylesheet" href="{{ assets('loginTemplate/fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" href="{{ assets('loginTemplate/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ assets('loginTemplate/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ assets('loginTemplate/css/style.css') }}">
     <link rel="icon" type="image/jpeg" href="{{ asset('JG.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
