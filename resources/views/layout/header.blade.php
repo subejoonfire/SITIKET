@@ -1,6 +1,7 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>{{ $title ?? 'SI-TIKET' }}</title>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 <link rel="icon" type="image/jpeg" href="{{ asset('back-end/assets/JG.png') }}">
 <link rel="stylesheet" href="{{ asset('back-end/assets/css/message.css') }}">

@@ -262,24 +262,4 @@
         </div>
     </div>
 </div>
-</div>
-</div>
-</div>
-
-
-<!-- Explore Tour Start -->
-
-{{-- <!-- Packages Start -->
-      
-        <!-- Packages End --> --}}
-
-
-
-
-
-
-
-
-
-
 @endsection

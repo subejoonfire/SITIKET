@@ -5,19 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="loginTemplate/fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="loginTemplate/css/owl.carousel.min.css">
-
-    <!-- Favicon -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="{{ url('loginTemplate/fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" href="{{ url('loginTemplate/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url('loginTemplate/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('loginTemplate/css/style.css') }}">
     <link rel="icon" type="image/jpeg" href="{{ asset('JG.png') }}">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="loginTemplate/css/bootstrap.min.css">
-
-    <!-- Style -->
-    <link rel="stylesheet" href="loginTemplate/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&family=Pridi:wght@200;300;400;500;600;700&family=Readex+Pro:wght@160..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Pridi:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -191,8 +184,6 @@
             </div>
         </div>
     </div>
-    </div>
-
     <script src="loginTemplate/js/jquery-3.3.1.min.js"></script>
     <script src="loginTemplate/js/popper.min.js"></script>
     <script src="loginTemplate/js/bootstrap.min.js"></script>
