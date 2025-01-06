@@ -51,10 +51,8 @@ class UserController extends Controller
     public function userDelete($id)
     {
         try {
-            $ticket = Ticket::findOrFail($id);
-            $userticket = UsersTickets::where('idticket', $id);
-            $ticket->delete();
-            $userticket->delete();
+            Ticket::findOrFail($id)->delete();
+            UsersTickets::where('idticket', $id)->delete();
         } catch (ModelNotFoundException $e) {
             return redirect()->back()->with('error', 'Ticket tidak ditemukan.');
         }
