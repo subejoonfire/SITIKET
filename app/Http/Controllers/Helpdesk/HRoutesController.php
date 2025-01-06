@@ -114,16 +114,18 @@ class HRoutesController extends Controller
     {
         $data = [
             'title' => 'SITIKET | Tindak Lanjut',
-            'data' => Ticket::with([
-                'categories',
+            'data' => UsersTickets::with([
+                'tickets.categories',
                 'users.companies',
                 'users.departments',
-                'followups',
+                'tickets.modules',
+                'tickets.followups',
             ])->where('id', $id)->first(),
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
             'type' => $type,
         ];
+        // dd($data);
         return view('pages/helpdesk/followup/detail', $data);
     }
     public function followup_doneaction($id)
