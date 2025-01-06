@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Priority;
 use App\Models\Department;
 use App\Http\Controllers\Controller;
+use App\Models\UsersTickets;
 
 class ARoutesController extends Controller
 {
@@ -64,7 +65,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Ticket',
-            'collection' => Ticket::with(['users', 'modules'])->get(),
+            'collection' => UsersTickets::with(['tickets.modules', 'users'])->get(),
         ];
         return view('pages.admin.ticket.ticket', $data);
     }
@@ -72,7 +73,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Ticket',
-            'data' => Ticket::with(['users', 'modules', 'categories', 'priorities'])->where('id', $id)->first(),
+            'data' => UsersTickets::with(['users', 'tickets.modules', 'tickets.categories', 'tickets.priorities'])->where('id', $id)->first(),
         ];
         return view('pages.admin.ticket.review', $data);
     }

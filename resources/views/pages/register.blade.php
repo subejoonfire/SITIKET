@@ -184,10 +184,10 @@
             </div>
         </div>
     </div>
-    <script src="loginTemplate/js/jquery-3.3.1.min.js"></script>
-    <script src="loginTemplate/js/popper.min.js"></script>
-    <script src="loginTemplate/js/bootstrap.min.js"></script>
-    <script src="loginTemplate/js/main.js"></script>
+    <script src="{{ url('loginTemplate/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url('loginTemplate/js/popper.min.js') }}"></script>
+    <script src="{{ url('loginTemplate/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('loginTemplate/js/main.js') }}"></script>
 </body>
 
 </html>
