@@ -48,7 +48,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Username</label>
-                                    <input required type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama" value="{{ old('name') }}">
+                                    <input required type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama" value="{{ $data->name }}">
                                     @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -80,14 +80,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Nomor HP</label>
-                                    <input type="phone" name="phone" class="form-control" id="phone" placeholder="Masukkan phone" value="{{ $data->phone }}">
+                                    <input type="phone" name="phone" class="form-control" placeholder="Masukkan phone" value="{{ $data->phone }}">
                                     @error('phone')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email" value="{{ $data->email }}">
+                                    <input type="email" name="email" class="form-control" placeholder="Masukkan Email" value="{{ $data->email }}">
                                     @error('email')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror

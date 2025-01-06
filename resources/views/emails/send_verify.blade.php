@@ -5,10 +5,11 @@
     <link rel="icon" type="image/jpeg" href="{{ asset('JG.png') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url('loginTemplate/fonts/icomoon/style.css') }}">
-    <link rel="stylesheet" href="{{ url('loginTemplate/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ url('loginTemplate/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('loginTemplate/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('loginTemplate/fonts/icomoon/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('loginTemplate/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('loginTemplate/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('loginTemplate/css/style.css') }}">
+    <link rel="icon" type="image/jpeg" href="{{ asset('JG.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&family=Pridi:wght@200;300;400;500;600;700&family=Readex+Pro:wght@160..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
@@ -128,11 +129,11 @@
 <body>
     <div class="half">
         <div class="blue-section">
-            <img src="{{ url('loginTemplate/images/SI-TIKET.png') }}" alt="Jhonlin Group Logo" class="logo">
+            <img src="loginTemplate/images/SI-TIKET.png" alt="Jhonlin Group Logo" class="logo">
             <h3>SELAMAT DATANG</h3>
             <h2>Sistem Informasi</h2>
             <h2>Pelayanan</h2>
-            <img src="{{ url('loginTemplate/images/GCOMPUTER.png') }}" alt="illustration" class="illustration">
+            <img src="loginTemplate/images/GCOMPUTER.png" alt="illustration  " class="illustration">
         </div>
         <div class="login-section">
             <div class="container">
@@ -181,9 +182,9 @@
         </div>
     </div>
     </div>
-    <script src="loginTemplate/js/jquery-3.3.1.min.js"></script>
-    <script src="loginTemplate/js/popper.min.js"></script>
-    <script src="loginTemplate/js/bootstrap.min.js"></script>
-    <script src="loginTemplate/js/main.js"></script>
+    <script src="{{ asset('loginTemplate/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('loginTemplate/js/popper.min.js') }}"></script>
+    <script src="{{ asset('loginTemplate/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('loginTemplate/js/main.js') }}"></script>
 </body>
 </html>

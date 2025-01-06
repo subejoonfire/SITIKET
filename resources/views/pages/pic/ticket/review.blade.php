@@ -63,35 +63,35 @@
                                 </div>
                                 <div class="col">
                                     <label for="module">Module</label>
-                                    <input type="text" name="module" class="form-control" id="module" value="{{ $data->modules->modulename }}">
+                                    <input type="text" name="module" class="form-control" id="module" value="{{ $data->tickets->modules->modulename }}">
                                 </div>
                                 <div class="col">
                                     <label for="priority">Priority</label>
-                                    <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priorities->priorityname ?? 'Prioritas tidak diatur' }}">
+                                    <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->tickets->priorities->priorityname ?? 'Prioritas tidak diatur' }}">
                                 </div>
                                 <div class="col">
                                     <label for="category">Kategori</label>
-                                    <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
+                                    <input type="text" name="category" class="form-control" id="category" value="{{ $data->tickets->categories->categoryname }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-12 mb-3">
                                     <label for="created_at">Tanggal Diajukan</label>
-                                    <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->created_at->format('l, d F Y H:i') }}">
+                                    <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->tickets->created_at->format('l, d F Y H:i') }}">
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="issue">Subjek</label>
-                                    <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->issue }}">
+                                    <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->tickets->issue }}">
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="detailissue">Keluhan</label>
-                                    <textarea name="detailissue" class="form-control" id="detailissue" rows="3">{{ $data->detailissue }}</textarea>
+                                    <textarea name="detailissue" class="form-control" id="detailissue" rows="3">{{ $data->tickets->detailissue }}</textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="fileview">File Diupload</label>
                                     <div class="d-flex align-items-center">
-                                        @if($data->attachment != NULL)
-                                        <a href="{{ url('storage/'. $data->attachment) }}" download class="btn btn-primary mr-2">
+                                        @if($data->tickets->attachment != NULL)
+                                        <a href="{{ url('storage/'. $data->tickets->attachment) }}" download class="btn btn-primary mr-2">
                                             Unduh
                                         </a>
                                         <span style="flex-grow: 1; color: #000; font-weight:">
@@ -103,30 +103,30 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (empty($data->followups->first()))
+                            @if (empty($data->tickets->followups->first()))
                             <div class="form-group">
                                 @if ($type != 'followup')
-                                @if ($data->status == 'DIAJUKAN')
-                                <a href="{{ url('pic/action/approved/'. $data->id) }}" class="btn btn-success">Setuju</a>
-                                <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                                @elseif ($data->status == 'DISETUJUI')
-                                <a href="{{ url('pic/action/processed/'. $data->id) }}" class="btn btn-success">Proses</a>
-                                <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
-                                @elseif ($data->status == 'DIPROSES')
-                                <a href="{{ url('pic/action/done/'. $data->id) }}" class="btn btn-success">Selesai</a>
-                                <a href="{{ url('pic/action/declined/'. $data->id) }}" class="btn btn-danger">Tolak</a>
+                                @if ($data->tickets->status == 'DIAJUKAN')
+                                <a href="{{ url('pic/action/approved/'. $data->tickets->id) }}" class="btn btn-success">Setuju</a>
+                                <a href="{{ url('pic/action/declined/'. $data->tickets->id) }}" class="btn btn-danger">Tolak</a>
+                                @elseif ($data->tickets->status == 'DISETUJUI')
+                                <a href="{{ url('pic/action/processed/'. $data->tickets->id) }}" class="btn btn-success">Proses</a>
+                                <a href="{{ url('pic/action/declined/'. $data->tickets->id) }}" class="btn btn-danger">Tolak</a>
+                                @elseif ($data->tickets->status == 'DIPROSES')
+                                <a href="{{ url('pic/action/done/'. $data->tickets->id) }}" class="btn btn-success">Selesai</a>
+                                <a href="{{ url('pic/action/declined/'. $data->tickets->id) }}" class="btn btn-danger">Tolak</a>
                                 @endif
                                 @endif
-                                @if ($data->status == 'DIAJUKAN')
+                                @if ($data->tickets->status == 'DIAJUKAN')
                                 <a href="{{ url('pic/ticket') }}" class="btn btn-primary">Kembali</a>
-                                @elseif ($data->status == 'DISETUJUI')
+                                @elseif ($data->tickets->status == 'DISETUJUI')
                                 <a href="{{ url('pic/ticket/approved') }}" class="btn btn-primary">Kembali</a>
-                                @elseif ($data->status == 'DIPROSES')
+                                @elseif ($data->tickets->status == 'DIPROSES')
                                 <a href="{{ url('pic/ticket/processed') }}" class="btn btn-primary">Kembali</a>
                                 @endif
                                 <button type="button" class="btn btn-primary" onclick="toggleInput()">Tindak Lanjut</button>
                                 <div id="followupSection" style="display:none; margin-top: 10px;">
-                                    <form action="{{ url('pic/followup/action/store/' . $data->id) }}" method="POST">
+                                    <form action="{{ url('pic/followup/action/store/' . $data->tickets->id) }}" method="POST">
                                         @csrf
                                         <textarea id="followupText" name="followup_issue" class="form-control" placeholder="Masukkan Tindak Lanjut" required></textarea>
                                         <button type="submit" class="btn btn-success mt-2">Kirim</button>
@@ -142,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            @if ($data->status != 'SELESAI' && $type != 'followup' && empty($data->followups->first()))
+            @if ($data->tickets->status != 'SELESAI' && $type != 'followup' && empty($data->tickets->followups->first()))
             @include('layout/messages')
             @endif
         </div>

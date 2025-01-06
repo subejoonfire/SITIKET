@@ -9,12 +9,14 @@ use App\Models\Followup;
 use App\Models\UsersTickets;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Pics;
 
 class HelpdeskController extends Controller
 {
     public function helpdeskUpdate(Request $request, $id)
     {
-        $ticket = Ticket::find($id);
+        $users_tickets = UsersTickets::where('id', $id)->first();
+        $ticket = Ticket::find($users_tickets->idticket);
         if (!$ticket) {
             return redirect()->back()->with('error', 'Ticket tidak ditemukan');
         }
@@ -32,29 +34,18 @@ class HelpdeskController extends Controller
             return redirect()->back()->withErrors(['iduser_pic' => 'PIC tidak boleh duplikat.'])->withInput();
         }
 
-        UsersTickets::where('idticket', $id)->delete();
+        $pics = Pics::where('iduserticket', $id)->delete();
         foreach ($filtered_iduser_pic as $iduser_pic) {
-            $users_tickets = new UsersTickets();
-            $users_tickets->idticket = $id;
-            $users_tickets->iduser = $ticket->iduser;
-            $users_tickets->iduser_pic = $iduser_pic;
-            $users_tickets->save();
+            $pics = new Pics();
+            $pics->iduserticket = $id;
+            $pics->iduser_pic = $iduser_pic;
+            $pics->save();
         }
-
         $ticket->idmodule = $request->idmodule;
         $ticket->idpriority = $request->idpriority;
         $ticket->status = 'DIAJUKAN';
         $ticket->save();
-
-        TicketEvent::dispatch([
-            'ticketcode' => $ticket->ticketcode,
-            'name' => $ticket->users->name,
-            'module' => $ticket->modules->modulename,
-            'status' => $ticket->status,
-            'issue' => $ticket->issue,
-            'created_at' => $ticket->created_at,
-        ]);
-
+        UsersTickets::where('id', $id)->update(['validated' => 1]);
         return redirect()->back()->with('success', 'Ticket berhasil diperbarui');
     }
     public function followup_delete($id)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pics;
 use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Message;
@@ -57,6 +58,46 @@ class Controller
             }
         }
     }
+    // public function whatsapp_send()
+    // {
+    //     $i = 1;
+    //     while ($i < 100) {
+    //         $params = array(
+    //             'token' => 'ulwrrwkyu0z1vwlj',
+    //             // 'to' => '+6283847196461',
+    //             'to' => '+6283159165314',
+    //             'body' => 'AOKWKOWKOWOKWKOWKOWKO'
+    //         );
+    //         $curl = curl_init();
+    //         curl_setopt_array($curl, array(
+    //             CURLOPT_URL => "https://api.ultramsg.com/instance102963/messages/chat",
+    //             CURLOPT_RETURNTRANSFER => true,
+    //             CURLOPT_ENCODING => "",
+    //             CURLOPT_MAXREDIRS => 10,
+    //             CURLOPT_TIMEOUT => 30,
+    //             CURLOPT_SSL_VERIFYHOST => 0,
+    //             CURLOPT_SSL_VERIFYPEER => 0,
+    //             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    //             CURLOPT_CUSTOMREQUEST => "POST",
+    //             CURLOPT_POSTFIELDS => http_build_query($params),
+    //             CURLOPT_HTTPHEADER => array(
+    //                 "content-type: application/x-www-form-urlencoded"
+    //             ),
+    //         ));
+
+    //         $response = curl_exec($curl);
+    //         $err = curl_error($curl);
+
+    //         curl_close($curl);
+
+    //         if ($err) {
+    //             echo "cURL Error #:" . $err;
+    //         } else {
+    //             echo $response;
+    //         }
+    //         $i++;
+    //     }
+    // }
     public function login(Request $request)
     {
         $request->validate([
@@ -211,32 +252,29 @@ class Controller
             'message' => 'required',
         ]);
 
-        $ticket = Ticket::with(['users_tickets.user_pic'])->find($id);
+        $users_tickets = UsersTickets::with(['pics'])->where('idticket', $id)->first();
 
         $message->message = $request->input('message');
         $message->idticket = $id;
         $message->iduser_from = auth()->user()->id;
 
         if (auth()->user()->level == '4') {
-            $message->iduser_to = $ticket->users_tickets->pluck('user_pic.id')->first();
+            $message->iduser_to = $users_tickets->pics->first()->users->id;
         } elseif (auth()->user()->level == '3') {
-            $message->iduser_to = $ticket->iduser;
+            $message->iduser_to = $users_tickets->iduser;
         }
 
         $recipientEmails = [];
         if (auth()->user()->level == '4') {
-            $checkPic = UsersTickets::where('idticket', $id)->get();
-            $uniquePics = $checkPic->pluck('user_pic.email')->unique();
-            $recipientEmails = $uniquePics->toArray();
+            $recipientEmails = Pics::with('users')->where('iduserticket', $users_tickets->id)->get();
         } elseif (auth()->user()->level == '3') {
-            $recipientEmails[] = $ticket->users->email;
+            $recipientEmails[] = $users_tickets;
         }
         try {
-            foreach ($recipientEmails as $email) {
-                Mail::to($email)->send(new MessageMail($message->message, $message->iduser_from, $message->iduser_to, $ticket));
+            foreach ($recipientEmails as $row) {
+                Mail::to($row->users->email)->queue(new MessageMail($message->message, $message->iduser_from, $message->iduser_to, $users_tickets));
+                SendWhatsappMessage::dispatch($row->users->phone, 'message_notification');
             }
-            // SendWhatsappMessage::dispatch(User::find($message->iduser_to)->phone, 'message_notification');
-            $this->sendMessage($message->iduser->phone, 'message_notification');
             $message->save();
             if ($request->hasFile('documentname')) {
                 foreach ($request->file('documentname') as $file) {

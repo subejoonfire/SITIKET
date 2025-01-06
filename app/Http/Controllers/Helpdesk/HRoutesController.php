@@ -9,6 +9,7 @@ use App\Models\Followup;
 use App\Models\Priority;
 use App\Models\Department;
 use App\Http\Controllers\Controller;
+use App\Models\UsersTickets;
 
 class HRoutesController extends Controller
 {
@@ -16,8 +17,8 @@ class HRoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'incoming' => Ticket::with(['users_tickets'])->whereDoesntHave('users_tickets')->count(),
-            'done' => Ticket::with(['users_tickets'])->whereHas('users_tickets')->count(),
+            'incoming' => UsersTickets::where('validated', 0)->count(),
+            'done' => UsersTickets::where('validated', 1)->count(),
         ];
         return view('pages/helpdesk/dashboard', $data);
     }
@@ -27,11 +28,12 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | Dashboard',
-            'data' => Ticket::with([
-                'categories',
+            'data' => UsersTickets::with([
+                'tickets.categories',
+                'pics',
                 'users.companies',
                 'users.departments',
-            ])->where('id', $id)->first(),
+            ])->where('idticket', $id)->first(),
             'module' => Module::all(),
             'priority' => Priority::all(),
             'pic' => User::where('level', 3)->get(),
@@ -43,16 +45,12 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | RIWAYAT_VALIDASI',
-            'collection' => Ticket::with([
-                'users_tickets',
-                'users',
-                'modules'
-            ])
-                ->whereHas('users_tickets')->get(),
+            'collection' => UsersTickets::with([
+                'users.companies',
+                'tickets.modules'
+            ])->where('validated', 1)->get(),
             'page' => 'beranda',
         ];
-
-
         return view('pages/helpdesk/history', $data);
     }
     public function validation()
@@ -60,12 +58,10 @@ class HRoutesController extends Controller
 
         $data = [
             'title' => 'SI-TIKET | HALAMAN_VALIDASI',
-            'collection' => Ticket::with([
-                'users_tickets',
+            'collection' => UsersTickets::with([
                 'users.companies',
-                'modules'
-            ])
-                ->whereDoesntHave('users_tickets')->get(),
+                'tickets.modules'
+            ])->where('validated', 0)->get(),
             'page' => 'validation',
         ];
         return view('pages/helpdesk/validation', $data);

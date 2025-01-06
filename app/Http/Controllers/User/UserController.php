@@ -6,6 +6,7 @@ use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
 use App\Models\UserTicket;
+use App\Models\UsersTickets;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -30,9 +31,8 @@ class UserController extends Controller
             $uniqueFileName = 'attach_' . auth()->user()->id . '_' . time() . '_' . uniqid() . '.' . $extension;
             $attachmentPath = $file->storeAs('attachments', $uniqueFileName, 'public');
         }
-        Ticket::create([
-            'ticketcode' => 'TKT' . auth()->user()->id . date('Ymd') . $rand,
-            'iduser' => auth()->user()->id,
+        $ticket = Ticket::create([
+            'ticketcode' => 'TKT' . auth()->user()->id . date('Ymd') . rand(100, 999),
             'idmodule' => $request->input('idmodule'),
             'issue' => $request->input('issue'),
             'idpriority' => $request->input('idpriority'),
@@ -41,14 +41,18 @@ class UserController extends Controller
             'attachment' => $attachmentPath,
             'status' => 'TERKIRIM',
         ]);
+        UsersTickets::create([
+            'iduser' => auth()->user()->id,
+            'idticket' => $ticket->id,
+        ]);
         return redirect()->to('user')->with('success', 'Request berhasil dikirim!');
     }
 
     public function userDelete($id)
     {
         try {
-            $ticket = Ticket::findOrFail($id);
-            $ticket->delete();
+            Ticket::findOrFail($id)->delete();
+            UsersTickets::where('idticket', $id)->delete();
         } catch (ModelNotFoundException $e) {
             return redirect()->back()->with('error', 'Ticket tidak ditemukan.');
         }
