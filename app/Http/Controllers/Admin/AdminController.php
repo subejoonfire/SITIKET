@@ -66,6 +66,9 @@ class AdminController extends Controller
             'email' => 'required|email|unique:users,email,' . $request->id,
         ]);
         $user = User::findOrFail($id);
+        if ($user->email != $request->email) {
+            $user->email_verified_at = NULL;
+        }
         if (empty($request->password)) {
             $user->idcompany = $validated['idcompany'] ?? NULL;
             $user->iddepartment = $validated['iddepartment'] ?? NULL;
@@ -75,6 +78,8 @@ class AdminController extends Controller
             $user->phone = $validated['phone'];
             $user->email = $validated['email'];
         } else {
+            $user->email_verified_at = NULL;
+            $user->phone_verified_at = NULL;
             $user->idcompany = $validated['idcompany'] ?? NULL;
             $user->iddepartment = $validated['iddepartment'] ?? NULL;
             $user->idmodule = $validated['idmodule'] ?? NULL;
