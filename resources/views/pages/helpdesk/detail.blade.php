@@ -114,7 +114,7 @@
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
                                                 <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}" {{ $row->iduser_pic == $item->id ? 'selected' : '' }}>
-                                                    {{ $item->name }} ( {{ $item->modules->modulename }} )
+                                                    {{ $item->name }} ( {{ $item->modules->modulename ?? 'Tidak ada Modul' }} )
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -127,7 +127,7 @@
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
                                                 <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}">
-                                                    {{ $item->name }} ( {{ $item->modules->modulename }} )
+                                                    {{ $item->name }} ( {{ $item->modules->modulename ?? 'Tidak ada Modul' }} )
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -136,7 +136,7 @@
                                                 <option value="">Pilih PIC</option>
                                                 @foreach ($pic as $item)
                                                 <option value="{{ $item->id }}" data-module="{{ $item->idmodule }}" {{ old('iduser_pic', $data->iduser_pic ?? '') == $item->id ? 'selected' : '' }}>
-                                                    {{ $item->name }} ( {{ $item->modules->modulename }} )
+                                                    {{ $item->name }} ( {{ $item->modules->modulename ?? 'Tidak ada Modul' }} )
                                                 </option>
                                                 @endforeach
                                             </select>
