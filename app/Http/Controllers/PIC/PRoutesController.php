@@ -195,6 +195,8 @@ class PRoutesController extends Controller
             return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'processed') {
             return view('pages/pic/ticket/review', $data);
+        } elseif ($type == 'declined') {
+            return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'index') {
             return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'done') {
