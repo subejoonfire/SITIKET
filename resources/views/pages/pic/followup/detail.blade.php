@@ -64,43 +64,43 @@
                                     </div>
                                     <div class="col">
                                         <label for="module">Module</label>
-                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->modules->modulename }}">
+                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->tickets->modules->modulename }}">
                                     </div>
                                     <div class="col">
                                         <label for="priority">Priority</label>
-                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priorities->priorityname ?? 'Prioritas tidak diatur' }}">
+                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->tickets->priorities->priorityname ?? 'Prioritas tidak diatur' }}">
                                     </div>
                                     <div class="col">
                                         <label for="category">Kategori</label>
-                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->tickets->categories->categoryname }}">
                                     </div>
                                     <div class="col">
                                         <label for="status">Status</label>
-                                        <input type="text" name="status" class="form-control" id="status" value="{{ $data->followups->first()->status == 1 ? 'SELESAI' : 'MENUNGGU' }}">
+                                        <input type="text" name="status" class="form-control" id="status" value="{{ $data->tickets->followups->first()->status == 1 ? 'SELESAI' : 'MENUNGGU' }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12 mb-3">
                                         <label for="created_at">Tanggal Diajukan</label>
-                                        <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->created_at->format('l, d F Y H:i') }}">
+                                        <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->tickets->created_at->format('l, d F Y H:i') }}">
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label for="issue">Subjek</label>
-                                        <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->issue }}">
+                                        <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->tickets->issue }}">
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label for="detailissue">Keluhan</label>
-                                        <textarea name="detailissue" class="form-control" id="detailissue" rows="3">{{ $data->detailissue }}</textarea>
+                                        <textarea name="detailissue" class="form-control" id="detailissue" rows="3">{{ $data->tickets->detailissue }}</textarea>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label for="detailissue">Pesan Tindak Lanjut</label>
-                                        <textarea id="detailissue" name="followup_text" class="form-control" placeholder="Masukkan Tindak Lanjut" rows="3">{{ $data->followups->first()->followup_issue ?? 'Tidak tersedia' }}</textarea>
+                                        <textarea id="detailissue" name="followup_text" class="form-control" placeholder="Masukkan Tindak Lanjut" rows="3">{{ $data->tickets->followups->first()->followup_issue ?? 'Tidak tersedia' }}</textarea>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label for="fileview">File Diupload</label>
                                         <div class="d-flex align-items-center">
-                                            @if($data->attachment != NULL)
-                                            <a href="{{ url('storage/'. $data->attachment) }}" download class="btn btn-primary mr-2">
+                                            @if($data->tickets->attachment != NULL)
+                                            <a href="{{ url('storage/'. $data->tickets->attachment) }}" download class="btn btn-primary mr-2">
                                                 Unduh
                                             </a>
                                             <span style="flex-grow: 1; color: #000; font-weight:">

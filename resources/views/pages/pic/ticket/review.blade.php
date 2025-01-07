@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (empty($data->tickets->followups->first()))
+                            @if (empty($data->tickets->followups->first()) || $data->tickets->followups->first()->status == 1)
                             <div class="form-group">
                                 @if ($type != 'followup')
                                 @if ($data->tickets->status == 'DIAJUKAN')
@@ -142,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            @if ($data->tickets->status != 'SELESAI' && $type != 'followup' && empty($data->tickets->followups->first()))
+            @if ($data->tickets->status != 'SELESAI' && $type != 'followup' && (empty($data->tickets->followups->first()) || $data->tickets->followups->first()->status == 1))
             @include('layout/messages')
             @endif
         </div>

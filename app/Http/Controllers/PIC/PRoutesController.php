@@ -239,11 +239,12 @@ class PRoutesController extends Controller
     {
         $data = [
             'title' => 'SITIKET | Tindak Lanjut',
-            'data' => Ticket::with([
-                'categories',
+            'data' => UsersTickets::with([
+                'tickets.categories',
                 'users.companies',
                 'users.departments',
-                'followups',
+                'tickets.followups',
+                'tickets.modules',
             ])->where('id', $id)->first(),
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,

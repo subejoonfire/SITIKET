@@ -186,6 +186,7 @@ class Controller
         if ($request->otp == auth()->user()->phone_verification_token) {
             $user = User::find(auth()->user()->id);
             $user->phone_verified_at = now();
+            $user->phone_verification_token = NULL;
             $user->save();
             if (auth()->user()->level == 1) {
                 return redirect()->to(url('admin'));
