@@ -30,14 +30,6 @@ class Ticket extends Model
     {
         return $this->belongsTo(User::class, 'iduser');
     }
-    // public function users_pic(): BelongsTo
-    // {
-    //     return $this->belongsTo(User::class, 'iduser_pic');
-    // }
-    // public function departments(): BelongsTo
-    // {
-    //     return $this->belongsTo(Department::class, 'iddepartment');
-    // }
     public function categories(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'idcategory');
@@ -57,5 +49,9 @@ class Ticket extends Model
     public function messages(): HasMany
     {
         return $this->hasMany(Message::class, 'idticket', 'id');
+    }
+    public function followups(): HasMany
+    {
+        return $this->hasMany(Followup::class, 'idticket');
     }
 }

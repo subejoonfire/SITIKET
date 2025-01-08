@@ -2,7 +2,6 @@
 
 @section('content')
 
-<!-- Carousel Start -->
 <div class="carousel-header" id="beranda-section">
     <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
@@ -50,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
             <span class="carousel-control-prev-icon btn bg-primary" aria-hidden="false"></span>
@@ -167,7 +166,7 @@
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">Software</h5>
-                                      
+
                                     </div>
                                 </div>
                                 <div class="national-plus-icon">
@@ -175,14 +174,14 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="col-md-4">
                             <div class="national-item">
                                 <img src="templates/img/2.jpg" class="img-fluid w-100 rounded" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">Development</h5>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="national-plus-icon">
@@ -190,61 +189,61 @@
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="col-md-4">
                             <div class="national-item">
                                 <img src="templates/img/3.jpg" class="img-fluid w-100 rounded" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">User Acces</h5>
-                                       
+
                                     </div>
                                 </div>
-                              
+
                                 <div class="national-plus-icon">
                                     <a class="my-auto"></a>
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="col-md-4">
                             <div class="national-item">
                                 <img src="templates/img/4.jpg" class="img-fluid w-100 rounded" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">Networking</h5>
-                                       
+
                                     </div>
                                 </div>
                                 <div class="national-plus-icon">
-                                    <a  class="my-auto"></a>
+                                    <a class="my-auto"></a>
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="col-md-4">
                             <div class="national-item">
                                 <img src="templates/img/5.jpg" class="img-fluid w-100 rounded" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">Hardware Repair</h5>
-                                        
+
                                     </div>
                                 </div>
-                                
+
                                 <div class="national-plus-icon">
                                     <a class="my-auto"></a>
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="col-md-4">
                             <div class="national-item">
                                 <img src="templates/img/6.jpg" class="img-fluid w-100 rounded" alt="Image">
                                 <div class="national-content">
                                     <div class="national-info">
                                         <h5 class="text-white text-uppercase mb-2">SAP</h5>
-                                       
+
                                     </div>
                                 </div>
                                 <div class="national-plus-icon">
@@ -253,34 +252,14 @@
                             </div>
                         </div>
                     </div>
-                    
-                {{--  --}}
-                            </div>
-                            <div class="international-plus-icon">
-                                <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                            </div>
-                        </div>
-                    </div>
+
+                    {{-- --}}
+                </div>
+                <div class="international-plus-icon">
+                    <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<!-- Explore Tour Start -->
-
-{{-- <!-- Packages Start -->
-      
-        <!-- Packages End --> --}}
-
-
-
-
-
-
-
-
-
-
 @endsection

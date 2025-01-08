@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('users_tickets', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('iduser_pic')->nullable()->default(NULL);
             $table->unsignedBigInteger('iduser')->nullable()->default(NULL);
             $table->unsignedBigInteger('idticket')->nullable()->default(NULL);
+            $table->boolean('validated')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -1,5 +1,4 @@
 <!-- Sidebar -->
-@include('css/helpdesk/dashboard')
 <div class="sidebar">
     <div class="sidebar-background"></div>
     <div class="sidebar-wrapper scrollbar-inner">
@@ -24,6 +23,26 @@
                     </a>
                 </li>
 
+                <li class="nav-item {{ request()->routeIs('helpdesk/followup') ? 'active' : '' }}">
+                    <a href="{{ url('helpdesk/followup') }}" class="{{ request()->routeIs('helpdesk/followup') ? 'active' : '' }}">
+                        <i class="fas fa-inbox"></i>
+                        <p>Tindak Lanjut</p>
+                    </a>
+                    <div class="{{ request()->routeIs('helpdesk/followup') ? 'show' : '' }}" id="base">
+                        <ul class="nav nav-collapse">
+                            <li class="{{ request()->routeIs('helpdesk/followup/waiting') ? 'active' : '' }}">
+                                <a href="{{ url('helpdesk/followup/waiting') }}">
+                                    <span class="sub-item">Menunggu</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs('helpdesk/followup/done') ? 'active' : '' }}">
+                                <a href="{{ url('helpdesk/followup/done') }}">
+                                    <span class="sub-item">Selesai</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

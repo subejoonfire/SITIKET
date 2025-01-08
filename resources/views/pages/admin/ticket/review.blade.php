@@ -1,8 +1,5 @@
 @extends('layout.mainadmin')
 @section('content')
-
-@include('css/pic/picreview')
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -69,21 +66,21 @@
                                 <div class="form-group row">
                                     <div class="col-md-4">
                                         <label for="module">Module</label>
-                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->modules->modulename }}">
+                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->tickets->modules->modulename }}">
                                         @error('module')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
                                         <label for="created_at">Tanggal Diajukan</label>
-                                        <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->created_at }}">
+                                        <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->tickets->created_at }}">
                                         @error('created_at')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
                                         <label for="priority">Priority</label>
-                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->priorities->priorityname ?? 'Tidak ditemukan' }}">
+                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->tickets->priorities->priorityname ?? 'Tidak ditemukan' }}">
                                         @error('priority')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -92,21 +89,21 @@
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <label for="category">Kategori</label>
-                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->categories->categoryname }}">
+                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->tickets->categories->categoryname }}">
                                         @error('issue')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="col-md-12">
                                         <label for="issue">Subjek</label>
-                                        <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->issue }}">
+                                        <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->tickets->issue }}">
                                         @error('issue')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="col-md-12">
                                         <label for="detailissue">Keluhan</label>
-                                        <textarea name="detailissue" class="form-control" id="detailissue" rows="3" placeholder="Enter Complaint Description">{{ $data->detailissue }}</textarea>
+                                        <textarea name="detailissue" class="form-control" id="detailissue" rows="3" placeholder="Enter Complaint Description">{{ $data->tickets->detailissue }}</textarea>
                                         @error('detailissue')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror

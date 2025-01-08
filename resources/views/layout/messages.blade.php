@@ -1,4 +1,3 @@
-@include('css/message/message')
 <div class="email-app mb-4">
     <main class="inbox">
         @php
@@ -9,7 +8,7 @@
         $user = 'user';
         }
         @endphp
-        <form action="{{ url('message_store', ['id' => $data->id]) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('message_store', ['id' => $data->tickets->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="message-tools">
                 <div class="btn-group">
@@ -47,8 +46,8 @@
                             <div class="title-container">
                                 <span class="from">{{ $item->user_from->name }} :</span>
                                 <br>
-                                @if ($many == true && $item->user_from->level == 4)
-                                <span class="dear">Dear PIC's,</span>
+                                @if ($item->user_to->level == 3)
+                                <span class="dear">Dear {{ $data->pics->map(fn($item) => $item->users->name)->implode(', ') }}</span>
                                 @else
                                 <span class="dear">Dear {{ $item->user_to->name }},</span>
                                 @endif
@@ -97,69 +96,5 @@
                 @endforeach
             </div>
         </div>
-
     </main>
 </div>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-<script>
-    function setActiveTab(tabName) {
-        if (tabName === 'conversation') {
-            document.getElementById('conversation').style.display = 'block';
-            document.getElementById('attachments').style.display = 'none';
-            document.getElementById('conversation-btn').classList.add('active');
-            document.getElementById('attachments-btn').classList.remove('active');
-        } else {
-            document.getElementById('conversation').style.display = 'none';
-            document.getElementById('attachments').style.display = 'block';
-            document.getElementById('attachments-btn').classList.add('active');
-            document.getElementById('conversation-btn').classList.remove('active');
-        }
-    }
-    document.querySelectorAll('.attachment-item a').forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            window.open(this.href, '_blank');
-        });
-    });
-
-    function setActiveTab(tabName) {
-        if (tabName === 'conversation') {
-            document.getElementById('conversation').style.display = 'block';
-            document.getElementById('attachments').style.display = 'none';
-            document.getElementById('conversation-btn').classList.add('active');
-            document.getElementById('attachments-btn').classList.remove('active');
-            document.querySelector('.message-input').style.display = 'flex';
-        } else {
-            document.getElementById('conversation').style.display = 'none';
-            document.getElementById('attachments').style.display = 'block';
-            document.getElementById('attachments-btn').classList.add('active');
-            document.getElementById('conversation-btn').classList.remove('active');
-            document.querySelector('.message-input').style.display = 'none';
-        }
-    }
-    document.querySelectorAll('.attachment-item a').forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            window.open(this.href, '_blank');
-        });
-    });
-
-    function uploadFiles(event) {
-        const fileInput = event.target;
-        const files = fileInput.files;
-        const uploadedFileContainer = document.getElementById('uploaded-file-container');
-
-        uploadedFileContainer.innerHTML = ''; // Clear existing file display
-        for (let i = 0; i < files.length; i++) {
-            const fileName = files[i].name;
-            uploadedFileContainer.innerHTML += `
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-file" style="color: #333;"></i>
-                <span>${fileName}</span>
-            </div>
-        `;
-        }
-    }
-
-</script>

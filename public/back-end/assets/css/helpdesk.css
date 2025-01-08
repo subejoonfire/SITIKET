@@ -1,0 +1,199 @@
+.text-danger {
+    color: red;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    /* Geser ke atas */
+    right: -5px;
+    /* Geser ke kanan */
+    font-size: 10px;
+    /* Ukuran teks */
+    background-color: #ff6161;
+    /* Warna merah */
+    color: white;
+    /* Warna teks */
+    border-radius: 50%;
+    /* Bentuk bulat */
+    padding: 4px 7px;
+    /* Ukuran padding */
+    line-height: 1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    /* Efek bayangan */
+}
+
+
+.btn-review {
+    position: relative;
+    display: inline-block;/
+}
+
+.badge-count {
+    background-color: #ff6161;
+    color: white;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 3px 7px;
+    line-height: 1;
+    display: inline-block;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#email,
+#username,
+#phone,
+#subjek,
+#kategori,
+#company,
+#department,
+#kode_perusahaan,
+#tanggal_diajukan {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #D1D1D1 !important;
+    padding: 8px;
+    font-weight: normal !important;
+    pointer-events: none;
+}
+
+#keluhan,
+#email,
+#username,
+#phone,
+#module,
+#created_at,
+#tiket,
+#priority,
+#module,
+#subjek,
+#category,
+#perusahaan,
+#kode_perusahaan,
+#department,
+#issue {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #D1D1D1 !important;
+    padding: 8px;
+    font-weight: normal !important;
+    pointer-events: none;
+}
+
+#detailissue {
+    color: #000000 !important;
+    max-height: 300px;
+    overflow-y: auto;
+    resize: none;
+    background-color: #ffffff !important;
+    cursor: text;
+    border: 2px solid #D1D1D1;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 8px;
+    pointer-events: none;
+}
+
+textarea#keluhan {
+    max-height: 300px;
+    overflow-y: auto;
+    resize: none;
+    /* Nonaktifkan resize manual */
+    background-color: #ffffff !important;
+    /* Pastikan latar belakang putih */
+    color: #000000 !important;
+    /* Pastikan warna teks gelap */
+    cursor: text;
+    /* Tetap tampilkan kursor teks */
+    border: 2px solid #000000;
+    /* Border standar */
+    font-family: inherit;
+    /* Selaraskan font */
+    font-size: inherit;
+    /* Selaraskan ukuran font */
+    padding: 8px;
+    /* Tambahkan padding untuk kenyamanan */
+}
+
+#idmodule {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #4CAF50 !important;
+    padding: 8px;
+    cursor: pointer;
+}
+
+#iduser_pic {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #4CAF50 !important;
+    padding: 8px;
+    cursor: pointer;
+}
+
+
+#iduser_pic:focus {
+    border-color: #70c55b !important;
+    box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
+}
+
+.iduser_pic {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #4CAF50 !important;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.iduser_pic:focus {
+    border-color: #70c55b !important;
+    box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
+}
+
+#priority-pic {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #4CAF50 !important;
+    padding: 8px;
+    cursor: pointer;
+}
+
+#priority-pic:focus {
+    border-color: #70c55b !important;
+    box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
+}
+
+#idmodule:focus {
+    border-color: #70c55b !important;
+    box-shadow: 0 0 5px rgba(0, 235, 4, 0.5);
+}
+
+#subjek {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    padding: 8px;
+    cursor: pointer
+}
+
+#kategori {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    padding: 8px;
+    cursor: pointer
+}
+
+.no-cursor {
+    pointer-events: none;
+    caret-color: transparent;
+    background-color: #f5f5f5;
+}
+
+.main-header {
+    background-color: #70c55b !important;
+}
+
+.btn-custom {
+    background-color: #70c55b;
+    color: white;
+    border-radius: 25px;
+}

@@ -1,7 +1,5 @@
 @extends('layout.mainuser')
-
 @section('content')
-@include('css/user/dashboard')
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -87,23 +85,23 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->ticketcode }}</td>
-                                            <td>{{ $item->idmodule ? $item->modules->modulename : 'Belum ada' }}</td>
-                                            <td>{{ $item->status ?? 'Tidak ada' }}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($item->issue ?? 'Tidak ada', 60) }}</td>
+                                            <td>{{ $item->tickets->ticketcode }}</td>
+                                            <td>{{ $item->tickets->idmodule ? $item->tickets->modules->modulename : 'Belum ada' }}</td>
+                                            <td>{{ $item->tickets->status ?? 'Tidak ada' }}</td>
+                                            <td>{{ \Illuminate\Support\Str::limit($item->tickets->issue ?? 'Tidak ada', 60) }}</td>
                                             <td style="position: relative;">
-                                                <a href="{{ url('user/review/' . $item->id) }}" class="btn btn-info btn-sm" style="position: relative; display: inline-block;">
+                                                <a href="{{ url('user/review/' . $item->tickets->id) }}" class="btn btn-info btn-sm" style="position: relative; display: inline-block;">
                                                     <i class="fas fa-eye"></i> Detail
                                                 </a>
-                                                @if ($item->messages->where('iduser_to', auth()->user()->id)->where('read_user', false)->count() > 0)
+                                                @if ($item->tickets->messages->where('iduser_to', auth()->user()->id)->where('read_user', false)->count() > 0)
                                                 <span class="notification-badge">
-                                                    {{ $item->messages->where('iduser_to', auth()->user()->id)->where('read_user', false)->count() }}
+                                                    {{ $item->tickets->messages->where('iduser_to', auth()->user()->id)->where('read_user', false)->count() }}
                                                 </span>
                                                 @else
                                                 @endif
-                                                @if ($item->status == 'TERKIRIM')
+                                                @if ($item->tickets->status == 'TERKIRIM')
                                                 <a href="{{ url('user/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Remove">
-                                                    <i class="fas fa-trash"></i> Delete
+                                                    <i class="fas fa-trash"></i> Hapus
                                                 </a>
                                                 @endif
                                             </td>
@@ -116,7 +114,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

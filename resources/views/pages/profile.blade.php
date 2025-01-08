@@ -52,7 +52,7 @@ default => 'layout.default',
                                     <div class="col-md-12">
                                         <div class="form-group form-group-default">
                                             <label>Kode Perusahaan</label>
-                                            <input type="text" class="form-control no-cursor" placeholder="Kode Perusahaan" value="{{ auth()->user()->companies->companycode ?? 'Tidak ada perusahaan terkait' }}" name="kode">
+                                            <input type="text" class="form-control no-cursor" onfocus="this.blur();" placeholder="Kode Perusahaan" value="{{ auth()->user()->companies->companycode ?? 'Tidak ada perusahaan terkait' }}" name="kode">
                                         </div>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@ default => 'layout.default',
                                     <div class="col-md-12">
                                         <div class="form-group form-group-default">
                                             <label>No Handphone</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nomor Handphone" value="{{ auth()->user()->phone }}" name="phone" pattern="[0-9]*" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                            <input type="text" class="form-control readonly-input" onfocus="this.blur();" placeholder="Masukkan Nomor Handphone" value="{{ auth()->user()->phone }}" name="phone" pattern="[0-9]*" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                         </div>
                                     </div>
                                 </div>

@@ -1,9 +1,5 @@
 @extends('layout.mainuser')
-
 @section('content')
-
-@include('css/user/addrequest')
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -46,7 +42,7 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('user/action/store') }}" enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-group">
+                                <div class="form-group row">
                                     <label for="idcategory">Kategori</label>
                                     <select name="idcategory" class="form-control" id="idcategory">
                                         <option value="">Pilih Kategori</option>
@@ -60,15 +56,15 @@
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group">
+                                <div class="form-group row">
+                                    <div class="col">
                                         <label for="issue">Subjek</label>
-                                        <input type="text" name="issue" class="form-control" id="issue" placeholder="Masukan Subjek">
+                                        <input type="text" name="issue" class="form-control" placeholder="Masukan Subjek">
                                         @error('issue')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col">
                                         <label for="attachment">Upload File</label>
                                         <input type="file" name="attachment" class="form-control" id="attachment" accept="*">
                                         @error('attachment')
@@ -76,8 +72,8 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group">
+                                <div class="form-group row">
+                                    <div class="col">
                                         <label for="idmodule">Modul</label>
                                         <select name="idmodule" class="form-control" id="idmodule">
                                             <option value="">Pilih Modul</option>
@@ -91,7 +87,7 @@
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col">
                                         <label for="idpriority">Prioritas</label>
                                         <select name="idpriority" class="form-control" id="idpriority">
                                             <option value="">Pilih Prioritas</option>
@@ -108,7 +104,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="detailissue">Keluhan</label>
-                                    <textarea type="text" name="detailissue" class="form-control" id="detailissue" placeholder="Masukan Keluhan" cols="30" rows="10"></textarea>
+                                    <textarea type="text" name="detailissue" class="form-control" id="destailissue" placeholder="Masukan Keluhan" cols="30" rows="10"></textarea>
                                     @error('detailissue')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror

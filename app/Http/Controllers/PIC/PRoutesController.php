@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PIC;
 use App\Models\Ticket;
 use App\Models\Message;
 use App\Models\Document;
+use App\Models\Followup;
 use App\Models\Priority;
 use App\Models\UsersTickets;
 use App\Http\Controllers\Controller;
@@ -43,17 +44,17 @@ class PRoutesController extends Controller
             'title' => 'SI-TIKET | TIKET',
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
-            'collection' => Ticket::with([
+            'collection' => UsersTickets::with([
+                'tickets.messages',
+                'tickets.modules',
+                'tickets.followups',
                 'users',
-                'messages',
-                'modules',
             ])
-                ->whereHas('users_tickets', function ($query) {
-                    $query->where('iduser_pic', auth()->user()->id);
+                ->whereHas('pics', function ($query) {
+                    $query->where('pics.iduser_pic', auth()->user()->id);
                 })
                 ->get()
         ];
-        // dd($data['notificationData']);
         return view('pages/pic/ticket/index', $data);
     }
 
@@ -63,16 +64,21 @@ class PRoutesController extends Controller
             'title' => 'SI-TIKET | DISETUJUI',
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
-            'collection' => Ticket::with([
+            'collection' => UsersTickets::with([
+                'tickets.messages',
+                'tickets.modules',
+                'tickets.followups',
                 'users',
-                'messages',
-                'modules',
             ])
-                ->whereHas('users_tickets', function ($query) {
-                    $query->where([
-                        'iduser_pic' => auth()->user()->id,
-                        'status' => 'DISETUJUI'
+                ->whereHas('pics', function ($query) {
+                    ([
+                        $query->where([
+                            'pics.iduser_pic' => auth()->user()->id,
+                        ]),
                     ]);
+                })
+                ->whereHas('tickets', function ($query) {
+                    $query->where('status', 'DISETUJUI');
                 })
                 ->get()
         ];
@@ -85,16 +91,21 @@ class PRoutesController extends Controller
             'title' => 'SI-TIKET | DIPROSES',
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
-            'collection' => Ticket::with([
+            'collection' => UsersTickets::with([
+                'tickets.messages',
+                'tickets.modules',
+                'tickets.followups',
                 'users',
-                'messages',
-                'modules',
             ])
-                ->whereHas('users_tickets', function ($query) {
-                    $query->where([
-                        'iduser_pic' => auth()->user()->id,
-                        'status' => 'DIPROSES'
+                ->whereHas('pics', function ($query) {
+                    ([
+                        $query->where([
+                            'pics.iduser_pic' => auth()->user()->id,
+                        ]),
                     ]);
+                })
+                ->whereHas('tickets', function ($query) {
+                    $query->where('status', 'DIPROSES');
                 })
                 ->get()
         ];
@@ -107,16 +118,21 @@ class PRoutesController extends Controller
             'title' => 'SI-TIKET | DITOLAK',
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
-            'collection' => Ticket::with([
+            'collection' => UsersTickets::with([
+                'tickets.messages',
+                'tickets.modules',
+                'tickets.followups',
                 'users',
-                'messages',
-                'modules',
             ])
-                ->whereHas('users_tickets', function ($query) {
-                    $query->where([
-                        'iduser_pic' => auth()->user()->id,
-                        'status' => 'DITOLAK'
+                ->whereHas('pics', function ($query) {
+                    ([
+                        $query->where([
+                            'pics.iduser_pic' => auth()->user()->id,
+                        ]),
                     ]);
+                })
+                ->whereHas('tickets', function ($query) {
+                    $query->where('status', 'DITOLAK');
                 })
                 ->get()
         ];
@@ -129,16 +145,21 @@ class PRoutesController extends Controller
             'title' => 'SI-TIKET | SELESAI',
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
-            'collection' => Ticket::with([
+            'collection' => UsersTickets::with([
+                'tickets.messages',
+                'tickets.modules',
+                'tickets.followups',
                 'users',
-                'messages',
-                'modules',
             ])
-                ->whereHas('users_tickets', function ($query) {
-                    $query->where([
-                        'iduser_pic' => auth()->user()->id,
-                        'status' => 'SELESAI'
+                ->whereHas('pics', function ($query) {
+                    ([
+                        $query->where([
+                            'pics.iduser_pic' => auth()->user()->id,
+                        ]),
                     ]);
+                })
+                ->whereHas('tickets', function ($query) {
+                    $query->where('status', 'SELESAI');
                 })
                 ->get()
         ];
@@ -157,7 +178,14 @@ class PRoutesController extends Controller
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
             'type' => $type,
-            'data' => Ticket::with(['categories', 'users.companies', 'users.departments', 'priorities'])->where('id', $id)->first(),
+            'data' => UsersTickets::with([
+                'tickets.categories',
+                'tickets.followups',
+                'users.companies',
+                'users.departments',
+                'tickets.priorities',
+                'tickets.messages.documents',
+            ])->where('id', $id)->first(),
             'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
             'documents' => Document::with('messages')->whereHas('messages', function ($query) use ($id) {
                 $query->where('messages.idticket', $id);
@@ -167,12 +195,62 @@ class PRoutesController extends Controller
             return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'processed') {
             return view('pages/pic/ticket/review', $data);
+        } elseif ($type == 'declined') {
+            return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'index') {
             return view('pages/pic/ticket/review', $data);
         } elseif ($type == 'done') {
             return view('pages/pic/ticket/review', $data);
+        } elseif ($type == 'followup') {
+            return view('pages/pic/ticket/review', $data);
         }
 
         return redirect()->back()->with('error', 'Halaman yang anda cari tidak ditemukan');
+    }
+    public function followup()
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'collection' => Followup::with('tickets', 'users')->get(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/pic/followup/index', $data);
+    }
+    public function followup_waiting()
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'collection' => Followup::with('tickets', 'users')->where('status', 0)->get(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/pic/followup/waiting', $data);
+    }
+    public function followup_done()
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'collection' => Followup::with('tickets', 'users')->where('status', 1)->get(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/pic/followup/done', $data);
+    }
+    public function followupdetail($id)
+    {
+        $data = [
+            'title' => 'SITIKET | Tindak Lanjut',
+            'data' => UsersTickets::with([
+                'tickets.categories',
+                'users.companies',
+                'users.departments',
+                'tickets.followups',
+                'tickets.modules',
+            ])->where('id', $id)->first(),
+            'notification' => $this->notification,
+            'notificationData' => $this->notificationData,
+        ];
+        return view('pages/pic/followup/detail', $data);
     }
 }

@@ -1,6 +1,5 @@
 @extends('layout.mainhelp')
 @section('content')
-@include('css/helpdesk/dashboard')
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -65,16 +64,15 @@
                                         @foreach ($collection as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->ticketcode }}</td>
+                                            <td>{{ $item->tickets->ticketcode }}</td>
                                             <td>{{ $item->users->name }} ({{ $item->users->companies->companycode ?? '' }}) </td>
-                                            <td>{{ $item->idmodule ? $item->modules->modulename : 'Menunggu' }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>{{ $item->issue }}</td>
-                                            <td>{{ $item->created_at->format('l, d F Y H:i') }}</td>
+                                            <td>{{ $item->tickets->idmodule ? $item->tickets->modules->modulename : 'Menunggu' }}</td>
+                                            <td>{{ $item->tickets->status }}</td>
+                                            <td>{{ $item->tickets->issue }}</td>
+                                            <td>{{ $item->tickets->created_at->format('l, d F Y H:i') }}</td>
                                             <td>
-                                                <!-- Wrapper untuk Tombol dan Badge -->
                                                 <div class="btn-review">
-                                                    <a href="{{ url('helpdesk/detail/' . $item->id) }}" class="btn btn-info btn-sm">
+                                                    <a href="{{ url('helpdesk/detail/' . $item->idticket) }}" class="btn btn-info btn-sm">
                                                         <i class="fas fa-eye"></i> Detail
                                                     </a>
                                                 </div>
