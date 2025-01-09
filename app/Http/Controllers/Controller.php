@@ -109,7 +109,7 @@ class Controller
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if (Auth::user()->email_verified_at == null) {
-                return redirect()->to('email/verification/notice');
+                return redirect()->to('email/verification/notice'); //view pages
             } elseif (Auth::user()->mobile_verified_at == null) {
                 return redirect()->to('phone/verification/notice');
             }
