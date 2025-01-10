@@ -154,7 +154,7 @@ Route::group(['middleware' => ['auth', verified::class]], function () {
             Route::get('/', [HRoutesController::class, 'followup'])->name('/');
             Route::get('waiting', [HRoutesController::class, 'followup_waiting'])->name('waiting');
             Route::get('done', [HRoutesController::class, 'followup_done'])->name('done');
-            Route::get('done/{id}', [HRoutesController::class, 'followup_doneaction'])->name('done/{id}');
+            Route::get('done/{id}', [HelpdeskController::class, 'followup_doneaction'])->name('done/{id}');
             Route::get('/detail/{type}/{id}', [HRoutesController::class, 'helpdesk_followupdetail'])->name('detail');
         });
     });
