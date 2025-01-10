@@ -48,9 +48,22 @@ class HelpdeskController extends Controller
         UsersTickets::where('id', $id)->update(['validated' => 1]);
         return redirect()->back()->with('success', 'Ticket berhasil diperbarui');
     }
+
+    public function followup_doneaction($id)
+    {
+        $followup = Followup::where('idticket', $id)->first();
+
+        if ($followup) {
+            $followup->update(['status' => true]);
+            return redirect()->to(url('helpdesk/followup/done'))->with('success', 'Tindak lanjut berhasil dilakukan');
+        } else {
+            return redirect()->back()->with('error', 'Tindak lanjut sudah selesai');
+        }
+        return redirect()->back()->with('error', 'Data tindak lanjut tidak ditemukan');
+    }
     public function followup_delete($id)
     {
         Followup::find($id)->delete();
-        return redirect()->back()->with('success', 'Ticket berhasil dihapus');
+        return redirect()->back()->with('success', 'Followup berhasil dihapus');
     }
 }
