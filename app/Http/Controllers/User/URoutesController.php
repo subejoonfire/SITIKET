@@ -24,7 +24,7 @@ class URoutesController extends Controller
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
             'collection' => UsersTickets::with('tickets.messages')->where('iduser', auth()->user()->id)->get(),
-            'count' => Ticket::where('iduser', auth()->user()->id)->count(),
+            'count' => UsersTickets::where('iduser', auth()->user()->id)->count(),
         ];
         // dd($data['collection']);
         return view('pages/user/dashboard', $data);

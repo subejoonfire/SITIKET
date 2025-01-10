@@ -403,7 +403,7 @@ class DatabaseSeeder extends Seeder
                 'password' => bcrypt('Jhonlin@123'),
                 'email_verified_at' => now(),
                 'phone_verified_at' => now(),
-                'phone' => '08265432198',
+                'phone' => '08265432191',
                 'level' => 3,
                 'iddepartment' => 5,
                 'idcompany' => 2,
