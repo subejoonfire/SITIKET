@@ -23,7 +23,6 @@ class UserController extends Controller
             'detailissue' => 'required|string',
             'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
-        $rand = rand(1000, 9999);
         $attachmentPath = null;
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
