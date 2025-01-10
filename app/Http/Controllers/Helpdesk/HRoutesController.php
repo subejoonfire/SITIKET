@@ -128,16 +128,4 @@ class HRoutesController extends Controller
         // dd($data);
         return view('pages/helpdesk/followup/detail', $data);
     }
-    public function followup_doneaction($id)
-    {
-        $followup = Followup::where('idticket', $id)->first();
-
-        if ($followup) {
-            $followup->update(['status' => true]);
-            return redirect()->to(url('helpdesk/followup/done'))->with('success', 'Tindak lanjut berhasil dilakukan');
-        } else {
-            return redirect()->back()->with('error', 'Tindak lanjut sudah selesai');
-        }
-        return redirect()->back()->with('error', 'Data tindak lanjut tidak ditemukan');
-    }
 }
