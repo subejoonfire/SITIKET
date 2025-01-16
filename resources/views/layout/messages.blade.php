@@ -33,7 +33,7 @@
                 <button type="submit" class="btn btn-info">Kirim</button>
             </div>
             @else
-            @if (auth()->user()->level == 3)
+            @if (auth()->user()->level != 4)
             <div class="message-input">
                 <div class="input-wrapper">
                     <textarea name="message" placeholder="Tulis Sesuatu disini ..."></textarea>
