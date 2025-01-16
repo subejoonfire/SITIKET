@@ -81,7 +81,16 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DISETUJUI',
-            'collection' => UsersTickets::with(['tickets.modules', 'users'])->where('status', 'DISETUJUI')->get(),
+            'collection' => UsersTickets::with([
+                'tickets.messages',
+                'tickets.modules',
+                'tickets.followups',
+                'users',
+            ])
+                ->whereHas('tickets', function ($query) {
+                    $query->where('status', 'DISETUJUI');
+                })
+                ->get(),
         ];
         return view('pages.admin.ticket.approved', $data);
     }
@@ -90,7 +99,16 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DIPROSES',
-            'collection' => UsersTickets::with(['tickets.modules', 'users'])->where('status', 'DIPROSES')->get(),
+            'collection' => UsersTickets::with([
+                'tickets.messages',
+                'tickets.modules',
+                'tickets.followups',
+                'users',
+            ])
+                ->whereHas('tickets', function ($query) {
+                    $query->where('status', 'DIPROSES');
+                })
+                ->get(),
         ];
         return view('pages.admin.ticket.processed', $data);
     }
@@ -99,7 +117,16 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | DITOLAK',
-            'collection' => UsersTickets::with(['tickets.modules', 'users'])->where('status', 'DITOLAK')->get(),
+            'collection' => UsersTickets::with([
+                'tickets.messages',
+                'tickets.modules',
+                'tickets.followups',
+                'users',
+            ])
+                ->whereHas('tickets', function ($query) {
+                    $query->where('status', 'DITOLAK');
+                })
+                ->get(),
         ];
         return view('pages.admin.ticket.declined', $data);
     }
@@ -108,7 +135,16 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | SELESAI',
-            'collection' => UsersTickets::with(['tickets.modules', 'users'])->where('status', 'SELESAI')->get(),
+            'collection' => UsersTickets::with([
+                'tickets.messages',
+                'tickets.modules',
+                'tickets.followups',
+                'users',
+            ])
+                ->whereHas('tickets', function ($query) {
+                    $query->where('status', 'SELESAI');
+                })
+                ->get(),
         ];
         return view('pages.admin.ticket.done', $data);
     }
