@@ -1,4 +1,4 @@
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+{{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>{{ $title ?? 'SI-TIKET' }}</title>
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
