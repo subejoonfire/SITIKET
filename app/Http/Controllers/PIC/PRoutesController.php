@@ -30,12 +30,39 @@ class PRoutesController extends Controller
             'notification' => $this->notification,
             'notificationData' => $this->notificationData,
             'page' => 'beranda',
-            'approved' => Ticket::where('status', 'DISETUJUI')->count(),
-            'declined' => Ticket::where('status', 'DITOLAK')->count(),
-            'processed' => Ticket::where('status', 'DIPROSES')->count(),
-            'done' => Ticket::where('status', 'SELESAI')->count(),
+            'approved' => UsersTickets::with(['tickets', 'pics'])
+                ->whereHas('tickets', function ($query) {
+                    return $query->where('tickets.status', 'DISETUJUI');
+                })
+                ->whereHas('pics', function ($query) {
+                    return $query->where('pics.iduser_pic', auth()->user()->id);
+                })
+                ->count(),
+            'declined' => UsersTickets::with(['tickets', 'pics'])
+                ->whereHas('tickets', function ($query) {
+                    return $query->where('tickets.status', 'DITOLAK');
+                })
+                ->whereHas('pics', function ($query) {
+                    return $query->where('pics.iduser_pic', auth()->user()->id);
+                })
+                ->count(),
+            'processed' => UsersTickets::with(['tickets', 'pics'])
+                ->whereHas('tickets', function ($query) {
+                    return $query->where('tickets.status', 'DIPROSES');
+                })
+                ->whereHas('pics', function ($query) {
+                    return $query->where('pics.iduser_pic', auth()->user()->id);
+                })
+                ->count(),
+            'done' => UsersTickets::with(['tickets', 'pics'])
+                ->whereHas('tickets', function ($query) {
+                    return $query->where('tickets.status', 'SELESAI');
+                })
+                ->whereHas('pics', function ($query) {
+                    return $query->where('pics.iduser_pic', auth()->user()->id);
+                })
+                ->count(),
         ];
-
         return view('pages/pic/dashboard', $data);
     }
     public function ticket()
