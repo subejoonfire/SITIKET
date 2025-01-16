@@ -24,6 +24,7 @@
                                             <th>Kode Tiket</th>
                                             <th>Nama Pelapor</th>
                                             <th>Module</th>
+                                            <th>Prioritas</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
                                             <th>Tanggal Diajukan</th>
@@ -36,7 +37,8 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->tickets->ticketcode }}</td>
                                             <td>{{ $item->users->name }}</td>
-                                            <td>{{ $item->tickets->modules->modulename }}</td>
+                                            <td>{{ $item->tickets->modules->modulename ?? 'Tidak ditemukan'  }}</td>
+                                            <td>{{ $item->tickets->priorities->priorityname ?? 'Tidak ditemukan' }}</td>
                                             <td>{{ $item->tickets->status }}</td>
                                             <td>{{ $item->tickets->issue }}</td>
                                             <td>{{ $item->tickets->created_at->format('l, d F Y H:i') }}</td>
