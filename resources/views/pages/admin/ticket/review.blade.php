@@ -33,87 +33,82 @@
                         </ul>
                     </div>
                     @endif
-                    <form method="POST" action="{{ url('#') }}">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Change Status</h4>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
+                                </div>
+                                <div class="col">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
+                                </div>
+                                <div class="col">
+                                    <label for="phone">No Handphone</label>
+                                    <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
+                                </div>
+                                <div class="col">
+                                    <label for="perusahaan">Perusahaan</label>
+                                    <input type="text" name="perusahaan" class="form-control" id="perusahaan" value="{{ $data->users->companies->companyname ?? 'Tidak ada'}}">
+                                </div>
+                                <div class="col">
+                                    <label for="kode_perusahaan">Kode Perusahaan</label>
+                                    <input type="text" name="kode_perusahaan" class="form-control" id="kode_perusahaan" value="{{ $data->users->companies->companycode ?? 'Tidak ada'}}">
+                                </div>
+                                <div class="col">
+                                    <label for="department">Departemen</label>
+                                    <input type="text" name="department" class="form-control" id="department" value="{{ $data->users->departments->departmentname ?? 'Tidak ada'}}">
+                                </div>
+                                <div class="col">
+                                    <label for="module">Module</label>
+                                    <input type="text" name="module" class="form-control" id="module" value="{{ $data->tickets->modules->modulename }}">
+                                </div>
+                                <div class="col">
+                                    <label for="priority">Priority</label>
+                                    <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->tickets->priorities->priorityname ?? 'Prioritas tidak diatur' }}">
+                                </div>
+                                <div class="col">
+                                    <label for="category">Kategori</label>
+                                    <input type="text" name="category" class="form-control" id="category" value="{{ $data->tickets->categories->categoryname }}">
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <!-- Username, Email, No Handphone -->
-                                <div class="form-group row">
-                                    <div class="col-md-4">
-                                        <label for="username">Username</label>
-                                        <input type="text" name="username" class="form-control" id="username" value="{{ $data->users->name }}">
-                                        @error('username')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="email">Email</label>
-                                        <input type="email" name="email" class="form-control" id="email" value="{{ $data->users->email }}">
-                                        @error('email')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="phone">No Handphone</label>
-                                        <input type="text" name="phone" class="form-control" id="phone" value="{{ $data->users->phone }}">
-                                        @error('phone')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
+                            <div class="form-group row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="created_at">Tanggal Diajukan</label>
+                                    <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->tickets->created_at->format('l, d F Y H:i') }}">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-md-4">
-                                        <label for="module">Module</label>
-                                        <input type="text" name="module" class="form-control" id="module" value="{{ $data->tickets->modules->modulename }}">
-                                        @error('module')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="created_at">Tanggal Diajukan</label>
-                                        <input type="text" name="created_at" class="form-control" id="created_at" value="{{ $data->tickets->created_at }}">
-                                        @error('created_at')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="priority">Priority</label>
-                                        <input type="text" name="priority" class="form-control" id="priority" value="{{ $data->tickets->priorities->priorityname ?? 'Tidak ditemukan' }}">
-                                        @error('priority')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="issue">Subjek</label>
+                                    <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->tickets->issue }}">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <label for="category">Kategori</label>
-                                        <input type="text" name="category" class="form-control" id="category" value="{{ $data->tickets->categories->categoryname }}">
-                                        @error('issue')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="issue">Subjek</label>
-                                        <input type="text" name="issue" class="form-control" id="issue" value="{{ $data->tickets->issue }}">
-                                        @error('issue')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="detailissue">Keluhan</label>
-                                        <textarea name="detailissue" class="form-control" id="detailissue" rows="3" placeholder="Enter Complaint Description">{{ $data->tickets->detailissue }}</textarea>
-                                        @error('detailissue')
-                                        <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                <div class="col-md-12 mb-3">
+                                    <label for="detailissue">Keluhan</label>
+                                    <textarea name="detailissue" class="form-control" id="detailissue" rows="3">{{ $data->tickets->detailissue }}</textarea>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="fileview">File Diupload</label>
+                                    <div class="d-flex align-items-center">
+                                        @if($data->tickets->attachment != NULL)
+                                        <a href="{{ url('storage/'. $data->tickets->attachment) }}" download class="btn btn-primary mr-2">
+                                            Unduh
+                                        </a>
+                                        <span style="flex-grow: 1; color: #000; font-weight:">
+                                            Unduh File
+                                        </span>
+                                        @else
+                                        <div class="form-control text-muted">Tidak ada file terkait.</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
+            @if ((empty($data->tickets->followups->first()) || $data->tickets->followups->first()->status == 1))
+            @include('layout/messages')
+            @endif
         </div>
     </div>
 </div>
