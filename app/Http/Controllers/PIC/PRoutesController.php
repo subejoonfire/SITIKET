@@ -211,7 +211,6 @@ class PRoutesController extends Controller
                 'users.companies',
                 'users.departments',
                 'tickets.priorities',
-                'tickets.messages.documents',
             ])->where('id', $id)->first(),
             'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
             'documents' => Document::with('messages')->whereHas('messages', function ($query) use ($id) {
