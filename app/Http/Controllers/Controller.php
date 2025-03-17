@@ -205,8 +205,8 @@ class Controller
         $otp = rand(100000, 999999);
         $user = User::find(auth()->user()->id);
         $user->phone_verification_token = $otp;
-        // SendWhatsappMessage::dispatch(auth()->user()->phone, 'otp_notification', $otp);
-        $this->sendMessage(auth()->user()->phone, 'Berikut adalah kode OTP anda ' . $otp);
+        SendWhatsappMessage::dispatch(auth()->user()->phone, 'otp_notification', $otp);
+        // $this->sendMessage(auth()->user()->phone, 'Berikut adalah kode OTP anda ' . $otp);
         $user->save();
         return redirect()->to(url('phone/verification/notice'));
     }
