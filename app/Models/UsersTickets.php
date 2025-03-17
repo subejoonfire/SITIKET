@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class UsersTickets extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $primaryKey = 'users_tickets_id';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'iduser',
         'idticket',
