@@ -26,38 +26,29 @@ class Controller
     public function __construct()
     {
         $this->notificationData = [];
-        $filter = [];
-        if (auth()->check() && auth()->user()->level == 3 && auth()->user()->level == 4) {
-            if (auth()->user()->level == 3) {
-                $filter = ['read_pic' => false];
-            } elseif (auth()->user()->level == 4) {
-                $filter = ['read_user' => false];
-            }
-            $notifications = Ticket::with([
-                'messages.user_from',
-            ])->where([
-                $filter,
-                'iduser_to' => auth()->user()->id,
-            ])->get();
-            if (auth()->user()->level == 3) {
-                foreach ($notifications as $item) {
-                    $this->notification += $item->messages->count();
-                    $messages = $item->messages;
-                    foreach ($messages as $message) {
+        $this->notification = 0;
+
+        if (auth()->check() && (auth()->user()->level == 3 || auth()->user()->level == 4)) {
+            $notifications = Ticket::with(['messages.user_from'])
+                ->whereHas('messages', function ($query) {
+                    $query->where('iduser_to', auth()->user()->id);
+                })
+                ->get();
+
+            foreach ($notifications as $ticket) {
+                foreach ($ticket->messages as $message) {
+                    if (auth()->user()->level == 3 && !$message->read_pic && $message->iduser_from != auth()->user()->id) {
+                        $this->notification++;
                         $this->notificationData[] = $message;
-                    }
-                }
-            } elseif (auth()->user()->level == 4) {
-                foreach ($notifications as $item) {
-                    $this->notification += $item->messages->count();
-                    $messages = $item->messages;
-                    foreach ($messages as $message) {
+                    } elseif (auth()->user()->level == 4 && !$message->read_user && $message->iduser_from != auth()->user()->id) {
+                        $this->notification++;
                         $this->notificationData[] = $message;
                     }
                 }
             }
         }
     }
+
     // public function whatsapp_send()
     // {
     //     $i = 1;
