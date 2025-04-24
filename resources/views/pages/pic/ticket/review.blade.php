@@ -142,7 +142,7 @@
                     </div>
                 </div>
             </div>
-            @if ($data->tickets->status != 'SELESAI' && $type != 'followup' && (empty($data->tickets->followups->first()) || $data->tickets->followups->first()->status == 1))
+            @if ($type != 'followup' && (empty($data->tickets->followups->first()) || $data->tickets->followups->first()->status == 1))
             @include('layout/messages')
             @endif
         </div>

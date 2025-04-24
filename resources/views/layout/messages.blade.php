@@ -1,13 +1,5 @@
 <div class="email-app mb-4">
     <main class="inbox">
-        @php
-        $user = '';
-        if (auth()->user()->level == '3') {
-        $user = 'pic';
-        } elseif (auth()->user()->level == '4') {
-        $user = 'user';
-        }
-        @endphp
         <form action="{{ url('message_store', ['id' => $data->tickets->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="message-tools">
@@ -20,6 +12,7 @@
                     </button>
                 </div>
             </div>
+            @if ($data->tickets->status != 'SELESAI' && auth()->user()->level != 1)
             <div class="message-input">
                 <div class="input-wrapper">
                     <textarea name="message" placeholder="Tulis Sesuatu disini ..."></textarea>
@@ -31,6 +24,21 @@
                 <div id="uploaded-file-container" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
                 <button type="submit" class="btn btn-info">Kirim</button>
             </div>
+            @else
+            @if (auth()->user()->level != 4 && auth()->user()->level != 1)
+            <div class="message-input">
+                <div class="input-wrapper">
+                    <textarea name="message" placeholder="Tulis Sesuatu disini ..."></textarea>
+                    <label for="file-upload" class="attach-icon">
+                        <i class="fas fa-paperclip"></i>
+                    </label>
+                    <input type="file" name="documentname[]" id="file-upload" accept=".pdf, .jpg, .jpeg, .png" style="display: none;" onchange="uploadFiles(event)">
+                </div>
+                <div id="uploaded-file-container" style="margin-top: 10px; font-size: 14px; color: #666;"></div>
+                <button type="submit" class="btn btn-info">Kirim</button>
+            </div>
+            @endif
+            @endif
         </form>
         <div id="conversation" class="tab-content">
             <ul class="messages">

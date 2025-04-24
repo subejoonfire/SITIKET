@@ -102,7 +102,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="fileview">File Diupload</label>
                                         <div class="d-flex align-items-center">
-                                            @if($data->attachment != NULL)
+                                            @if($data->tickets->attachment != NULL)
                                             <a href="{{ url('storage/'. $data->tickets->attachment) }}" download class="btn btn-primary mr-2">
                                                 Unduh
                                             </a>

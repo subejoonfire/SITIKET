@@ -6,11 +6,13 @@ use App\Models\User;
 use App\Models\Module;
 use App\Models\Ticket;
 use App\Models\Company;
+use App\Models\Message;
 use App\Models\Category;
+use App\Models\Document;
 use App\Models\Priority;
 use App\Models\Department;
-use App\Http\Controllers\Controller;
 use App\Models\UsersTickets;
+use App\Http\Controllers\Controller;
 
 class ARoutesController extends Controller
 {
@@ -65,7 +67,7 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Ticket',
-            'collection' => UsersTickets::with(['tickets.modules', 'users'])->get(),
+            'collection' => UsersTickets::with(['tickets.modules', 'tickets.priorities', 'users'])->get(),
         ];
         return view('pages.admin.ticket.ticket', $data);
     }
@@ -73,6 +75,10 @@ class ARoutesController extends Controller
     {
         $data = [
             'title' => 'SI-TIKET | Ticket',
+            'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
+            'documents' => Document::with('messages')->whereHas('messages', function ($query) use ($id) {
+                $query->where('messages.idticket', $id);
+            })->get(),
             'data' => UsersTickets::with(['users', 'tickets.modules', 'tickets.categories', 'tickets.priorities'])->where('id', $id)->first(),
         ];
         return view('pages.admin.ticket.review', $data);
