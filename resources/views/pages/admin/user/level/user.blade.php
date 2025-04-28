@@ -79,12 +79,12 @@
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                     <a href="javascript:void(0)" 
-                                                    class="btn btn-link btn-danger btn-delete" 
-                                                    data-url="{{ url('admin/user/action/delete/' . $item->id) }}" 
-                                                    data-toggle="tooltip" 
-                                                    title="Hapus">
-                                                     <i class="fa fa-times"></i>
-                                                 </a>
+                                                        class="btn btn-link btn-danger btn-delete" 
+                                                        data-url="{{ url('admin/user/action/delete/' . $item->id) }}" 
+                                                        data-toggle="tooltip" 
+                                                        title="Hapus">
+                                                        <i class="fa fa-times"></i>
+                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>

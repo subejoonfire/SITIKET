@@ -76,22 +76,30 @@
                                             <td>{{ $item->companies->companyname ?? '' }}</td>
                                             <td>{{ $item->modules->modulename ?? '' }}</td>
                                             <td>{{ $item->level == 1 ? 'Admin' : ($item->level == 2 ? 'Helpdesk' : ($item->level == 3 ? 'PIC' : 'User')) }}</td>
-                                            {{-- <td><img src="{{ $item->photo }}" alt="Jane's Photo" class="img-fluid rounded-circle"></td> --}}
                                             <td>
                                                 <div class="form-button-action">
-                                                    <a href="{{ url('admin/user/edit', ['id' => $item->id]) }}" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                                    <a href="{{ url('admin/user/edit', ['id' => $item->id]) }}" 
+                                                       data-toggle="tooltip" 
+                                                       title="" 
+                                                       class="btn btn-link btn-primary btn-lg" 
+                                                       data-original-title="Edit Task">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
-                                                    <a href="javascript:void(0)" 
-                                                    class="btn btn-link btn-danger btn-delete" 
-                                                    data-url="{{ url('admin/user/action/delete/' . $item->id) }}" 
-                                                    data-toggle="tooltip" 
-                                                    title="Hapus">
-                                                     <i class="fa fa-times"></i>
-                                                 </a>
+                                        
+                                                    @if ($item->level != 1)
+                                                        <a href="javascript:void(0)" 
+                                                           class="btn btn-link btn-danger btn-delete" 
+                                                           data-url="{{ url('admin/user/action/delete/' . $item->id) }}" 
+                                                           data-toggle="tooltip" 
+                                                           title="Hapus">
+                                                            <i class="fa fa-times"></i>
+                                                        </a>
+                                                    @endif
+                                        
                                                 </div>
                                             </td>
                                         </tr>
+                                        
                                         @endforeach
                                     </tbody>
                                 </table>

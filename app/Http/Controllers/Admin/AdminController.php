@@ -23,7 +23,7 @@ class AdminController extends Controller
             'idmodule' => 'nullable|integer',
             'name' => 'required|string|max:255',
             'level' => 'required|integer|max:5',
-            'phone' => 'required|string|max:14',
+            'phone' => ['required', 'regex:/^(0|\+62|62)[0-9]{9,13}$/'],
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
         ]);
