@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -20,6 +18,7 @@
                         </button>
                     </div>
                     @endif
+
                     @if (session('error'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ session('error') }}
@@ -28,6 +27,7 @@
                         </button>
                     </div>
                     @endif
+
                     @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -37,23 +37,28 @@
                         </ul>
                     </div>
                     @endif
+
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                                 <h4 class="card-title">Ubah Departemen</h4>
                             </div>
                         </div>
+
                         <div class="card-body">
-                            <form method="POST" action="{{ url('admin/department/action/update/') }}">
+                            <form method="POST" action="{{ url('admin/department/action/update/' . $data->id) }}">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="departmentname">Nama Department</label>
-                                        <input type="text" name="departmentname" class="form-control" id="departmentname" placeholder="Masukkan Nama Department" value="{{ $data->departmentname }}">
-                                        @error('departmentname')
+                                        <label for="name">Nama Department</label>
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama Department" value="{{ $data->departmentname }}">
+                                        @error('name')
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
+
+                                    {{-- Komentari perusahaan --}}
+                                    {{-- 
                                     <div class="form-group">
                                         <label for="idcompany">Nama Perusahaan</label>
                                         <select name="idcompany" class="form-control" id="idcompany">
@@ -66,13 +71,18 @@
                                         <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
+                                    --}}
+
                                 </div>
+
                                 <div class="card-action">
                                     <button type="submit" class="btn btn-success">Simpan</button>
                                     <a href="{{ url('admin/department') }}" class="btn btn-danger">Batal</a>
                                 </div>
+
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>
