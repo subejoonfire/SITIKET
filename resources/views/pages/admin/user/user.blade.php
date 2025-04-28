@@ -54,12 +54,12 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>ID User</th>
-                                            <th>Username</th>
-                                            <th>No HP</th>
-                                            <th>Email</th>
-                                            <th>Departemen</th>
-                                            <th>Perusahaan</th>
+                                            <th style="width: 8%">ID User</th>
+                                            <th style="width: 9%">Username</th>
+                                            <th style="width: 8%">No HP</th>
+                                            <th style="width: 10%">Email</th>
+                                            <th style="width: 10%">Departemen</th>
+                                            <th style="width: 15%">Perusahaan</th>
                                             <th>Modul</th>
                                             <th>Level</th>
                                             <th style="width: 10%" data-orderable="false">Aksi</th>

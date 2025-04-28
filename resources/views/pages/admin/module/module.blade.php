@@ -52,7 +52,7 @@
                                         <tr>
                                             <th style="width: 8%">No</th>
                                             <th>Nama Modul</th>
-                                            <th>PIC Modul</th>
+                                            {{-- <th>PIC Modul</th> --}}
                                             <th style="width: 15%" data-orderable="false">Aksi</th>
                                         </tr>
                                     </thead>
@@ -61,7 +61,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->modulename }}</td>
-                                            <td>{{ $item->modulename }}</td>
+                                            {{-- <td>{{ $item->modulename }}</td> --}}
                                             <td>
                                                 <a href="{{ url('admin/module/edit/'. $item->id) }}" class="btn btn-warning btn-sm">
                                                     <i class="fa fa-edit"></i> Edit

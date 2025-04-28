@@ -51,7 +51,7 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th style="width: 8%">No</th>
                                             <th>Nama Department</th>
                                             <th style="width: 15%">Aksi</th>
                                         </tr>

@@ -24,11 +24,11 @@
                                 <table id="add-row" class="display table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Kode Tiket</th>
-                                            <th>Nama Pelapor</th>
-                                            <th>Module</th>
-                                            <th>Prioritas</th>
+                                            <th style="width: 5%">No</th>
+                                            <th style="width: 8%">Kode Tiket</th>
+                                            <th style="width: 11%">Nama Pelapor</th>
+                                            <th style="width: 8%">Module</th>
+                                            <th style="width: 8%">Prioritas</th>
                                             <th>Status</th>
                                             <th>Masalah</th>
                                             <th>Tanggal Diajukan</th>

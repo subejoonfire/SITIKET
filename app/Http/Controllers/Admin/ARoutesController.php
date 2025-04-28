@@ -64,96 +64,132 @@ class ARoutesController extends Controller
         return view('pages/admin/user/edituser', $data);
     }
     public function ticket()
-    {
-        $data = [
-            'title' => 'SI-TIKET | Ticket',
-            'collection' => UsersTickets::with(['tickets.modules', 'tickets.priorities', 'users'])->get(),
-        ];
-        return view('pages.admin.ticket.ticket', $data);
-    }
-    public function ticket_review($id)
-    {
-        $data = [
-            'title' => 'SI-TIKET | Ticket',
-            'collection' => Message::with(['documents', 'user_from', 'user_to'])->where('idticket', $id)->orderBy('created_at', 'desc')->get(),
-            'documents' => Document::with('messages')->whereHas('messages', function ($query) use ($id) {
+{
+    $data = [
+        'title' => 'SI-TIKET | Ticket',
+        'collection' => UsersTickets::with(['tickets.modules', 'tickets.priorities', 'users'])
+            ->join('tickets', 'users_tickets.idticket', '=', 'tickets.id')
+            ->join('priorities', 'tickets.idpriority', '=', 'priorities.id')
+            ->orderBy('priorities.id', 'desc') // priority tertinggi dulu
+            ->orderBy('tickets.created_at', 'asc') // created_at terlama dulu
+            ->select('users_tickets.*')
+            ->get(),
+    ];
+    return view('pages.admin.ticket.ticket', $data);
+}
+
+
+public function ticket_review($id)
+{
+    $data = [
+        'title' => 'SI-TIKET | Ticket',
+        'collection' => Message::with(['documents', 'user_from', 'user_to'])
+            ->where('idticket', $id)
+            ->orderBy('created_at', 'desc')
+            ->get(),
+
+        'documents' => Document::with('messages')
+            ->whereHas('messages', function ($query) use ($id) {
                 $query->where('messages.idticket', $id);
-            })->get(),
-            'data' => UsersTickets::with(['users', 'tickets.modules', 'tickets.categories', 'tickets.priorities'])->where('id', $id)->first(),
-        ];
-        return view('pages.admin.ticket.review', $data);
-    }
-    public function ticket_approved()
-    {
-        $data = [
-            'title' => 'SI-TIKET | DISETUJUI',
-            'collection' => UsersTickets::with([
-                'tickets.messages',
-                'tickets.modules',
-                'tickets.followups',
-                'users',
-            ])
-                ->whereHas('tickets', function ($query) {
-                    $query->where('status', 'DISETUJUI');
-                })
-                ->get(),
-        ];
-        return view('pages.admin.ticket.approved', $data);
-    }
+            })
+            ->get(),
 
-    public function ticket_processed()
-    {
-        $data = [
-            'title' => 'SI-TIKET | DIPROSES',
-            'collection' => UsersTickets::with([
-                'tickets.messages',
-                'tickets.modules',
-                'tickets.followups',
-                'users',
-            ])
-                ->whereHas('tickets', function ($query) {
-                    $query->where('status', 'DIPROSES');
-                })
-                ->get(),
-        ];
-        return view('pages.admin.ticket.processed', $data);
-    }
+        'data' => UsersTickets::with(['users', 'tickets.modules', 'tickets.categories', 'tickets.priorities'])
+            ->join('tickets', 'users_tickets.idticket', '=', 'tickets.id')
+            ->join('priorities', 'tickets.idpriority', '=', 'priorities.id')
+            ->where('users_tickets.id', $id)
+            ->orderBy('priorities.id', 'desc') // priority tertinggi
+            ->orderBy('tickets.created_at', 'asc') // created_at terlama
+            ->select('users_tickets.*')
+            ->first(),
+    ];
+    return view('pages.admin.ticket.review', $data);
+}
 
-    public function ticket_declined()
-    {
-        $data = [
-            'title' => 'SI-TIKET | DITOLAK',
-            'collection' => UsersTickets::with([
-                'tickets.messages',
-                'tickets.modules',
-                'tickets.followups',
-                'users',
-            ])
-                ->whereHas('tickets', function ($query) {
-                    $query->where('status', 'DITOLAK');
-                })
-                ->get(),
-        ];
-        return view('pages.admin.ticket.declined', $data);
-    }
+public function ticket_approved()
+{
+    $data = [
+        'title' => 'SI-TIKET | DISETUJUI',
+        'collection' => UsersTickets::with([
+            'tickets.messages',
+            'tickets.modules',
+            'tickets.followups',
+            'users',
+        ])
+            ->join('tickets', 'users_tickets.idticket', '=', 'tickets.id')
+            ->join('priorities', 'tickets.idpriority', '=', 'priorities.id')
+            ->where('tickets.status', 'DISETUJUI')
+            ->orderBy('priorities.id', 'desc')
+            ->orderBy('tickets.created_at', 'asc')
+            ->select('users_tickets.*')
+            ->get(),
+    ];
+    return view('pages.admin.ticket.approved', $data);
+}
 
-    public function ticket_done()
-    {
-        $data = [
-            'title' => 'SI-TIKET | SELESAI',
-            'collection' => UsersTickets::with([
-                'tickets.messages',
-                'tickets.modules',
-                'tickets.followups',
-                'users',
-            ])
-                ->whereHas('tickets', function ($query) {
-                    $query->where('status', 'SELESAI');
-                })
-                ->get(),
-        ];
-        return view('pages.admin.ticket.done', $data);
-    }
+public function ticket_processed()
+{
+    $data = [
+        'title' => 'SI-TIKET | DIPROSES',
+        'collection' => UsersTickets::with([
+            'tickets.messages',
+            'tickets.modules',
+            'tickets.followups',
+            'users',
+        ])
+            ->join('tickets', 'users_tickets.idticket', '=', 'tickets.id')
+            ->join('priorities', 'tickets.idpriority', '=', 'priorities.id')
+            ->where('tickets.status', 'DIPROSES')
+            ->orderBy('priorities.id', 'desc')
+            ->orderBy('tickets.created_at', 'asc')
+            ->select('users_tickets.*')
+            ->get(),
+    ];
+    return view('pages.admin.ticket.processed', $data);
+}
+
+public function ticket_declined()
+{
+    $data = [
+        'title' => 'SI-TIKET | DITOLAK',
+        'collection' => UsersTickets::with([
+            'tickets.messages',
+            'tickets.modules',
+            'tickets.followups',
+            'users',
+        ])
+            ->join('tickets', 'users_tickets.idticket', '=', 'tickets.id')
+            ->join('priorities', 'tickets.idpriority', '=', 'priorities.id')
+            ->where('tickets.status', 'DITOLAK')
+            ->orderBy('priorities.id', 'desc')
+            ->orderBy('tickets.created_at', 'asc')
+            ->select('users_tickets.*')
+            ->get(),
+    ];
+    return view('pages.admin.ticket.declined', $data);
+}
+
+public function ticket_done()
+{
+    $data = [
+        'title' => 'SI-TIKET | SELESAI',
+        'collection' => UsersTickets::with([
+            'tickets.messages',
+            'tickets.modules',
+            'tickets.followups',
+            'users',
+        ])
+            ->join('tickets', 'users_tickets.idticket', '=', 'tickets.id')
+            ->join('priorities', 'tickets.idpriority', '=', 'priorities.id')
+            ->where('tickets.status', 'SELESAI')
+            ->orderBy('priorities.id', 'desc')
+            ->orderBy('tickets.created_at', 'asc')
+            ->select('users_tickets.*')
+            ->get(),
+    ];
+    return view('pages.admin.ticket.done', $data);
+}
+
 
     public function category()
     {
