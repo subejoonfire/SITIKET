@@ -302,7 +302,7 @@ class Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/login')->with('success', 'Berhasil logout.');
     }
     private function sendMessage($phoneNumber, $message)
     {

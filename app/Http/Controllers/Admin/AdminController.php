@@ -42,6 +42,8 @@ class AdminController extends Controller
             'level' => $validated['level'],
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
+            'email_verified_at' => $validated['level'] == 4 ? null : now(),
+            'phone_verified_at' => $validated['level'] == 4 ? null : now(),
         ]);
 
         return redirect()->to(url('admin/user'))->with('success', 'User berhasil ditambahkan!');

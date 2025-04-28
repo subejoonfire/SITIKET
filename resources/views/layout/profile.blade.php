@@ -55,7 +55,10 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ url('profile') }}">Profil Saya</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ url('logout') }}">Keluar</a>
+            <a class="dropdown-item" href="#" id="logout-button">Keluar</a>
         </li>
+        
+
+        
     </ul>
 </li>

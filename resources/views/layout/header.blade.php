@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 <script src="{{ asset('back-end/assets/js/plugin/webfon t/webfont.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     WebFont.load({
         google: {
@@ -32,5 +34,5 @@
             sessionStorage.fonts = true;
         }
     });
-
 </script>
+
