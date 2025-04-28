@@ -50,8 +50,12 @@
                                                     <a href="{{ url('admin/priority/edit/'. $item->id) }}" class="btn btn-warning btn-sm" style="margin-right: 3px;">
                                                         <i class="fa fa-edit"></i> Edit
                                                     </a>
-                                                    <a href="{{ url('admin/priority/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
-                                                        <i class="fa fa-trash"></i> Hapus
+                                                    <a href="javascript:void(0)" 
+                                                        class="btn btn-danger btn-sm btn-delete" 
+                                                        data-url="{{ url('admin/priority/action/delete/' . $item->id) }}" 
+                                                        data-toggle="tooltip" 
+                                                        title="Hapus">
+                                                            <i class="fa fa-trash"></i> Hapus
                                                     </a>
                                                 </div>
                                             </td>

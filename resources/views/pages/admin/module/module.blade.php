@@ -67,9 +67,13 @@
                                                     <i class="fa fa-edit"></i> Edit
                                                 </a>
                                             
-                                                <a href="{{ url('admin/module/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
-                                                    <i class="fa fa-trash"></i> Hapus
-                                                </a>
+                                                <a href="javascript:void(0)" 
+                                                class="btn btn-danger btn-sm btn-delete" 
+                                                data-url="{{ url('admin/module/action/delete/' . $item->id) }}" 
+                                                data-toggle="tooltip" 
+                                                title="Hapus">
+                                                 <i class="fa fa-trash"></i> Hapus
+                                             </a>
                                             </td>
                                         </tr>
                                         @endforeach

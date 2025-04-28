@@ -64,8 +64,12 @@
                                                 <a href="{{ url('admin/category/edit/' . $item->id) }}" class="btn btn-warning btn-sm">
                                                     <i class="fa fa-edit"></i> Edit
                                                 </a>
-                                                <a href="{{ url('admin/category/action/delete/'. $item->id) }}" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Hapus">
-                                                    <i class="fa fa-trash"></i> Hapus
+                                                <a href="javascript:void(0)" 
+                                                    class="btn btn-danger btn-sm btn-delete" 
+                                                    data-url="{{ url('admin/category/action/delete/' . $item->id) }}" 
+                                                    data-toggle="tooltip" 
+                                                    title="Hapus">
+                                                        <i class="fa fa-trash"></i> Hapus
                                                 </a>
                                             </td>
                                         </tr>
