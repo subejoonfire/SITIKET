@@ -70,8 +70,9 @@ class ARoutesController extends Controller
         'collection' => UsersTickets::with(['tickets.modules', 'tickets.priorities', 'users'])
             ->join('tickets', 'users_tickets.idticket', '=', 'tickets.id')
             ->join('priorities', 'tickets.idpriority', '=', 'priorities.id')
-            ->orderBy('priorities.id', 'desc') // priority tertinggi dulu
-            ->orderBy('tickets.created_at', 'asc') // created_at terlama dulu
+            ->where('tickets.status', 'DIAJUKAN')
+            ->orderBy('priorities.id', 'desc') 
+            ->orderBy('tickets.created_at', 'asc')
             ->select('users_tickets.*')
             ->get(),
     ];

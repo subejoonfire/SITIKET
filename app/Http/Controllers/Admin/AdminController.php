@@ -64,7 +64,7 @@ class AdminController extends Controller
             'idmodule' => 'nullable|integer',
             'name' => 'required|string|max:255',
             'level' => 'required|integer|max:5',
-            'phone' => ['required', 'regex:/^(0|\+62|62)[0-9]{9,13}$/', 'unique:users,phone'],
+            'phone' => ['required', 'regex:/^(0|\+62|62)[0-9]{9,13}$/'],
             'email' => 'required|email|unique:users,email,' . $request->id,
         ]);
         $user = User::findOrFail($id);
@@ -224,29 +224,35 @@ class AdminController extends Controller
     }
     public function companyStore(Request $request)
     {
-        $request->validate([
-            'companyname' => 'required|string|max:255',
-            'companycode' => 'required|string|max:255',
-        ]);
-        Company::create([
-            'companyname' => $request->companyname,
-            'companycode' => $request->companycode,
-        ]);
-        return redirect()->to(url('admin/company'))->with('success', 'Perusahaan berhasil ditambahkan.');
+    $request->validate([
+        'companyname' => 'required|string|max:255|unique:companies,companyname',
+        'companycode' => 'required|string|max:255|unique:companies,companycode',
+    ]);
+
+    Company::create([
+        'companyname' => $request->companyname,
+        'companycode' => $request->companycode,
+    ]);
+
+    return redirect()->to(url('admin/company'))->with('success', 'Perusahaan berhasil ditambahkan.');
     }
+
     public function companyUpdate(Request $request, $id)
     {
-        $request->validate([
-            'companyname' => 'required|string|max:255',
-            'companycode' => 'required|string|max:255',
-        ]);
-        $company = Company::findOrFail($id);
-        $company->update([
-            'companyname' => $request->companyname,
-            'companycode' => $request->companycode,
-        ]);
-        return redirect()->to(url('admin/company'))->with('success', 'Perusahaan berhasil diperbarui.');
+    $request->validate([
+        'companyname' => 'required|string|max:255|unique:companies,companyname,' . $id,
+        'companycode' => 'required|string|max:255|unique:companies,companycode,' . $id,
+    ]);
+
+    $company = Company::findOrFail($id);
+    $company->update([
+        'companyname' => $request->companyname,
+        'companycode' => $request->companycode,
+    ]);
+
+    return redirect()->to(url('admin/company'))->with('success', 'Perusahaan berhasil diperbarui.');
     }
+
     public function companyDelete($id)
     {
         $company = Company::findOrFail($id);

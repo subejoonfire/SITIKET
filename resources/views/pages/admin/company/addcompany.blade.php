@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 <div class="main-panel">
     <div class="content">
         <div class="page-inner">
@@ -18,14 +16,14 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="companycode">Kode</label>
-                                    <input type="text" name="companycode" class="form-control" id="companycode" placeholder="Masukkan Kode">
+                                    <input type="text" name="companycode" class="form-control @error('companycode') is-invalid @enderror" id="companycode" placeholder="Masukkan Kode" value="{{ old('companycode') }}">
                                     @error('companycode')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="companyname">Nama Perusahaan</label>
-                                    <input type="text" name="companyname" class="form-control" id="companyname" placeholder="Masukkan Nama Perusahaan">
+                                    <input type="text" name="companyname" class="form-control @error('companyname') is-invalid @enderror" id="companyname" placeholder="Masukkan Nama Perusahaan" value="{{ old('companyname') }}">
                                     @error('companyname')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
