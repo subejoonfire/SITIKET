@@ -124,16 +124,16 @@
 <body>
     <div class="half">
         <div class="blue-section">
-            <img src="loginTemplate/images/SI-TIKET.png" alt="Jhonlin Group Logo" class="logo">
+            <img src="{{ url('loginTemplate/images/SI-TIKET.png')}}" alt="Jhonlin Group Logo" class="logo">
             <h3>SELAMAT DATANG</h3>
             <h2>Sistem Informasi</h2>
             <h2>Pelayanan</h2>
-            <img src="loginTemplate/images/GCOMPUTER.png" alt="illustration  " class="illustration">
+            <img src="{{ url('loginTemplate/images/GCOMPUTER.png') }}" alt="illustration  " class="illustration">
         </div>
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-12">
-                    <div class="form-block mx-auto">
+                    <div class="form-block mx-auto">    
                         <div class="text-center mb-5">
                             <h3><strong>Register</strong></h3>
                         </div>
